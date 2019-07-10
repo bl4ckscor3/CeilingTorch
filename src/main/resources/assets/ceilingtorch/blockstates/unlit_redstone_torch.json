@@ -1,0 +1,5 @@
+{
+    "variants": {
+        "normal":  { "model": "unlit_redstone_torch", "x": 180 }
+    }
+}

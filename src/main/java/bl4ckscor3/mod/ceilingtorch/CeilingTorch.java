@@ -3,15 +3,12 @@ package bl4ckscor3.mod.ceilingtorch;
 import java.util.Arrays;
 
 import net.minecraft.block.Block;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemBlock;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.ModMetadata;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
-import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry.ObjectHolder;
 
@@ -21,13 +18,13 @@ public class CeilingTorch
 {
 	public static final String MODID = "ceilingtorch";
 	public static final String NAME = "Ceiling Torch";
-	public static final String VERSION = "v1.0";
+	public static final String VERSION = "v1.0.1";
 	public static final String MC_VERSION = "1.12.2";
-	@ObjectHolder("minecraft:torch")
+	@ObjectHolder(MODID + ":torch")
 	public static final Block TORCH = null;
-	@ObjectHolder("minecraft:unlit_redstone_torch")
+	@ObjectHolder(MODID + ":unlit_redstone_torch")
 	public static final Block UNLIT_REDSTONE_TORCH = null;
-	@ObjectHolder("minecraft:redstone_torch")
+	@ObjectHolder(MODID + ":redstone_torch")
 	public static final Block REDSTONE_TORCH = null;
 
 	@EventHandler
@@ -44,18 +41,11 @@ public class CeilingTorch
 		meta.url = "https://minecraft.curseforge.com/projects/ceiling-torch";
 	}
 
-	@SubscribeEvent(priority=EventPriority.LOWEST)
+	@SubscribeEvent
 	public static void registerBlock(RegistryEvent.Register<Block> event)
 	{
-		event.getRegistry().register(new BlockCeilingTorch().setRegistryName("minecraft", "torch").setTranslationKey("torch"));
-		event.getRegistry().register(new BlockRedstoneCeilingTorch(false).setRegistryName("minecraft", "unlit_redstone_torch").setTranslationKey("notGate"));
-		event.getRegistry().register(new BlockRedstoneCeilingTorch(true).setRegistryName("minecraft", "redstone_torch").setTranslationKey("notGate"));
-	}
-
-	@SubscribeEvent(priority=EventPriority.LOWEST)
-	public static void registerItem(RegistryEvent.Register<Item> event)
-	{
-		event.getRegistry().register(new ItemBlock(TORCH).setRegistryName(TORCH.getRegistryName()));
-		event.getRegistry().register(new ItemBlock(REDSTONE_TORCH).setRegistryName(REDSTONE_TORCH.getRegistryName()));
+		event.getRegistry().register(new BlockCeilingTorch().setRegistryName(MODID, "torch").setTranslationKey("torch"));
+		event.getRegistry().register(new BlockRedstoneCeilingTorch(false).setRegistryName(MODID, "unlit_redstone_torch").setTranslationKey("notGate"));
+		event.getRegistry().register(new BlockRedstoneCeilingTorch(true).setRegistryName(MODID, "redstone_torch").setTranslationKey("notGate"));
 	}
 }

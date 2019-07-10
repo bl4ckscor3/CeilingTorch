@@ -1,0 +1,5 @@
+{
+    "variants": {
+        "normal": { "model": "normal_torch", "x": 180 }
+    }
+}

@@ -8,7 +8,6 @@ import com.google.common.collect.Lists;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.Item;
@@ -29,12 +28,9 @@ public class BlockRedstoneCeilingTorch extends BlockCeilingTorch
 
 	protected BlockRedstoneCeilingTorch(boolean isOn)
 	{
-		super();
 		this.isOn = isOn;
-		setCreativeTab(CreativeTabs.REDSTONE);
 
-		if(isOn)
-			setLightLevel(0.5F);
+		setLightLevel(isOn ? 0.5F : 0.0F);
 	}
 
 	private boolean isBurnedOut(World world, BlockPos pos, boolean turnOff)
@@ -98,12 +94,12 @@ public class BlockRedstoneCeilingTorch extends BlockCeilingTorch
 	@Override
 	public int getWeakPower(IBlockState state, IBlockAccess access, BlockPos pos, EnumFacing side)
 	{
-		return isOn && state.getValue(FACING) != side ? 15 : 0;
+		return isOn && EnumFacing.DOWN != side ? 15 : 0;
 	}
 
 	private boolean shouldBeOff(World world, BlockPos pos, IBlockState state)
 	{
-		EnumFacing facing = state.getValue(FACING).getOpposite();
+		EnumFacing facing = EnumFacing.DOWN.getOpposite();
 
 		return world.isSidePowered(pos.offset(facing), facing);
 	}
@@ -128,7 +124,7 @@ public class BlockRedstoneCeilingTorch extends BlockCeilingTorch
 		{
 			if(flag)
 			{
-				world.setBlockState(pos, CeilingTorch.UNLIT_REDSTONE_TORCH.getDefaultState().withProperty(FACING, state.getValue(FACING)), 3);
+				world.setBlockState(pos, CeilingTorch.UNLIT_REDSTONE_TORCH.getDefaultState(), 3);
 
 				if(isBurnedOut(world, pos, true))
 				{
@@ -148,7 +144,7 @@ public class BlockRedstoneCeilingTorch extends BlockCeilingTorch
 			}
 		}
 		else if(!flag && !isBurnedOut(world, pos, false))
-			world.setBlockState(pos, CeilingTorch.REDSTONE_TORCH.getDefaultState().withProperty(FACING, state.getValue(FACING)), 3);
+			world.setBlockState(pos, CeilingTorch.REDSTONE_TORCH.getDefaultState(), 3);
 	}
 
 	@Override
@@ -188,7 +184,7 @@ public class BlockRedstoneCeilingTorch extends BlockCeilingTorch
 			double x = pos.getX() + 0.5D + (rand.nextDouble() - 0.5D) * 0.2D;
 			double y = pos.getY() + 0.7D + (rand.nextDouble() - 0.5D) * 0.2D;
 			double z = pos.getZ() + 0.5D + (rand.nextDouble() - 0.5D) * 0.2D;
-			EnumFacing facing = state.getValue(FACING);
+			EnumFacing facing = EnumFacing.DOWN;
 
 			if(facing.getAxis().isHorizontal())
 			{
