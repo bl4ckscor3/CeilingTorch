@@ -18,7 +18,7 @@ public class CeilingTorch
 {
 	public static final String MODID = "ceilingtorch";
 	public static final String NAME = "Ceiling Torch";
-	public static final String VERSION = "v1.0.1";
+	public static final String VERSION = "v1.0.2";
 	public static final String MC_VERSION = "1.12.2";
 	@ObjectHolder(MODID + ":torch")
 	public static final Block TORCH = null;

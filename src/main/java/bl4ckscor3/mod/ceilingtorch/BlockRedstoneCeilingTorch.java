@@ -9,9 +9,9 @@ import com.google.common.collect.Lists;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.SoundCategory;
@@ -166,7 +166,7 @@ public class BlockRedstoneCeilingTorch extends BlockCeilingTorch
 	@Override
 	public Item getItemDropped(IBlockState state, Random rand, int fortune)
 	{
-		return Item.getItemFromBlock(CeilingTorch.REDSTONE_TORCH);
+		return Item.getItemFromBlock(Blocks.REDSTONE_TORCH);
 	}
 
 	@Override
@@ -197,12 +197,6 @@ public class BlockRedstoneCeilingTorch extends BlockCeilingTorch
 
 			world.spawnParticle(EnumParticleTypes.REDSTONE, x, y - (facing == EnumFacing.DOWN ? 0.25D : 0.0D), z, 0.0D, 0.0D, 0.0D);
 		}
-	}
-
-	@Override
-	public ItemStack getItem(World world, BlockPos pos, IBlockState state)
-	{
-		return new ItemStack(CeilingTorch.REDSTONE_TORCH);
 	}
 
 	@Override
