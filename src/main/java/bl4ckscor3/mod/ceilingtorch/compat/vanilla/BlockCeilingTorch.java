@@ -1,4 +1,4 @@
-package bl4ckscor3.mod.ceilingtorch;
+package bl4ckscor3.mod.ceilingtorch.compat.vanilla;
 
 import java.util.Random;
 

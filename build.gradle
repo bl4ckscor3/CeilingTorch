@@ -11,7 +11,7 @@ buildscript {
 apply plugin: 'net.minecraftforge.gradle'
 apply plugin: 'eclipse'
 
-version = '1.14.x-v1.0'
+version = '1.14.x-v1.1'
 group = 'bl4ckscor3.mod.ceilingtorch'
 archivesBaseName = 'ceilingtorch'
 
@@ -49,16 +49,17 @@ minecraft {
 
 
 dependencies {
-    minecraft 'net.minecraftforge:forge:1.14.3-27.0.25'
+    minecraft 'net.minecraftforge:forge:1.14.3-27.0.47'
+    compile files('libs/ilikewood-release-1.14.3-19w28b-deobf.jar')
 }
 
 jar {
     manifest {
         attributes(["Specification-Title": "Ceiling Torch",
                     "Specification-Vendor": "bl4ckscor3",
-                    "Specification-Version": "v1.0",
+                    "Specification-Version": "v1.1",
                     "Implementation-Title": "Ceiling Torch",
-                    "Implementation-Version": "v1.0",
+                    "Implementation-Version": "v1.1",
                     "Implementation-Vendor" :"bl4ckscor3",
                     "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")],)
     }
