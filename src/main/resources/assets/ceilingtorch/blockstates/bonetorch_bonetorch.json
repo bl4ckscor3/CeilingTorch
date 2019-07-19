@@ -1,0 +1,5 @@
+{
+    "variants": {
+        "": { "model": "bonetorch:block/bonetorch", "x": 180 }
+    }
+}

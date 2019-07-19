@@ -1,12 +1,12 @@
 modLoader="javafml" #mandatory
 loaderVersion="[27,)" #mandatory
 issueTrackerURL="https://github.com/bl4ckscor3/CeilingTorch/issues"
-displayURL="http://minecraft.curseforge.com/projects/ceiling-torch"
+displayURL="https://www.curseforge.com/minecraft/mc-mods/ceiling-torch"
 authors="bl4ckscor3"
 
 [[mods]] #mandatory
 modId="ceilingtorch" #mandatory
-version="v1.1" #mandatory
+version="v1.2" #mandatory
 displayName="Ceiling Torch" #mandatory
 description='''Makes vanilla torches placeable on the ceiling.''' #mandatory
 
