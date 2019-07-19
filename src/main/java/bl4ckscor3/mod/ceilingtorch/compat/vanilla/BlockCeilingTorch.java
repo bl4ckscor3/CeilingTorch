@@ -26,7 +26,7 @@ public class BlockCeilingTorch extends Block
 {
 	protected static final AxisAlignedBB CEILING_AABB = new AxisAlignedBB(0.4000000059604645D, 1.0D - 0.6000000238418579D, 0.4000000059604645D, 0.6000000238418579D, 1.0D, 0.6000000238418579D);
 
-	protected BlockCeilingTorch()
+	public BlockCeilingTorch()
 	{
 		super(Material.CIRCUITS);
 

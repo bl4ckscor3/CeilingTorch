@@ -5,9 +5,11 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.function.Supplier;
 
+import bl4ckscor3.mod.ceilingtorch.compat.bonetorch.BoneTorchCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.vanilla.VanillaCompat;
 import net.minecraft.block.Block;
 import net.minecraftforge.event.RegistryEvent;
+import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.Mod.EventHandler;
@@ -22,7 +24,7 @@ public class CeilingTorch
 {
 	public static final String MODID = "ceilingtorch";
 	public static final String NAME = "Ceiling Torch";
-	public static final String VERSION = "v1.0.2";
+	public static final String VERSION = "v1.2";
 	public static final String MC_VERSION = "1.12.2";
 	private static List<Supplier<ICeilingTorchCompat>> compatList = new ArrayList<>();
 
@@ -40,6 +42,9 @@ public class CeilingTorch
 		meta.url = "https://minecraft.curseforge.com/projects/ceiling-torch";
 
 		compatList.add(VanillaCompat::new);
+
+		if(Loader.isModLoaded("bonetorch"))
+			compatList.add(BoneTorchCompat::new);
 	}
 
 	@SubscribeEvent
