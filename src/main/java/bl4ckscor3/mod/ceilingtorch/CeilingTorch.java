@@ -1,16 +1,20 @@
 package bl4ckscor3.mod.ceilingtorch;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
+import java.util.function.Supplier;
 
+import bl4ckscor3.mod.ceilingtorch.compat.vanilla.VanillaCompat;
 import net.minecraft.block.Block;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.ModMetadata;
+import net.minecraftforge.fml.common.event.FMLLoadCompleteEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import net.minecraftforge.fml.common.registry.GameRegistry.ObjectHolder;
 
 @Mod(modid=CeilingTorch.MODID, name=CeilingTorch.NAME, version=CeilingTorch.VERSION, acceptedMinecraftVersions="[" + CeilingTorch.MC_VERSION + "]")
 @EventBusSubscriber
@@ -20,12 +24,7 @@ public class CeilingTorch
 	public static final String NAME = "Ceiling Torch";
 	public static final String VERSION = "v1.0.2";
 	public static final String MC_VERSION = "1.12.2";
-	@ObjectHolder(MODID + ":torch")
-	public static final Block TORCH = null;
-	@ObjectHolder(MODID + ":unlit_redstone_torch")
-	public static final Block UNLIT_REDSTONE_TORCH = null;
-	@ObjectHolder(MODID + ":redstone_torch")
-	public static final Block REDSTONE_TORCH = null;
+	private static List<Supplier<ICeilingTorchCompat>> compatList = new ArrayList<>();
 
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event)
@@ -39,13 +38,25 @@ public class CeilingTorch
 		meta.name = NAME;
 		meta.version = VERSION;
 		meta.url = "https://minecraft.curseforge.com/projects/ceiling-torch";
+
+		compatList.add(VanillaCompat::new);
 	}
 
 	@SubscribeEvent
-	public static void registerBlock(RegistryEvent.Register<Block> event)
+	public static void registerBlocks(RegistryEvent.Register<Block> event)
 	{
-		event.getRegistry().register(new BlockCeilingTorch().setRegistryName(MODID, "torch").setTranslationKey("torch"));
-		event.getRegistry().register(new BlockRedstoneCeilingTorch(false).setRegistryName(MODID, "unlit_redstone_torch").setTranslationKey("notGate"));
-		event.getRegistry().register(new BlockRedstoneCeilingTorch(true).setRegistryName(MODID, "redstone_torch").setTranslationKey("notGate"));
+		for(Supplier<ICeilingTorchCompat> compat : compatList)
+		{
+			compat.get().registerBlocks(event);
+		}
+	}
+
+	@EventHandler
+	public void onLoadComplete(FMLLoadCompleteEvent event)
+	{
+		for(Supplier<ICeilingTorchCompat> compat : compatList)
+		{
+			compat.get().registerPlaceEntries();
+		}
 	}
 }

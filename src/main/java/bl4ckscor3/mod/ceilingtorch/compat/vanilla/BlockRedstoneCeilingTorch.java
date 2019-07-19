@@ -1,4 +1,4 @@
-package bl4ckscor3.mod.ceilingtorch;
+package bl4ckscor3.mod.ceilingtorch.compat.vanilla;
 
 import java.util.List;
 import java.util.Map;
@@ -124,7 +124,7 @@ public class BlockRedstoneCeilingTorch extends BlockCeilingTorch
 		{
 			if(flag)
 			{
-				world.setBlockState(pos, CeilingTorch.UNLIT_REDSTONE_TORCH.getDefaultState(), 3);
+				world.setBlockState(pos, VanillaCompat.UNLIT_REDSTONE_TORCH.getDefaultState(), 3);
 
 				if(isBurnedOut(world, pos, true))
 				{
@@ -144,7 +144,7 @@ public class BlockRedstoneCeilingTorch extends BlockCeilingTorch
 			}
 		}
 		else if(!flag && !isBurnedOut(world, pos, false))
-			world.setBlockState(pos, CeilingTorch.REDSTONE_TORCH.getDefaultState(), 3);
+			world.setBlockState(pos, VanillaCompat.REDSTONE_TORCH.getDefaultState(), 3);
 	}
 
 	@Override
@@ -202,7 +202,7 @@ public class BlockRedstoneCeilingTorch extends BlockCeilingTorch
 	@Override
 	public boolean isAssociatedBlock(Block other)
 	{
-		return other == CeilingTorch.UNLIT_REDSTONE_TORCH || other == CeilingTorch.REDSTONE_TORCH;
+		return other == VanillaCompat.UNLIT_REDSTONE_TORCH || other == VanillaCompat.REDSTONE_TORCH;
 	}
 
 	static class Toggle
