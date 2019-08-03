@@ -11,14 +11,14 @@ buildscript {
 apply plugin: 'net.minecraftforge.gradle'
 apply plugin: 'eclipse'
 
-version = '1.14.x-v1.2'
+version = '1.14.4-v1.2'
 group = 'bl4ckscor3.mod.ceilingtorch'
 archivesBaseName = 'ceilingtorch'
 
 sourceCompatibility = targetCompatibility = compileJava.sourceCompatibility = compileJava.targetCompatibility = '1.8'
 
 minecraft {
-    mappings channel: 'snapshot', version: '20190702-1.14.3'
+    mappings channel: 'snapshot', version: '20190803-1.14.3'
 	
     runs {
         client {
@@ -49,7 +49,7 @@ minecraft {
 
 
 dependencies {
-    minecraft 'net.minecraftforge:forge:1.14.3-27.0.47'
+    minecraft 'net.minecraftforge:forge:1.14.4-28.0.34'
     compile files('libs/ilikewood-release-1.14.3-19w28b-deobf.jar')
 	compile files('libs/SBM-BoneTorch-1.14.3-0.0.1-deobf.jar')
 }
