@@ -24,7 +24,7 @@ public class CeilingTorch
 {
 	public static final String MODID = "ceilingtorch";
 	public static final String NAME = "Ceiling Torch";
-	public static final String VERSION = "v1.2";
+	public static final String VERSION = "v1.2.1";
 	public static final String MC_VERSION = "1.12.2";
 	private static List<Supplier<ICeilingTorchCompat>> compatList = new ArrayList<>();
 
@@ -39,7 +39,7 @@ public class CeilingTorch
 		meta.modId = MODID;
 		meta.name = NAME;
 		meta.version = VERSION;
-		meta.url = "https://minecraft.curseforge.com/projects/ceiling-torch";
+		meta.url = "https://www.curseforge.com/minecraft/mc-mods/ceiling-torch";
 
 		compatList.add(VanillaCompat::new);
 
