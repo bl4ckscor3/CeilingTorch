@@ -23,7 +23,7 @@ public class ILikeWoodCompat implements ICeilingTorchCompat
 	@Override
 	public void registerBlocks(RegistryEvent.Register<Block> event)
 	{
-		for(WoodType type : WoodType.VALUES)
+		for(WoodType type : WoodType.values())
 		{
 			event.getRegistry().register(new BlockWoodenCeilingTorch(type).setRegistryName(new ResourceLocation(CeilingTorch.MODID, "ilikewood_" + type.getName() + "_torch")));
 		}
