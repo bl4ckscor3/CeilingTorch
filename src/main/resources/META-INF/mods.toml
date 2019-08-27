@@ -6,9 +6,9 @@ authors="bl4ckscor3"
 
 [[mods]] #mandatory
 modId="ceilingtorch" #mandatory
-version="v1.2.1" #mandatory
+version="v1.2.2" #mandatory
 displayName="Ceiling Torch" #mandatory
-description='''Makes vanilla torches placeable on the ceiling.''' #mandatory
+description='''Makes torches placeable on the ceiling.''' #mandatory
 
 [[dependencies.ceilingtorch]]
     modId="forge"
