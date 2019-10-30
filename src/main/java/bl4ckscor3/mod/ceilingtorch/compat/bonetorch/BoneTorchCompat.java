@@ -1,5 +1,7 @@
 package bl4ckscor3.mod.ceilingtorch.compat.bonetorch;
 
+import com.builtbroken.bonetorch.BoneTorchMod;
+
 import bl4ckscor3.mod.ceilingtorch.CeilingTorch;
 import bl4ckscor3.mod.ceilingtorch.ICeilingTorchCompat;
 import bl4ckscor3.mod.ceilingtorch.PlaceHandler;
@@ -19,7 +21,13 @@ public class BoneTorchCompat implements ICeilingTorchCompat
 	@Override
 	public void registerBlocks(RegistryEvent.Register<Block> event)
 	{
-		event.getRegistry().register(new BlockCeilingTorch(Block.Properties.create(Material.MISCELLANEOUS).doesNotBlockMovement().hardnessAndResistance(0.0F).lightValue(14).sound(SoundType.WOOD)).setRegistryName(new ResourceLocation(CeilingTorch.MODID, "bonetorch_bonetorch")));
+		event.getRegistry().register(new BlockCeilingTorch(Block.Properties.create(Material.MISCELLANEOUS).doesNotBlockMovement().hardnessAndResistance(0.0F).lightValue(14).sound(SoundType.WOOD)) {
+			@Override
+			public ResourceLocation getLootTable()
+			{
+				return BoneTorchMod.blockTorch.getLootTable();
+			}
+		}.setRegistryName(new ResourceLocation(CeilingTorch.MODID, "bonetorch_bonetorch")));
 	}
 
 	@Override

@@ -7,6 +7,7 @@ import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.particles.ParticleTypes;
 import net.minecraft.util.Direction;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.shapes.ISelectionContext;
 import net.minecraft.util.math.shapes.VoxelShape;
@@ -17,6 +18,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import yamahari.ilikewood.blocks.torch.WoodenTorchBlock;
+import yamahari.ilikewood.objectholders.torch.WoodenTorchBlocks;
 import yamahari.ilikewood.util.WoodType;
 
 public class BlockWoodenCeilingTorch extends WoodenTorchBlock
@@ -55,5 +57,22 @@ public class BlockWoodenCeilingTorch extends WoodenTorchBlock
 		double d2 = pos.getZ() + 0.5D;
 
 		world.addParticle(ParticleTypes.SMOKE, d0, d1, d2, 0.0D, 0.0D, 0.0D);
+	}
+
+	@Override
+	public ResourceLocation getLootTable()
+	{
+		if(getWoodType() == ILikeWoodCompat.SPRUCE_TYPE)
+			return WoodenTorchBlocks.SPRUCE.getLootTable();
+		else if(getWoodType() == ILikeWoodCompat.BIRCH_TYPE)
+			return WoodenTorchBlocks.BIRCH.getLootTable();
+		else if(getWoodType() == ILikeWoodCompat.JUNGLE_TYPE)
+			return WoodenTorchBlocks.JUNGLE.getLootTable();
+		else if(getWoodType() == ILikeWoodCompat.ACACIA_TYPE)
+			return WoodenTorchBlocks.ACACIA.getLootTable();
+		else if(getWoodType() == ILikeWoodCompat.DARK_OAK_TYPE)
+			return WoodenTorchBlocks.DARK_OAK.getLootTable();
+		else
+			return WoodenTorchBlocks.OAK.getLootTable();
 	}
 }
