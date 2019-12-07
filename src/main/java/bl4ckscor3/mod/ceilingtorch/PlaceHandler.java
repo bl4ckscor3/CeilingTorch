@@ -3,8 +3,8 @@ package bl4ckscor3.mod.ceilingtorch;
 import java.util.HashMap;
 
 import bl4ckscor3.mod.ceilingtorch.compat.vanilla.BlockCeilingTorch;
-import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
@@ -19,7 +19,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 @EventBusSubscriber(modid=CeilingTorch.MODID)
 public class PlaceHandler
 {
-	private static final HashMap<ResourceLocation,Block> PLACE_ENTRIES = new HashMap<>();
+	private static final HashMap<ResourceLocation,IBlockState> PLACE_ENTRIES = new HashMap<>();
 
 	@SubscribeEvent
 	public static void onRightClickBlock(RightClickBlock event)
@@ -32,7 +32,7 @@ public class PlaceHandler
 			placeTorch(event, actualHand, held, PLACE_ENTRIES.get(rl));
 	}
 
-	private static void placeTorch(RightClickBlock event, EnumHand actualHand, ItemStack held, Block block)
+	private static void placeTorch(RightClickBlock event, EnumHand actualHand, ItemStack held, IBlockState state)
 	{
 		BlockPos pos = event.getPos();
 		EnumFacing face = event.getFace();
@@ -41,7 +41,7 @@ public class PlaceHandler
 
 		if(face == EnumFacing.DOWN && world.isAirBlock(placeAt) && BlockCeilingTorch.canPlaceAt(world, placeAt, EnumFacing.DOWN))
 		{
-			world.setBlockState(placeAt, block.getDefaultState());
+			world.setBlockState(placeAt, state);
 			world.playSound(null, pos.getX(), pos.getY(), pos.getZ(), SoundType.WOOD.getPlaceSound(), SoundCategory.BLOCKS, 1.0F, 1.0F);
 			event.getEntityPlayer().swingArm(actualHand);
 
@@ -50,9 +50,9 @@ public class PlaceHandler
 		}
 	}
 
-	public static void registerPlaceEntry(ResourceLocation itemName, Block ceilingTorch)
+	public static void registerPlaceEntry(ResourceLocation itemName, IBlockState ceilingTorchState)
 	{
 		if(!PLACE_ENTRIES.containsKey(itemName))
-			PLACE_ENTRIES.put(itemName, ceilingTorch);
+			PLACE_ENTRIES.put(itemName, ceilingTorchState);
 	}
 }

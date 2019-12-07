@@ -22,6 +22,6 @@ public class BoneTorchCompat implements ICeilingTorchCompat
 	@Override
 	public void registerPlaceEntries()
 	{
-		PlaceHandler.registerPlaceEntry(new ResourceLocation("bonetorch", "bonetorch"), BONETORCH_BONETORCH);
+		PlaceHandler.registerPlaceEntry(new ResourceLocation("bonetorch", "bonetorch"), BONETORCH_BONETORCH.getDefaultState());
 	}
 }

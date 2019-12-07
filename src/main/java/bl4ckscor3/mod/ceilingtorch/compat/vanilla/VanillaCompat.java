@@ -26,7 +26,7 @@ public class VanillaCompat implements ICeilingTorchCompat
 	@Override
 	public void registerPlaceEntries()
 	{
-		PlaceHandler.registerPlaceEntry(Blocks.TORCH.getRegistryName(), TORCH);
-		PlaceHandler.registerPlaceEntry(Blocks.REDSTONE_TORCH.getRegistryName(), REDSTONE_TORCH);
+		PlaceHandler.registerPlaceEntry(Blocks.TORCH.getRegistryName(), TORCH.getDefaultState());
+		PlaceHandler.registerPlaceEntry(Blocks.REDSTONE_TORCH.getRegistryName(), REDSTONE_TORCH.getDefaultState());
 	}
 }

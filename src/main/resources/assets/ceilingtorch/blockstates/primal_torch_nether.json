@@ -1,0 +1,43 @@
+{
+    "forge_marker":1,
+    "variants": {
+        "facing": {
+            "up": {
+                "model": "normal_torch",
+                "x": 180
+            },
+            "down": {
+                "model": "normal_torch",
+                "x": 180
+            },
+            "north": {
+                "model": "normal_torch",
+                "x": 180
+            },
+            "east": {
+                "model": "normal_torch",
+                "x": 180
+            },
+            "south": {
+                "model": "normal_torch",
+                "x": 180
+            },
+            "west": {
+                "model": "normal_torch",
+                "x": 180
+            }
+        },
+        "lit": {
+            "true": {
+                "textures": {
+                    "torch": "primal:blocks/torches/torch_nether_on"
+                }
+            },
+            "false": {
+                "textures": {
+                    "torch": "primal:blocks/torches/torch_nether_off"
+                }
+            }
+        }
+    }
+}
