@@ -1,5 +1,6 @@
 package bl4ckscor3.mod.ceilingtorch;
 
+import java.util.Collection;
 import java.util.HashMap;
 
 import net.minecraft.block.Block;
@@ -40,9 +41,9 @@ public class PlaceHandler
 		{
 			world.setBlockState(placeAt, block.getDefaultState());
 			world.playSound(null, pos.getX(), pos.getY(), pos.getZ(), SoundType.WOOD.getPlaceSound(), SoundCategory.BLOCKS, 1.0F, 1.0F);
-			event.getEntityPlayer().swingArm(event.getHand());
+			event.getPlayer().swingArm(event.getHand());
 
-			if(!event.getEntityPlayer().isCreative())
+			if(!event.getPlayer().isCreative())
 				held.shrink(1);
 		}
 	}
@@ -51,5 +52,10 @@ public class PlaceHandler
 	{
 		if(!PLACE_ENTRIES.containsKey(itemName))
 			PLACE_ENTRIES.put(itemName, ceilingTorch);
+	}
+
+	public static Collection<Block> getPlaceEntryBlocks()
+	{
+		return PLACE_ENTRIES.values();
 	}
 }

@@ -14,7 +14,7 @@ import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber.Bus;
-import net.minecraftforge.fml.event.lifecycle.InterModProcessEvent;
+import net.minecraftforge.fml.event.lifecycle.InterModEnqueueEvent;
 
 @Mod(CeilingTorch.MODID)
 @EventBusSubscriber(bus=Bus.MOD)
@@ -45,7 +45,7 @@ public class CeilingTorch
 	}
 
 	@SubscribeEvent
-	public static void onInterModProcess(InterModProcessEvent event)
+	public static void onInterModEnqueue(InterModEnqueueEvent event)
 	{
 		for(Supplier<ICeilingTorchCompat> compat : compatList)
 		{
