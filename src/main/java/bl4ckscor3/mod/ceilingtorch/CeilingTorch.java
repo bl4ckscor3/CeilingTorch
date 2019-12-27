@@ -25,7 +25,7 @@ public class CeilingTorch
 {
 	public static final String MODID = "ceilingtorch";
 	public static final String NAME = "Ceiling Torch";
-	public static final String VERSION = "v1.3";
+	public static final String VERSION = "v1.3.1";
 	public static final String MC_VERSION = "1.12.2";
 	private static List<Supplier<ICeilingTorchCompat>> compatList = new ArrayList<>();
 

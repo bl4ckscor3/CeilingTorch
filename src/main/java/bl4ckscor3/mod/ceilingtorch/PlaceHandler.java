@@ -41,8 +41,11 @@ public class PlaceHandler
 
 		if(face == EnumFacing.DOWN && world.isAirBlock(placeAt) && BlockCeilingTorch.canPlaceAt(world, placeAt, EnumFacing.DOWN))
 		{
+			SoundType soundType;
+
 			world.setBlockState(placeAt, state);
-			world.playSound(null, pos.getX(), pos.getY(), pos.getZ(), SoundType.WOOD.getPlaceSound(), SoundCategory.BLOCKS, 1.0F, 1.0F);
+			soundType = state.getBlock().getSoundType(state, world, pos, event.getEntityPlayer());
+			world.playSound(null, pos.getX(), pos.getY(), pos.getZ(), soundType.getPlaceSound(), SoundCategory.BLOCKS, soundType.getVolume(), soundType.getPitch() - 0.2F);
 			event.getEntityPlayer().swingArm(actualHand);
 
 			if(!event.getEntityPlayer().isCreative())
