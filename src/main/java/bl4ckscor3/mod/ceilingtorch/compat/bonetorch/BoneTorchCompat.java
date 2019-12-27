@@ -7,25 +7,35 @@ import bl4ckscor3.mod.ceilingtorch.ICeilingTorchCompat;
 import bl4ckscor3.mod.ceilingtorch.PlaceHandler;
 import bl4ckscor3.mod.ceilingtorch.compat.vanilla.BlockCeilingTorch;
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockState;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
+import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.RayTraceResult;
+import net.minecraft.world.IBlockReader;
 import net.minecraftforge.event.RegistryEvent;
-import net.minecraftforge.registries.ObjectHolder;
 
-@ObjectHolder(CeilingTorch.MODID)
 public class BoneTorchCompat implements ICeilingTorchCompat
 {
-	public static final Block BONETORCH_BONETORCH = null;
+	public static Block ceilingBoneTorch;
 
 	@Override
 	public void registerBlocks(RegistryEvent.Register<Block> event)
 	{
-		event.getRegistry().register(new BlockCeilingTorch(Block.Properties.create(Material.MISCELLANEOUS).doesNotBlockMovement().hardnessAndResistance(0.0F).lightValue(14).sound(SoundType.WOOD)) {
+		event.getRegistry().register(ceilingBoneTorch = new BlockCeilingTorch(Block.Properties.create(Material.MISCELLANEOUS).doesNotBlockMovement().hardnessAndResistance(0.0F).lightValue(14).sound(SoundType.WOOD)) {
 			@Override
 			public ResourceLocation getLootTable()
 			{
 				return BoneTorchMod.blockTorch.getLootTable();
+			}
+
+			@Override
+			public ItemStack getPickBlock(BlockState state, RayTraceResult target, IBlockReader world, BlockPos pos, PlayerEntity player)
+			{
+				return new ItemStack(BoneTorchMod.blockTorch);
 			}
 		}.setRegistryName(new ResourceLocation(CeilingTorch.MODID, "bonetorch_bonetorch")));
 	}
@@ -33,6 +43,6 @@ public class BoneTorchCompat implements ICeilingTorchCompat
 	@Override
 	public void registerPlaceEntries()
 	{
-		PlaceHandler.registerPlaceEntry(new ResourceLocation("bonetorch", "bonetorch"), BONETORCH_BONETORCH);
+		PlaceHandler.registerPlaceEntry(new ResourceLocation("bonetorch", "bonetorch"), ceilingBoneTorch);
 	}
 }

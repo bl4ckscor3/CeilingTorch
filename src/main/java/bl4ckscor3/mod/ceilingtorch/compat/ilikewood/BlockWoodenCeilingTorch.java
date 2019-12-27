@@ -5,10 +5,13 @@ import java.util.Random;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
+import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.ItemStack;
 import net.minecraft.particles.ParticleTypes;
 import net.minecraft.util.Direction;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.util.math.shapes.ISelectionContext;
 import net.minecraft.util.math.shapes.VoxelShape;
 import net.minecraft.world.IBlockReader;
@@ -74,5 +77,22 @@ public class BlockWoodenCeilingTorch extends WoodenTorchBlock
 			return WoodenTorchBlocks.DARK_OAK.getLootTable();
 		else
 			return WoodenTorchBlocks.OAK.getLootTable();
+	}
+
+	@Override
+	public ItemStack getPickBlock(BlockState state, RayTraceResult target, IBlockReader world, BlockPos pos, PlayerEntity player)
+	{
+		if(getWoodType() == ILikeWoodCompat.SPRUCE_TYPE)
+			return new ItemStack(WoodenTorchBlocks.SPRUCE);
+		else if(getWoodType() == ILikeWoodCompat.BIRCH_TYPE)
+			return new ItemStack(WoodenTorchBlocks.BIRCH);
+		else if(getWoodType() == ILikeWoodCompat.JUNGLE_TYPE)
+			return new ItemStack(WoodenTorchBlocks.JUNGLE);
+		else if(getWoodType() == ILikeWoodCompat.ACACIA_TYPE)
+			return new ItemStack(WoodenTorchBlocks.ACACIA);
+		else if(getWoodType() == ILikeWoodCompat.DARK_OAK_TYPE)
+			return new ItemStack(WoodenTorchBlocks.DARK_OAK);
+		else
+			return new ItemStack(WoodenTorchBlocks.OAK);
 	}
 }

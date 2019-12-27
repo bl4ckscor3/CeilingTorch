@@ -4,6 +4,7 @@ import java.util.Collection;
 import java.util.HashMap;
 
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockState;
 import net.minecraft.block.SoundType;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Direction;
@@ -39,8 +40,12 @@ public class PlaceHandler
 
 		if(face == Direction.DOWN && world.isAirBlock(placeAt) && Block.func_220055_a(world, pos, Direction.DOWN))
 		{
-			world.setBlockState(placeAt, block.getDefaultState());
-			world.playSound(null, pos.getX(), pos.getY(), pos.getZ(), SoundType.WOOD.getPlaceSound(), SoundCategory.BLOCKS, 1.0F, 1.0F);
+			BlockState state = block.getDefaultState();
+			SoundType soundType;
+
+			world.setBlockState(placeAt, state);
+			soundType = block.getSoundType(state, world, pos, event.getPlayer());
+			world.playSound(null, pos.getX(), pos.getY(), pos.getZ(), soundType.getPlaceSound(), SoundCategory.BLOCKS, soundType.getVolume(), soundType.getPitch() - 0.2F);
 			event.getPlayer().swingArm(event.getHand());
 
 			if(!event.getPlayer().isCreative())
