@@ -4,8 +4,11 @@ import java.util.HashMap;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
+import net.minecraft.block.IWaterLoggable;
 import net.minecraft.block.SoundType;
+import net.minecraft.fluid.Fluids;
 import net.minecraft.item.ItemStack;
+import net.minecraft.state.properties.BlockStateProperties;
 import net.minecraft.util.Direction;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundCategory;
@@ -37,10 +40,20 @@ public class PlaceHandler
 		BlockPos placeAt = pos.offset(face);
 		World world = event.getWorld();
 
-		if(face == Direction.DOWN && world.isAirBlock(placeAt) && Block.func_220055_a(world, pos, Direction.DOWN))
+		if(face == Direction.DOWN && Block.func_220055_a(world, pos, Direction.DOWN))
 		{
+			boolean air = world.isAirBlock(placeAt);
+			boolean water = world.getFluidState(placeAt).getFluid() == Fluids.WATER;
+			boolean waterloggable = block instanceof IWaterLoggable;
+
+			if((!air && !water) || (!air && water && !waterloggable))
+				return;
+
 			BlockState state = block.getDefaultState();
 			SoundType soundType;
+
+			if(waterloggable)
+				state = state.with(BlockStateProperties.WATERLOGGED, water);
 
 			world.setBlockState(placeAt, state);
 			soundType = block.getSoundType(state, world, pos, event.getPlayer());

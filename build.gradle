@@ -8,26 +8,30 @@ buildscript {
         classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '3.+', changing: true
     }
 }
+
+plugins {
+	id "com.wynprice.cursemaven" version "2.1.1"
+}
+
 apply plugin: 'net.minecraftforge.gradle'
 apply plugin: 'eclipse'
 
-version = '1.14.4-v1.3.1'
+version = '1.14.4-v1.4'
 group = 'bl4ckscor3.mod.ceilingtorch'
 archivesBaseName = 'ceilingtorch'
 
 sourceCompatibility = targetCompatibility = compileJava.sourceCompatibility = compileJava.targetCompatibility = '1.8'
 
 minecraft {
-    mappings channel: 'snapshot', version: '20191025-1.14.3'
+    mappings channel: 'snapshot', version: '20191220-1.14.3'
 	
     runs {
         client {
             workingDirectory project.file('run')
-            property 'forge.logging.markers', 'SCAN,REGISTRIES,REGISTRYDUMP'
             property 'forge.logging.console.level', 'debug'
 
             mods {
-                examplemod {
+                ceilingtorch {
                     source sourceSets.main
                 }
             }
@@ -35,11 +39,10 @@ minecraft {
 
         server {
             workingDirectory project.file('run')
-            property 'forge.logging.markers', 'SCAN,REGISTRIES,REGISTRYDUMP'
             property 'forge.logging.console.level', 'debug'
 
             mods {
-                examplemod {
+                ceilingtorch {
                     source sourceSets.main
                 }
             }
@@ -49,18 +52,19 @@ minecraft {
 
 
 dependencies {
-    minecraft 'net.minecraftforge:forge:1.14.4-28.1.56'
-    compile files('libs/ilikewood-1.14.4-1.1.1.0-deobf.jar')
-	compile files('libs/SBM-BoneTorch-1.14.3-0.0.1-deobf.jar')
+    minecraft 'net.minecraftforge:forge:1.14.4-28.1.107'
+	compile "curse.maven:i-like-wood:2785492"
+	compile "curse.maven:sbm-bone-torch:2737885"
+	compile "curse.maven:druidcraft:2826386"
 }
 
 jar {
     manifest {
         attributes(["Specification-Title": "Ceiling Torch",
                     "Specification-Vendor": "bl4ckscor3",
-                    "Specification-Version": "v1.3.1",
+                    "Specification-Version": "v1.4",
                     "Implementation-Title": "Ceiling Torch",
-                    "Implementation-Version": "v1.3.1",
+                    "Implementation-Version": "v1.4",
                     "Implementation-Vendor" :"bl4ckscor3",
                     "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")],)
     }
