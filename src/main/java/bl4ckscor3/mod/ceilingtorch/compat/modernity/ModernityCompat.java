@@ -95,12 +95,12 @@ public class ModernityCompat implements ICeilingTorchCompat
 			Fluid fluid = fluidState.getFluid();
 			boolean air = world.isAirBlock(placeAt);
 			boolean water = fluid == Fluids.WATER || fluid == MDFluids.MODERNIZED_WATER;
-			boolean modernityWaterlogged = block instanceof WaterloggedBlock;
-			boolean waterloggable = block instanceof IWaterLoggable || modernityWaterlogged;
 
-			if((!air && !water) || (!air && water && !waterloggable))
+			if(!air && !water)
 				return;
 
+			boolean modernityWaterlogged = block instanceof WaterloggedBlock;
+			boolean waterloggable = block instanceof IWaterLoggable || modernityWaterlogged;
 			BlockState state = block.getDefaultState();
 
 			if(modernityWaterlogged)

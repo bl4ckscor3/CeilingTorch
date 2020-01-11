@@ -50,14 +50,13 @@ public class PlaceHandler
 		{
 			boolean air = world.isAirBlock(placeAt);
 			boolean water = world.getFluidState(placeAt).getFluid() == Fluids.WATER;
-			boolean waterloggable = block instanceof IWaterLoggable;
 
-			if((!air && !water) || (!air && water && !waterloggable))
+			if(!air && !water)
 				return;
 
 			BlockState state = block.getDefaultState();
 
-			if(waterloggable)
+			if(block instanceof IWaterLoggable)
 				state = state.with(BlockStateProperties.WATERLOGGED, water);
 
 			placeTorch(event, held, block, pos, placeAt, world, state);
