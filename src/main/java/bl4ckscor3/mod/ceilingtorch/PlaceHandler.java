@@ -24,7 +24,7 @@ public class PlaceHandler
 	private static final HashMap<ResourceLocation,Block> PLACE_ENTRIES = new HashMap<>();
 
 	@SubscribeEvent
-	public static void onBlockEntityPlace(RightClickBlock event)
+	public static void onRightClickBlock(RightClickBlock event)
 	{
 		ItemStack held = event.getItemStack();
 		ResourceLocation rl = held.getItem().getRegistryName();
@@ -40,7 +40,7 @@ public class PlaceHandler
 		BlockPos placeAt = pos.offset(face);
 		World world = event.getWorld();
 
-		if(face == Direction.DOWN && Block.func_220055_a(world, pos, Direction.DOWN))
+		if(face == Direction.DOWN && Block.hasEnoughSolidSide(world, pos, Direction.DOWN))
 		{
 			boolean air = world.isAirBlock(placeAt);
 			boolean water = world.getFluidState(placeAt).getFluid() == Fluids.WATER;

@@ -46,7 +46,7 @@ public class BlockCeilingTorch extends TorchBlock
 	@Override
 	public boolean isValidPosition(BlockState state, IWorldReader world, BlockPos pos)
 	{
-		return func_220055_a(world, pos.up(), Direction.DOWN);
+		return hasEnoughSolidSide(world, pos.up(), Direction.DOWN);
 	}
 
 	@Override
