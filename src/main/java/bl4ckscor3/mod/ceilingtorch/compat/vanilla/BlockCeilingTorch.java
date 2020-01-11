@@ -54,12 +54,11 @@ public class BlockCeilingTorch extends TorchBlock
 	public void animateTick(BlockState stateIn, World world, BlockPos pos, Random rand)
 	{
 		double x = pos.getX() + 0.5D;
-		double y = pos.getY() + 0.7D;
+		double y = pos.getY() + 0.45D;
 		double z = pos.getZ() + 0.5D;
-		double offset = -0.25D;
 
-		world.addParticle(ParticleTypes.SMOKE, x, y + offset, z, 0.0D, 0.0D, 0.0D);
-		world.addParticle(ParticleTypes.FLAME, x, y + offset, z, 0.0D, 0.0D, 0.0D);
+		world.addParticle(ParticleTypes.SMOKE, x, y, z, 0.0D, 0.0D, 0.0D);
+		world.addParticle(ParticleTypes.FLAME, x, y, z, 0.0D, 0.0D, 0.0D);
 	}
 
 	@Override
