@@ -16,7 +16,7 @@ plugins {
 apply plugin: 'net.minecraftforge.gradle'
 apply plugin: 'eclipse'
 
-version = '1.14.4-v1.4'
+version = '1.14.4-v1.5'
 group = 'bl4ckscor3.mod.ceilingtorch'
 archivesBaseName = 'ceilingtorch'
 
@@ -58,6 +58,7 @@ dependencies {
 	compile "curse.maven:druidcraft:2826386"
 	compile "curse.maven:upgrade-aquatic:2856605"
 	compile "curse.maven:torchmaster:2843872"
+	compile "curse.maven:silent-lib:2783899"
 	compile "curse.maven:silent-gear:2849573"
 	compile "curse.maven:the-modernity:2833038"
 }
@@ -66,9 +67,9 @@ jar {
     manifest {
         attributes(["Specification-Title": "Ceiling Torch",
                     "Specification-Vendor": "bl4ckscor3",
-                    "Specification-Version": "v1.4",
+                    "Specification-Version": "v1.5",
                     "Implementation-Title": "Ceiling Torch",
-                    "Implementation-Version": "v1.4",
+                    "Implementation-Version": "v1.5",
                     "Implementation-Vendor" :"bl4ckscor3",
                     "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")],)
     }
