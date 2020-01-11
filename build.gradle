@@ -56,6 +56,7 @@ dependencies {
 	compile "curse.maven:i-like-wood:2785492"
 	compile "curse.maven:sbm-bone-torch:2737885"
 	compile "curse.maven:druidcraft:2826386"
+	compile "curse.maven:upgrade-aquatic:2856605"
 	compile "curse.maven:torchmaster:2843872"
 }
 
