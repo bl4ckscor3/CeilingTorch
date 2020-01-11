@@ -7,6 +7,7 @@ import java.util.function.Supplier;
 import bl4ckscor3.mod.ceilingtorch.compat.bonetorch.BoneTorchCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.druidcraft.DruidcraftCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.ilikewood.ILikeWoodCompat;
+import bl4ckscor3.mod.ceilingtorch.compat.silentgear.SilentGearCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.torchmaster.TorchmasterCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.upgradeaquatic.UpgradeAquaticCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.vanilla.VanillaCompat;
@@ -45,6 +46,9 @@ public class CeilingTorch
 
 		if(ModList.get().isLoaded("upgrade_aquatic"))
 			compatList.add(UpgradeAquaticCompat::new);
+
+		if(ModList.get().isLoaded("silentgear"))
+			compatList.add(SilentGearCompat::new);
 	}
 
 	@SubscribeEvent
