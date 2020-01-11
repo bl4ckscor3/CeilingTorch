@@ -59,6 +59,7 @@ dependencies {
 	compile "curse.maven:upgrade-aquatic:2856605"
 	compile "curse.maven:torchmaster:2843872"
 	compile "curse.maven:silent-gear:2849573"
+	compile "curse.maven:the-modernity:2833038"
 }
 
 jar {

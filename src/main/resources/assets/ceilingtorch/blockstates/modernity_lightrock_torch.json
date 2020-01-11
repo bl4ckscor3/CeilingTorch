@@ -1,0 +1,5 @@
+{
+    "variants": {
+        "": { "model": "modernity:block/lightrock_torch", "x": 180 }
+    }
+}

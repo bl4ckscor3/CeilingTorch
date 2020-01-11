@@ -7,6 +7,7 @@ import java.util.function.Supplier;
 import bl4ckscor3.mod.ceilingtorch.compat.bonetorch.BoneTorchCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.druidcraft.DruidcraftCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.ilikewood.ILikeWoodCompat;
+import bl4ckscor3.mod.ceilingtorch.compat.modernity.ModernityCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.silentgear.SilentGearCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.torchmaster.TorchmasterCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.upgradeaquatic.UpgradeAquaticCompat;
@@ -27,6 +28,7 @@ public class CeilingTorch
 	public static final String MODID = "ceilingtorch";
 	public static final String NAME = "Ceiling Torch";
 	private static List<Supplier<ICeilingTorchCompat>> compatList = new ArrayList<>();
+	private static boolean modernityLoaded;
 
 	public CeilingTorch()
 	{
@@ -49,6 +51,9 @@ public class CeilingTorch
 
 		if(ModList.get().isLoaded("silentgear"))
 			compatList.add(SilentGearCompat::new);
+
+		if(modernityLoaded = ModList.get().isLoaded("modernity"))
+			compatList.add(ModernityCompat::new);
 	}
 
 	@SubscribeEvent
@@ -67,5 +72,10 @@ public class CeilingTorch
 		{
 			compat.get().registerPlaceEntries();
 		}
+	}
+
+	public static boolean isModernityLoaded()
+	{
+		return modernityLoaded;
 	}
 }

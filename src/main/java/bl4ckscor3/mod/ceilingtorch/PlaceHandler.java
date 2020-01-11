@@ -2,6 +2,7 @@ package bl4ckscor3.mod.ceilingtorch;
 
 import java.util.HashMap;
 
+import bl4ckscor3.mod.ceilingtorch.compat.modernity.ModernityCompat;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.IWaterLoggable;
@@ -30,17 +31,22 @@ public class PlaceHandler
 		ResourceLocation rl = held.getItem().getRegistryName();
 
 		if(PLACE_ENTRIES.containsKey(rl))
-			placeTorch(event, held, PLACE_ENTRIES.get(rl));
+			checkTorch(event, held, PLACE_ENTRIES.get(rl));
 	}
 
-	private static void placeTorch(RightClickBlock event, ItemStack held, Block block)
+	private static void checkTorch(RightClickBlock event, ItemStack held, Block block)
 	{
 		BlockPos pos = event.getPos();
 		Direction face = event.getFace();
 		BlockPos placeAt = pos.offset(face);
 		World world = event.getWorld();
 
-		if(face == Direction.DOWN && Block.hasEnoughSolidSide(world, pos, Direction.DOWN))
+		if(CeilingTorch.isModernityLoaded())
+		{
+			ModernityCompat.handlePlacement(event, held, block, world, pos, placeAt, face);
+			return;
+		}
+		else if(face == Direction.DOWN && Block.hasEnoughSolidSide(world, pos, Direction.DOWN))
 		{
 			boolean air = world.isAirBlock(placeAt);
 			boolean water = world.getFluidState(placeAt).getFluid() == Fluids.WATER;
@@ -50,19 +56,25 @@ public class PlaceHandler
 				return;
 
 			BlockState state = block.getDefaultState();
-			SoundType soundType;
 
 			if(waterloggable)
 				state = state.with(BlockStateProperties.WATERLOGGED, water);
 
-			world.setBlockState(placeAt, state);
-			soundType = block.getSoundType(state, world, pos, event.getPlayer());
-			world.playSound(null, pos.getX(), pos.getY(), pos.getZ(), soundType.getPlaceSound(), SoundCategory.BLOCKS, soundType.getVolume(), soundType.getPitch() - 0.2F);
-			event.getPlayer().swingArm(event.getHand());
-
-			if(!event.getPlayer().isCreative())
-				held.shrink(1);
+			placeTorch(event, held, block, pos, placeAt, world, state);
 		}
+	}
+
+	public static void placeTorch(RightClickBlock event, ItemStack held, Block block, BlockPos pos, BlockPos placeAt, World world, BlockState state)
+	{
+		SoundType soundType;
+
+		world.setBlockState(placeAt, state);
+		soundType = block.getSoundType(state, world, pos, event.getPlayer());
+		world.playSound(null, pos.getX(), pos.getY(), pos.getZ(), soundType.getPlaceSound(), SoundCategory.BLOCKS, soundType.getVolume(), soundType.getPitch() - 0.2F);
+		event.getPlayer().swingArm(event.getHand());
+
+		if(!event.getPlayer().isCreative())
+			held.shrink(1);
 	}
 
 	public static void registerPlaceEntry(ResourceLocation itemName, Block ceilingTorch)

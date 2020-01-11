@@ -24,7 +24,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 
 public class BlockCeilingTorch extends TorchBlock
 {
-	protected static final VoxelShape CEILING_SHAPE = Block.makeCuboidShape(6.0D, 6.0D, 6.0D, 10.0D, 16.0D, 10.0D);
+	public static final VoxelShape CEILING_SHAPE = Block.makeCuboidShape(6.0D, 6.0D, 6.0D, 10.0D, 16.0D, 10.0D);
 
 	public BlockCeilingTorch(Block.Properties properties)
 	{
