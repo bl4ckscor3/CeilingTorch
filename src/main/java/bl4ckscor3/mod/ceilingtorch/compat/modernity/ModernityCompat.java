@@ -7,7 +7,6 @@ import modernity.api.util.EWaterlogType;
 import modernity.common.block.MDBlockStateProperties;
 import modernity.common.block.MDBlocks;
 import modernity.common.block.base.WaterloggedBlock;
-import modernity.common.fluid.MDFluids;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.IWaterLoggable;
@@ -15,8 +14,6 @@ import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.material.MaterialColor;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.fluid.Fluid;
-import net.minecraft.fluid.Fluids;
 import net.minecraft.fluid.IFluidState;
 import net.minecraft.item.ItemStack;
 import net.minecraft.state.properties.BlockStateProperties;
@@ -92,20 +89,18 @@ public class ModernityCompat implements ICeilingTorchCompat
 		if(face == Direction.DOWN && Block.hasEnoughSolidSide(world, pos, Direction.DOWN))
 		{
 			IFluidState fluidState = world.getFluidState(placeAt);
-			Fluid fluid = fluidState.getFluid();
 			boolean air = world.isAirBlock(placeAt);
-			boolean water = fluid == Fluids.WATER || fluid == MDFluids.MODERNIZED_WATER;
+			EWaterlogType waterlogType = EWaterlogType.getType(fluidState);
+			boolean water = waterlogType != EWaterlogType.NONE;
 
 			if(!air && !water)
 				return;
 
-			boolean modernityWaterlogged = block instanceof WaterloggedBlock;
-			boolean waterloggable = block instanceof IWaterLoggable || modernityWaterlogged;
 			BlockState state = block.getDefaultState();
 
-			if(modernityWaterlogged)
-				state = state.with(MDBlockStateProperties.WATERLOGGED, EWaterlogType.getType(fluidState));
-			else if(waterloggable)
+			if(block instanceof WaterloggedBlock) //modernity waterlogged
+				state = state.with(MDBlockStateProperties.WATERLOGGED, waterlogType);
+			else if(block instanceof IWaterLoggable) //vanilla waterlogged
 				state = state.with(BlockStateProperties.WATERLOGGED, water);
 
 			PlaceHandler.placeTorch(event, held, block, pos, placeAt, world, state);
