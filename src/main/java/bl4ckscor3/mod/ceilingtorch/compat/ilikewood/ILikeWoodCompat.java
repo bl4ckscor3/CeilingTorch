@@ -31,12 +31,12 @@ public class ILikeWoodCompat implements ICeilingTorchCompat
 	@Override
 	public void registerBlocks(RegistryEvent.Register<Block> event)
 	{
-		event.getRegistry().register(oakTorch = new BlockWoodenCeilingTorch(OAK_TYPE));
-		event.getRegistry().register(spruceTorch = new BlockWoodenCeilingTorch(SPRUCE_TYPE));
-		event.getRegistry().register(birchTorch = new BlockWoodenCeilingTorch(BIRCH_TYPE));
-		event.getRegistry().register(jungleTorch = new BlockWoodenCeilingTorch(JUNGLE_TYPE));
-		event.getRegistry().register(acaciaTorch = new BlockWoodenCeilingTorch(ACACIA_TYPE));
-		event.getRegistry().register(darkOakTorch = new BlockWoodenCeilingTorch(DARK_OAK_TYPE));
+		event.getRegistry().register(oakTorch = new WoodenCeilingTorchBlock(OAK_TYPE));
+		event.getRegistry().register(spruceTorch = new WoodenCeilingTorchBlock(SPRUCE_TYPE));
+		event.getRegistry().register(birchTorch = new WoodenCeilingTorchBlock(BIRCH_TYPE));
+		event.getRegistry().register(jungleTorch = new WoodenCeilingTorchBlock(JUNGLE_TYPE));
+		event.getRegistry().register(acaciaTorch = new WoodenCeilingTorchBlock(ACACIA_TYPE));
+		event.getRegistry().register(darkOakTorch = new WoodenCeilingTorchBlock(DARK_OAK_TYPE));
 	}
 
 	@Override

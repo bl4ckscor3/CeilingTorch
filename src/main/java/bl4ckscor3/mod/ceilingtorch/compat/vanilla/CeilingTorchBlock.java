@@ -5,11 +5,11 @@ import java.util.Random;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
-import net.minecraft.block.RedstoneTorchBlock;
+import net.minecraft.block.TorchBlock;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
-import net.minecraft.particles.RedstoneParticleData;
+import net.minecraft.particles.ParticleTypes;
 import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
@@ -22,11 +22,11 @@ import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
-public class BlockRedstoneCeilingTorch extends RedstoneTorchBlock
+public class CeilingTorchBlock extends TorchBlock
 {
 	protected static final VoxelShape CEILING_SHAPE = Block.makeCuboidShape(6.0D, 6.0D, 6.0D, 10.0D, 16.0D, 10.0D);
 
-	protected BlockRedstoneCeilingTorch(Properties properties)
+	public CeilingTorchBlock(Block.Properties properties)
 	{
 		super(properties);
 	}
@@ -46,44 +46,25 @@ public class BlockRedstoneCeilingTorch extends RedstoneTorchBlock
 	@Override
 	public boolean isValidPosition(BlockState state, IWorldReader world, BlockPos pos)
 	{
-		return func_220055_a(world, pos.up(), Direction.DOWN);
-	}
-
-	@Override
-	public int getWeakPower(BlockState state, IBlockReader access, BlockPos pos, Direction side)
-	{
-		return state.get(LIT) && Direction.DOWN != side ? 15 : 0;
-	}
-
-	@Override
-	public int getStrongPower(BlockState state, IBlockReader access, BlockPos pos, Direction side)
-	{
-		return side == Direction.UP ? state.getWeakPower(access, pos, side) : 0;
-	}
-
-	@Override
-	protected boolean shouldBeOff(World world, BlockPos pos, BlockState state)
-	{
-		return world.isSidePowered(pos.up(), Direction.UP);
+		return hasEnoughSolidSide(world, pos.up(), Direction.DOWN);
 	}
 
 	@Override
 	@OnlyIn(Dist.CLIENT)
-	public void animateTick(BlockState state, World world, BlockPos pos, Random rand)
+	public void animateTick(BlockState stateIn, World world, BlockPos pos, Random rand)
 	{
-		if(state.get(LIT))
-		{
-			double x = pos.getX() + 0.5D + (rand.nextDouble() - 0.5D) * 0.2D;
-			double y = pos.getY() + 0.7D + (rand.nextDouble() - 0.5D) * 0.2D;
-			double z = pos.getZ() + 0.5D + (rand.nextDouble() - 0.5D) * 0.2D;
+		double x = pos.getX() + 0.5D;
+		double y = pos.getY() + 0.7D;
+		double z = pos.getZ() + 0.5D;
+		double offset = -0.25D;
 
-			world.addParticle(RedstoneParticleData.REDSTONE_DUST, x, y - 0.25D, z, 0.0D, 0.0D, 0.0D);
-		}
+		world.addParticle(ParticleTypes.SMOKE, x, y + offset, z, 0.0D, 0.0D, 0.0D);
+		world.addParticle(ParticleTypes.FLAME, x, y + offset, z, 0.0D, 0.0D, 0.0D);
 	}
 
 	@Override
 	public ItemStack getPickBlock(BlockState state, RayTraceResult target, IBlockReader world, BlockPos pos, PlayerEntity player)
 	{
-		return new ItemStack(Items.REDSTONE_TORCH);
+		return new ItemStack(Items.TORCH);
 	}
 }

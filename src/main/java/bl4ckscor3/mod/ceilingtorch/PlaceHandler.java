@@ -38,7 +38,7 @@ public class PlaceHandler
 		BlockPos placeAt = pos.offset(face);
 		World world = event.getWorld();
 
-		if(face == Direction.DOWN && world.isAirBlock(placeAt) && Block.func_220055_a(world, pos, Direction.DOWN))
+		if(face == Direction.DOWN && world.isAirBlock(placeAt) && Block.hasEnoughSolidSide(world, pos, Direction.DOWN))
 		{
 			BlockState state = block.getDefaultState();
 			SoundType soundType;
