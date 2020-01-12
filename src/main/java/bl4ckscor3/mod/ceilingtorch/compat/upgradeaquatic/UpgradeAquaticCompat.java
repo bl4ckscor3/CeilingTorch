@@ -27,14 +27,14 @@ public class UpgradeAquaticCompat implements ICeilingTorchCompat
 	@Override
 	public void registerBlocks(Register<Block> event)
 	{
-		event.getRegistry().register(pinkJellyTorch = new BlockJellyCeilingTorch(Properties.from(Blocks.TORCH).sound(SoundType.METAL), JellyTorchType.PINK).setRegistryName(new ResourceLocation(CeilingTorch.MODID, "upgrade_aquatic_jelly_torch_pink")));
-		event.getRegistry().register(purpleJellyTorch = new BlockJellyCeilingTorch(Properties.from(Blocks.TORCH).sound(SoundType.METAL), JellyTorchType.PURPLE).setRegistryName(new ResourceLocation(CeilingTorch.MODID, "upgrade_aquatic_jelly_torch_purple")));
-		event.getRegistry().register(blueJellyTorch = new BlockJellyCeilingTorch(Properties.from(Blocks.TORCH).sound(SoundType.METAL), JellyTorchType.BLUE).setRegistryName(new ResourceLocation(CeilingTorch.MODID, "upgrade_aquatic_jelly_torch_blue")));
-		event.getRegistry().register(greenJellyTorch = new BlockJellyCeilingTorch(Properties.from(Blocks.TORCH).sound(SoundType.METAL), JellyTorchType.GREEN).setRegistryName(new ResourceLocation(CeilingTorch.MODID, "upgrade_aquatic_jelly_torch_green")));
-		event.getRegistry().register(yellowJellyTorch = new BlockJellyCeilingTorch(Properties.from(Blocks.TORCH).sound(SoundType.METAL), JellyTorchType.YELLOW).setRegistryName(new ResourceLocation(CeilingTorch.MODID, "upgrade_aquatic_jelly_torch_yellow")));
-		event.getRegistry().register(orangeJellyTorch = new BlockJellyCeilingTorch(Properties.from(Blocks.TORCH).sound(SoundType.METAL), JellyTorchType.ORANGE).setRegistryName(new ResourceLocation(CeilingTorch.MODID, "upgrade_aquatic_jelly_torch_orange")));
-		event.getRegistry().register(redJellyTorch = new BlockJellyCeilingTorch(Properties.from(Blocks.TORCH).sound(SoundType.METAL), JellyTorchType.RED).setRegistryName(new ResourceLocation(CeilingTorch.MODID, "upgrade_aquatic_jelly_torch_red")));
-		event.getRegistry().register(whiteJellyTorch = new BlockJellyCeilingTorch(Properties.from(Blocks.TORCH).sound(SoundType.METAL), JellyTorchType.WHITE).setRegistryName(new ResourceLocation(CeilingTorch.MODID, "upgrade_aquatic_jelly_torch_white")));
+		event.getRegistry().register(pinkJellyTorch = new JellyCeilingTorchBlock(Properties.from(Blocks.TORCH).sound(SoundType.METAL), JellyTorchType.PINK).setRegistryName(new ResourceLocation(CeilingTorch.MODID, "upgrade_aquatic_jelly_torch_pink")));
+		event.getRegistry().register(purpleJellyTorch = new JellyCeilingTorchBlock(Properties.from(Blocks.TORCH).sound(SoundType.METAL), JellyTorchType.PURPLE).setRegistryName(new ResourceLocation(CeilingTorch.MODID, "upgrade_aquatic_jelly_torch_purple")));
+		event.getRegistry().register(blueJellyTorch = new JellyCeilingTorchBlock(Properties.from(Blocks.TORCH).sound(SoundType.METAL), JellyTorchType.BLUE).setRegistryName(new ResourceLocation(CeilingTorch.MODID, "upgrade_aquatic_jelly_torch_blue")));
+		event.getRegistry().register(greenJellyTorch = new JellyCeilingTorchBlock(Properties.from(Blocks.TORCH).sound(SoundType.METAL), JellyTorchType.GREEN).setRegistryName(new ResourceLocation(CeilingTorch.MODID, "upgrade_aquatic_jelly_torch_green")));
+		event.getRegistry().register(yellowJellyTorch = new JellyCeilingTorchBlock(Properties.from(Blocks.TORCH).sound(SoundType.METAL), JellyTorchType.YELLOW).setRegistryName(new ResourceLocation(CeilingTorch.MODID, "upgrade_aquatic_jelly_torch_yellow")));
+		event.getRegistry().register(orangeJellyTorch = new JellyCeilingTorchBlock(Properties.from(Blocks.TORCH).sound(SoundType.METAL), JellyTorchType.ORANGE).setRegistryName(new ResourceLocation(CeilingTorch.MODID, "upgrade_aquatic_jelly_torch_orange")));
+		event.getRegistry().register(redJellyTorch = new JellyCeilingTorchBlock(Properties.from(Blocks.TORCH).sound(SoundType.METAL), JellyTorchType.RED).setRegistryName(new ResourceLocation(CeilingTorch.MODID, "upgrade_aquatic_jelly_torch_red")));
+		event.getRegistry().register(whiteJellyTorch = new JellyCeilingTorchBlock(Properties.from(Blocks.TORCH).sound(SoundType.METAL), JellyTorchType.WHITE).setRegistryName(new ResourceLocation(CeilingTorch.MODID, "upgrade_aquatic_jelly_torch_white")));
 	}
 
 	@Override

@@ -35,7 +35,7 @@ public class ModernityCompat implements ICeilingTorchCompat
 	@Override
 	public void registerBlocks(Register<Block> event)
 	{
-		event.getRegistry().register(extinguishedAnthraciteCeilingTorch = new BlockModernityCeilingTorch(Block.Properties.create(Material.MISCELLANEOUS, MaterialColor.SNOW).doesNotBlockMovement().hardnessAndResistance(0).sound(SoundType.WOOD), false) {
+		event.getRegistry().register(extinguishedAnthraciteCeilingTorch = new ModernityCeilingTorchBlock(Block.Properties.create(Material.MISCELLANEOUS, MaterialColor.SNOW).doesNotBlockMovement().hardnessAndResistance(0).sound(SoundType.WOOD), false) {
 			@Override
 			public ResourceLocation getLootTable()
 			{
@@ -48,7 +48,7 @@ public class ModernityCompat implements ICeilingTorchCompat
 				return new ItemStack(MDBlocks.EXTINGUISHED_ANTHRACITE_TORCH);
 			}
 		}.setRegistryName(new ResourceLocation(CeilingTorch.MODID, "modernity_extinguished_anthracite_torch")));
-		event.getRegistry().register(anthraciteCeilingTorch = new BlockModernityExtinguishableCeilingTorch(Block.Properties.create(Material.MISCELLANEOUS, MaterialColor.SNOW).doesNotBlockMovement().hardnessAndResistance(0).lightValue(15).sound(SoundType.WOOD), true, extinguishedAnthraciteCeilingTorch) {
+		event.getRegistry().register(anthraciteCeilingTorch = new ModernityExtinguishableCeilingTorchBlock(Block.Properties.create(Material.MISCELLANEOUS, MaterialColor.SNOW).doesNotBlockMovement().hardnessAndResistance(0).lightValue(15).sound(SoundType.WOOD), true, extinguishedAnthraciteCeilingTorch) {
 			@Override
 			public ResourceLocation getLootTable()
 			{
@@ -61,7 +61,7 @@ public class ModernityCompat implements ICeilingTorchCompat
 				return new ItemStack(MDBlocks.ANTHRACITE_TORCH);
 			}
 		}.setRegistryName(new ResourceLocation(CeilingTorch.MODID, "modernity_anthracite_torch")));
-		event.getRegistry().register(lightrockCeilingTorch = new BlockModernityCeilingTorch(Block.Properties.create(Material.MISCELLANEOUS, MaterialColor.SNOW).doesNotBlockMovement().hardnessAndResistance(0).lightValue(15).sound(SoundType.WOOD), false) {
+		event.getRegistry().register(lightrockCeilingTorch = new ModernityCeilingTorchBlock(Block.Properties.create(Material.MISCELLANEOUS, MaterialColor.SNOW).doesNotBlockMovement().hardnessAndResistance(0).lightValue(15).sound(SoundType.WOOD), false) {
 			@Override
 			public ResourceLocation getLootTable()
 			{

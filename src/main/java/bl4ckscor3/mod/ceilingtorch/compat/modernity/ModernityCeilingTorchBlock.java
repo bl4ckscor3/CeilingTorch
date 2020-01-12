@@ -2,7 +2,7 @@ package bl4ckscor3.mod.ceilingtorch.compat.modernity;
 
 import java.util.Random;
 
-import bl4ckscor3.mod.ceilingtorch.compat.vanilla.BlockCeilingTorch;
+import bl4ckscor3.mod.ceilingtorch.compat.vanilla.CeilingTorchBlock;
 import modernity.common.block.base.WaterloggedBlock;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
@@ -17,11 +17,11 @@ import net.minecraft.world.IWorld;
 import net.minecraft.world.IWorldReader;
 import net.minecraft.world.World;
 
-public class BlockModernityCeilingTorch extends WaterloggedBlock
+public class ModernityCeilingTorchBlock extends WaterloggedBlock
 {
 	private final boolean burning;
 
-	public BlockModernityCeilingTorch(Properties properties, boolean burning)
+	public ModernityCeilingTorchBlock(Properties properties, boolean burning)
 	{
 		super(properties);
 
@@ -37,7 +37,7 @@ public class BlockModernityCeilingTorch extends WaterloggedBlock
 	@Override
 	public VoxelShape getShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context)
 	{
-		return BlockCeilingTorch.CEILING_SHAPE;
+		return CeilingTorchBlock.CEILING_SHAPE;
 	}
 
 	@Override

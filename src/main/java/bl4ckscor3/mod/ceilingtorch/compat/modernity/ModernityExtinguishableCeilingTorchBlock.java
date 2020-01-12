@@ -6,11 +6,11 @@ import net.minecraft.block.BlockState;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-public class BlockModernityExtinguishableCeilingTorch extends BlockModernityCeilingTorch
+public class ModernityExtinguishableCeilingTorchBlock extends ModernityCeilingTorchBlock
 {
 	private final Block extinguished;
 
-	public BlockModernityExtinguishableCeilingTorch(Properties properties, boolean burning, Block extinguished)
+	public ModernityExtinguishableCeilingTorchBlock(Properties properties, boolean burning, Block extinguished)
 	{
 		super(properties, burning);
 

@@ -6,7 +6,7 @@ import com.teamabnormals.upgrade_aquatic.common.blocks.BlockJellyTorch;
 import com.teamabnormals.upgrade_aquatic.common.blocks.BlockJellyTorch.JellyTorchType;
 import com.teamabnormals.upgrade_aquatic.core.registry.UABlocks;
 
-import bl4ckscor3.mod.ceilingtorch.compat.vanilla.BlockCeilingTorch;
+import bl4ckscor3.mod.ceilingtorch.compat.vanilla.CeilingTorchBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.IWaterLoggable;
@@ -30,12 +30,12 @@ import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
-public class BlockJellyCeilingTorch extends BlockCeilingTorch implements IWaterLoggable
+public class JellyCeilingTorchBlock extends CeilingTorchBlock implements IWaterLoggable
 {
 	private final JellyTorchType torchType;
 	public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
 
-	public BlockJellyCeilingTorch(Properties properties, JellyTorchType torchType)
+	public JellyCeilingTorchBlock(Properties properties, JellyTorchType torchType)
 	{
 		super(properties);
 

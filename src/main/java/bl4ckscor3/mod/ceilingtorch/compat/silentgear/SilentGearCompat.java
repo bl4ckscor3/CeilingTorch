@@ -3,7 +3,7 @@ package bl4ckscor3.mod.ceilingtorch.compat.silentgear;
 import bl4ckscor3.mod.ceilingtorch.CeilingTorch;
 import bl4ckscor3.mod.ceilingtorch.ICeilingTorchCompat;
 import bl4ckscor3.mod.ceilingtorch.PlaceHandler;
-import bl4ckscor3.mod.ceilingtorch.compat.vanilla.BlockCeilingTorch;
+import bl4ckscor3.mod.ceilingtorch.compat.vanilla.CeilingTorchBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.SoundType;
@@ -24,7 +24,7 @@ public class SilentGearCompat implements ICeilingTorchCompat
 	@Override
 	public void registerBlocks(Register<Block> event)
 	{
-		event.getRegistry().register(stoneCeilingTorch = new BlockCeilingTorch(Block.Properties.create(Material.MISCELLANEOUS).doesNotBlockMovement().hardnessAndResistance(0).lightValue(14).sound(SoundType.STONE)) {
+		event.getRegistry().register(stoneCeilingTorch = new CeilingTorchBlock(Block.Properties.create(Material.MISCELLANEOUS).doesNotBlockMovement().hardnessAndResistance(0).lightValue(14).sound(SoundType.STONE)) {
 			@Override
 			public ResourceLocation getLootTable()
 			{

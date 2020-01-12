@@ -7,7 +7,7 @@ import com.vulp.druidcraft.registry.BlockRegistry;
 import com.vulp.druidcraft.registry.ItemRegistry;
 import com.vulp.druidcraft.registry.ParticleRegistry;
 
-import bl4ckscor3.mod.ceilingtorch.compat.vanilla.BlockCeilingTorch;
+import bl4ckscor3.mod.ceilingtorch.compat.vanilla.CeilingTorchBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.IWaterLoggable;
@@ -33,27 +33,27 @@ import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
-public class BlockFieryCeilingTorch extends BlockCeilingTorch implements IWaterLoggable
+public class FieryCeilingTorchBlock extends CeilingTorchBlock implements IWaterLoggable
 {
 	public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
 
-	public BlockFieryCeilingTorch(Block.Properties properties)
+	public FieryCeilingTorchBlock(Block.Properties properties)
 	{
 		super(properties);
 
-		setDefaultState(stateContainer.getBaseState().with(BlockFieryCeilingTorch.WATERLOGGED, false));
+		setDefaultState(stateContainer.getBaseState().with(FieryCeilingTorchBlock.WATERLOGGED, false));
 	}
 
 	@Override
 	public void fillStateContainer(final StateContainer.Builder<Block, BlockState> builder)
 	{
-		builder.add(BlockFieryCeilingTorch.WATERLOGGED);
+		builder.add(FieryCeilingTorchBlock.WATERLOGGED);
 	}
 
 	@Override
 	public BlockState updatePostPlacement(BlockState state, Direction facing, BlockState facingState, IWorld world, BlockPos pos, BlockPos facingPos)
 	{
-		if(state.get(BlockFieryCeilingTorch.WATERLOGGED))
+		if(state.get(FieryCeilingTorchBlock.WATERLOGGED))
 			world.getPendingFluidTicks().scheduleTick(pos, Fluids.WATER, Fluids.WATER.getTickRate(world));
 
 		return super.updatePostPlacement(state, facing, state, world, pos, facingPos);
@@ -64,15 +64,15 @@ public class BlockFieryCeilingTorch extends BlockCeilingTorch implements IWaterL
 	{
 		IFluidState fluidState = context.getWorld().getFluidState(context.getPos());
 
-		return super.getStateForPlacement(context).with(BlockFieryCeilingTorch.WATERLOGGED, fluidState.getFluid() == Fluids.WATER);
+		return super.getStateForPlacement(context).with(FieryCeilingTorchBlock.WATERLOGGED, fluidState.getFluid() == Fluids.WATER);
 	}
 
 	@Override
 	public Fluid pickupFluid(IWorld world, BlockPos pos, BlockState state)
 	{
-		if(state.get(BlockFieryCeilingTorch.WATERLOGGED))
+		if(state.get(FieryCeilingTorchBlock.WATERLOGGED))
 		{
-			world.setBlockState(pos, state.with(BlockFieryCeilingTorch.WATERLOGGED, false), 3);
+			world.setBlockState(pos, state.with(FieryCeilingTorchBlock.WATERLOGGED, false), 3);
 			return Fluids.WATER;
 		}
 
@@ -82,23 +82,23 @@ public class BlockFieryCeilingTorch extends BlockCeilingTorch implements IWaterL
 	@Override
 	public IFluidState getFluidState(BlockState state)
 	{
-		return state.get(BlockFieryCeilingTorch.WATERLOGGED) ? Fluids.WATER.getStillFluidState(false) : super.getFluidState(state);
+		return state.get(FieryCeilingTorchBlock.WATERLOGGED) ? Fluids.WATER.getStillFluidState(false) : super.getFluidState(state);
 	}
 
 	@Override
 	public boolean canContainFluid(IBlockReader world, BlockPos pos, BlockState state, Fluid fluid)
 	{
-		return !(boolean)state.get(BlockFieryCeilingTorch.WATERLOGGED) && fluid == Fluids.WATER;
+		return !(boolean)state.get(FieryCeilingTorchBlock.WATERLOGGED) && fluid == Fluids.WATER;
 	}
 
 	@Override
 	public boolean receiveFluid(IWorld world, BlockPos pos, BlockState state, IFluidState fluidState)
 	{
-		if(!(boolean)state.get(BlockFieryCeilingTorch.WATERLOGGED) && fluidState.getFluid() == Fluids.WATER)
+		if(!(boolean)state.get(FieryCeilingTorchBlock.WATERLOGGED) && fluidState.getFluid() == Fluids.WATER)
 		{
 			if(!world.isRemote())
 			{
-				world.setBlockState(pos, state.with(BlockFieryCeilingTorch.WATERLOGGED, true), 3);
+				world.setBlockState(pos, state.with(FieryCeilingTorchBlock.WATERLOGGED, true), 3);
 				world.getPendingFluidTicks().scheduleTick(pos, Fluids.WATER, Fluids.WATER.getTickRate(world));
 			}
 

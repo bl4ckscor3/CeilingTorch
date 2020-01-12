@@ -24,11 +24,11 @@ import yamahari.ilikewood.blocks.torch.WoodenTorchBlock;
 import yamahari.ilikewood.objectholders.torch.WoodenTorchBlocks;
 import yamahari.ilikewood.util.WoodType;
 
-public class BlockWoodenCeilingTorch extends WoodenTorchBlock
+public class WoodenCeilingTorchBlock extends WoodenTorchBlock
 {
 	protected static final VoxelShape CEILING_SHAPE = Block.makeCuboidShape(6.0D, 3.0D, 6.0D, 10.0D, 16.0D, 10.0D);
 
-	public BlockWoodenCeilingTorch(WoodType woodType)
+	public WoodenCeilingTorchBlock(WoodType woodType)
 	{
 		super(woodType);
 	}
