@@ -6,6 +6,7 @@ import java.util.function.Supplier;
 
 import bl4ckscor3.mod.ceilingtorch.compat.bonetorch.BoneTorchCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.ilikewood.ILikeWoodCompat;
+import bl4ckscor3.mod.ceilingtorch.compat.torchmaster.TorchmasterCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.vanilla.VanillaCompat;
 import net.minecraft.block.Block;
 import net.minecraftforge.event.RegistryEvent;
@@ -33,6 +34,9 @@ public class CeilingTorch
 
 		if(ModList.get().isLoaded("bonetorch"))
 			compatList.add(BoneTorchCompat::new);
+
+		if(ModList.get().isLoaded("torchmaster"))
+			compatList.add(TorchmasterCompat::new);
 	}
 
 	@SubscribeEvent
