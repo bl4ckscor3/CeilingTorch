@@ -17,7 +17,7 @@ public class CeilingTorchClient
 	{
 		for(Block b : PlaceHandler.getPlaceEntryBlocks())
 		{
-			RenderTypeLookup.setRenderLayer(b, RenderType.func_228641_d_());
+			RenderTypeLookup.setRenderLayer(b, RenderType.cutoutMipped());
 		}
 	}
 }

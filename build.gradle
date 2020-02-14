@@ -8,6 +8,11 @@ buildscript {
         classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '3.+', changing: true
     }
 }
+
+plugins {
+	id "com.wynprice.cursemaven" version "2.1.1"
+}
+
 apply plugin: 'net.minecraftforge.gradle'
 apply plugin: 'eclipse'
 
@@ -18,7 +23,7 @@ archivesBaseName = 'ceilingtorch'
 sourceCompatibility = targetCompatibility = compileJava.sourceCompatibility = compileJava.targetCompatibility = '1.8'
 
 minecraft {
-    mappings channel: 'snapshot', version: '20200106-1.14.3'
+    mappings channel: 'snapshot', version: '20200211-1.15.1'
 	
     runs {
         client {
@@ -47,9 +52,9 @@ minecraft {
 
 
 dependencies {
-    minecraft 'net.minecraftforge:forge:1.15.1-30.0.30'
-    compile files('libs/ilikewood-1.14.4-1.1.1.0-deobf.jar')
-	compile files('libs/SBM-BoneTorch-1.14.3-0.0.1-deobf.jar')
+    minecraft 'net.minecraftforge:forge:1.15.2-31.1.1'
+    compile fg.deobf("curse.maven:i-like-wood:2881662")
+	//compile files('libs/SBM-BoneTorch-1.14.3-0.0.1-deobf.jar')
 }
 
 jar {

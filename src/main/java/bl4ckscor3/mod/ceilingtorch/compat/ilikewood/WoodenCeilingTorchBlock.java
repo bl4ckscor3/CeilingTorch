@@ -2,6 +2,8 @@ package bl4ckscor3.mod.ceilingtorch.compat.ilikewood;
 
 import java.util.Random;
 
+import bl4ckscor3.mod.ceilingtorch.CeilingTorch;
+import bl4ckscor3.mod.ceilingtorch.compat.vanilla.CeilingTorchBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
@@ -20,17 +22,27 @@ import net.minecraft.world.IWorldReader;
 import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
-import yamahari.ilikewood.blocks.torch.WoodenTorchBlock;
-import yamahari.ilikewood.objectholders.torch.WoodenTorchBlocks;
+import yamahari.ilikewood.registry.WoodenBlocks;
+import yamahari.ilikewood.util.IWooden;
 import yamahari.ilikewood.util.WoodType;
+import yamahari.ilikewood.util.WoodenObjectType;
 
-public class WoodenCeilingTorchBlock extends WoodenTorchBlock
+public class WoodenCeilingTorchBlock extends CeilingTorchBlock implements IWooden
 {
 	protected static final VoxelShape CEILING_SHAPE = Block.makeCuboidShape(6.0D, 3.0D, 6.0D, 10.0D, 16.0D, 10.0D);
+	private final WoodType woodType;
 
 	public WoodenCeilingTorchBlock(WoodType woodType)
 	{
-		super(woodType);
+		super(Block.Properties.from(Blocks.TORCH));
+		this.woodType = woodType;
+		setRegistryName(new ResourceLocation(CeilingTorch.MODID, "ilikewood_" + woodType.toString() + "_torch"));
+	}
+
+	@Override
+	public WoodType getWoodType()
+	{
+		return woodType;
 	}
 
 	@Override
@@ -65,34 +77,12 @@ public class WoodenCeilingTorchBlock extends WoodenTorchBlock
 	@Override
 	public ResourceLocation getLootTable()
 	{
-		if(getWoodType() == ILikeWoodCompat.SPRUCE_TYPE)
-			return WoodenTorchBlocks.SPRUCE.getLootTable();
-		else if(getWoodType() == ILikeWoodCompat.BIRCH_TYPE)
-			return WoodenTorchBlocks.BIRCH.getLootTable();
-		else if(getWoodType() == ILikeWoodCompat.JUNGLE_TYPE)
-			return WoodenTorchBlocks.JUNGLE.getLootTable();
-		else if(getWoodType() == ILikeWoodCompat.ACACIA_TYPE)
-			return WoodenTorchBlocks.ACACIA.getLootTable();
-		else if(getWoodType() == ILikeWoodCompat.DARK_OAK_TYPE)
-			return WoodenTorchBlocks.DARK_OAK.getLootTable();
-		else
-			return WoodenTorchBlocks.OAK.getLootTable();
+		return WoodenBlocks.getBlock(WoodenObjectType.TORCH, getWoodType()).getLootTable();
 	}
 
 	@Override
 	public ItemStack getPickBlock(BlockState state, RayTraceResult target, IBlockReader world, BlockPos pos, PlayerEntity player)
 	{
-		if(getWoodType() == ILikeWoodCompat.SPRUCE_TYPE)
-			return new ItemStack(WoodenTorchBlocks.SPRUCE);
-		else if(getWoodType() == ILikeWoodCompat.BIRCH_TYPE)
-			return new ItemStack(WoodenTorchBlocks.BIRCH);
-		else if(getWoodType() == ILikeWoodCompat.JUNGLE_TYPE)
-			return new ItemStack(WoodenTorchBlocks.JUNGLE);
-		else if(getWoodType() == ILikeWoodCompat.ACACIA_TYPE)
-			return new ItemStack(WoodenTorchBlocks.ACACIA);
-		else if(getWoodType() == ILikeWoodCompat.DARK_OAK_TYPE)
-			return new ItemStack(WoodenTorchBlocks.DARK_OAK);
-		else
-			return new ItemStack(WoodenTorchBlocks.OAK);
+		return new ItemStack(WoodenBlocks.getBlock(WoodenObjectType.TORCH, getWoodType()));
 	}
 }
