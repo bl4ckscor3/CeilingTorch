@@ -56,7 +56,7 @@ dependencies {
     implementation fg.deobf("curse.maven:torchmaster:2990579")
     implementation fg.deobf("curse.maven:silent-lib:2873131")
     implementation fg.deobf("curse.maven:silent-gear:2879630")
-	implementation fg.deobf("curse.maven:sbm-bone-torch:2882352")
+    implementation fg.deobf("curse.maven:sbm-bone-torch:2882352")
 }
 
 jar {
