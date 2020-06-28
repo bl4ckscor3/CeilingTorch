@@ -28,7 +28,7 @@ public class TorchmasterCompat implements ICeilingTorchCompat
 				.hardnessAndResistance(1.0F, 1.0F)
 				.lightValue(15),
 				pos -> CeilingTorch.MODID + ":MCT_" + pos.getX() + "_" + pos.getY() + "_" + pos.getZ(),
-				MegaCeilingTorchEntityBlockingLight::new, -0.025F) {
+				MegaCeilingTorchEntityBlockingLight::new, -0.025F, MegaCeilingTorchEntityBlockingLight.SHAPE) {
 			@Override
 			public ResourceLocation getLootTable()
 			{
