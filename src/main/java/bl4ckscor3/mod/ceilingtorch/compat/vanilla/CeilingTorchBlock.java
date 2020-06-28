@@ -9,6 +9,7 @@ import net.minecraft.block.TorchBlock;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
+import net.minecraft.particles.IParticleData;
 import net.minecraft.particles.ParticleTypes;
 import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
@@ -26,9 +27,9 @@ public class CeilingTorchBlock extends TorchBlock
 {
 	protected static final VoxelShape CEILING_SHAPE = Block.makeCuboidShape(6.0D, 6.0D, 6.0D, 10.0D, 16.0D, 10.0D);
 
-	public CeilingTorchBlock(Block.Properties properties)
+	public CeilingTorchBlock(Block.Properties properties, IParticleData particleData)
 	{
-		super(properties);
+		super(properties, particleData);
 	}
 
 	@Override
@@ -59,7 +60,7 @@ public class CeilingTorchBlock extends TorchBlock
 		double offset = -0.25D;
 
 		world.addParticle(ParticleTypes.SMOKE, x, y + offset, z, 0.0D, 0.0D, 0.0D);
-		world.addParticle(ParticleTypes.FLAME, x, y + offset, z, 0.0D, 0.0D, 0.0D);
+		world.addParticle(field_235607_e_, x, y + offset, z, 0.0D, 0.0D, 0.0D);
 	}
 
 	@Override

@@ -1,25 +1,25 @@
 modLoader="javafml" #mandatory
-loaderVersion="[30,)" #mandatory
+loaderVersion="[32,)" #mandatory
 issueTrackerURL="https://github.com/bl4ckscor3/CeilingTorch/issues"
 displayURL="https://www.curseforge.com/minecraft/mc-mods/ceiling-torch"
 authors="bl4ckscor3"
 
 [[mods]] #mandatory
 modId="ceilingtorch" #mandatory
-version="v1.3.1" #mandatory
+version="v1.5" #mandatory
 displayName="Ceiling Torch" #mandatory
 description='''Makes torches placeable on the ceiling.''' #mandatory
 
 [[dependencies.ceilingtorch]]
     modId="forge"
     mandatory=true
-    versionRange="[30,)"
+    versionRange="[32,)"
     ordering="NONE"
     side="BOTH"
 
 [[dependencies.ceilingtorch]]
     modId="minecraft"
     mandatory=true
-    versionRange="[1.15,1.16)"
+    versionRange="[1.16,1.17)"
     ordering="NONE"
     side="BOTH"
