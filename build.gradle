@@ -19,7 +19,7 @@ archivesBaseName = 'ceilingtorch'
 sourceCompatibility = targetCompatibility = compileJava.sourceCompatibility = compileJava.targetCompatibility = '1.8'
 
 minecraft {
-    mappings channel: 'snapshot', version: '20200705-1.15.1'
+    mappings channel: 'snapshot', version: '20200725-1.15.1'
 	
     runs {
         client {
@@ -53,12 +53,13 @@ repositories {
 }
 
 dependencies {
-    minecraft 'net.minecraftforge:forge:1.15.2-31.2.30'
+    minecraft 'net.minecraftforge:forge:1.15.2-31.2.31'
+    implementation fg.deobf("curse.maven:druidcraft:2984999")
     implementation fg.deobf("curse.maven:i-like-wood:2881662")
-    implementation fg.deobf("curse.maven:torchmaster:2990579")
     implementation fg.deobf("curse.maven:silent-lib:2987195")
     implementation fg.deobf("curse.maven:silent-gear:2995185")
     implementation fg.deobf("curse.maven:sbm-bone-torch:2882352")
+    implementation fg.deobf("curse.maven:torchmaster:2990579")
 }
 
 jar {

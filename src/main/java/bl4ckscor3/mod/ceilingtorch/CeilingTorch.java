@@ -30,6 +30,9 @@ public class CeilingTorch
 	{
 		compatList.add(VanillaCompat::new);
 
+		if(ModList.get().isLoaded("druidcraft"))
+			compatList.add(DruidcraftCompat::new);
+
 		if(ModList.get().isLoaded("ilikewood"))
 			compatList.add(ILikeWoodCompat::new);
 
