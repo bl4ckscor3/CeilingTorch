@@ -10,6 +10,7 @@ import bl4ckscor3.mod.ceilingtorch.compat.druidcraft.DruidcraftCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.ilikewood.ILikeWoodCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.silentgear.SilentGearCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.torchmaster.TorchmasterCompat;
+import bl4ckscor3.mod.ceilingtorch.compat.upgradeaquatic.UpgradeAquaticCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.vanilla.VanillaCompat;
 import net.minecraft.block.Block;
 import net.minecraftforge.event.RegistryEvent;
@@ -30,12 +31,26 @@ public class CeilingTorch
 
 	public CeilingTorch()
 	{
-		addCompat("minecraft", VanillaCompat::new);
-		addCompat("bonetorch", BoneTorchCompat::new);
-		addCompat("druidcraft", DruidcraftCompat::new);
-		addCompat("ilikewood", ILikeWoodCompat::new);
-		addCompat("silentgear", SilentGearCompat::new);
-		addCompat("torchmaster", TorchmasterCompat::new);
+		preliminaryCompatList.put("minecraft", VanillaCompat::new);
+
+		//cannot use addCompat because then the compat class will be classloaded which may crash if the mod is not present
+		if(ModList.get().isLoaded("bonetorch"))
+			preliminaryCompatList.put("bonetorch", BoneTorchCompat::new);
+
+		if(ModList.get().isLoaded("druidcraft"))
+			preliminaryCompatList.put("druidcraft", DruidcraftCompat::new);
+
+		if(ModList.get().isLoaded("ilikewood"))
+			preliminaryCompatList.put("ilikewood", ILikeWoodCompat::new);
+
+		if(ModList.get().isLoaded("silentgear"))
+			preliminaryCompatList.put("silentgear", SilentGearCompat::new);
+
+		if(ModList.get().isLoaded("torchmaster"))
+			preliminaryCompatList.put("torchmaster", TorchmasterCompat::new);
+
+		if(ModList.get().isLoaded("upgrade_aquatic"))
+			preliminaryCompatList.put("upgrade_aquatic", UpgradeAquaticCompat::new);
 	}
 
 	@SubscribeEvent
