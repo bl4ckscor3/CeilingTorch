@@ -1,10 +1,11 @@
 package bl4ckscor3.mod.ceilingtorch;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.function.Supplier;
 
 import bl4ckscor3.mod.ceilingtorch.compat.bonetorch.BoneTorchCompat;
+import bl4ckscor3.mod.ceilingtorch.compat.druidcraft.DruidcraftCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.ilikewood.ILikeWoodCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.silentgear.SilentGearCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.torchmaster.TorchmasterCompat;
@@ -24,32 +25,22 @@ public class CeilingTorch
 {
 	public static final String MODID = "ceilingtorch";
 	public static final String NAME = "Ceiling Torch";
-	private static List<Supplier<ICeilingTorchCompat>> compatList = new ArrayList<>();
+	private static final Map<String,Supplier<ICeilingTorchCompat>> COMPAT_LIST = new HashMap<>();
 
 	public CeilingTorch()
 	{
-		compatList.add(VanillaCompat::new);
-
-		if(ModList.get().isLoaded("druidcraft"))
-			compatList.add(DruidcraftCompat::new);
-
-		if(ModList.get().isLoaded("ilikewood"))
-			compatList.add(ILikeWoodCompat::new);
-
-		if(ModList.get().isLoaded("bonetorch"))
-			compatList.add(BoneTorchCompat::new);
-
-		if(ModList.get().isLoaded("torchmaster"))
-			compatList.add(TorchmasterCompat::new);
-
-		if(ModList.get().isLoaded("silentgear"))
-			compatList.add(SilentGearCompat::new);
+		addCompat("minecraft", VanillaCompat::new);
+		addCompat("bonetorch", BoneTorchCompat::new);
+		addCompat("druidcraft", DruidcraftCompat::new);
+		addCompat("ilikewood", ILikeWoodCompat::new);
+		addCompat("silentgear", SilentGearCompat::new);
+		addCompat("torchmaster", TorchmasterCompat::new);
 	}
 
 	@SubscribeEvent
 	public static void registerBlocks(RegistryEvent.Register<Block> event)
 	{
-		for(Supplier<ICeilingTorchCompat> compat : compatList)
+		for(Supplier<ICeilingTorchCompat> compat : COMPAT_LIST.values())
 		{
 			compat.get().registerBlocks(event);
 		}
@@ -58,9 +49,20 @@ public class CeilingTorch
 	@SubscribeEvent
 	public static void onInterModEnqueue(InterModEnqueueEvent event)
 	{
-		for(Supplier<ICeilingTorchCompat> compat : compatList)
+		for(Supplier<ICeilingTorchCompat> compat : COMPAT_LIST.values())
 		{
 			compat.get().registerPlaceEntries();
 		}
+	}
+
+	/**
+	 * Adds ceiling torch compatibility for the mod with the given modid, if that mod is loaded
+	 * @param modid The modid of the mod to add compatibility to
+	 * @param compat The compatibility class
+	 */
+	public static void addCompat(String modid, Supplier<ICeilingTorchCompat> compat)
+	{
+		if(ModList.get().isLoaded(modid))
+			COMPAT_LIST.put(modid, compat);
 	}
 }
