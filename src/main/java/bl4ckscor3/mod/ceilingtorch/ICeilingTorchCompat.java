@@ -20,4 +20,14 @@ public interface ICeilingTorchCompat
 	 * @return A map with the key being the ResourceLocation of the item that the player rightclicked with, and the ceiling torch block to place for that item
 	 */
 	public Map<ResourceLocation,Block> getPlaceEntries();
+
+	/**
+	 * If this returns true, CeilingTorch will handle setting the render type. If this returns false, the mod adding compatibility needs to handle setting the render type themselves.
+	 * @param The block to check
+	 * @return true if the given block has the default cutout mipped render type, false otherwise
+	 */
+	public default boolean hasCutoutMippedRenderType(Block b)
+	{
+		return true;
+	}
 }
