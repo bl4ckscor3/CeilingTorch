@@ -26,7 +26,7 @@ public class PlaceHandler
 		BlockPos placeAt = pos.offset(face);
 		World world = event.getWorld();
 
-		if(face == Direction.DOWN && world.isAirBlock(placeAt) && Block.hasEnoughSolidSide(world, pos, Direction.DOWN))
+		if(face == Direction.DOWN && world.isAirBlock(placeAt))
 		{
 			ItemStack held = event.getItemStack();
 			ResourceLocation rl = held.getItem().getRegistryName();
@@ -41,15 +41,19 @@ public class PlaceHandler
 				{
 					Block block = placeEntries.get(rl);
 					BlockState state = block.getDefaultState();
-					SoundType soundType;
 
-					world.setBlockState(placeAt, state);
-					soundType = block.getSoundType(state, world, pos, event.getPlayer());
-					world.playSound(null, pos.getX(), pos.getY(), pos.getZ(), soundType.getPlaceSound(), SoundCategory.BLOCKS, soundType.getVolume(), soundType.getPitch() - 0.2F);
-					event.getPlayer().swingArm(event.getHand());
+					if(block.isValidPosition(state, world, placeAt))
+					{
+						SoundType soundType;
 
-					if(!event.getPlayer().isCreative())
-						held.shrink(1);
+						world.setBlockState(placeAt, state);
+						soundType = block.getSoundType(state, world, pos, event.getPlayer());
+						world.playSound(null, pos.getX(), pos.getY(), pos.getZ(), soundType.getPlaceSound(), SoundCategory.BLOCKS, soundType.getVolume(), soundType.getPitch() - 0.2F);
+						event.getPlayer().swingArm(event.getHand());
+
+						if(!event.getPlayer().isCreative())
+							held.shrink(1);
+					}
 				}
 			}
 		}

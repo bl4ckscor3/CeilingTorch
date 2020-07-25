@@ -54,7 +54,8 @@ repositories {
 
 dependencies {
     minecraft 'net.minecraftforge:forge:1.15.2-31.2.31'
-    implementation fg.deobf("curse.maven:abnormals-core:2980113") //upgrade aquatic dependency
+    implementation fg.deobf("curse.maven:abnormals-core:2980113") //bamboo blocks & upgrade aquatic dependency
+    implementation fg.deobf("curse.maven:bamboo-blocks:2988675")
     implementation fg.deobf("curse.maven:druidcraft:2984999")
     implementation fg.deobf("curse.maven:i-like-wood:2881662")
     implementation fg.deobf("curse.maven:silent-lib:2987195")

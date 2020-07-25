@@ -1,0 +1,5 @@
+{
+    "variants": {
+        "": { "model": "bambooblocks:block/template_torch", "x": 180 }
+    }
+}
