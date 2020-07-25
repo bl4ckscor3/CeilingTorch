@@ -15,9 +15,12 @@ public class CeilingTorchClient
 	@SubscribeEvent
 	public static void onInterModProcess(InterModProcessEvent event)
 	{
-		for(Block b : PlaceHandler.getPlaceEntryBlocks())
+		for(ICeilingTorchCompat compat : CeilingTorch.getCompatList().values())
 		{
-			RenderTypeLookup.setRenderLayer(b, RenderType.getCutoutMipped());
+			for(Block block : compat.getPlaceEntries().values())
+			{
+				RenderTypeLookup.setRenderLayer(block, RenderType.getCutoutMipped());
+			}
 		}
 	}
 }

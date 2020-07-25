@@ -1,8 +1,11 @@
 package bl4ckscor3.mod.ceilingtorch.compat.torchmaster;
 
+import java.util.Map;
+
+import com.google.common.collect.ImmutableMap;
+
 import bl4ckscor3.mod.ceilingtorch.CeilingTorch;
 import bl4ckscor3.mod.ceilingtorch.ICeilingTorchCompat;
-import bl4ckscor3.mod.ceilingtorch.PlaceHandler;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.material.Material;
@@ -15,10 +18,12 @@ import net.minecraft.world.IBlockReader;
 import net.minecraftforge.event.RegistryEvent;
 import net.xalcon.torchmaster.common.ModBlocks;
 import net.xalcon.torchmaster.common.blocks.EntityBlockingLightBlock;
+import net.xalcon.torchmaster.common.logic.entityblocking.megatorch.MegatorchEntityBlockingLight;
 
 public class TorchmasterCompat implements ICeilingTorchCompat
 {
 	public static Block megaCeilingTorch;
+	private Map<ResourceLocation,Block> placeEntries;
 
 	@Override
 	public void registerBlocks(RegistryEvent.Register<Block> event)
@@ -28,7 +33,7 @@ public class TorchmasterCompat implements ICeilingTorchCompat
 				.hardnessAndResistance(1.0F, 1.0F)
 				.lightValue(15),
 				pos -> CeilingTorch.MODID + ":MCT_" + pos.getX() + "_" + pos.getY() + "_" + pos.getZ(),
-				MegaCeilingTorchEntityBlockingLight::new, -0.025F, MegaCeilingTorchEntityBlockingLight.SHAPE) {
+				MegaCeilingTorchEntityBlockingLight::new, -0.025F, MegatorchEntityBlockingLight.SHAPE) {
 			@Override
 			public ResourceLocation getLootTable()
 			{
@@ -44,8 +49,11 @@ public class TorchmasterCompat implements ICeilingTorchCompat
 	}
 
 	@Override
-	public void registerPlaceEntries()
+	public Map<ResourceLocation,Block> getPlaceEntries()
 	{
-		PlaceHandler.registerPlaceEntry(ModBlocks.itemMegaTorch.getRegistryName(), megaCeilingTorch);
+		if(placeEntries == null)
+			placeEntries = ImmutableMap.of(ModBlocks.itemMegaTorch.getRegistryName(), megaCeilingTorch);
+
+		return placeEntries;
 	}
 }

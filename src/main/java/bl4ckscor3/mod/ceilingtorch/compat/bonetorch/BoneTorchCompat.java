@@ -1,10 +1,12 @@
 package bl4ckscor3.mod.ceilingtorch.compat.bonetorch;
 
+import java.util.Map;
+
 import com.builtbroken.bonetorch.BoneTorchMod;
+import com.google.common.collect.ImmutableMap;
 
 import bl4ckscor3.mod.ceilingtorch.CeilingTorch;
 import bl4ckscor3.mod.ceilingtorch.ICeilingTorchCompat;
-import bl4ckscor3.mod.ceilingtorch.PlaceHandler;
 import bl4ckscor3.mod.ceilingtorch.compat.vanilla.CeilingTorchBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -21,6 +23,7 @@ import net.minecraftforge.event.RegistryEvent;
 public class BoneTorchCompat implements ICeilingTorchCompat
 {
 	public static Block ceilingBoneTorch;
+	private Map<ResourceLocation,Block> placeEntries;
 
 	@Override
 	public void registerBlocks(RegistryEvent.Register<Block> event)
@@ -41,8 +44,11 @@ public class BoneTorchCompat implements ICeilingTorchCompat
 	}
 
 	@Override
-	public void registerPlaceEntries()
+	public Map<ResourceLocation,Block> getPlaceEntries()
 	{
-		PlaceHandler.registerPlaceEntry(new ResourceLocation("bonetorch", "bonetorch"), ceilingBoneTorch);
+		if(placeEntries == null)
+			placeEntries = ImmutableMap.of(new ResourceLocation("bonetorch", "bonetorch"), ceilingBoneTorch);
+
+		return placeEntries;
 	}
 }
