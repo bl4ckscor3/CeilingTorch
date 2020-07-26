@@ -62,6 +62,7 @@ dependencies {
     implementation fg.deobf("curse.maven:inspirations:2954679")
     implementation fg.deobf("curse.maven:magical-torches:2981000")
     implementation fg.deobf("curse.maven:mantle:2942705") //inspirations dependency
+    implementation fg.deobf("curse.maven:nethercraft-classic:2973381")
     implementation fg.deobf("curse.maven:silent-gear:2995185")
     implementation fg.deobf("curse.maven:silent-lib:2987195") //silent gear dependency
     implementation fg.deobf("curse.maven:sbm-bone-torch:2882352")
