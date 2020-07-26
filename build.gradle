@@ -58,14 +58,15 @@ dependencies {
     implementation fg.deobf("curse.maven:bamboo-blocks:2988675")
     implementation fg.deobf("curse.maven:druidcraft:2984999")
     implementation fg.deobf("curse.maven:i-like-wood:2881662")
+    implementation fg.deobf("curse.maven:gaia-dimension:2956507")
     implementation fg.deobf("curse.maven:inspirations:2954679")
     implementation fg.deobf("curse.maven:magical-torches:2981000")
     implementation fg.deobf("curse.maven:mantle:2942705") //inspirations dependency
     implementation fg.deobf("curse.maven:silent-gear:2995185")
     implementation fg.deobf("curse.maven:silent-lib:2987195") //silent gear dependency
     implementation fg.deobf("curse.maven:sbm-bone-torch:2882352")
-    implementation fg.deobf("curse.maven:gaia-dimension:2956507")
     implementation fg.deobf("curse.maven:the-midnight:2973596")
+    implementation fg.deobf("curse.maven:tofucraftreload:3001699")
     implementation fg.deobf("curse.maven:torchmaster:2990579")
     implementation fg.deobf("curse.maven:upgrade-aquatic:2997601")
 }
