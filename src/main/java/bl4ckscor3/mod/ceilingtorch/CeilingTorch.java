@@ -9,6 +9,7 @@ import bl4ckscor3.mod.ceilingtorch.compat.bambooblocks.BambooBlocksCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.bonetorch.BoneTorchCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.druidcraft.DruidcraftCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.ilikewood.ILikeWoodCompat;
+import bl4ckscor3.mod.ceilingtorch.compat.inspirations.InspirationsCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.magicaltorches.MagicalTorchesCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.midnight.MidnightCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.silentgear.SilentGearCompat;
@@ -48,6 +49,9 @@ public class CeilingTorch
 
 		if(ModList.get().isLoaded("ilikewood"))
 			preliminaryCompatList.put("ilikewood", ILikeWoodCompat::new);
+
+		if(ModList.get().isLoaded("inspirations"))
+			preliminaryCompatList.put("inspirations", InspirationsCompat::new);
 
 		if(ModList.get().isLoaded("magical_torches"))
 			preliminaryCompatList.put("magical_torches", MagicalTorchesCompat::new);
