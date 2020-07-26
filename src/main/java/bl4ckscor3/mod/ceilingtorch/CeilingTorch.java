@@ -8,6 +8,7 @@ import java.util.function.Supplier;
 import bl4ckscor3.mod.ceilingtorch.compat.bambooblocks.BambooBlocksCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.bonetorch.BoneTorchCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.druidcraft.DruidcraftCompat;
+import bl4ckscor3.mod.ceilingtorch.compat.gaiadimension.GaiaDimensionCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.ilikewood.ILikeWoodCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.inspirations.InspirationsCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.magicaltorches.MagicalTorchesCompat;
@@ -46,6 +47,9 @@ public class CeilingTorch
 
 		if(ModList.get().isLoaded("druidcraft"))
 			preliminaryCompatList.put("druidcraft", DruidcraftCompat::new);
+
+		if(ModList.get().isLoaded("gaiadimension"))
+			preliminaryCompatList.put("gaiadimension", GaiaDimensionCompat::new);
 
 		if(ModList.get().isLoaded("ilikewood"))
 			preliminaryCompatList.put("ilikewood", ILikeWoodCompat::new);
