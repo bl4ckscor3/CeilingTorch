@@ -69,6 +69,7 @@ dependencies {
     implementation fg.deobf("curse.maven:sbm-bone-torch:2882352")
     implementation fg.deobf("curse.maven:the-midnight:2973596")
     implementation fg.deobf("curse.maven:tofucraftreload:3001699")
+    implementation fg.deobf("curse.maven:torcherino:2878390")
     implementation fg.deobf("curse.maven:torchmaster:2990579")
     implementation fg.deobf("curse.maven:upgrade-aquatic:2997601")
 }
