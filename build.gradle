@@ -57,6 +57,7 @@ dependencies {
     implementation fg.deobf("curse.maven:abnormals-core:2980113") //bamboo blocks & upgrade aquatic dependency
     implementation fg.deobf("curse.maven:bamboo-blocks:2988675")
     implementation fg.deobf("curse.maven:druidcraft:2984999")
+    implementation fg.deobf("curse.maven:essential-features:2931088")
     implementation fg.deobf("curse.maven:i-like-wood:2881662")
     implementation fg.deobf("curse.maven:gaia-dimension:2956507")
     implementation fg.deobf("curse.maven:inspirations:2954679")

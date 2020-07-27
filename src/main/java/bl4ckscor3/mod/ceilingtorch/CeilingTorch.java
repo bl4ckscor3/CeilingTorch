@@ -50,6 +50,9 @@ public class CeilingTorch
 		if(ModList.get().isLoaded("druidcraft"))
 			preliminaryCompatList.put("druidcraft", DruidcraftCompat::new);
 
+		if(ModList.get().isLoaded("essentialfeatures"))
+			preliminaryCompatList.put("essentialfeatures", EssentialFeaturesCompat::new);
+
 		if(ModList.get().isLoaded("gaiadimension"))
 			preliminaryCompatList.put("gaiadimension", GaiaDimensionCompat::new);
 
