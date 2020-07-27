@@ -1,10 +1,12 @@
-package bl4ckscor3.mod.ceilingtorch;
+package bl4ckscor3.mod.ceilingtorch.compat.essentialfeatues;
 
 import java.util.Map;
 
 import com.google.common.collect.ImmutableMap;
 import com.williambl.essentialfeatures.common.block.ModBlocks;
 
+import bl4ckscor3.mod.ceilingtorch.CeilingTorch;
+import bl4ckscor3.mod.ceilingtorch.ICeilingTorchCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.vanilla.RedstoneCeilingTorchBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -20,7 +22,7 @@ import net.minecraftforge.event.RegistryEvent.Register;
 public class EssentialFeaturesCompat implements ICeilingTorchCompat
 {
 	public static final String[] COLORS = {"white", "orange", "magenta", "light_blue", "yellow", "lime", "pink", "gray", "silver", "cyan", "purple", "blue", "brown", "green", "red", "black"};
-	public final Block[] torches = new Block[COLORS.length];
+	public static final Block[] TORCHES = new Block[COLORS.length];
 	private Map<ResourceLocation,Block> placeEntries;
 
 	@Override
@@ -31,7 +33,7 @@ public class EssentialFeaturesCompat implements ICeilingTorchCompat
 			final int index = i;
 
 			//the properties are not like the vanilla redstone torch, but Essential Features has it like this, so i'm doing it as well
-			event.getRegistry().register(torches[i] = new RedstoneCeilingTorchBlock(Block.Properties.create(Material.REDSTONE_LIGHT)) {
+			event.getRegistry().register(TORCHES[i] = new RedstoneCeilingTorchBlock(Block.Properties.create(Material.REDSTONE_LIGHT)) {
 				@Override
 				public ResourceLocation getLootTable()
 				{
@@ -56,7 +58,7 @@ public class EssentialFeaturesCompat implements ICeilingTorchCompat
 
 			for(int i = 0; i < COLORS.length; i++)
 			{
-				builder.put(((Block)ModBlocks.STAINED_REDSTONE_TORCHES[i].getLeft()).getRegistryName(), torches[i]);
+				builder.put(((Block)ModBlocks.STAINED_REDSTONE_TORCHES[i].getLeft()).getRegistryName(), TORCHES[i]);
 			}
 
 			placeEntries = builder.build();
