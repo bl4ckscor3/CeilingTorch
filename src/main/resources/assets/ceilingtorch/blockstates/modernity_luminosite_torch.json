@@ -1,0 +1,5 @@
+{
+    "variants": {
+        "": { "model": "modernity:block/luminosite_torch", "x": 180 }
+    }
+}

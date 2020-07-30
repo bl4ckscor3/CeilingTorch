@@ -3,7 +3,7 @@ package bl4ckscor3.mod.ceilingtorch.compat.modernity;
 import java.util.Random;
 
 import bl4ckscor3.mod.ceilingtorch.compat.vanilla.CeilingTorchBlock;
-import modernity.common.block.base.WaterloggedBlock;
+import modernity.common.block.fluid.WaterloggedBlock;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.particles.ParticleTypes;

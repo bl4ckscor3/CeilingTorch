@@ -60,7 +60,7 @@ dependencies {
 	implementation fg.deobf("curse.maven:upgrade-aquatic:2856605")
 	implementation fg.deobf("curse.maven:silent-gear:2849573") //silent gear dependency
 	implementation fg.deobf("curse.maven:silent-lib:2783899")
-	implementation fg.deobf("curse.maven:the-modernity:2833038")
+	implementation fg.deobf("curse.maven:the-modernity:2930674")
 	implementation fg.deobf("curse.maven:torchmaster:2843872")
 }
 

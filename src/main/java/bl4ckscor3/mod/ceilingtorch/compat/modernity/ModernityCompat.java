@@ -3,10 +3,10 @@ package bl4ckscor3.mod.ceilingtorch.compat.modernity;
 import bl4ckscor3.mod.ceilingtorch.CeilingTorch;
 import bl4ckscor3.mod.ceilingtorch.ICeilingTorchCompat;
 import bl4ckscor3.mod.ceilingtorch.PlaceHandler;
-import modernity.api.util.EWaterlogType;
 import modernity.common.block.MDBlockStateProperties;
-import modernity.common.block.MDBlocks;
-import modernity.common.block.base.WaterloggedBlock;
+import modernity.common.block.MDBuildingBlocks;
+import modernity.common.block.fluid.WaterlogType;
+import modernity.common.block.fluid.WaterloggedBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.IWaterLoggable;
@@ -30,7 +30,7 @@ public class ModernityCompat implements ICeilingTorchCompat
 {
 	public static Block extinguishedAnthraciteCeilingTorch;
 	public static Block anthraciteCeilingTorch;
-	public static Block lightrockCeilingTorch;
+	public static Block luminositeCeilingTorch;
 
 	@Override
 	public void registerBlocks(Register<Block> event)
@@ -39,49 +39,49 @@ public class ModernityCompat implements ICeilingTorchCompat
 			@Override
 			public ResourceLocation getLootTable()
 			{
-				return MDBlocks.EXTINGUISHED_ANTHRACITE_TORCH.getLootTable();
+				return MDBuildingBlocks.EXTINGUISHED_ANTHRACITE_TORCH.getLootTable();
 			}
 
 			@Override
 			public ItemStack getPickBlock(BlockState state, RayTraceResult target, IBlockReader world, BlockPos pos, PlayerEntity player)
 			{
-				return new ItemStack(MDBlocks.EXTINGUISHED_ANTHRACITE_TORCH);
+				return new ItemStack(MDBuildingBlocks.EXTINGUISHED_ANTHRACITE_TORCH);
 			}
 		}.setRegistryName(new ResourceLocation(CeilingTorch.MODID, "modernity_extinguished_anthracite_torch")));
 		event.getRegistry().register(anthraciteCeilingTorch = new ModernityExtinguishableCeilingTorchBlock(Block.Properties.create(Material.MISCELLANEOUS, MaterialColor.SNOW).doesNotBlockMovement().hardnessAndResistance(0).lightValue(15).sound(SoundType.WOOD), true, extinguishedAnthraciteCeilingTorch) {
 			@Override
 			public ResourceLocation getLootTable()
 			{
-				return MDBlocks.ANTHRACITE_TORCH.getLootTable();
+				return MDBuildingBlocks.ANTHRACITE_TORCH.getLootTable();
 			}
 
 			@Override
 			public ItemStack getPickBlock(BlockState state, RayTraceResult target, IBlockReader world, BlockPos pos, PlayerEntity player)
 			{
-				return new ItemStack(MDBlocks.ANTHRACITE_TORCH);
+				return new ItemStack(MDBuildingBlocks.ANTHRACITE_TORCH);
 			}
 		}.setRegistryName(new ResourceLocation(CeilingTorch.MODID, "modernity_anthracite_torch")));
-		event.getRegistry().register(lightrockCeilingTorch = new ModernityCeilingTorchBlock(Block.Properties.create(Material.MISCELLANEOUS, MaterialColor.SNOW).doesNotBlockMovement().hardnessAndResistance(0).lightValue(15).sound(SoundType.WOOD), false) {
+		event.getRegistry().register(luminositeCeilingTorch = new ModernityCeilingTorchBlock(Block.Properties.create(Material.MISCELLANEOUS, MaterialColor.SNOW).doesNotBlockMovement().hardnessAndResistance(0).lightValue(15).sound(SoundType.WOOD), false) {
 			@Override
 			public ResourceLocation getLootTable()
 			{
-				return MDBlocks.LIGHTROCK_TORCH.getLootTable();
+				return MDBuildingBlocks.LUMINOSITE_TORCH.getLootTable();
 			}
 
 			@Override
 			public ItemStack getPickBlock(BlockState state, RayTraceResult target, IBlockReader world, BlockPos pos, PlayerEntity player)
 			{
-				return new ItemStack(MDBlocks.LIGHTROCK_TORCH);
+				return new ItemStack(MDBuildingBlocks.LUMINOSITE_TORCH);
 			}
-		}.setRegistryName(new ResourceLocation(CeilingTorch.MODID, "modernity_lightrock_torch")));
+		}.setRegistryName(new ResourceLocation(CeilingTorch.MODID, "modernity_luminosite_torch")));
 	}
 
 	@Override
 	public void registerPlaceEntries()
 	{
-		PlaceHandler.registerPlaceEntry(MDBlocks.EXTINGUISHED_ANTHRACITE_TORCH.getRegistryName(), extinguishedAnthraciteCeilingTorch);
-		PlaceHandler.registerPlaceEntry(MDBlocks.ANTHRACITE_TORCH.getRegistryName(), anthraciteCeilingTorch);
-		PlaceHandler.registerPlaceEntry(MDBlocks.LIGHTROCK_TORCH.getRegistryName(), lightrockCeilingTorch);
+		PlaceHandler.registerPlaceEntry(MDBuildingBlocks.EXTINGUISHED_ANTHRACITE_TORCH.getRegistryName(), extinguishedAnthraciteCeilingTorch);
+		PlaceHandler.registerPlaceEntry(MDBuildingBlocks.ANTHRACITE_TORCH.getRegistryName(), anthraciteCeilingTorch);
+		PlaceHandler.registerPlaceEntry(MDBuildingBlocks.LUMINOSITE_TORCH.getRegistryName(), luminositeCeilingTorch);
 	}
 
 	public static void handlePlacement(RightClickBlock event, ItemStack held, Block block, World world, BlockPos pos, BlockPos placeAt, Direction face)
@@ -90,8 +90,8 @@ public class ModernityCompat implements ICeilingTorchCompat
 		{
 			IFluidState fluidState = world.getFluidState(placeAt);
 			boolean air = world.isAirBlock(placeAt);
-			EWaterlogType waterlogType = EWaterlogType.getType(fluidState);
-			boolean water = waterlogType != EWaterlogType.NONE;
+			WaterlogType waterlogType = WaterlogType.getType(fluidState);
+			boolean water = waterlogType != WaterlogType.NONE;
 
 			if(!air && !water)
 				return;
