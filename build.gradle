@@ -9,10 +9,6 @@ buildscript {
     }
 }
 
-plugins {
-	id "com.wynprice.cursemaven" version "2.1.1"
-}
-
 apply plugin: 'net.minecraftforge.gradle'
 apply plugin: 'eclipse'
 
@@ -23,7 +19,7 @@ archivesBaseName = 'ceilingtorch'
 sourceCompatibility = targetCompatibility = compileJava.sourceCompatibility = compileJava.targetCompatibility = '1.8'
 
 minecraft {
-    mappings channel: 'snapshot', version: '20200109-1.14.3'
+    mappings channel: 'stable', version: '56-1.14.3'
 	
     runs {
         client {
@@ -50,17 +46,22 @@ minecraft {
     }
 }
 
+repositories {
+    maven {
+        url "https://www.cursemaven.com"
+    }
+}
 
 dependencies {
-    minecraft 'net.minecraftforge:forge:1.14.4-28.1.107'
-	compile "curse.maven:i-like-wood:2785492"
-	compile "curse.maven:sbm-bone-torch:2737885"
-	compile "curse.maven:druidcraft:2826386"
-	compile "curse.maven:upgrade-aquatic:2856605"
-	compile "curse.maven:torchmaster:2843872"
-	compile "curse.maven:silent-lib:2783899"
-	compile "curse.maven:silent-gear:2849573"
-	compile "curse.maven:the-modernity:2833038"
+    minecraft 'net.minecraftforge:forge:1.14.4-28.2.23'
+	implementation fg.deobf("curse.maven:druidcraft:2826386")
+	implementation fg.deobf("curse.maven:i-like-wood:2785492")
+	implementation fg.deobf("curse.maven:sbm-bone-torch:2737885")
+	implementation fg.deobf("curse.maven:upgrade-aquatic:2856605")
+	implementation fg.deobf("curse.maven:silent-gear:2849573") //silent gear dependency
+	implementation fg.deobf("curse.maven:silent-lib:2783899")
+	implementation fg.deobf("curse.maven:the-modernity:2833038")
+	implementation fg.deobf("curse.maven:torchmaster:2843872")
 }
 
 jar {
