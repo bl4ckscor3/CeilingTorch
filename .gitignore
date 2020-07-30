@@ -6,3 +6,4 @@
 /.settings
 /libs
 /run
+*.launch
