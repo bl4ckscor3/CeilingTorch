@@ -1,0 +1,10 @@
+{
+    "forge_marker": 1,
+    "variants": {
+        "": {
+            "model": "bambooblocks:block/template_torch",
+            "x": 180,
+            "textures": { "torch": "bambooblocks:block/bamboo_torch" }
+        }
+    }
+}

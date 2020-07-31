@@ -5,6 +5,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.function.Supplier;
 
+import bl4ckscor3.mod.ceilingtorch.compat.bambooblocks.BambooBlocksCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.bonetorch.BoneTorchCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.druidcraft.DruidcraftCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.ilikewood.ILikeWoodCompat;
@@ -34,6 +35,10 @@ public class CeilingTorch
 	public CeilingTorch()
 	{
 		preliminaryCompatList.put("minecraft", VanillaCompat::new);
+
+		//cannot use addCompat because then the compat class will be classloaded which may crash if the mod is not present
+		if(ModList.get().isLoaded("bambooblocks"))
+			preliminaryCompatList.put("bambooblocks", BambooBlocksCompat::new);
 
 		if(ModList.get().isLoaded("bonetorch"))
 			preliminaryCompatList.put("bonetorch", BoneTorchCompat::new);
@@ -83,11 +88,11 @@ public class CeilingTorch
 		if(ModList.get().isLoaded(modid))
 			preliminaryCompatList.put(modid, compat);
 	}
-	 
-		public static Map<String,ICeilingTorchCompat> getCompatList() 
-		{ 
-			return COMPAT_LIST; 
-		} 
+
+	public static Map<String,ICeilingTorchCompat> getCompatList()
+	{
+		return COMPAT_LIST;
+	}
 
 	public static boolean isModernityLoaded()
 	{
