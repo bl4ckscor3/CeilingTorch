@@ -15,6 +15,7 @@ import bl4ckscor3.mod.ceilingtorch.compat.inspirations.InspirationsCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.magicaltorches.MagicalTorchesCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.midnight.MidnightCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.modernity.ModernityCompat;
+import bl4ckscor3.mod.ceilingtorch.compat.nethercraft.NethercraftCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.silentgear.SilentGearCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.torchmaster.TorchmasterCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.upgradeaquatic.UpgradeAquaticCompat;
@@ -71,6 +72,9 @@ public class CeilingTorch
 
 		if(modernityLoaded = ModList.get().isLoaded("modernity"))
 			preliminaryCompatList.put("modernity", ModernityCompat::new);
+
+		if(ModList.get().isLoaded("nethercraft"))
+			preliminaryCompatList.put("nethercraft", NethercraftCompat::new);
 
 		if(ModList.get().isLoaded("silentgear"))
 			preliminaryCompatList.put("silentgear", SilentGearCompat::new);
