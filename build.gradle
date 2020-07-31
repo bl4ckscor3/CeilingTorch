@@ -56,6 +56,7 @@ dependencies {
     minecraft 'net.minecraftforge:forge:1.14.4-28.2.23'
 	implementation fg.deobf("curse.maven:bamboo-blocks:2879987")
 	implementation fg.deobf("curse.maven:druidcraft:2826386")
+	implementation fg.deobf("curse.maven:essential-features:2826880")
 	implementation fg.deobf("curse.maven:i-like-wood:2785492")
 	implementation fg.deobf("curse.maven:sbm-bone-torch:2737885")
 	implementation fg.deobf("curse.maven:upgrade-aquatic:2856605")
