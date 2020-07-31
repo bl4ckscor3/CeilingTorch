@@ -59,6 +59,8 @@ dependencies {
 	implementation fg.deobf("curse.maven:essential-features:2826880")
 	implementation fg.deobf("curse.maven:gaia-dimension:2959803")
 	implementation fg.deobf("curse.maven:i-like-wood:2785492")
+	implementation fg.deobf("curse.maven:inspirations:2843012")
+	implementation fg.deobf("curse.maven:mantle:2804948") //inspirations dependency
 	implementation fg.deobf("curse.maven:sbm-bone-torch:2737885")
 	implementation fg.deobf("curse.maven:upgrade-aquatic:2856605")
 	implementation fg.deobf("curse.maven:silent-gear:2849573") //silent gear dependency

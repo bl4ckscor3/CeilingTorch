@@ -11,6 +11,7 @@ import bl4ckscor3.mod.ceilingtorch.compat.druidcraft.DruidcraftCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.essentialfeatues.EssentialFeaturesCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.gaiadimension.GaiaDimensionCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.ilikewood.ILikeWoodCompat;
+import bl4ckscor3.mod.ceilingtorch.compat.inspirations.InspirationsCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.modernity.ModernityCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.silentgear.SilentGearCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.torchmaster.TorchmasterCompat;
@@ -56,6 +57,9 @@ public class CeilingTorch
 
 		if(ModList.get().isLoaded("ilikewood"))
 			preliminaryCompatList.put("ilikewood", ILikeWoodCompat::new);
+
+		if(ModList.get().isLoaded("inspirations"))
+			preliminaryCompatList.put("inspirations", InspirationsCompat::new);
 
 		if(modernityLoaded = ModList.get().isLoaded("modernity"))
 			preliminaryCompatList.put("modernity", ModernityCompat::new);
