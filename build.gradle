@@ -60,6 +60,7 @@ dependencies {
 	implementation fg.deobf("curse.maven:gaia-dimension:2959803")
 	implementation fg.deobf("curse.maven:i-like-wood:2785492")
 	implementation fg.deobf("curse.maven:inspirations:2843012")
+	implementation fg.deobf("curse.maven:magical-torches:2980998")
 	implementation fg.deobf("curse.maven:mantle:2804948") //inspirations dependency
 	implementation fg.deobf("curse.maven:sbm-bone-torch:2737885")
 	implementation fg.deobf("curse.maven:upgrade-aquatic:2856605")
