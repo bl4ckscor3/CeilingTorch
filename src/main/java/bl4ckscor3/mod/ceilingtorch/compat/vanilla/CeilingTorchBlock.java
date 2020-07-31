@@ -51,7 +51,7 @@ public class CeilingTorchBlock extends TorchBlock
 
 	@Override
 	@OnlyIn(Dist.CLIENT)
-	public void animateTick(BlockState stateIn, World world, BlockPos pos, Random rand)
+	public void animateTick(BlockState state, World world, BlockPos pos, Random rand)
 	{
 		double x = pos.getX() + 0.5D;
 		double y = pos.getY() + 0.45D;

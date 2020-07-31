@@ -1,0 +1,5 @@
+{
+    "variants": {
+        "": { "model": "wildnature:block/crystal_torch", "x": 180 }
+    }
+}

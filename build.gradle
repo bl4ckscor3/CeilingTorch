@@ -73,6 +73,7 @@ dependencies {
 	implementation fg.deobf("curse.maven:tofucraftreload:2867151")
 	implementation fg.deobf("curse.maven:torcherino:2860103")
 	implementation fg.deobf("curse.maven:torchmaster:2843872")
+	implementation fg.deobf("curse.maven:wildnature:3010676")
 }
 
 jar {

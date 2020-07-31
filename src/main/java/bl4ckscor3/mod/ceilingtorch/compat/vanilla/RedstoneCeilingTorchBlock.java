@@ -23,7 +23,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 
 public class RedstoneCeilingTorchBlock extends RedstoneTorchBlock
 {
-	protected RedstoneCeilingTorchBlock(Properties properties)
+	public RedstoneCeilingTorchBlock(Properties properties)
 	{
 		super(properties);
 	}
