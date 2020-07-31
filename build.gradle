@@ -65,6 +65,7 @@ dependencies {
 	implementation fg.deobf("curse.maven:nethercraft-classic:2973380")
 	implementation fg.deobf("curse.maven:sbm-bone-torch:2737885")
 	implementation fg.deobf("curse.maven:upgrade-aquatic:2856605")
+	implementation fg.deobf("curse.maven:secretroomsmod:2819661")
 	implementation fg.deobf("curse.maven:silent-gear:2849573") //silent gear dependency
 	implementation fg.deobf("curse.maven:silent-lib:2783899")
 	implementation fg.deobf("curse.maven:the-midnight:2927220")
