@@ -1,0 +1,10 @@
+{
+    "forge_marker": 1,
+    "variants": {
+        "": {
+            "model": "block/torch",
+            "x": 180,
+            "textures": { "torch": "tofucraft:blocks/tofutorch_momen" }
+        }
+    }
+}

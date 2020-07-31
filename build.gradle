@@ -69,6 +69,7 @@ dependencies {
 	implementation fg.deobf("curse.maven:silent-lib:2783899")
 	implementation fg.deobf("curse.maven:the-midnight:2927220")
 	implementation fg.deobf("curse.maven:the-modernity:2930674")
+	implementation fg.deobf("curse.maven:tofucraftreload:2867151")
 	implementation fg.deobf("curse.maven:torchmaster:2843872")
 }
 
