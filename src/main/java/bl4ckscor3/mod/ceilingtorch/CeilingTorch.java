@@ -18,6 +18,7 @@ import bl4ckscor3.mod.ceilingtorch.compat.modernity.ModernityCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.nethercraft.NethercraftCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.silentgear.SilentGearCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.tofucraft.TofuCraftCompat;
+import bl4ckscor3.mod.ceilingtorch.compat.torcherino.TorcherinoCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.torchmaster.TorchmasterCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.upgradeaquatic.UpgradeAquaticCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.vanilla.VanillaCompat;
@@ -82,6 +83,9 @@ public class CeilingTorch
 
 		if(ModList.get().isLoaded("tofucraft"))
 			preliminaryCompatList.put("tofucraft", TofuCraftCompat::new);
+
+		if(ModList.get().isLoaded("torcherino"))
+			preliminaryCompatList.put("torcherino", TorcherinoCompat::new);
 
 		if(ModList.get().isLoaded("torchmaster"))
 			preliminaryCompatList.put("torchmaster", TorchmasterCompat::new);
