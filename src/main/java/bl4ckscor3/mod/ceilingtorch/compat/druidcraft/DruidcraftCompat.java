@@ -1,10 +1,12 @@
 package bl4ckscor3.mod.ceilingtorch.compat.druidcraft;
 
+import java.util.Map;
+
+import com.google.common.collect.ImmutableMap;
 import com.vulp.druidcraft.registry.ItemRegistry;
 
 import bl4ckscor3.mod.ceilingtorch.CeilingTorch;
 import bl4ckscor3.mod.ceilingtorch.ICeilingTorchCompat;
-import bl4ckscor3.mod.ceilingtorch.PlaceHandler;
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
@@ -14,6 +16,7 @@ import net.minecraftforge.event.RegistryEvent;
 public class DruidcraftCompat implements ICeilingTorchCompat
 {
 	public static Block fieryCeilingTorch;
+	private Map<ResourceLocation,Block> placeEntries;
 
 	@Override
 	public void registerBlocks(RegistryEvent.Register<Block> event)
@@ -22,8 +25,11 @@ public class DruidcraftCompat implements ICeilingTorchCompat
 	}
 
 	@Override
-	public void registerPlaceEntries()
+	public Map<ResourceLocation,Block> getPlaceEntries()
 	{
-		PlaceHandler.registerPlaceEntry(ItemRegistry.fiery_torch.getRegistryName(), fieryCeilingTorch);
+		if(placeEntries == null)
+			placeEntries = ImmutableMap.of(ItemRegistry.fiery_torch.getRegistryName(), fieryCeilingTorch);
+
+		return placeEntries;
 	}
 }

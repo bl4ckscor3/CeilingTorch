@@ -1,13 +1,15 @@
 package bl4ckscor3.mod.ceilingtorch.compat.ilikewood;
 
+import java.util.Map;
+
 import com.google.common.collect.ImmutableMap;
 
 import bl4ckscor3.mod.ceilingtorch.CeilingTorch;
 import bl4ckscor3.mod.ceilingtorch.ICeilingTorchCompat;
-import bl4ckscor3.mod.ceilingtorch.PlaceHandler;
 import net.minecraft.block.Block;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.event.RegistryEvent;
-import yamahari.ilikewood.objectholders.torch.WoodenTorchItems;
+import yamahari.ilikewood.objectholders.torch.WoodenTorchBlocks;
 import yamahari.ilikewood.util.WoodType;
 import yamahari.ilikewood.util.WoodType.WoodTypeProperties;
 import yamahari.ilikewood.util.WoodTypes;
@@ -21,12 +23,13 @@ public class ILikeWoodCompat implements ICeilingTorchCompat
 	public static final WoodType JUNGLE_TYPE = new WoodType("ilikewood_jungle", CeilingTorch.MODID, new ImmutableMap.Builder<WoodenObjectType,WoodTypeProperties>().put(WoodenObjectType.TORCH, WoodTypes.JUNGLE.getWoodTypeProperties(WoodenObjectType.TORCH)).build(), () -> (double)WoodTypes.JUNGLE.getEnchantingPowerBonus());
 	public static final WoodType ACACIA_TYPE = new WoodType("ilikewood_acacia", CeilingTorch.MODID, new ImmutableMap.Builder<WoodenObjectType,WoodTypeProperties>().put(WoodenObjectType.TORCH, WoodTypes.ACACIA.getWoodTypeProperties(WoodenObjectType.TORCH)).build(), () -> (double)WoodTypes.ACACIA.getEnchantingPowerBonus());
 	public static final WoodType DARK_OAK_TYPE = new WoodType("ilikewood_dark_oak", CeilingTorch.MODID, new ImmutableMap.Builder<WoodenObjectType,WoodTypeProperties>().put(WoodenObjectType.TORCH, WoodTypes.DARK_OAK.getWoodTypeProperties(WoodenObjectType.TORCH)).build(), () -> (double)WoodTypes.DARK_OAK.getEnchantingPowerBonus());
-	public static Block oakTorch = null;
-	public static Block spruceTorch = null;
-	public static Block birchTorch = null;
-	public static Block jungleTorch = null;
-	public static Block acaciaTorch = null;
-	public static Block darkOakTorch = null;
+	public static Block oakTorch;
+	public static Block spruceTorch;
+	public static Block birchTorch;
+	public static Block jungleTorch;
+	public static Block acaciaTorch;
+	public static Block darkOakTorch;
+	private Map<ResourceLocation,Block> placeEntries;
 
 	@Override
 	public void registerBlocks(RegistryEvent.Register<Block> event)
@@ -40,13 +43,19 @@ public class ILikeWoodCompat implements ICeilingTorchCompat
 	}
 
 	@Override
-	public void registerPlaceEntries()
+	public Map<ResourceLocation,Block> getPlaceEntries()
 	{
-		PlaceHandler.registerPlaceEntry(WoodenTorchItems.OAK.getRegistryName(), oakTorch);
-		PlaceHandler.registerPlaceEntry(WoodenTorchItems.SPRUCE.getRegistryName(), spruceTorch);
-		PlaceHandler.registerPlaceEntry(WoodenTorchItems.BIRCH.getRegistryName(), birchTorch);
-		PlaceHandler.registerPlaceEntry(WoodenTorchItems.JUNGLE.getRegistryName(), jungleTorch);
-		PlaceHandler.registerPlaceEntry(WoodenTorchItems.ACACIA.getRegistryName(), acaciaTorch);
-		PlaceHandler.registerPlaceEntry(WoodenTorchItems.DARK_OAK.getRegistryName(), darkOakTorch);
+		if(placeEntries == null)
+		{
+			placeEntries = ImmutableMap.<ResourceLocation,Block>builder()
+					.put(WoodenTorchBlocks.OAK.getRegistryName(), oakTorch)
+					.put(WoodenTorchBlocks.SPRUCE.getRegistryName(), spruceTorch)
+					.put(WoodenTorchBlocks.BIRCH.getRegistryName(), birchTorch)
+					.put(WoodenTorchBlocks.JUNGLE.getRegistryName(), jungleTorch)
+					.put(WoodenTorchBlocks.ACACIA.getRegistryName(), acaciaTorch)
+					.put(WoodenTorchBlocks.DARK_OAK.getRegistryName(), darkOakTorch).build();
+		}
+
+		return placeEntries;
 	}
 }

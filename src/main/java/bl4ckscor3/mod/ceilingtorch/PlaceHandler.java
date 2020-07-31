@@ -1,6 +1,6 @@
 package bl4ckscor3.mod.ceilingtorch;
 
-import java.util.HashMap;
+import java.util.Map;
 
 import bl4ckscor3.mod.ceilingtorch.compat.modernity.ModernityCompat;
 import net.minecraft.block.Block;
@@ -22,44 +22,51 @@ import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 @EventBusSubscriber(modid=CeilingTorch.MODID)
 public class PlaceHandler
 {
-	private static final HashMap<ResourceLocation,Block> PLACE_ENTRIES = new HashMap<>();
-
 	@SubscribeEvent
 	public static void onRightClickBlock(RightClickBlock event)
-	{
-		ItemStack held = event.getItemStack();
-		ResourceLocation rl = held.getItem().getRegistryName();
-
-		if(PLACE_ENTRIES.containsKey(rl))
-			checkTorch(event, held, PLACE_ENTRIES.get(rl));
-	}
-
-	private static void checkTorch(RightClickBlock event, ItemStack held, Block block)
 	{
 		BlockPos pos = event.getPos();
 		Direction face = event.getFace();
 		BlockPos placeAt = pos.offset(face);
 		World world = event.getWorld();
 
-		if(CeilingTorch.isModernityLoaded())
+		if(face == Direction.DOWN && Block.hasEnoughSolidSide(world, pos, Direction.DOWN))
 		{
-			ModernityCompat.handlePlacement(event, held, block, world, pos, placeAt, face);
-			return;
-		}
-		else if(face == Direction.DOWN && Block.hasEnoughSolidSide(world, pos, Direction.DOWN))
-		{
-			boolean air = world.isAirBlock(placeAt);
-			boolean water = world.getFluidState(placeAt).getFluid() == Fluids.WATER;
+			ItemStack held = event.getItemStack();
+			ResourceLocation rl = held.getItem().getRegistryName();
+			Map<String,ICeilingTorchCompat> compatList = CeilingTorch.getCompatList();
+			String modid = rl.getNamespace();
 
-			if(!air && !water)
-				return;
+			if(compatList.containsKey(modid))
+			{
+				Map<ResourceLocation,Block> placeEntries = compatList.get(modid).getPlaceEntries();
 
-			BlockState state = block.getDefaultState();
+				if(placeEntries.containsKey(rl))
+				{
+					Block block = placeEntries.get(rl);
 
-			if(block instanceof IWaterLoggable)
-				state = state.with(BlockStateProperties.WATERLOGGED, water);
+					if(CeilingTorch.isModernityLoaded())
+					{
+						ModernityCompat.handlePlacement(event, held, block, world, pos, placeAt, face);
+						return;
+					}
+					else
+					{
+						boolean air = world.isAirBlock(placeAt);
+						boolean water = world.getFluidState(placeAt).getFluid() == Fluids.WATER;
 
-			placeTorch(event, held, block, pos, placeAt, world, state);
+						if(!air && !water)
+							return;
+
+						BlockState state = block.getDefaultState();
+
+						if(block instanceof IWaterLoggable)
+							state = state.with(BlockStateProperties.WATERLOGGED, water);
+
+						placeTorch(event, held, block, pos, placeAt, world, state);
+					}
+				}
+			}
 		}
 	}
 
@@ -74,11 +81,5 @@ public class PlaceHandler
 
 		if(!event.getPlayer().isCreative())
 			held.shrink(1);
-	}
-
-	public static void registerPlaceEntry(ResourceLocation itemName, Block ceilingTorch)
-	{
-		if(!PLACE_ENTRIES.containsKey(itemName))
-			PLACE_ENTRIES.put(itemName, ceilingTorch);
 	}
 }

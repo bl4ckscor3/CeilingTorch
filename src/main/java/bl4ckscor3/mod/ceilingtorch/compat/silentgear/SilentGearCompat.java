@@ -1,8 +1,11 @@
 package bl4ckscor3.mod.ceilingtorch.compat.silentgear;
 
+import java.util.Map;
+
+import com.google.common.collect.ImmutableMap;
+
 import bl4ckscor3.mod.ceilingtorch.CeilingTorch;
 import bl4ckscor3.mod.ceilingtorch.ICeilingTorchCompat;
-import bl4ckscor3.mod.ceilingtorch.PlaceHandler;
 import bl4ckscor3.mod.ceilingtorch.compat.vanilla.CeilingTorchBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -20,6 +23,7 @@ import net.silentchaos512.gear.init.ModBlocks;
 public class SilentGearCompat implements ICeilingTorchCompat
 {
 	public static Block stoneCeilingTorch;
+	private Map<ResourceLocation,Block> placeEntries;
 
 	@Override
 	public void registerBlocks(Register<Block> event)
@@ -40,8 +44,11 @@ public class SilentGearCompat implements ICeilingTorchCompat
 	}
 
 	@Override
-	public void registerPlaceEntries()
+	public Map<ResourceLocation,Block> getPlaceEntries()
 	{
-		PlaceHandler.registerPlaceEntry(ModBlocks.STONE_TORCH.asItem().getRegistryName(), stoneCeilingTorch);
+		if(placeEntries == null)
+			placeEntries = ImmutableMap.of(ModBlocks.STONE_TORCH.asItem().getRegistryName(), stoneCeilingTorch);
+
+		return placeEntries;
 	}
 }

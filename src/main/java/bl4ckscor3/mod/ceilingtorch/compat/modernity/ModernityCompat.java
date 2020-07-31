@@ -1,5 +1,9 @@
 package bl4ckscor3.mod.ceilingtorch.compat.modernity;
 
+import java.util.Map;
+
+import com.google.common.collect.ImmutableMap;
+
 import bl4ckscor3.mod.ceilingtorch.CeilingTorch;
 import bl4ckscor3.mod.ceilingtorch.ICeilingTorchCompat;
 import bl4ckscor3.mod.ceilingtorch.PlaceHandler;
@@ -31,6 +35,7 @@ public class ModernityCompat implements ICeilingTorchCompat
 	public static Block extinguishedAnthraciteCeilingTorch;
 	public static Block anthraciteCeilingTorch;
 	public static Block luminositeCeilingTorch;
+	private Map<ResourceLocation,Block> placeEntries;
 
 	@Override
 	public void registerBlocks(Register<Block> event)
@@ -77,33 +82,36 @@ public class ModernityCompat implements ICeilingTorchCompat
 	}
 
 	@Override
-	public void registerPlaceEntries()
+	public Map<ResourceLocation, Block> getPlaceEntries()
 	{
-		PlaceHandler.registerPlaceEntry(MDBuildingBlocks.EXTINGUISHED_ANTHRACITE_TORCH.getRegistryName(), extinguishedAnthraciteCeilingTorch);
-		PlaceHandler.registerPlaceEntry(MDBuildingBlocks.ANTHRACITE_TORCH.getRegistryName(), anthraciteCeilingTorch);
-		PlaceHandler.registerPlaceEntry(MDBuildingBlocks.LUMINOSITE_TORCH.getRegistryName(), luminositeCeilingTorch);
+		if(placeEntries == null)
+		{
+			placeEntries = ImmutableMap.of(
+					MDBuildingBlocks.EXTINGUISHED_ANTHRACITE_TORCH.getRegistryName(), extinguishedAnthraciteCeilingTorch,
+					MDBuildingBlocks.ANTHRACITE_TORCH.getRegistryName(), anthraciteCeilingTorch,
+					MDBuildingBlocks.LUMINOSITE_TORCH.getRegistryName(), luminositeCeilingTorch);
+		}
+
+		return placeEntries;
 	}
 
 	public static void handlePlacement(RightClickBlock event, ItemStack held, Block block, World world, BlockPos pos, BlockPos placeAt, Direction face)
 	{
-		if(face == Direction.DOWN && Block.hasEnoughSolidSide(world, pos, Direction.DOWN))
-		{
-			IFluidState fluidState = world.getFluidState(placeAt);
-			boolean air = world.isAirBlock(placeAt);
-			WaterlogType waterlogType = WaterlogType.getType(fluidState);
-			boolean water = waterlogType != WaterlogType.NONE;
+		IFluidState fluidState = world.getFluidState(placeAt);
+		boolean air = world.isAirBlock(placeAt);
+		WaterlogType waterlogType = WaterlogType.getType(fluidState);
+		boolean water = waterlogType != WaterlogType.NONE;
 
-			if(!air && !water)
-				return;
+		if(!air && !water)
+			return;
 
-			BlockState state = block.getDefaultState();
+		BlockState state = block.getDefaultState();
 
-			if(block instanceof WaterloggedBlock) //modernity waterlogged
-				state = state.with(MDBlockStateProperties.WATERLOGGED, waterlogType);
-			else if(block instanceof IWaterLoggable) //vanilla waterlogged
-				state = state.with(BlockStateProperties.WATERLOGGED, water);
+		if(block instanceof WaterloggedBlock) //modernity waterlogged
+			state = state.with(MDBlockStateProperties.WATERLOGGED, waterlogType);
+		else if(block instanceof IWaterLoggable) //vanilla waterlogged
+			state = state.with(BlockStateProperties.WATERLOGGED, water);
 
-			PlaceHandler.placeTorch(event, held, block, pos, placeAt, world, state);
-		}
+		PlaceHandler.placeTorch(event, held, block, pos, placeAt, world, state);
 	}
 }
