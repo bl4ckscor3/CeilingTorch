@@ -52,7 +52,6 @@ minecraft {
 
 dependencies {
     minecraft 'net.minecraftforge:forge:1.16.1-32.0.24'
-    //implementation fg.deobf("curse.maven:i-like-wood:2881662")
     //implementation fg.deobf("curse.maven:torchmaster:2873677")
     //implementation fg.deobf("curse.maven:silent-lib:2873131")
     //implementation fg.deobf("curse.maven:silent-gear:2879630")

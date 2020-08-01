@@ -25,9 +25,6 @@ public class CeilingTorch
 	{
 		compatList.add(VanillaCompat::new);
 
-		//		if(ModList.get().isLoaded("ilikewood"))
-		//			compatList.add(ILikeWoodCompat::new);
-		//
 		//		if(ModList.get().isLoaded("bonetorch"))
 		//			compatList.add(BoneTorchCompat::new);
 		//
