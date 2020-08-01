@@ -26,23 +26,23 @@ public class VanillaCompat implements ICeilingTorchCompat
 		event.getRegistry().register(new CeilingTorchBlock(Block.Properties.create(Material.MISCELLANEOUS)
 				.doesNotBlockMovement()
 				.hardnessAndResistance(0.0F)
-				.func_235838_a_(state -> 14)
+				.setLightLevel(state -> 14)
 				.sound(SoundType.WOOD)
 				.lootFrom(Blocks.TORCH),
 				ParticleTypes.FLAME).setRegistryName(new ResourceLocation(CeilingTorch.MODID, "torch")));
 		event.getRegistry().register(new RedstoneCeilingTorchBlock(Block.Properties.create(Material.MISCELLANEOUS)
 				.doesNotBlockMovement()
 				.hardnessAndResistance(0.0F)
-				.func_235838_a_(state -> 7)
+				.setLightLevel(state -> 7)
 				.sound(SoundType.WOOD)
 				.lootFrom(Blocks.REDSTONE_TORCH)).setRegistryName(new ResourceLocation(CeilingTorch.MODID, "redstone_torch")));
 		event.getRegistry().register(new CeilingTorchBlock(Block.Properties.create(Material.MISCELLANEOUS)
 				.doesNotBlockMovement()
 				.hardnessAndResistance(0.0F)
-				.func_235838_a_(state -> 10)
+				.setLightLevel(state -> 10)
 				.sound(SoundType.WOOD)
-				.lootFrom(Blocks.field_235339_cQ_),
-				ParticleTypes.field_239811_B_).setRegistryName(new ResourceLocation(CeilingTorch.MODID, "soul_torch")));
+				.lootFrom(Blocks.SOUL_TORCH),
+				ParticleTypes.SOUL_FIRE_FLAME).setRegistryName(new ResourceLocation(CeilingTorch.MODID, "soul_torch")));
 	}
 
 	@Override
@@ -50,6 +50,6 @@ public class VanillaCompat implements ICeilingTorchCompat
 	{
 		PlaceHandler.registerPlaceEntry(Items.TORCH.getRegistryName(), TORCH);
 		PlaceHandler.registerPlaceEntry(Items.REDSTONE_TORCH.getRegistryName(), REDSTONE_TORCH);
-		PlaceHandler.registerPlaceEntry(Items.field_234737_dp_.getRegistryName(), SOUL_TORCH);
+		PlaceHandler.registerPlaceEntry(Items.SOUL_TORCH.getRegistryName(), SOUL_TORCH);
 	}
 }
