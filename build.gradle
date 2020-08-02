@@ -56,7 +56,7 @@ dependencies {
 	implementation fg.deobf("curse.maven:sbm-bone-torch:3014325")
     //implementation fg.deobf("curse.maven:silent-gear:2879630")
     //implementation fg.deobf("curse.maven:silent-lib:2873131") //silent gear dependency
-    //implementation fg.deobf("curse.maven:torchmaster:2873677")
+    implementation fg.deobf("curse.maven:torchmaster:3017969")
 }
 
 jar {
