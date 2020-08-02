@@ -34,7 +34,6 @@ import net.minecraftforge.fml.common.Mod.EventBusSubscriber.Bus;
 public class CeilingTorch
 {
 	public static final String MODID = "ceilingtorch";
-	public static final String NAME = "Ceiling Torch";
 	private static final Map<String,ICeilingTorchCompat> COMPAT_LIST = new HashMap<>();
 	private static Map<String,Supplier<ICeilingTorchCompat>> preliminaryCompatList = new HashMap<>();
 
@@ -64,14 +63,14 @@ public class CeilingTorch
 		if(ModList.get().isLoaded("inspirations"))
 			preliminaryCompatList.put("inspirations", InspirationsCompat::new);
 
-		if(ModList.get().isLoaded("nethercraft"))
-			preliminaryCompatList.put("nethercraft", NethercraftCompat::new);
-
 		if(ModList.get().isLoaded("magical_torches"))
 			preliminaryCompatList.put("magical_torches", MagicalTorchesCompat::new);
 
 		if(ModList.get().isLoaded("midnight"))
 			preliminaryCompatList.put("midnight", MidnightCompat::new);
+
+		if(ModList.get().isLoaded("nethercraft"))
+			preliminaryCompatList.put("nethercraft", NethercraftCompat::new);
 
 		if(ModList.get().isLoaded("silentgear"))
 			preliminaryCompatList.put("silentgear", SilentGearCompat::new);
