@@ -37,7 +37,6 @@ import net.minecraftforge.fml.common.Mod.EventBusSubscriber.Bus;
 public class CeilingTorch
 {
 	public static final String MODID = "ceilingtorch";
-	public static final String NAME = "Ceiling Torch";
 	private static final Map<String,ICeilingTorchCompat> COMPAT_LIST = new HashMap<>();
 	private static Map<String,Supplier<ICeilingTorchCompat>> preliminaryCompatList = new HashMap<>();
 	private static boolean modernityLoaded;
