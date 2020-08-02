@@ -5,6 +5,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.function.Supplier;
 
+import bl4ckscor3.mod.ceilingtorch.compat.bonetorch.BoneTorchCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.vanilla.VanillaCompat;
 import net.minecraft.block.Block;
 import net.minecraftforge.event.RegistryEvent;
@@ -27,9 +28,9 @@ public class CeilingTorch
 	{
 		preliminaryCompatList.put("minecraft", VanillaCompat::new);
 
-		//		if(ModList.get().isLoaded("bonetorch"))
-		//			preliminaryCompatList.put("bonetorch", BoneTorchCompat::new);
-		//
+		if(ModList.get().isLoaded("bonetorch"))
+			preliminaryCompatList.put("bonetorch", BoneTorchCompat::new);
+
 		//		if(ModList.get().isLoaded("torchmaster"))
 		//			preliminaryCompatList.put("torchmaster", TorchmasterCompat::new);
 		//
