@@ -2,7 +2,6 @@ package bl4ckscor3.mod.ceilingtorch.compat.vanilla;
 
 import java.util.Random;
 
-import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.RedstoneTorchBlock;
@@ -23,8 +22,6 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 
 public class RedstoneCeilingTorchBlock extends RedstoneTorchBlock
 {
-	protected static final VoxelShape CEILING_SHAPE = Block.makeCuboidShape(6.0D, 6.0D, 6.0D, 10.0D, 16.0D, 10.0D);
-
 	protected RedstoneCeilingTorchBlock(Properties properties)
 	{
 		super(properties);
@@ -33,7 +30,7 @@ public class RedstoneCeilingTorchBlock extends RedstoneTorchBlock
 	@Override
 	public VoxelShape getShape(BlockState state, IBlockReader world, BlockPos pos, ISelectionContext context)
 	{
-		return CEILING_SHAPE;
+		return CeilingTorchBlock.CEILING_SHAPE;
 	}
 
 	@Override

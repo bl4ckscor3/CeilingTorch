@@ -38,7 +38,7 @@ public class MagicalTorchesCompat implements ICeilingTorchCompat
 		event.getRegistry().register(mediumCeilingTorch = new SpawnBlockingCeilingTorchBlock(getProperties(), MediumTorch.registry_name, MediumTorchSpawnBlocker::new).setRegistryName(new ResourceLocation(CeilingTorch.MODID, "magical_torches_medium_torch")));
 		event.getRegistry().register(grandCeilingTorch = new SpawnBlockingCeilingTorchBlock(getProperties(), GrandTorch.registry_name, GrandTorchSpawnBlocker::new).setRegistryName(new ResourceLocation(CeilingTorch.MODID, "magical_torches_grand_torch")));
 		event.getRegistry().register(megaCeilingTorch = new SpawnBlockingCeilingTorchBlock(getProperties(), MegaTorch.registry_name, MegaTorchSpawnBlocker::new).setRegistryName(new ResourceLocation(CeilingTorch.MODID, "magical_torches_mega_torch")));
-		event.getRegistry().register(soundMufflingCeilingTorch = new SoundMufflingCeilingTorchBlock(getProperties()).setRegistryName(new ResourceLocation(CeilingTorch.MODID, "magical_torches_sound_muffling_torch")));
+		event.getRegistry().register(soundMufflingCeilingTorch = new SoundMufflingCeilingTorchBlock(Block.Properties.create(Material.WOOD).hardnessAndResistance(3.0F).sound(SoundType.WOOD).doesNotBlockMovement()).setRegistryName(new ResourceLocation(CeilingTorch.MODID, "magical_torches_sound_muffling_torch")));
 		event.getRegistry().register(chickenEggCeilingTorch = new ChickenEggCeilingTorchBlock(getProperties()).setRegistryName(new ResourceLocation(CeilingTorch.MODID, "magical_torches_chicken_egg_torch")));
 	}
 
