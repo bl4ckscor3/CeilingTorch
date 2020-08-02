@@ -1,8 +1,11 @@
 package bl4ckscor3.mod.ceilingtorch.compat.vanilla;
 
+import java.util.Map;
+
+import com.google.common.collect.ImmutableMap;
+
 import bl4ckscor3.mod.ceilingtorch.CeilingTorch;
 import bl4ckscor3.mod.ceilingtorch.ICeilingTorchCompat;
-import bl4ckscor3.mod.ceilingtorch.PlaceHandler;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.SoundType;
@@ -19,6 +22,7 @@ public class VanillaCompat implements ICeilingTorchCompat
 	public static final Block TORCH = null;
 	public static final Block REDSTONE_TORCH = null;
 	public static final Block SOUL_TORCH = null;
+	private Map<ResourceLocation,Block> placeEntries;
 
 	@Override
 	public void registerBlocks(RegistryEvent.Register<Block> event)
@@ -46,10 +50,11 @@ public class VanillaCompat implements ICeilingTorchCompat
 	}
 
 	@Override
-	public void registerPlaceEntries()
+	public Map<ResourceLocation,Block> getPlaceEntries()
 	{
-		PlaceHandler.registerPlaceEntry(Items.TORCH.getRegistryName(), TORCH);
-		PlaceHandler.registerPlaceEntry(Items.REDSTONE_TORCH.getRegistryName(), REDSTONE_TORCH);
-		PlaceHandler.registerPlaceEntry(Items.SOUL_TORCH.getRegistryName(), SOUL_TORCH);
+		if(placeEntries == null)
+			placeEntries = ImmutableMap.of(Items.TORCH.getRegistryName(), TORCH, Items.REDSTONE_TORCH.getRegistryName(), REDSTONE_TORCH, Items.SOUL_TORCH.getRegistryName(), SOUL_TORCH);
+
+		return placeEntries;
 	}
 }
