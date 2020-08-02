@@ -5,6 +5,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.function.Supplier;
 
+import bl4ckscor3.mod.ceilingtorch.compat.bambooblocks.BambooBlocksCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.bonetorch.BoneTorchCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.silentgear.SilentGearCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.torchmaster.TorchmasterCompat;
@@ -29,6 +30,10 @@ public class CeilingTorch
 	public CeilingTorch()
 	{
 		preliminaryCompatList.put("minecraft", VanillaCompat::new);
+
+		//cannot use addCompat because then the compat class will be classloaded which may crash if the mod is not present
+		if(ModList.get().isLoaded("bamboo_blocks"))
+			preliminaryCompatList.put("bamboo_blocks", BambooBlocksCompat::new);
 
 		if(ModList.get().isLoaded("bonetorch"))
 			preliminaryCompatList.put("bonetorch", BoneTorchCompat::new);
