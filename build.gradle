@@ -54,8 +54,8 @@ minecraft {
 dependencies {
     minecraft 'net.minecraftforge:forge:1.16.1-32.0.98'
 	implementation fg.deobf("curse.maven:sbm-bone-torch:3014325")
-    //implementation fg.deobf("curse.maven:silent-gear:2879630")
-    //implementation fg.deobf("curse.maven:silent-lib:2873131") //silent gear dependency
+    implementation fg.deobf("curse.maven:silent-gear:3019551")
+    implementation fg.deobf("curse.maven:silent-lib:3009162") //silent gear dependency
     implementation fg.deobf("curse.maven:torchmaster:3017969")
 }
 
