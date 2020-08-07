@@ -12,7 +12,7 @@ buildscript {
 apply plugin: 'net.minecraftforge.gradle'
 apply plugin: 'eclipse'
 
-version = '1.14.4-v1.6'
+version = '1.14.4-v1.7'
 group = 'bl4ckscor3.mod.ceilingtorch'
 archivesBaseName = 'ceilingtorch'
 
@@ -81,9 +81,9 @@ jar {
     manifest {
         attributes(["Specification-Title": "Ceiling Torch",
                     "Specification-Vendor": "bl4ckscor3",
-                    "Specification-Version": "v1.6",
+                    "Specification-Version": "v1.7",
                     "Implementation-Title": "Ceiling Torch",
-                    "Implementation-Version": "v1.6",
+                    "Implementation-Version": "v1.7",
                     "Implementation-Vendor" :"bl4ckscor3",
                     "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")],)
     }
