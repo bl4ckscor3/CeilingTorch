@@ -42,20 +42,28 @@ public class PlaceHandler
 					Block block = placeEntries.get(rl);
 					BlockState state = block.getDefaultState();
 
-					if(block.isValidPosition(state, world, placeAt))
-					{
-						SoundType soundType;
-
-						world.setBlockState(placeAt, state);
-						soundType = block.getSoundType(state, world, pos, event.getPlayer());
-						world.playSound(null, pos.getX(), pos.getY(), pos.getZ(), soundType.getPlaceSound(), SoundCategory.BLOCKS, soundType.getVolume(), soundType.getPitch() - 0.2F);
-						event.getPlayer().swingArm(event.getHand());
-
-						if(!event.getPlayer().isCreative())
-							held.shrink(1);
-					}
+					placeTorch(event, held, block, pos, placeAt, world, state);
 				}
 			}
 		}
+	}
+
+	public static boolean placeTorch(RightClickBlock event, ItemStack held, Block block, BlockPos pos, BlockPos placeAt, World world, BlockState state)
+	{
+		if(block.isValidPosition(state, world, placeAt))
+		{
+			SoundType soundType;
+
+			world.setBlockState(placeAt, state);
+			soundType = block.getSoundType(state, world, pos, event.getPlayer());
+			world.playSound(null, pos.getX(), pos.getY(), pos.getZ(), soundType.getPlaceSound(), SoundCategory.BLOCKS, soundType.getVolume(), soundType.getPitch() - 0.2F);
+			event.getPlayer().swingArm(event.getHand());
+
+			if(!event.getPlayer().isCreative())
+				held.shrink(1);
+
+			return true;
+		}
+		else return false;
 	}
 }
