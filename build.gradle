@@ -66,11 +66,12 @@ dependencies {
 	implementation fg.deobf("curse.maven:sbm-bone-torch:2737885")
 	implementation fg.deobf("curse.maven:upgrade-aquatic:2856605")
 	implementation fg.deobf("curse.maven:secretroomsmod:2819661")
-	implementation fg.deobf("curse.maven:silent-gear:2849573") //silent gear dependency
+	implementation fg.deobf("curse.maven:silent-gear:2849573") //silent gear and torch bandolier dependency
 	implementation fg.deobf("curse.maven:silent-lib:2783899")
 	implementation fg.deobf("curse.maven:the-midnight:2927220")
 	implementation fg.deobf("curse.maven:the-modernity:2930674")
 	implementation fg.deobf("curse.maven:tofucraftreload:2867151")
+	implementation fg.deobf("curse.maven:torch-bandolier:2816937")
 	implementation fg.deobf("curse.maven:torcherino:2860103")
 	implementation fg.deobf("curse.maven:torchmaster:2843872")
 	implementation fg.deobf("curse.maven:wildnature:3010676")

@@ -70,7 +70,7 @@ public class PlaceHandler
 		}
 	}
 
-	public static void placeTorch(RightClickBlock event, ItemStack held, Block block, BlockPos pos, BlockPos placeAt, World world, BlockState state)
+	public static boolean placeTorch(RightClickBlock event, ItemStack held, Block block, BlockPos pos, BlockPos placeAt, World world, BlockState state)
 	{
 		if(block.isValidPosition(state, world, placeAt))
 		{
@@ -83,6 +83,9 @@ public class PlaceHandler
 
 			if(!event.getPlayer().isCreative())
 				held.shrink(1);
+
+			return true;
 		}
+		else return false;
 	}
 }
