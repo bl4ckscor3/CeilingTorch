@@ -35,12 +35,13 @@ public class PlaceHandler
 
 			if(compatList.containsKey(modid))
 			{
-				Map<ResourceLocation,Block> placeEntries = compatList.get(modid).getPlaceEntries();
+				ICeilingTorchCompat compat = compatList.get(modid);
+				Map<ResourceLocation,Block> placeEntries = compat.getPlaceEntries();
 
 				if(placeEntries.containsKey(rl))
 				{
 					Block block = placeEntries.get(rl);
-					BlockState state = block.getDefaultState();
+					BlockState state = compat.getStateToPlace(held, block);
 
 					placeTorch(event, held, block, pos, placeAt, world, state);
 				}

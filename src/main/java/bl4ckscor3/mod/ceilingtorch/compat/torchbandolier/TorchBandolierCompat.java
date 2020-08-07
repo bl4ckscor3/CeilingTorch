@@ -50,13 +50,14 @@ public class TorchBandolierCompat implements ICeilingTorchCompat
 
 			if(compatList.containsKey(modid))
 			{
-				Map<ResourceLocation,Block> placeEntries = compatList.get(modid).getPlaceEntries();
+				ICeilingTorchCompat compat = compatList.get(modid);
+				Map<ResourceLocation,Block> placeEntries = compat.getPlaceEntries();
 
 				if(placeEntries.containsKey(rl))
 				{
 					Block block = placeEntries.get(rl);
 					BlockPos pos = event.getPos();
-					BlockState state = block.getDefaultState();
+					BlockState state = compat.getStateToPlace(stack, block);
 
 					if(PlaceHandler.placeTorch(event, ItemStack.EMPTY, block, pos, pos.offset(event.getFace()), event.getWorld(), state))
 					{
