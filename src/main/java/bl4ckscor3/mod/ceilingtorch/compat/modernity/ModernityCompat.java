@@ -95,7 +95,7 @@ public class ModernityCompat implements ICeilingTorchCompat
 		return placeEntries;
 	}
 
-	public static boolean handlePlacement(RightClickBlock event, ItemStack held, Block block, World world, BlockPos pos, BlockPos placeAt, Direction face)
+	public static boolean handlePlacement(ICeilingTorchCompat compat, RightClickBlock event, ItemStack held, Block block, World world, BlockPos pos, BlockPos placeAt, Direction face)
 	{
 		IFluidState fluidState = world.getFluidState(placeAt);
 		boolean air = world.isAirBlock(placeAt);
@@ -105,7 +105,7 @@ public class ModernityCompat implements ICeilingTorchCompat
 		if(!air && !water)
 			return false;
 
-		BlockState state = block.getDefaultState();
+		BlockState state = compat.getStateToPlace(held, block);
 
 		if(block instanceof WaterloggedBlock) //modernity waterlogged
 			state = state.with(MDBlockStateProperties.WATERLOGGED, waterlogType);

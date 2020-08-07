@@ -39,7 +39,8 @@ public class PlaceHandler
 
 			if(compatList.containsKey(modid))
 			{
-				Map<ResourceLocation,Block> placeEntries = compatList.get(modid).getPlaceEntries();
+				ICeilingTorchCompat compat = compatList.get(modid);
+				Map<ResourceLocation,Block> placeEntries = compat.getPlaceEntries();
 
 				if(placeEntries.containsKey(rl))
 				{
@@ -47,7 +48,7 @@ public class PlaceHandler
 
 					if(CeilingTorch.isModernityLoaded())
 					{
-						ModernityCompat.handlePlacement(event, held, block, world, pos, placeAt, face);
+						ModernityCompat.handlePlacement(compat, event, held, block, world, pos, placeAt, face);
 						return;
 					}
 					else
@@ -58,7 +59,7 @@ public class PlaceHandler
 						if(!air && !water)
 							return;
 
-						BlockState state = block.getDefaultState();
+						BlockState state = compat.getStateToPlace(held, block);
 
 						if(block instanceof IWaterLoggable)
 							state = state.with(BlockStateProperties.WATERLOGGED, water);

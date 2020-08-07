@@ -55,7 +55,8 @@ public class TorchBandolierCompat implements ICeilingTorchCompat
 
 			if(compatList.containsKey(modid))
 			{
-				Map<ResourceLocation,Block> placeEntries = compatList.get(modid).getPlaceEntries();
+				ICeilingTorchCompat compat = compatList.get(modid);
+				Map<ResourceLocation,Block> placeEntries = compat.getPlaceEntries();
 
 				if(placeEntries.containsKey(rl))
 				{
@@ -67,7 +68,7 @@ public class TorchBandolierCompat implements ICeilingTorchCompat
 					boolean placed;
 
 					if(CeilingTorch.isModernityLoaded())
-						placed = ModernityCompat.handlePlacement(event, ItemStack.EMPTY, block, world, pos, placeAt, dir);
+						placed = ModernityCompat.handlePlacement(compat, event, ItemStack.EMPTY, block, world, pos, placeAt, dir);
 					else
 					{
 						boolean air = world.isAirBlock(placeAt);
@@ -76,7 +77,7 @@ public class TorchBandolierCompat implements ICeilingTorchCompat
 						if(!air && !water)
 							return;
 
-						BlockState state = block.getDefaultState();
+						BlockState state = compat.getStateToPlace(new ItemStack(block), block);
 
 						if(block instanceof IWaterLoggable)
 							state = state.with(BlockStateProperties.WATERLOGGED, water);

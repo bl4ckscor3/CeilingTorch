@@ -3,6 +3,8 @@ package bl4ckscor3.mod.ceilingtorch;
 import java.util.Map;
 
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockState;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.event.RegistryEvent;
 
@@ -20,4 +22,14 @@ public interface ICeilingTorchCompat
 	 * @return A map with the key being the ResourceLocation of the item that the player rightclicked with, and the ceiling torch block to place for that item
 	 */
 	public Map<ResourceLocation,Block> getPlaceEntries();
+
+	/**
+	 * Used to find out which blockstate to place based on the ItemStack that was rightclicked with
+	 * @stack The stack that was rightclicked to place the ceiling torch
+	 * @block The block to place
+	 */
+	public default BlockState getStateToPlace(ItemStack stack, Block block)
+	{
+		return block.getDefaultState();
+	}
 }
