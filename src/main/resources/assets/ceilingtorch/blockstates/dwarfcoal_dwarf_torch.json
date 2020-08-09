@@ -1,0 +1,5 @@
+{
+    "variants": {
+        "": { "model": "dwarfcoal:block/dwarf_torch", "x": 180 }
+    }
+}

@@ -12,7 +12,7 @@ buildscript {
 apply plugin: 'net.minecraftforge.gradle'
 apply plugin: 'eclipse'
 
-version = '1.14.4-v1.7'
+version = '1.14.4-v1.8'
 group = 'bl4ckscor3.mod.ceilingtorch'
 archivesBaseName = 'ceilingtorch'
 
@@ -56,6 +56,7 @@ dependencies {
     minecraft 'net.minecraftforge:forge:1.14.4-28.2.23'
 	implementation fg.deobf("curse.maven:bamboo-blocks:2879987")
 	implementation fg.deobf("curse.maven:druidcraft:2826386")
+	implementation fg.deobf("curse.maven:dwarf-coal:2815416")
 	implementation fg.deobf("curse.maven:essential-features:2826880")
 	implementation fg.deobf("curse.maven:gaia-dimension:2959803")
 	implementation fg.deobf("curse.maven:i-like-wood:2785492")
@@ -81,9 +82,9 @@ jar {
     manifest {
         attributes(["Specification-Title": "Ceiling Torch",
                     "Specification-Vendor": "bl4ckscor3",
-                    "Specification-Version": "v1.7",
+                    "Specification-Version": "v1.8",
                     "Implementation-Title": "Ceiling Torch",
-                    "Implementation-Version": "v1.7",
+                    "Implementation-Version": "v1.8",
                     "Implementation-Vendor" :"bl4ckscor3",
                     "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")],)
     }
