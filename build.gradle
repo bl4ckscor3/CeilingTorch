@@ -16,7 +16,7 @@ plugins {
 apply plugin: 'net.minecraftforge.gradle'
 apply plugin: 'eclipse'
 
-version = '1.16.1-v1.8'
+version = '1.16.2-v1.8'
 group = 'bl4ckscor3.mod.ceilingtorch'
 archivesBaseName = 'ceilingtorch'
 
@@ -52,7 +52,7 @@ minecraft {
 }
 
 dependencies {
-    minecraft 'net.minecraftforge:forge:1.16.1-32.0.98'
+    minecraft 'net.minecraftforge:forge:1.16.2-33.0.0'
     implementation fg.deobf("curse.maven:abnormals-core:3017821") //bamboo blocks dependency
     implementation fg.deobf("curse.maven:bamboo-blocks:2997258")
     implementation fg.deobf("curse.maven:dwarf-coal:3007067")
