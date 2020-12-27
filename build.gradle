@@ -56,7 +56,7 @@ repositories {
 dependencies {
     minecraft 'net.minecraftforge:forge:1.16.4-35.1.15'
     implementation fg.deobf("curse.maven:abnormals-core-3147409:3147409") //bamboo blocks dependency
-    implementation fg.deobf("curse.maven:bamboo-blocks:2997258")
+    implementation fg.deobf("curse.maven:bamboo-blocks-3121518:3121518")
     implementation fg.deobf("curse.maven:dwarf-coal-3007067:3007067")
     implementation fg.deobf("curse.maven:magical-torches-3101353:3101353")
 	implementation fg.deobf("curse.maven:sbm-bone-torch-3100862:3100862")

@@ -2,7 +2,7 @@ package bl4ckscor3.mod.ceilingtorch.compat.bambooblocks;
 
 import java.util.Random;
 
-import com.pugz.bambooblocks.core.BambooBlocksRegistry;
+import com.minecraftabnormals.bamboo_blocks.core.BambooBlocksRegistry;
 
 import bl4ckscor3.mod.ceilingtorch.compat.vanilla.CeilingTorchBlock;
 import net.minecraft.block.Block;

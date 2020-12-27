@@ -3,7 +3,7 @@ package bl4ckscor3.mod.ceilingtorch.compat.bambooblocks;
 import java.util.Map;
 
 import com.google.common.collect.ImmutableMap;
-import com.pugz.bambooblocks.core.BambooBlocksRegistry;
+import com.minecraftabnormals.bamboo_blocks.core.BambooBlocksRegistry;
 
 import bl4ckscor3.mod.ceilingtorch.CeilingTorch;
 import bl4ckscor3.mod.ceilingtorch.ICeilingTorchCompat;
