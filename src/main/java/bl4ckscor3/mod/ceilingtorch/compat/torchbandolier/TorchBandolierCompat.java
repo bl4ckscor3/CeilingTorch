@@ -65,7 +65,7 @@ public class TorchBandolierCompat implements ICeilingTorchCompat
 							TorchBandolierItem.setTorchCount(stack, --torchCount);
 
 						if(torchCount == 0  && player != null)
-							player.replaceItemInInventory(getSlotFor(stack, player.inventory), new ItemStack(ModItems.emptyTorchBandolier));
+							player.replaceItemInInventory(getSlotFor(stack, player.inventory), new ItemStack(ModItems.EMPTY_TORCH_BANDOLIER.get()));
 
 						event.setCancellationResult(ActionResultType.SUCCESS);
 						return;
