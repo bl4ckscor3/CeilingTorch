@@ -1,0 +1,5 @@
+{
+    "variants": {
+        "": { "model": "lotr:block/blue_mallorn_torch", "x": 180 }
+    }
+}
