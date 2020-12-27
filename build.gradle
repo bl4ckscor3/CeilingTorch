@@ -12,7 +12,7 @@ buildscript {
 apply plugin: 'net.minecraftforge.gradle'
 apply plugin: 'eclipse'
 
-version = '1.15.2-v1.7'
+version = '1.15.2-v1.9'
 group = 'bl4ckscor3.mod.ceilingtorch'
 archivesBaseName = 'ceilingtorch'
 
@@ -67,6 +67,7 @@ dependencies {
     implementation fg.deobf("curse.maven:sbm-bone-torch-2882352:2882352")
     implementation fg.deobf("curse.maven:silent-gear-3138530:3138530")
     implementation fg.deobf("curse.maven:silent-lib-3003984:3003984") //silent gear and torch bandolier dependency
+    implementation fg.deobf("curse.maven:the-lord-of-the-rings-mod-renewed-3148539:3148539")
     implementation fg.deobf("curse.maven:the-midnight-3124960:3124960")
     implementation fg.deobf("curse.maven:tofucraftreload-3001699:3001699")
 	implementation fg.deobf("curse.maven:torch-bandolier-2909622:2909622")
@@ -79,9 +80,9 @@ jar {
     manifest {
         attributes(["Specification-Title": "Ceiling Torch",
                     "Specification-Vendor": "bl4ckscor3",
-                    "Specification-Version": "v1.7",
+                    "Specification-Version": "v1.9",
                     "Implementation-Title": "Ceiling Torch",
-                    "Implementation-Version": "v1.7",
+                    "Implementation-Version": "v1.9",
                     "Implementation-Vendor" :"bl4ckscor3",
                     "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")],)
     }
