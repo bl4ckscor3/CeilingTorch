@@ -13,7 +13,6 @@ import net.minecraft.block.BlockState;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.particles.ParticleTypes;
 import net.minecraft.state.properties.DoubleBlockHalf;
@@ -23,8 +22,6 @@ import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.IBlockReader;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent.RightClickBlock;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 
 public class LotrCompat implements ICeilingTorchCompat
 {
@@ -37,11 +34,6 @@ public class LotrCompat implements ICeilingTorchCompat
 	public static Block ceilingOrcTorch;
 	public static Block ceilingSilverMallonTorch;
 	private Map<ResourceLocation,Block> placeEntries;
-
-	public LotrCompat()
-	{
-		FMLJavaModLoadingContext.get().getModEventBus().register(this);
-	}
 
 	@Override
 	public void registerBlocks(RegistryEvent.Register<Block> event)
@@ -162,12 +154,6 @@ public class LotrCompat implements ICeilingTorchCompat
 				return new ItemStack(LOTRItems.SILVER_MALLORN_TORCH.get());
 			}
 		}.setRegistryName("lotr_silver_mallorn_torch"));
-	}
-
-	@SubscribeEvent
-	public void registerItems(RegistryEvent.Register<Item> event)
-	{
-		event.getRegistry().register(new CeilingOrcTorchItem(new Item.Properties()).setRegistryName(ceilingOrcTorch.getRegistryName()));
 	}
 
 	@Override
