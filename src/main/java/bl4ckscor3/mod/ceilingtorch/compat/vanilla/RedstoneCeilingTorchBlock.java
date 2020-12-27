@@ -73,7 +73,7 @@ public class RedstoneCeilingTorchBlock extends RedstoneTorchBlock
 			double y = pos.getY() + 0.7D + (rand.nextDouble() - 0.5D) * 0.2D;
 			double z = pos.getZ() + 0.5D + (rand.nextDouble() - 0.5D) * 0.2D;
 
-			world.addParticle(field_235607_e_, x, y - 0.25D, z, 0.0D, 0.0D, 0.0D);
+			world.addParticle(particleData, x, y - 0.25D, z, 0.0D, 0.0D, 0.0D);
 		}
 	}
 

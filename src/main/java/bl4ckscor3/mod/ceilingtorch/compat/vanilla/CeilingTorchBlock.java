@@ -60,7 +60,7 @@ public class CeilingTorchBlock extends TorchBlock
 		double offset = -0.25D;
 
 		world.addParticle(ParticleTypes.SMOKE, x, y + offset, z, 0.0D, 0.0D, 0.0D);
-		world.addParticle(field_235607_e_, x, y + offset, z, 0.0D, 0.0D, 0.0D);
+		world.addParticle(particleData, x, y + offset, z, 0.0D, 0.0D, 0.0D);
 	}
 
 	@Override
