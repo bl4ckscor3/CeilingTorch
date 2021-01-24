@@ -7,7 +7,7 @@ authors="bl4ckscor3"
 
 [[mods]] #mandatory
 modId="ceilingtorch" #mandatory
-version="v1.8.1" #mandatory
+version="${version}" #mandatory
 displayName="Ceiling Torch" #mandatory
 description='''Makes torches placeable on the ceiling.''' #mandatory
 
