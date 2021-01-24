@@ -12,9 +12,9 @@ buildscript {
 apply plugin: 'net.minecraftforge.gradle'
 apply plugin: 'eclipse'
 
-version = '1.15.2-v1.9'
+version = 'v1.9'
 group = 'bl4ckscor3.mod.ceilingtorch'
-archivesBaseName = 'ceilingtorch'
+archivesBaseName = '1.15.2-ceilingtorch'
 
 sourceCompatibility = targetCompatibility = compileJava.sourceCompatibility = compileJava.targetCompatibility = '1.8'
 
@@ -23,7 +23,7 @@ minecraft {
 	
     runs {
         client {
-            workingDirectory project.file('run')
+            workingDirectory project.file('run/client')
             property 'forge.logging.console.level', 'debug'
 
             mods {
@@ -34,7 +34,7 @@ minecraft {
         }
 
         server {
-            workingDirectory project.file('run')
+            workingDirectory project.file('run/server')
             property 'forge.logging.console.level', 'debug'
 
             mods {
@@ -54,36 +54,51 @@ repositories {
 
 dependencies {
     minecraft 'net.minecraftforge:forge:1.15.2-31.2.47'
-    implementation fg.deobf("curse.maven:abnormals-core-2980113:2980113") //bamboo blocks & upgrade aquatic dependency
-    implementation fg.deobf("curse.maven:bamboo-blocks-2988675:2988675")
-    implementation fg.deobf("curse.maven:druidcraft-2984999:2984999")
-    implementation fg.deobf("curse.maven:essential-features-2931088:2931088")
-    implementation fg.deobf("curse.maven:gaia-dimension-3102680:3102680")
-    implementation fg.deobf("curse.maven:i-like-wood-2918515:2918515")
-    implementation fg.deobf("curse.maven:inspirations-2954679:2954679")
-    implementation fg.deobf("curse.maven:magical-torches-3074297:3074297")
-    implementation fg.deobf("curse.maven:mantle-2942705:2942705") //inspirations dependency
-    implementation fg.deobf("curse.maven:nethercraft-classic-2973381:2973381")
-    implementation fg.deobf("curse.maven:sbm-bone-torch-2882352:2882352")
-    implementation fg.deobf("curse.maven:silent-gear-3138530:3138530")
-    implementation fg.deobf("curse.maven:silent-lib-3003984:3003984") //silent gear and torch bandolier dependency
-    implementation fg.deobf("curse.maven:the-lord-of-the-rings-mod-renewed-3148539:3148539")
-    implementation fg.deobf("curse.maven:the-midnight-3124960:3124960")
-    implementation fg.deobf("curse.maven:tofucraftreload-3001699:3001699")
-	implementation fg.deobf("curse.maven:torch-bandolier-2909622:2909622")
-    implementation fg.deobf("curse.maven:torcherino-2878390:2878390")
-    implementation fg.deobf("curse.maven:torchmaster-3017958:3017958")
-    implementation fg.deobf("curse.maven:upgrade-aquatic-2997601:2997601")
+    implementation fg.deobf("curse.maven:abnormals-core-348215:2980113") //bamboo blocks & upgrade aquatic dependency
+    implementation fg.deobf("curse.maven:bamboo-blocks-348215:2988675")
+    implementation fg.deobf("curse.maven:druidcraft-340991:2984999")
+    implementation fg.deobf("curse.maven:essential-features-287431:2931088")
+    implementation fg.deobf("curse.maven:gaia-dimension-302529:3102680")
+    implementation fg.deobf("curse.maven:i-like-wood-324164:2918515")
+    implementation fg.deobf("curse.maven:inspirations-284007:2954679")
+    implementation fg.deobf("curse.maven:magical-torches-389917:3074297")
+    implementation fg.deobf("curse.maven:mantle-74924:2942705") //inspirations dependency
+    implementation fg.deobf("curse.maven:nethercraft-classic-342087:2973381")
+    implementation fg.deobf("curse.maven:sbm-bone-torch-238695:2882352")
+    implementation fg.deobf("curse.maven:silent-gear-297039:3138530")
+    implementation fg.deobf("curse.maven:silent-lib-242998:3003984") //silent gear and torch bandolier dependency
+    implementation fg.deobf("curse.maven:the-lord-of-the-rings-mod-renewed-406893:3148539")
+    implementation fg.deobf("curse.maven:the-midnight-304881:3124960")
+    implementation fg.deobf("curse.maven:tofucraftreload-317469:3001699")
+	implementation fg.deobf("curse.maven:torch-bandolier-299337:2909622")
+    implementation fg.deobf("curse.maven:torcherino-236794:2878390")
+    implementation fg.deobf("curse.maven:torchmaster-254268:3017958")
+    implementation fg.deobf("curse.maven:upgrade-aquatic-326895:2997601")
 }
 
 jar {
     manifest {
         attributes(["Specification-Title": "Ceiling Torch",
                     "Specification-Vendor": "bl4ckscor3",
-                    "Specification-Version": "v1.9",
+                    "Specification-Version": "${version}",
                     "Implementation-Title": "Ceiling Torch",
-                    "Implementation-Version": "v1.9",
+                    "Implementation-Version": "${version}",
                     "Implementation-Vendor" :"bl4ckscor3",
                     "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")],)
     }
+}
+
+processResources {
+	//replace ${version} in mods.toml
+	inputs.property 'version', project.version
+
+	from(sourceSets.main.resources.srcDirs) {
+		include 'META-INF/mods.toml'
+
+		expand 'version': project.version
+	}
+
+	from(sourceSets.main.resources.srcDirs) {
+		exclude 'META-INF/mods.toml'
+	}
 }

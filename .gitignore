@@ -7,4 +7,5 @@
 /run
 /.settings
 *.launch
+/logs
 *.log
