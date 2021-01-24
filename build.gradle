@@ -14,7 +14,7 @@ apply plugin: 'eclipse'
 
 version = 'v1.9.1'
 group = 'bl4ckscor3.mod.ceilingtorch'
-archivesBaseName = '1.16.5-ceilingtorch'
+archivesBaseName = 'ceilingtorch-1.16.5'
 
 sourceCompatibility = targetCompatibility = compileJava.sourceCompatibility = compileJava.targetCompatibility = '1.8'
 
