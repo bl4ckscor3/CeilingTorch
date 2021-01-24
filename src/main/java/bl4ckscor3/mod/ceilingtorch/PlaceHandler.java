@@ -21,29 +21,32 @@ public class PlaceHandler
 	@SubscribeEvent
 	public static void onBlockEntityPlace(RightClickBlock event)
 	{
-		BlockPos pos = event.getPos();
-		Direction face = event.getFace();
-		BlockPos placeAt = pos.offset(face);
-		World world = event.getWorld();
-
-		if(face == Direction.DOWN && world.isAirBlock(placeAt))
+		if(!event.getPlayer().isSpectator()) //because apparently this is a thing
 		{
-			ItemStack held = event.getItemStack();
-			ResourceLocation rl = held.getItem().getRegistryName();
-			Map<String,ICeilingTorchCompat> compatList = CeilingTorch.getCompatList();
-			String modid = rl.getNamespace();
+			BlockPos pos = event.getPos();
+			Direction face = event.getFace();
+			BlockPos placeAt = pos.offset(face);
+			World world = event.getWorld();
 
-			if(compatList.containsKey(modid))
+			if(face == Direction.DOWN && world.isAirBlock(placeAt))
 			{
-				ICeilingTorchCompat compat = compatList.get(modid);
-				Map<ResourceLocation,Block> placeEntries = compat.getPlaceEntries();
+				ItemStack held = event.getItemStack();
+				ResourceLocation rl = held.getItem().getRegistryName();
+				Map<String,ICeilingTorchCompat> compatList = CeilingTorch.getCompatList();
+				String modid = rl.getNamespace();
 
-				if(placeEntries.containsKey(rl))
+				if(compatList.containsKey(modid))
 				{
-					Block block = placeEntries.get(rl);
-					BlockState state = compat.getStateToPlace(held, block);
+					ICeilingTorchCompat compat = compatList.get(modid);
+					Map<ResourceLocation,Block> placeEntries = compat.getPlaceEntries();
 
-					placeTorch(event, held, block, pos, placeAt, world, state);
+					if(placeEntries.containsKey(rl))
+					{
+						Block block = placeEntries.get(rl);
+						BlockState state = compat.getStateToPlace(held, block);
+
+						placeTorch(event, held, block, pos, placeAt, world, state);
+					}
 				}
 			}
 		}
