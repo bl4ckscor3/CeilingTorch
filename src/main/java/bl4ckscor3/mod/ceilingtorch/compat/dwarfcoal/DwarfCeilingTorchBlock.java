@@ -18,7 +18,6 @@ import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import sora.dwarfcoal.init.ModBlocks;
-import sora.dwarfcoal.init.ModItems;
 
 public class DwarfCeilingTorchBlock extends CeilingTorchBlock
 {
@@ -54,15 +53,15 @@ public class DwarfCeilingTorchBlock extends CeilingTorchBlock
 	public ResourceLocation getLootTable()
 	{
 		if(isStone)
-			return ModBlocks.STONE_DWARF_TORCH.getLootTable();
-		else return ModBlocks.DWARF_TORCH.getLootTable();
+			return ModBlocks.STONE_DWARF_TORCH.get().getLootTable();
+		else return ModBlocks.DWARF_TORCH.get().getLootTable();
 	}
 
 	@Override
 	public ItemStack getPickBlock(BlockState state, RayTraceResult target, IBlockReader world, BlockPos pos, PlayerEntity player)
 	{
 		if(isStone)
-			return new ItemStack(ModItems.STONE_DWARF_TORCH);
-		else return new ItemStack(ModItems.DWARF_TORCH);
+			return new ItemStack(ModBlocks.STONE_DWARF_TORCH.get());
+		else return new ItemStack(ModBlocks.DWARF_TORCH.get());
 	}
 }
