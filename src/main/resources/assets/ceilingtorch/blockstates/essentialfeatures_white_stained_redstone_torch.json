@@ -1,0 +1,6 @@
+{
+    "variants": {
+        "lit=true": { "model": "essentialfeatures:block/white_stained_redstone_torch_powered", "x": 180 },
+        "lit=false": { "model": "essentialfeatures:block/white_stained_redstone_torch", "x": 180 }
+    }
+}

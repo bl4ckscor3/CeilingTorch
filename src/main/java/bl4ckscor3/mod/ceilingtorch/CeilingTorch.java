@@ -9,6 +9,7 @@ import bl4ckscor3.mod.ceilingtorch.compat.bambooblocks.BambooBlocksCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.bonetorch.BoneTorchCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.druidcraft.DruidcraftCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.dwarfcoal.DwarfCoalCompat;
+import bl4ckscor3.mod.ceilingtorch.compat.essentialfeatues.EssentialFeaturesCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.magicaltorches.MagicalTorchesCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.silentgear.SilentGearCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.tofucraft.TofuCraftCompat;
@@ -47,6 +48,9 @@ public class CeilingTorch
 
 		if(ModList.get().isLoaded("dwarfcoal"))
 			preliminaryCompatList.put("dwarfcoal", DwarfCoalCompat::new);
+
+		if(ModList.get().isLoaded("essentialfeatures"))
+			preliminaryCompatList.put("essentialfeatures", EssentialFeaturesCompat::new);
 
 		if(ModList.get().isLoaded("magical_torches"))
 			preliminaryCompatList.put("magical_torches", MagicalTorchesCompat::new);
