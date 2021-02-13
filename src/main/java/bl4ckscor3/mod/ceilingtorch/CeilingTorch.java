@@ -7,6 +7,7 @@ import java.util.function.Supplier;
 
 import bl4ckscor3.mod.ceilingtorch.compat.bambooblocks.BambooBlocksCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.bonetorch.BoneTorchCompat;
+import bl4ckscor3.mod.ceilingtorch.compat.druidcraft.DruidcraftCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.dwarfcoal.DwarfCoalCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.magicaltorches.MagicalTorchesCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.silentgear.SilentGearCompat;
@@ -40,6 +41,9 @@ public class CeilingTorch
 
 		if(ModList.get().isLoaded("bonetorch"))
 			preliminaryCompatList.put("bonetorch", BoneTorchCompat::new);
+
+		if(ModList.get().isLoaded("druidcraft"))
+			preliminaryCompatList.put("druidcraft", DruidcraftCompat::new);
 
 		if(ModList.get().isLoaded("dwarfcoal"))
 			preliminaryCompatList.put("dwarfcoal", DwarfCoalCompat::new);
