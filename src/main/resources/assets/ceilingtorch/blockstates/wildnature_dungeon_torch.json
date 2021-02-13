@@ -1,0 +1,5 @@
+{
+    "variants": {
+        "": { "model": "wildnature:block/dungeon_torch", "x": 180 }
+    }
+}

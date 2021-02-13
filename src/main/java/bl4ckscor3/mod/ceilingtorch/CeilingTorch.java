@@ -23,6 +23,7 @@ import bl4ckscor3.mod.ceilingtorch.compat.torcherino.TorcherinoCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.torchmaster.TorchmasterCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.upgradeaquatic.UpgradeAquaticCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.vanilla.VanillaCompat;
+import bl4ckscor3.mod.ceilingtorch.compat.wildnature.WildNatureCompat;
 import net.minecraft.block.Block;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -94,6 +95,9 @@ public class CeilingTorch
 
 		if(ModList.get().isLoaded("upgrade_aquatic"))
 			preliminaryCompatList.put("upgrade_aquatic", UpgradeAquaticCompat::new);
+
+		if(ModList.get().isLoaded("wildnature"))
+			preliminaryCompatList.put("wildnature", WildNatureCompat::new);
 	}
 
 	@SubscribeEvent

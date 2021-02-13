@@ -1,0 +1,6 @@
+{
+    "variants": {
+        "lit=true":  { "model": "wildnature:block/dungeon_redstone_torch", "x": 180 },
+        "lit=false":  { "model": "wildnature:block/dungeon_redstone_torch_off", "x": 180 }
+    }
+}

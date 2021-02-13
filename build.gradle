@@ -12,7 +12,7 @@ buildscript {
 apply plugin: 'net.minecraftforge.gradle'
 apply plugin: 'eclipse'
 
-version = 'v1.9.1'
+version = 'v1.10'
 group = 'bl4ckscor3.mod.ceilingtorch'
 archivesBaseName = 'ceilingtorch-1.15.2'
 
@@ -74,6 +74,7 @@ dependencies {
     implementation fg.deobf("curse.maven:torcherino-236794:2878390")
     implementation fg.deobf("curse.maven:torchmaster-254268:3017958")
     implementation fg.deobf("curse.maven:upgrade-aquatic-326895:2997601")
+    implementation fg.deobf("curse.maven:wildnature-320975:3135095")
 }
 
 jar {
