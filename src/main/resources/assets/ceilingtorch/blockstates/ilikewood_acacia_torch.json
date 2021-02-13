@@ -1,0 +1,5 @@
+{
+    "variants": {
+        "": { "model": "ilikewood:block/torch/acacia", "x": 180 }
+    }
+}
