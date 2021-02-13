@@ -70,6 +70,7 @@ dependencies {
     implementation fg.deobf("curse.maven:silent-lib-242998:3103851") //silent gear and torch bandolier dependency
     implementation fg.deobf("curse.maven:tofucraftreload-317469:3149784")
     implementation fg.deobf("curse.maven:torch-bandolier-299337:3095440")
+    implementation fg.deobf("curse.maven:torcherino-236794:3146065")
     implementation fg.deobf("curse.maven:torchmaster-254268:3170451")
     //implementation fg.deobf("curse.maven:upgrade-aquatic-326895:3171113") //currently not working because mixins from dependencies don't get deobfed
 }
