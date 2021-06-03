@@ -1,0 +1,5 @@
+{
+    "variants": {
+        "": { "model": "nethercraft:block/charcoal_torch", "x": 180 }
+    }
+}
