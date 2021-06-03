@@ -4,8 +4,8 @@ import java.util.Map;
 
 import com.google.common.collect.ImmutableMap;
 
-import baguchan.mcmod.tofucraft.init.TofuBlocks;
-import baguchan.mcmod.tofucraft.init.TofuMaterial;
+import baguchan.tofucraft.registry.TofuBlocks;
+import baguchan.tofucraft.registry.TofuMaterial;
 import bl4ckscor3.mod.ceilingtorch.CeilingTorch;
 import bl4ckscor3.mod.ceilingtorch.ICeilingTorchCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.vanilla.CeilingTorchBlock;
