@@ -12,7 +12,7 @@ buildscript {
 apply plugin: 'net.minecraftforge.gradle'
 apply plugin: 'eclipse'
 
-version = 'v1.10'
+version = 'v1.11'
 group = 'bl4ckscor3.mod.ceilingtorch'
 archivesBaseName = 'ceilingtorch-1.15.2'
 
@@ -61,13 +61,13 @@ dependencies {
     implementation fg.deobf("curse.maven:gaia-dimension-302529:3102680")
     implementation fg.deobf("curse.maven:i-like-wood-324164:2918515")
     implementation fg.deobf("curse.maven:inspirations-284007:2954679")
-    implementation fg.deobf("curse.maven:magical-torches-389917:3074297")
+    implementation fg.deobf("curse.maven:magical-torches-389917:3302073")
     implementation fg.deobf("curse.maven:mantle-74924:2942705") //inspirations dependency
     implementation fg.deobf("curse.maven:nethercraft-classic-342087:2973381")
     implementation fg.deobf("curse.maven:sbm-bone-torch-238695:2882352")
     implementation fg.deobf("curse.maven:silent-gear-297039:3138530")
     implementation fg.deobf("curse.maven:silent-lib-242998:3003984") //silent gear and torch bandolier dependency
-    implementation fg.deobf("curse.maven:the-lord-of-the-rings-mod-renewed-406893:3148539")
+    implementation fg.deobf("curse.maven:the-lord-of-the-rings-mod-renewed-406893:3235974")
     implementation fg.deobf("curse.maven:the-midnight-304881:3124960")
     implementation fg.deobf("curse.maven:tofucraftreload-317469:3001699")
 	implementation fg.deobf("curse.maven:torch-bandolier-299337:2909622")

@@ -4,13 +4,13 @@ import java.util.Random;
 
 import bl4ckscor3.mod.ceilingtorch.compat.vanilla.CeilingTorchBlock;
 import de.geheimagentnr1.magical_torches.elements.blocks.ModBlocks;
-import de.geheimagentnr1.magical_torches.elements.blocks.torches.sound_muffling.SoundMufflingTorchTile;
+import de.geheimagentnr1.magical_torches.elements.capabilities.ModCapabilities;
+import de.geheimagentnr1.magical_torches.elements.capabilities.sound_muffling.sound_mufflers.SoundMufflingTorchSoundMuffler;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.material.PushReaction;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
-import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
@@ -51,15 +51,16 @@ public class SoundMufflingCeilingTorchBlock extends CeilingTorchBlock
 	}
 
 	@Override
-	public boolean hasTileEntity(BlockState state)
+	public void onBlockAdded(BlockState state, World world, BlockPos pos, BlockState oldState, boolean isMoving)
 	{
-		return true;
+		world.getCapability(ModCapabilities.SOUND_MUFFLING).ifPresent(capability -> capability.addSoundMuffler(world.getDimension().getType(), new SoundMufflingTorchSoundMuffler(pos)));
 	}
 
 	@Override
-	public TileEntity createTileEntity(BlockState state, IBlockReader world)
+	public void onReplaced(BlockState state, World world, BlockPos pos, BlockState newState, boolean isMoving)
 	{
-		return new SoundMufflingTorchTile();
+		world.getCapability(ModCapabilities.SOUND_MUFFLING).ifPresent(capability -> capability.removeSoundMuffler(world.getDimension().getType(), new SoundMufflingTorchSoundMuffler(pos)));
+		super.onReplaced(state, world, pos, newState, isMoving);
 	}
 
 	@Override
