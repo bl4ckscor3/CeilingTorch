@@ -9,7 +9,7 @@ import de.geheimagentnr1.magical_torches.elements.blocks.torches.chicken_egg_spa
 import de.geheimagentnr1.magical_torches.elements.capabilities.ModCapabilities;
 import de.geheimagentnr1.magical_torches.elements.capabilities.chicken_egg_spawning.ChickenEggSpawningCapability;
 import de.geheimagentnr1.magical_torches.elements.capabilities.chicken_egg_spawning.chicken_egg_blockers.ChickenEggTorchBlocker;
-import de.geheimagentnr1.magical_torches.elements.capabilities.spawn_blocking.ISpawnBlockFactory;
+import de.geheimagentnr1.magical_torches.elements.capabilities.spawn_blocking.ISpawnBlockerFactory;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.material.PushReaction;
@@ -27,12 +27,12 @@ import net.minecraft.world.World;
 public class ChickenEggCeilingTorchBlock extends CeilingTorchBlock
 {
 	private static final VoxelShape SHAPE = Block.makeCuboidShape(6.5D, 6.0D, 6.5D, 9.5D, 16.0D, 9.5D);
-	private final ISpawnBlockFactory spawnBlockFactory;
+	private final ISpawnBlockerFactory spawnBlockerFactory;
 
 	public ChickenEggCeilingTorchBlock(Properties properties)
 	{
 		super(properties, null);
-		ChickenEggSpawningCapability.registerChickenEggBlocker(new ResourceLocation(CeilingTorch.MODID, ChickenEggTorch.registry_name), spawnBlockFactory = ChickenEggTorchBlocker::new);
+		ChickenEggSpawningCapability.registerChickenEggBlocker(new ResourceLocation(CeilingTorch.MODID, ChickenEggTorch.registry_name), spawnBlockerFactory = ChickenEggTorchBlocker::new);
 	}
 
 	@Override
@@ -59,7 +59,7 @@ public class ChickenEggCeilingTorchBlock extends CeilingTorchBlock
 	@Override
 	public void onBlockAdded(BlockState state, World world, BlockPos pos, BlockState oldState, boolean isMoving)
 	{
-		world.getCapability(ModCapabilities.CHICKEN_EGG_SPAWNING).ifPresent(capability -> capability.addSpawnBlocker(spawnBlockFactory.buildSpawnBlocker(pos)));
+		world.getCapability(ModCapabilities.CHICKEN_EGG_SPAWNING).ifPresent(capability -> capability.addSpawnBlocker(spawnBlockerFactory.build(pos)));
 	}
 
 	@Override
@@ -67,7 +67,7 @@ public class ChickenEggCeilingTorchBlock extends CeilingTorchBlock
 	{
 		super.onReplaced(state, world, pos, newState, isMoving);
 
-		world.getCapability(ModCapabilities.CHICKEN_EGG_SPAWNING).ifPresent(capability -> capability.removeSpawnBlocker(spawnBlockFactory.buildSpawnBlocker(pos)));
+		world.getCapability(ModCapabilities.CHICKEN_EGG_SPAWNING).ifPresent(capability -> capability.removeSpawnBlocker(spawnBlockerFactory.build(pos)));
 	}
 
 	@Override

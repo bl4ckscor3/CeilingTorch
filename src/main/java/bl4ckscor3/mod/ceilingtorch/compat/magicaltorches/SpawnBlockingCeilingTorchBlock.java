@@ -10,13 +10,20 @@ import de.geheimagentnr1.magical_torches.elements.blocks.torches.spawn_blocking.
 import de.geheimagentnr1.magical_torches.elements.blocks.torches.spawn_blocking.MegaTorch;
 import de.geheimagentnr1.magical_torches.elements.blocks.torches.spawn_blocking.SmallTorch;
 import de.geheimagentnr1.magical_torches.elements.capabilities.ModCapabilities;
-import de.geheimagentnr1.magical_torches.elements.capabilities.spawn_blocking.ISpawnBlockFactory;
+import de.geheimagentnr1.magical_torches.elements.capabilities.spawn_blocking.ISpawnBlockerFactory;
 import de.geheimagentnr1.magical_torches.elements.capabilities.spawn_blocking.SpawnBlockingCapability;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
+import net.minecraft.block.IWaterLoggable;
 import net.minecraft.block.material.PushReaction;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.fluid.FluidState;
+import net.minecraft.fluid.Fluids;
+import net.minecraft.item.BlockItemUseContext;
 import net.minecraft.item.ItemStack;
+import net.minecraft.state.StateContainer;
+import net.minecraft.state.properties.BlockStateProperties;
+import net.minecraft.util.Direction;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
@@ -24,20 +31,21 @@ import net.minecraft.util.math.shapes.ISelectionContext;
 import net.minecraft.util.math.shapes.VoxelShape;
 import net.minecraft.util.math.shapes.VoxelShapes;
 import net.minecraft.world.IBlockReader;
+import net.minecraft.world.IWorld;
 import net.minecraft.world.World;
 
-public class SpawnBlockingCeilingTorchBlock extends CeilingTorchBlock
+public class SpawnBlockingCeilingTorchBlock extends CeilingTorchBlock implements IWaterLoggable
 {
-	private final ISpawnBlockFactory spawnBlockFactory;
+	private final ISpawnBlockerFactory spawnBlockerFactory;
 	private final String name;
 	private final VoxelShape shape;
 
-	public SpawnBlockingCeilingTorchBlock(Block.Properties properties, String spawnBlockRegistryName, ISpawnBlockFactory spawnBlockFactory)
+	public SpawnBlockingCeilingTorchBlock(Block.Properties properties, String spawnBlockRegistryName, ISpawnBlockerFactory spawnBlockerFactory)
 	{
 		super(properties, null);
 
-		SpawnBlockingCapability.registerSpawnBlocker(new ResourceLocation(CeilingTorch.MODID, spawnBlockRegistryName), this.spawnBlockFactory = spawnBlockFactory);
-
+		setDefaultState(getDefaultState().with(BlockStateProperties.WATERLOGGED, false));
+		SpawnBlockingCapability.registerSpawnBlocker(new ResourceLocation(CeilingTorch.MODID, spawnBlockRegistryName), this.spawnBlockerFactory = spawnBlockerFactory);
 		name = spawnBlockRegistryName;
 
 		switch(name)
@@ -100,7 +108,7 @@ public class SpawnBlockingCeilingTorchBlock extends CeilingTorchBlock
 	@Override
 	public void onBlockAdded(BlockState state, World world, BlockPos pos, BlockState oldState, boolean isMoving)
 	{
-		world.getCapability(ModCapabilities.SPAWN_BLOCKING).ifPresent(capability -> capability.addSpawnBlocker(spawnBlockFactory.buildSpawnBlocker(pos)));
+		world.getCapability(ModCapabilities.SPAWN_BLOCKING).ifPresent(capability -> capability.addSpawnBlocker(spawnBlockerFactory.build(pos)));
 	}
 
 	@Override
@@ -108,6 +116,39 @@ public class SpawnBlockingCeilingTorchBlock extends CeilingTorchBlock
 	{
 		super.onReplaced(state, world, pos, newState, isMoving);
 
-		world.getCapability(ModCapabilities.SPAWN_BLOCKING).ifPresent(capability -> capability.removeSpawnBlocker(spawnBlockFactory.buildSpawnBlocker(pos)));
+		world.getCapability(ModCapabilities.SPAWN_BLOCKING).ifPresent(capability -> capability.removeSpawnBlocker(spawnBlockerFactory.build(pos)));
+	}
+
+	@Override
+	public FluidState getFluidState(BlockState state)
+	{
+		return state.get(BlockStateProperties.WATERLOGGED) ? Fluids.WATER.getStillFluidState(false) : super.getFluidState(state);
+	}
+
+	@Override
+	public BlockState getStateForPlacement(BlockItemUseContext context)
+	{
+		BlockPos pos = context.getPos();
+		BlockState state = context.getWorld().getBlockState(pos);
+
+		if(state.getBlock() == this)
+			return state.with(BlockStateProperties.WATERLOGGED, false);
+		else
+			return getDefaultState().with(BlockStateProperties.WATERLOGGED, context.getWorld().getFluidState(pos).getFluid() == Fluids.WATER);
+	}
+
+	@Override
+	public BlockState updatePostPlacement(BlockState state, Direction facing, BlockState facingState, IWorld world, BlockPos currentPos, BlockPos facingPos)
+	{
+		if(state.get(BlockStateProperties.WATERLOGGED))
+			world.getPendingFluidTicks().scheduleTick(currentPos, Fluids.WATER, Fluids.WATER.getTickRate(world));
+
+		return state;
+	}
+
+	@Override
+	protected void fillStateContainer(StateContainer.Builder<Block, BlockState> builder)
+	{
+		builder.add(BlockStateProperties.WATERLOGGED);
 	}
 }
