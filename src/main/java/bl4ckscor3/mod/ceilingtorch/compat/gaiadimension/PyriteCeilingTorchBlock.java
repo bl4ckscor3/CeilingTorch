@@ -38,12 +38,12 @@ public class PyriteCeilingTorchBlock extends CeilingTorchBlock
 	@Override
 	public ResourceLocation getLootTable()
 	{
-		return ModBlocks.pyrite_torch.getLootTable();
+		return ModBlocks.pyrite_torch.get().getLootTable();
 	}
 
 	@Override
 	public ItemStack getPickBlock(BlockState state, RayTraceResult target, IBlockReader world, BlockPos pos, PlayerEntity player)
 	{
-		return new ItemStack(ModBlocks.pyrite_torch);
+		return new ItemStack(ModBlocks.pyrite_torch.get());
 	}
 }

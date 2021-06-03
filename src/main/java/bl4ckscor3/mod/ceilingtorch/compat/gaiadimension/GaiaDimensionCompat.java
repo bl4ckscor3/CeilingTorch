@@ -27,7 +27,7 @@ public class GaiaDimensionCompat implements ICeilingTorchCompat
 	public Map<ResourceLocation,Block> getPlaceEntries()
 	{
 		if(placeEntries == null)
-			placeEntries = ImmutableMap.of(ModItems.PYRITE_TORCH.getRegistryName(), pyriteCeilingTorch);
+			placeEntries = ImmutableMap.of(ModItems.PYRITE_TORCH.get().getRegistryName(), pyriteCeilingTorch);
 
 		return placeEntries;
 	}
