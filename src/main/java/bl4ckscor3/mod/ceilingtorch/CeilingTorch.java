@@ -22,6 +22,7 @@ import bl4ckscor3.mod.ceilingtorch.compat.tofucraft.TofuCraftCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.torchbandolier.TorchBandolierCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.torcherino.TorcherinoCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.torchmaster.TorchmasterCompat;
+import bl4ckscor3.mod.ceilingtorch.compat.upgradeaquatic.UpgradeAquaticCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.vanilla.VanillaCompat;
 import net.minecraft.block.Block;
 import net.minecraftforge.event.RegistryEvent;
@@ -94,6 +95,9 @@ public class CeilingTorch
 
 		if(ModList.get().isLoaded("torchmaster"))
 			preliminaryCompatList.put("torchmaster", TorchmasterCompat::new);
+
+		if(ModList.get().isLoaded("upgrade_aquatic"))
+			preliminaryCompatList.put("upgrade_aquatic", UpgradeAquaticCompat::new);
 	}
 
 	@SubscribeEvent
