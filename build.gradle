@@ -19,13 +19,16 @@ archivesBaseName = 'ceilingtorch-1.16.5'
 sourceCompatibility = targetCompatibility = compileJava.sourceCompatibility = compileJava.targetCompatibility = '1.8'
 
 minecraft {
-    mappings channel: 'snapshot', version: '20201028-1.16.3'
+    mappings channel: 'snapshot', version: '20210309-1.16.4'
     accessTransformer = file('src/main/resources/META-INF/accesstransformer.cfg')
 	
     runs {
         client {
             workingDirectory project.file('run/client')
             property 'forge.logging.console.level', 'debug'
+            //fixes refmap of deps
+            property 'mixin.env.remapRefMap', 'true'
+            property 'mixin.env.refMapRemappingFile', "${projectDir}/build/createSrgToMcp/output.srg"
 
             mods {
                 ceilingtorch {
@@ -37,6 +40,9 @@ minecraft {
         server {
             workingDirectory project.file('run/server')
             property 'forge.logging.console.level', 'debug'
+            //fixes refmap of deps
+            property 'mixin.env.remapRefMap', 'true'
+            property 'mixin.env.refMapRemappingFile', "${projectDir}/build/createSrgToMcp/output.srg"
 
             mods {
                 ceilingtorch {
@@ -48,6 +54,9 @@ minecraft {
 }
 
 repositories {
+    maven { // JEI
+        url "https://dvs1.progwml6.com/files/maven/"
+    }
     maven {
         url "https://www.cursemaven.com"
     }
@@ -55,7 +64,9 @@ repositories {
 
 dependencies {
     minecraft 'net.minecraftforge:forge:1.16.5-36.0.1'
-    //implementation fg.deobf("curse.maven:abnormals-core-382216:3157757") //bamboo blocks and upgrade aquatic dependency
+	runtimeOnly fg.deobf("mezz.jei:jei-1.16.5:7.7.0.103")
+	
+    implementation fg.deobf("curse.maven:abnormals-core-382216:3233486") //bamboo blocks and upgrade aquatic dependency
     //implementation fg.deobf("curse.maven:bamboo-blocks-348215:3121518")
     implementation fg.deobf("curse.maven:druidcraft-340991:3177267")
     implementation fg.deobf("curse.maven:dwarf-coal-324177:3189806")
