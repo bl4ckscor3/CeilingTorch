@@ -33,7 +33,7 @@ public class EssentialFeaturesCompat implements ICeilingTorchCompat
 			final int index = i;
 
 			//the properties are not like the vanilla redstone torch, but Essential Features has it like this, so i'm doing it as well
-			event.getRegistry().register(TORCHES[i] = new RedstoneCeilingTorchBlock(Block.Properties.create(Material.REDSTONE_LIGHT)) {
+			event.getRegistry().register(TORCHES[i] = new RedstoneCeilingTorchBlock(Block.Properties.create(Material.REDSTONE_LIGHT).lightValue(7)) {
 				@Override
 				public ResourceLocation getLootTable()
 				{
