@@ -6,7 +6,9 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.math.BlockPos;
 import net.minecraftforge.event.RegistryEvent;
+import net.minecraftforge.event.entity.player.PlayerInteractEvent.RightClickBlock;
 
 public interface ICeilingTorchCompat
 {
@@ -32,6 +34,14 @@ public interface ICeilingTorchCompat
 	{
 		return block.getDefaultState();
 	}
+
+	/**
+	 * Called when a block registered by this ICeilingTorchCompat is being placed
+	 * @param event The event which triggered a block being placed
+	 * @param placeAt The position to place the block at
+	 * @param state The state to place
+	 */
+	public default void onPlace(RightClickBlock event, BlockPos placeAt, BlockState state){}
 
 	/**
 	 * If this returns true, CeilingTorch will handle setting the render type. If this returns false, the mod adding compatibility needs to handle setting the render type themselves.
