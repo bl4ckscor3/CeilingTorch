@@ -22,10 +22,10 @@ import net.minecraft.world.IWorldReader;
 import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
-import yamahari.ilikewood.registry.WoodenBlocks;
+import yamahari.ilikewood.ILikeWood;
+import yamahari.ilikewood.registry.objecttype.WoodenBlockType;
 import yamahari.ilikewood.registry.woodtype.IWoodType;
 import yamahari.ilikewood.util.IWooden;
-import yamahari.ilikewood.util.WoodenObjectType;
 
 public class WoodenCeilingTorchBlock extends CeilingTorchBlock implements IWooden
 {
@@ -77,12 +77,12 @@ public class WoodenCeilingTorchBlock extends CeilingTorchBlock implements IWoode
 	@Override
 	public ResourceLocation getLootTable()
 	{
-		return WoodenBlocks.getBlock(WoodenObjectType.TORCH, getWoodType()).getLootTable();
+		return ILikeWood.getBlock(getWoodType(), WoodenBlockType.TORCH).getLootTable();
 	}
 
 	@Override
 	public ItemStack getPickBlock(BlockState state, RayTraceResult target, IBlockReader world, BlockPos pos, PlayerEntity player)
 	{
-		return new ItemStack(WoodenBlocks.getBlock(WoodenObjectType.TORCH, getWoodType()));
+		return new ItemStack(ILikeWood.getBlock(getWoodType(), WoodenBlockType.TORCH));
 	}
 }

@@ -9,9 +9,9 @@ import net.minecraft.block.Block;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.event.RegistryEvent;
 import yamahari.ilikewood.plugin.vanilla.VanillaWoodTypes;
+import yamahari.ilikewood.registry.objecttype.WoodenBlockType;
 import yamahari.ilikewood.registry.woodtype.IWoodType;
 import yamahari.ilikewood.util.Util;
-import yamahari.ilikewood.util.WoodenObjectType;
 
 public class ILikeWoodCompat implements ICeilingTorchCompat
 {
@@ -59,6 +59,6 @@ public class ILikeWoodCompat implements ICeilingTorchCompat
 
 	private ResourceLocation registryNameOf(IWoodType woodType)
 	{
-		return new ResourceLocation("ilikewood", Util.toRegistryName(woodType.getName(), WoodenObjectType.TORCH.toString()));
+		return new ResourceLocation("ilikewood", Util.toRegistryName(woodType.getName(), WoodenBlockType.TORCH.getName()));
 	}
 }
