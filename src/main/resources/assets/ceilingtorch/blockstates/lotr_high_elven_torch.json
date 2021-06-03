@@ -1,0 +1,5 @@
+{
+    "variants": {
+        "": { "model": "lotr:block/high_elven_torch", "x": 180 }
+    }
+}

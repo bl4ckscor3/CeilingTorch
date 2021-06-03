@@ -1,0 +1,5 @@
+{
+    "variants": {
+        "": { "model": "lotr:block/dwarven_torch", "x": 180 }
+    }
+}
