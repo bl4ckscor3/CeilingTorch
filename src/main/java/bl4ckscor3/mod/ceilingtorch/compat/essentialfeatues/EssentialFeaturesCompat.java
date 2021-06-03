@@ -10,6 +10,7 @@ import bl4ckscor3.mod.ceilingtorch.ICeilingTorchCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.vanilla.RedstoneCeilingTorchBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
+import net.minecraft.block.RedstoneTorchBlock;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
@@ -33,7 +34,7 @@ public class EssentialFeaturesCompat implements ICeilingTorchCompat
 			final int index = i;
 
 			//the properties are not like the vanilla redstone torch, but Essential Features has it like this, so i'm doing it as well
-			event.getRegistry().register(TORCHES[i] = new RedstoneCeilingTorchBlock(Block.Properties.create(Material.REDSTONE_LIGHT)) {
+			event.getRegistry().register(TORCHES[i] = new RedstoneCeilingTorchBlock(Block.Properties.create(Material.REDSTONE_LIGHT).setLightLevel(state -> state.get(RedstoneTorchBlock.LIT) ? 7 : 0)) {
 				@Override
 				public ResourceLocation getLootTable()
 				{

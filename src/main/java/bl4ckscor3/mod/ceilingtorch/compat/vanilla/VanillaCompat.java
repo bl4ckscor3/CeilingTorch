@@ -8,6 +8,7 @@ import bl4ckscor3.mod.ceilingtorch.CeilingTorch;
 import bl4ckscor3.mod.ceilingtorch.ICeilingTorchCompat;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
+import net.minecraft.block.RedstoneTorchBlock;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.item.Items;
@@ -37,7 +38,7 @@ public class VanillaCompat implements ICeilingTorchCompat
 		event.getRegistry().register(new RedstoneCeilingTorchBlock(Block.Properties.create(Material.MISCELLANEOUS)
 				.doesNotBlockMovement()
 				.hardnessAndResistance(0.0F)
-				.setLightLevel(state -> 7)
+				.setLightLevel(state -> state.get(RedstoneTorchBlock.LIT) ? 7 : 0)
 				.sound(SoundType.WOOD)
 				.lootFrom(Blocks.REDSTONE_TORCH)).setRegistryName(new ResourceLocation(CeilingTorch.MODID, "redstone_torch")));
 		event.getRegistry().register(new CeilingTorchBlock(Block.Properties.create(Material.MISCELLANEOUS)

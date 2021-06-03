@@ -70,7 +70,7 @@ dependencies {
     //implementation fg.deobf("curse.maven:bamboo-blocks-348215:3121518")
     implementation fg.deobf("curse.maven:druidcraft-340991:3177267")
     implementation fg.deobf("curse.maven:dwarf-coal-324177:3189806")
-    implementation fg.deobf("curse.maven:essential-features-287431:3146682")
+    implementation fg.deobf("curse.maven:essential-features-287431:3244902")
     implementation fg.deobf("curse.maven:gaia-dimension-302529:3156076")
     implementation fg.deobf("curse.maven:i-like-wood-324164:3199396")
     implementation fg.deobf("curse.maven:inspirations-284007:3170862")
