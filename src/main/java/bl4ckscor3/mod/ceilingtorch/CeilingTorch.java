@@ -10,6 +10,7 @@ import bl4ckscor3.mod.ceilingtorch.compat.bonetorch.BoneTorchCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.druidcraft.DruidcraftCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.essentialfeatues.EssentialFeaturesCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.gaiadimension.GaiaDimensionCompat;
+import bl4ckscor3.mod.ceilingtorch.compat.iceandfire.IceAndFireCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.ilikewood.ILikeWoodCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.inspirations.InspirationsCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.lotr.LotrCompat;
@@ -59,6 +60,9 @@ public class CeilingTorch
 
 		if(ModList.get().isLoaded("gaiadimension"))
 			preliminaryCompatList.put("gaiadimension", GaiaDimensionCompat::new);
+
+		if(ModList.get().isLoaded("iceandfire"))
+			preliminaryCompatList.put("iceandfire", IceAndFireCompat::new);
 
 		if(ModList.get().isLoaded("ilikewood"))
 			preliminaryCompatList.put("ilikewood", ILikeWoodCompat::new);

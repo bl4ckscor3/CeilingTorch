@@ -62,10 +62,12 @@ dependencies {
     minecraft 'net.minecraftforge:forge:1.15.2-31.2.47'
     implementation fg.deobf("curse.maven:abnormals-core-348215:2980113") //bamboo blocks & upgrade aquatic dependency
     implementation fg.deobf("curse.maven:bamboo-blocks-348215:2988675")
+    implementation fg.deobf("curse.maven:citadel-331936:2983465") //ice and fire dependency
     implementation fg.deobf("curse.maven:druidcraft-340991:2984999")
     implementation fg.deobf("curse.maven:essential-features-287431:2931088")
     implementation fg.deobf("curse.maven:gaia-dimension-302529:3102680")
     implementation fg.deobf("curse.maven:i-like-wood-324164:2918515")
+    implementation fg.deobf("curse.maven:ice-and-fire-dragons-264231:3077979")
     implementation fg.deobf("curse.maven:inspirations-284007:2954679")
     implementation fg.deobf("curse.maven:magical-torches-389917:3302073")
     implementation fg.deobf("curse.maven:mantle-74924:2942705") //inspirations dependency
