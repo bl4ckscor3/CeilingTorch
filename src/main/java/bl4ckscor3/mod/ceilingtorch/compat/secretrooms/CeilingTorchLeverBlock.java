@@ -1,17 +1,20 @@
-package bl4ckscor3.mod.ceilingtorch.compat.vanilla;
+package bl4ckscor3.mod.ceilingtorch.compat.secretrooms;
 
 import java.util.Random;
 
-import net.minecraft.block.Block;
+import com.wynprice.secretrooms.server.blocks.SecretBlocks;
+import com.wynprice.secretrooms.server.blocks.TorchLever;
+import com.wynprice.secretrooms.server.items.SecretItems;
+
+import bl4ckscor3.mod.ceilingtorch.compat.vanilla.CeilingTorchBlock;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
-import net.minecraft.block.TorchBlock;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
-import net.minecraft.particles.IParticleData;
 import net.minecraft.particles.ParticleTypes;
+import net.minecraft.state.properties.BlockStateProperties;
 import net.minecraft.util.Direction;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.util.math.shapes.ISelectionContext;
@@ -23,19 +26,17 @@ import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
-public class CeilingTorchBlock extends TorchBlock
+public class CeilingTorchLeverBlock extends TorchLever
 {
-	public static final VoxelShape CEILING_SHAPE = Block.makeCuboidShape(6.0D, 6.0D, 6.0D, 10.0D, 16.0D, 10.0D);
-
-	public CeilingTorchBlock(Block.Properties properties, IParticleData particleData)
+	public CeilingTorchLeverBlock(Properties properties)
 	{
-		super(properties, particleData);
+		super(properties);
 	}
 
 	@Override
 	public VoxelShape getShape(BlockState state, IBlockReader world, BlockPos pos, ISelectionContext context)
 	{
-		return CEILING_SHAPE;
+		return CeilingTorchBlock.CEILING_SHAPE;
 	}
 
 	@Override
@@ -48,6 +49,12 @@ public class CeilingTorchBlock extends TorchBlock
 	public boolean isValidPosition(BlockState state, IWorldReader world, BlockPos pos)
 	{
 		return hasEnoughSolidSide(world, pos.up(), Direction.DOWN);
+	}
+
+	@Override
+	public int getStrongPower(BlockState state, IBlockReader world, BlockPos pos, Direction side)
+	{
+		return state.get(BlockStateProperties.POWERED) && side == Direction.DOWN ? 15 : 0;
 	}
 
 	@Override
@@ -64,8 +71,14 @@ public class CeilingTorchBlock extends TorchBlock
 	}
 
 	@Override
+	public ResourceLocation getLootTable()
+	{
+		return SecretBlocks.TORCH_LEVER.get().getLootTable();
+	}
+
+	@Override
 	public ItemStack getPickBlock(BlockState state, RayTraceResult target, IBlockReader world, BlockPos pos, PlayerEntity player)
 	{
-		return new ItemStack(Items.TORCH);
+		return new ItemStack(SecretItems.TORCH_LEVER.get());
 	}
 }
