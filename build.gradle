@@ -60,6 +60,7 @@ repositories {
 
 dependencies {
     minecraft 'net.minecraftforge:forge:1.15.2-31.2.47'
+    
     implementation fg.deobf("curse.maven:abnormals-core-348215:2980113") //bamboo blocks & upgrade aquatic dependency
     implementation fg.deobf("curse.maven:bamboo-blocks-348215:2988675")
     implementation fg.deobf("curse.maven:citadel-331936:2983465") //ice and fire dependency
@@ -76,14 +77,14 @@ dependencies {
     implementation fg.deobf("curse.maven:sbm-bone-torch-238695:2882352")
     implementation fg.deobf("curse.maven:silent-gear-297039:3138530")
     implementation fg.deobf("curse.maven:silent-lib-242998:3003984") //silent gear and torch bandolier dependency
-    //implementation fg.deobf("curse.maven:the-lord-of-the-rings-mod-renewed-406893:3235974")
+    implementation fg.deobf("curse.maven:the-lord-of-the-rings-mod-renewed-406893:3235974")
     implementation fg.deobf("curse.maven:the-midnight-304881:3124960")
     implementation fg.deobf("curse.maven:tofucraftreload-317469:3001699")
 	implementation fg.deobf("curse.maven:torch-bandolier-299337:2909622")
     implementation fg.deobf("curse.maven:torcherino-236794:2878390")
     implementation fg.deobf("curse.maven:torchmaster-254268:3017958")
-    //implementation fg.deobf("curse.maven:upgrade-aquatic-326895:2997601")
-    //implementation fg.deobf("curse.maven:wildnature-320975:3135095")
+    implementation fg.deobf("curse.maven:upgrade-aquatic-326895:2997601")
+    implementation fg.deobf("curse.maven:wildnature-320975:3135095")
 }
 
 jar {
