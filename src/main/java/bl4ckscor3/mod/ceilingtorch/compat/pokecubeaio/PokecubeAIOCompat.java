@@ -15,7 +15,6 @@ import pokecube.legends.init.BlockInit;
 public class PokecubeAIOCompat implements ICeilingTorchCompat
 {
 	public static Block ultraCeilingTorch;
-	public static Block dreadCeilingTorch;
 	private Map<ResourceLocation,Block> placeEntries;
 
 	@Override
