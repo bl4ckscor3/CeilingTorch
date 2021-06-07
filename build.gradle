@@ -12,7 +12,7 @@ buildscript {
 apply plugin: 'net.minecraftforge.gradle'
 apply plugin: 'eclipse'
 
-version = 'v1.11'
+version = 'v1.12'
 group = 'bl4ckscor3.mod.ceilingtorch'
 archivesBaseName = 'ceilingtorch-1.16.5'
 
@@ -72,6 +72,7 @@ dependencies {
     implementation fg.deobf("curse.maven:druidcraft-340991:3177267")
     implementation fg.deobf("curse.maven:dwarf-coal-324177:3189806")
     implementation fg.deobf("curse.maven:essential-features-287431:3244902")
+    implementation fg.deobf("curse.maven:extended-lights-335051:3144281")
     implementation fg.deobf("curse.maven:gaia-dimension-302529:3317421")
     implementation fg.deobf("curse.maven:i-like-wood-324164:3285752")
     implementation fg.deobf("curse.maven:ice-and-fire-dragons-264231:3217622")

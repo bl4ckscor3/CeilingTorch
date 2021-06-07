@@ -1,0 +1,5 @@
+{
+    "variants": {
+        "": { "model": "extlights:block/light_torch_glowstone", "x": 180 }
+    }
+}
