@@ -1,0 +1,5 @@
+{
+    "variants": {
+        "": { "model": "extlights:block/light_modern_ground_torch_white", "x": 180 }
+    }
+}
