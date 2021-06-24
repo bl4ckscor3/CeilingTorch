@@ -5,7 +5,9 @@ import java.util.Map;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.SoundType;
+import net.minecraft.fluid.Fluids;
 import net.minecraft.item.ItemStack;
+import net.minecraft.state.properties.BlockStateProperties;
 import net.minecraft.util.Direction;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundCategory;
@@ -28,7 +30,7 @@ public class PlaceHandler
 			BlockPos placeAt = pos.offset(face);
 			World world = event.getWorld();
 
-			if(face == Direction.DOWN && world.isAirBlock(placeAt))
+			if(face == Direction.DOWN && (world.isAirBlock(placeAt) || !world.getFluidState(placeAt).isEmpty()))
 			{
 				ItemStack held = event.getItemStack();
 				ResourceLocation rl = held.getItem().getRegistryName();
@@ -57,6 +59,9 @@ public class PlaceHandler
 		if(block.isValidPosition(state, world, placeAt))
 		{
 			SoundType soundType;
+
+			if(state.hasProperty(BlockStateProperties.WATERLOGGED) && world.getFluidState(placeAt).getFluid() == Fluids.WATER)
+				state = state.with(BlockStateProperties.WATERLOGGED, true);
 
 			world.setBlockState(placeAt, state);
 			compat.onPlace(event, placeAt, state);
