@@ -1,0 +1,5 @@
+{
+    "variants": {
+        "": { "model": "infernalexp:block/torch_glow", "x": 180 }
+    }
+}

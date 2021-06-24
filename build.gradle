@@ -68,14 +68,14 @@ dependencies {
 	
     //implementation fg.deobf("curse.maven:abnormals-core-382216:3233486") //bamboo blocks and upgrade aquatic dependency
     //implementation fg.deobf("curse.maven:bamboo-blocks-348215:3121518")
-    implementation fg.deobf("curse.maven:chaos-awakens-475414:3326209")
+    //implementation fg.deobf("curse.maven:chaos-awakens-475414:3326209")
     //implementation fg.deobf("curse.maven:citadel-331936:3299591") //ice and fire dependency
     //implementation fg.deobf("curse.maven:druidcraft-340991:3177267")
     //implementation fg.deobf("curse.maven:dwarf-coal-324177:3189806")
     //implementation fg.deobf("curse.maven:essential-features-287431:3244902")
     //implementation fg.deobf("curse.maven:extended-lights-335051:3144281")
     //implementation fg.deobf("curse.maven:gaia-dimension-302529:3317421")
-    implementation fg.deobf("curse.maven:geckolib-388172:3282081") //chaos awakens dependency
+    //implementation fg.deobf("curse.maven:geckolib-388172:3282081") //chaos awakens dependency
     //implementation fg.deobf("curse.maven:i-like-wood-324164:3285752")
     //implementation fg.deobf("curse.maven:ice-and-fire-dragons-264231:3217622")
     //implementation fg.deobf("curse.maven:inspirations-284007:3308942")
@@ -93,6 +93,7 @@ dependencies {
     //implementation fg.deobf("curse.maven:torcherino-236794:3146065")
     //implementation fg.deobf("curse.maven:torchmaster-254268:3281987")
     //implementation fg.deobf("curse.maven:upgrade-aquatic-326895:3249419")
+    //implementation fg.deobf("curse.maven:infernal-expansion-395078:3183888")
 }
 
 jar {

@@ -15,6 +15,7 @@ import bl4ckscor3.mod.ceilingtorch.compat.extendedlights.ExtendedLightsCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.gaiadimension.GaiaDimensionCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.iceandfire.IceAndFireCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.ilikewood.ILikeWoodCompat;
+import bl4ckscor3.mod.ceilingtorch.compat.infernalexpansion.InfernalExpansionCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.inspirations.InspirationsCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.lotr.LotrCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.magicaltorches.MagicalTorchesCompat;
@@ -78,6 +79,9 @@ public class CeilingTorch
 
 		if(ModList.get().isLoaded("ilikewood"))
 			preliminaryCompatList.put("ilikewood", ILikeWoodCompat::new);
+
+		if(ModList.get().isLoaded("infernalexp"))
+			preliminaryCompatList.put("infernalexp", InfernalExpansionCompat::new);
 
 		if(ModList.get().isLoaded("inspirations"))
 			preliminaryCompatList.put("inspirations", InspirationsCompat::new);
