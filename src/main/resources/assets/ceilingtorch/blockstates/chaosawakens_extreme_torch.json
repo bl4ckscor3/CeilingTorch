@@ -1,0 +1,5 @@
+{
+    "variants": {
+        "": { "model": "chaosawakens:block/extreme_torch", "x": 180 }
+    }
+}

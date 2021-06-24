@@ -1,0 +1,5 @@
+{
+    "variants": {
+        "": { "model": "chaosawakens:block/sunstone_torch", "x": 180 }
+    }
+}

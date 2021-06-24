@@ -1,0 +1,5 @@
+{
+    "variants": {
+        "": { "model": "chaosawakens:block/crystal_torch", "x": 180 }
+    }
+}
