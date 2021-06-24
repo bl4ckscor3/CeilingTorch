@@ -19,6 +19,7 @@ import bl4ckscor3.mod.ceilingtorch.compat.infernalexpansion.InfernalExpansionCom
 import bl4ckscor3.mod.ceilingtorch.compat.inspirations.InspirationsCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.lotr.LotrCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.magicaltorches.MagicalTorchesCompat;
+import bl4ckscor3.mod.ceilingtorch.compat.malum.MalumCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.nethercraft.NethercraftCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.pokecubeaio.PokecubeAIOCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.secretrooms.SecretRoomsCompat;
@@ -91,6 +92,9 @@ public class CeilingTorch
 
 		if(ModList.get().isLoaded("magical_torches"))
 			preliminaryCompatList.put("magical_torches", MagicalTorchesCompat::new);
+
+		if(ModList.get().isLoaded("malum"))
+			preliminaryCompatList.put("malum", MalumCompat::new);
 
 		if(ModList.get().isLoaded("nethercraft"))
 			preliminaryCompatList.put("nethercraft", NethercraftCompat::new);

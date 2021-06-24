@@ -70,6 +70,7 @@ dependencies {
     //implementation fg.deobf("curse.maven:bamboo-blocks-348215:3121518")
     //implementation fg.deobf("curse.maven:chaos-awakens-475414:3326209")
     //implementation fg.deobf("curse.maven:citadel-331936:3299591") //ice and fire dependency
+    //implementation fg.deobf("curse.maven:curios-309927:3343065") //malum dependency
     //implementation fg.deobf("curse.maven:druidcraft-340991:3177267")
     //implementation fg.deobf("curse.maven:dwarf-coal-324177:3189806")
     //implementation fg.deobf("curse.maven:essential-features-287431:3244902")
@@ -81,6 +82,7 @@ dependencies {
     //implementation fg.deobf("curse.maven:inspirations-284007:3308942")
     //implementation fg.deobf("curse.maven:magical-torches-389917:3302078")
     //implementation fg.deobf("curse.maven:mantle-74924:3326538") //inspirations dependency
+    //implementation fg.deobf("curse.maven:malum-484064:3329958")
     //implementation fg.deobf("curse.maven:nethercraft-classic-342087:3248559")
     //implementation fg.deobf("curse.maven:pokecube-aoi-285121:3308917")
 	//implementation fg.deobf("curse.maven:sbm-bone-torch-238695:3100862")
