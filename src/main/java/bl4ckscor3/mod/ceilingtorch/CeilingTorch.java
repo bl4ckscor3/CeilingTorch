@@ -10,6 +10,7 @@ import bl4ckscor3.mod.ceilingtorch.compat.bonetorch.BoneTorchCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.chaosawakens.ChaosAwakensCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.druidcraft.DruidcraftCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.dwarfcoal.DwarfCoalCompat;
+import bl4ckscor3.mod.ceilingtorch.compat.endergetic.EndergeticCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.essentialfeatues.EssentialFeaturesCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.extendedlights.ExtendedLightsCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.gaiadimension.GaiaDimensionCompat;
@@ -72,6 +73,9 @@ public class CeilingTorch
 
 		if(ModList.get().isLoaded("dwarfcoal"))
 			preliminaryCompatList.put("dwarfcoal", DwarfCoalCompat::new);
+
+		if(ModList.get().isLoaded("endergetic"))
+			preliminaryCompatList.put("endergetic", EndergeticCompat::new);
 
 		if(ModList.get().isLoaded("essentialfeatures"))
 			preliminaryCompatList.put("essentialfeatures", EssentialFeaturesCompat::new);

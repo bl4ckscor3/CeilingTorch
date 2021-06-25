@@ -66,7 +66,7 @@ dependencies {
     minecraft 'net.minecraftforge:forge:1.16.5-36.1.24'
 	runtimeOnly fg.deobf("mezz.jei:jei-1.16.5:7.7.0.103")
 	
-    //implementation fg.deobf("curse.maven:abnormals-core-382216:3233486") //bamboo blocks and upgrade aquatic dependency
+    //implementation fg.deobf("curse.maven:abnormals-core-382216:3233486") //bamboo blocks, endergetic, and upgrade aquatic dependency
     //implementation fg.deobf("curse.maven:bamboo-blocks-348215:3121518")
     //implementation fg.deobf("curse.maven:chaos-awakens-475414:3326209")
     //implementation fg.deobf("curse.maven:citadel-331936:3299591") //ice and fire dependency
@@ -74,6 +74,7 @@ dependencies {
     //implementation fg.deobf("curse.maven:druidcraft-340991:3177267")
     //implementation fg.deobf("curse.maven:dwarf-coal-324177:3189806")
     //implementation fg.deobf("curse.maven:essential-features-287431:3244902")
+    //implementation fg.deobf("curse.maven:endergetic-291509:3154938")
     //implementation fg.deobf("curse.maven:extended-lights-335051:3144281")
     //implementation fg.deobf("curse.maven:gaia-dimension-302529:3317421")
     //implementation fg.deobf("curse.maven:geckolib-388172:3282081") //chaos awakens dependency
