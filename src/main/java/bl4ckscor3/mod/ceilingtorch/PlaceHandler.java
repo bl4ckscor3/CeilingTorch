@@ -60,7 +60,7 @@ public class PlaceHandler
 		{
 			SoundType soundType;
 
-			if(state.hasProperty(BlockStateProperties.WATERLOGGED) && world.getFluidState(placeAt).getFluid() == Fluids.WATER)
+			if(state.has(BlockStateProperties.WATERLOGGED) && world.getFluidState(placeAt).getFluid() == Fluids.WATER)
 				state = state.with(BlockStateProperties.WATERLOGGED, true);
 
 			world.setBlockState(placeAt, state);
