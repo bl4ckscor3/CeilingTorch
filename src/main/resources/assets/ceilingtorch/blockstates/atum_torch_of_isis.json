@@ -1,0 +1,5 @@
+{
+    "variants": {
+        "": { "model": "atum:block/torch_of_isis", "x": 180 }
+    }
+}

@@ -1,0 +1,5 @@
+{
+    "variants": {
+        "": { "model": "atum:block/nebu_torch", "x": 180 }
+    }
+}
