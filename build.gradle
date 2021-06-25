@@ -61,6 +61,7 @@ repositories {
 dependencies {
     minecraft 'net.minecraftforge:forge:1.15.2-31.2.47'
     
+    //implementation fg.deobf("curse.maven:atum-59621:3128662")
     //implementation fg.deobf("curse.maven:abnormals-core-348215:2980113") //bamboo blocks & upgrade aquatic dependency
     //implementation fg.deobf("curse.maven:bamboo-blocks-348215:2988675")
     //implementation fg.deobf("curse.maven:citadel-331936:2983465") //ice and fire dependency
