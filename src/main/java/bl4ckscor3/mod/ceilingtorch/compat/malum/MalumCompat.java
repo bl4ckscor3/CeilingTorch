@@ -19,9 +19,6 @@ import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.IBlockReader;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.RegistryObject;
-import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
-import net.minecraftforge.registries.DeferredRegister;
-import net.minecraftforge.registries.ForgeRegistries;
 
 public class MalumCompat implements ICeilingTorchCompat
 {
@@ -37,8 +34,7 @@ public class MalumCompat implements ICeilingTorchCompat
 	public static Block brownEtherCeilingTorch;
 	public static Block greenEtherCeilingTorch;
 	public static Block redEtherCeilingTorch;
-	private static final DeferredRegister<TileEntityType<?>> TILE_ENTITIES = DeferredRegister.create(ForgeRegistries.TILE_ENTITIES, CeilingTorch.MODID);
-	public static final RegistryObject<TileEntityType<?>> ETHER_CEILING_TORCH = TILE_ENTITIES.register("ether_ceiling_torch", () -> TileEntityType.Builder.create(CeilingLightingTileEntity::new,
+	public static final RegistryObject<TileEntityType<?>> ETHER_CEILING_TORCH = CeilingTorch.TILE_ENTITIES.register("malum_ether_torch", () -> TileEntityType.Builder.create(CeilingLightingTileEntity::new,
 			orangeEtherCeilingTorch,
 			magentaEtherCeilingTorch,
 			lightBlueEtherCeilingTorch,
@@ -52,11 +48,6 @@ public class MalumCompat implements ICeilingTorchCompat
 			greenEtherCeilingTorch,
 			redEtherCeilingTorch).build(null));
 	private Map<ResourceLocation,Block> placeEntries;
-
-	public MalumCompat()
-	{
-		TILE_ENTITIES.register(FMLJavaModLoadingContext.get().getModEventBus());
-	}
 
 	@Override
 	public void registerBlocks(RegistryEvent.Register<Block> event)
