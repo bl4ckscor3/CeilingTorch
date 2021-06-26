@@ -15,12 +15,8 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.RayTraceResult;
-import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
@@ -36,22 +32,16 @@ public class WildNatureCompat implements ICeilingTorchCompat
 	@Override
 	public void registerBlocks(Register<Block> event)
 	{
-		//dungeon torch
-		event.getRegistry().register(ceilingDungeonTorch = new CeilingTorchBlock(Block.Properties.create(Material.MISCELLANEOUS).hardnessAndResistance(0.0F).sound(SoundType.LANTERN).lightValue(12)) {
-			@Override
-			public ResourceLocation getLootTable()
-			{
-				return WNBlocks.DUNGEON_TORCH.getLootTable();
-			}
-
-			@Override
-			public ItemStack getPickBlock(BlockState state, RayTraceResult target, IBlockReader world, BlockPos pos, PlayerEntity player)
-			{
-				return new ItemStack(WNItems.DUNGEON_TORCH);
-			}
-		}.setRegistryName("wildnature_dungeon_torch"));
-		//crystal torch
-		event.getRegistry().register(ceilingCrystalTorch = new CeilingTorchBlock(Block.Properties.create(Material.MISCELLANEOUS).hardnessAndResistance(0.0F).sound(SoundType.LANTERN).lightValue(15)) {
+		event.getRegistry().register(ceilingDungeonTorch = new CeilingTorchBlock(Block.Properties.create(Material.MISCELLANEOUS)
+				.hardnessAndResistance(0.0F)
+				.sound(SoundType.LANTERN)
+				.lightValue(12),
+				() -> WNBlocks.DUNGEON_TORCH).setRegistryName("wildnature_dungeon_torch"));
+		event.getRegistry().register(ceilingCrystalTorch = new CeilingTorchBlock(Block.Properties.create(Material.MISCELLANEOUS)
+				.hardnessAndResistance(0.0F)
+				.sound(SoundType.LANTERN)
+				.lightValue(15),
+				() -> WNBlocks.CRYSTAL_TORCH) {
 			@Override
 			@OnlyIn(Dist.CLIENT)
 			public void animateTick(BlockState state, World world, BlockPos pos, Random rand)
@@ -62,33 +52,12 @@ public class WildNatureCompat implements ICeilingTorchCompat
 
 				world.addParticle(ParticleRegistry.CRYSTAL_SPARK, x, y, z, 0.0D, 0.01D, 0.0D);
 			}
-
-			@Override
-			public ResourceLocation getLootTable()
-			{
-				return WNBlocks.CRYSTAL_TORCH.getLootTable();
-			}
-
-			@Override
-			public ItemStack getPickBlock(BlockState state, RayTraceResult target, IBlockReader world, BlockPos pos, PlayerEntity player)
-			{
-				return new ItemStack(WNItems.CRYSTAL_TORCH);
-			}
 		}.setRegistryName("wildnature_crystal_torch"));
-		//dungeon redstone torch
-		event.getRegistry().register(ceilingDungeonRedstoneTorch = new RedstoneCeilingTorchBlock(Block.Properties.create(Material.MISCELLANEOUS).hardnessAndResistance(0.0F).sound(SoundType.LANTERN).lightValue(6)) {
-			@Override
-			public ResourceLocation getLootTable()
-			{
-				return WNBlocks.DUNGEON_REDSTONE_TORCH.getLootTable();
-			}
-
-			@Override
-			public ItemStack getPickBlock(BlockState state, RayTraceResult target, IBlockReader world, BlockPos pos, PlayerEntity player)
-			{
-				return new ItemStack(WNItems.DUNGEON_REDSTONE_TORCH);
-			}
-		}.setRegistryName("wildnature_dungeon_redstone_torch"));
+		event.getRegistry().register(ceilingDungeonRedstoneTorch = new RedstoneCeilingTorchBlock(Block.Properties.create(Material.MISCELLANEOUS)
+				.hardnessAndResistance(0.0F)
+				.sound(SoundType.LANTERN)
+				.lightValue(6),
+				() -> WNBlocks.DUNGEON_REDSTONE_TORCH).setRegistryName("wildnature_dungeon_redstone_torch"));
 	}
 
 	@Override

@@ -9,11 +9,7 @@ import de.geheimagentnr1.magical_torches.elements.capabilities.sound_muffling.so
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.material.PushReaction;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.util.math.shapes.ISelectionContext;
 import net.minecraft.util.math.shapes.VoxelShape;
 import net.minecraft.util.math.shapes.VoxelShapes;
@@ -26,7 +22,7 @@ public class SoundMufflingCeilingTorchBlock extends CeilingTorchBlock
 
 	public SoundMufflingCeilingTorchBlock(Properties properties)
 	{
-		super(properties);
+		super(properties, () -> ModBlocks.SOUND_MUFFLING_TORCH);
 	}
 
 	@Override
@@ -61,17 +57,5 @@ public class SoundMufflingCeilingTorchBlock extends CeilingTorchBlock
 	{
 		world.getCapability(ModCapabilities.SOUND_MUFFLING).ifPresent(capability -> capability.removeSoundMuffler(world.getDimension().getType(), new SoundMufflingTorchSoundMuffler(pos)));
 		super.onReplaced(state, world, pos, newState, isMoving);
-	}
-
-	@Override
-	public ResourceLocation getLootTable()
-	{
-		return ModBlocks.SOUND_MUFFLING_TORCH.getLootTable();
-	}
-
-	@Override
-	public ItemStack getPickBlock(BlockState state, RayTraceResult target, IBlockReader world, BlockPos pos, PlayerEntity player)
-	{
-		return new ItemStack(ModBlocks.SOUND_MUFFLING_TORCH);
 	}
 }

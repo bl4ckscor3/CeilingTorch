@@ -7,7 +7,10 @@ import com.teammetallurgy.atum.init.AtumBlocks;
 
 import bl4ckscor3.mod.ceilingtorch.CeilingTorch;
 import bl4ckscor3.mod.ceilingtorch.ICeilingTorchCompat;
+import bl4ckscor3.mod.ceilingtorch.compat.vanilla.CeilingTorchBlock;
 import net.minecraft.block.Block;
+import net.minecraft.block.SoundType;
+import net.minecraft.block.material.Material;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.event.RegistryEvent;
 
@@ -23,11 +26,16 @@ public class AtumCompat implements ICeilingTorchCompat
 	@Override
 	public void registerBlocks(RegistryEvent.Register<Block> event)
 	{
-		event.getRegistry().register(palmCeilingTorch = new AtumCeilingTorchBlock(() -> AtumBlocks.PALM_TORCH).setRegistryName(new ResourceLocation(CeilingTorch.MODID, "atum_palm_torch")));
-		event.getRegistry().register(deadwoodCeilingTorch = new AtumCeilingTorchBlock(() -> AtumBlocks.DEADWOOD_TORCH).setRegistryName(new ResourceLocation(CeilingTorch.MODID, "atum_deadwood_torch")));
-		event.getRegistry().register(limestoneCeilingTorch = new AtumCeilingTorchBlock(() -> AtumBlocks.LIMESTONE_TORCH).setRegistryName(new ResourceLocation(CeilingTorch.MODID, "atum_limestone_torch")));
-		event.getRegistry().register(boneCeilingTorch = new AtumCeilingTorchBlock(() -> AtumBlocks.BONE_TORCH).setRegistryName(new ResourceLocation(CeilingTorch.MODID, "atum_bone_torch")));
-		event.getRegistry().register(pharaohCeilingTorch = new AtumCeilingTorchBlock(() -> AtumBlocks.PHARAOH_TORCH).setRegistryName(new ResourceLocation(CeilingTorch.MODID, "atum_pharaoh_torch")));
+		event.getRegistry().register(palmCeilingTorch = new CeilingTorchBlock(getProperties(),
+				() -> AtumBlocks.PALM_TORCH).setRegistryName(new ResourceLocation(CeilingTorch.MODID, "atum_palm_torch")));
+		event.getRegistry().register(deadwoodCeilingTorch = new CeilingTorchBlock(getProperties(),
+				() -> AtumBlocks.DEADWOOD_TORCH).setRegistryName(new ResourceLocation(CeilingTorch.MODID, "atum_deadwood_torch")));
+		event.getRegistry().register(limestoneCeilingTorch = new CeilingTorchBlock(getProperties(),
+				() -> AtumBlocks.LIMESTONE_TORCH).setRegistryName(new ResourceLocation(CeilingTorch.MODID, "atum_limestone_torch")));
+		event.getRegistry().register(boneCeilingTorch = new CeilingTorchBlock(getProperties(),
+				() -> AtumBlocks.BONE_TORCH).setRegistryName(new ResourceLocation(CeilingTorch.MODID, "atum_bone_torch")));
+		event.getRegistry().register(pharaohCeilingTorch = new CeilingTorchBlock(getProperties(),
+				() -> AtumBlocks.PHARAOH_TORCH).setRegistryName(new ResourceLocation(CeilingTorch.MODID, "atum_pharaoh_torch")));
 	}
 
 	@Override
@@ -43,5 +51,10 @@ public class AtumCompat implements ICeilingTorchCompat
 		}
 
 		return placeEntries;
+	}
+
+	private Block.Properties getProperties()
+	{
+		return Block.Properties.create(Material.MISCELLANEOUS).doesNotBlockMovement().hardnessAndResistance(0.0F).lightValue(14).sound(SoundType.WOOD);
 	}
 }

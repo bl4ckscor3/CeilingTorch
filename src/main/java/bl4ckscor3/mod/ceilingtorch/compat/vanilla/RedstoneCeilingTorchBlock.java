@@ -1,15 +1,17 @@
 package bl4ckscor3.mod.ceilingtorch.compat.vanilla;
 
 import java.util.Random;
+import java.util.function.Supplier;
 
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.RedstoneTorchBlock;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
 import net.minecraft.particles.RedstoneParticleData;
 import net.minecraft.util.Direction;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.util.math.shapes.ISelectionContext;
@@ -23,9 +25,12 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 
 public class RedstoneCeilingTorchBlock extends RedstoneTorchBlock
 {
-	protected RedstoneCeilingTorchBlock(Properties properties)
+	private final Supplier<Block> originalBlock;
+
+	public RedstoneCeilingTorchBlock(Properties properties, Supplier<Block> originalBlock)
 	{
 		super(properties);
+		this.originalBlock = originalBlock;
 	}
 
 	@Override
@@ -79,8 +84,14 @@ public class RedstoneCeilingTorchBlock extends RedstoneTorchBlock
 	}
 
 	@Override
+	public ResourceLocation getLootTable()
+	{
+		return originalBlock.get().getLootTable();
+	}
+
+	@Override
 	public ItemStack getPickBlock(BlockState state, RayTraceResult target, IBlockReader world, BlockPos pos, PlayerEntity player)
 	{
-		return new ItemStack(Items.REDSTONE_TORCH);
+		return new ItemStack(originalBlock.get());
 	}
 }

@@ -7,18 +7,12 @@ import bl4ckscor3.mod.ceilingtorch.compat.vanilla.CeilingTorchBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.ItemStack;
 import net.minecraft.particles.ParticleTypes;
-import net.minecraft.util.Direction;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.util.math.shapes.ISelectionContext;
 import net.minecraft.util.math.shapes.VoxelShape;
 import net.minecraft.world.IBlockReader;
-import net.minecraft.world.IWorld;
-import net.minecraft.world.IWorldReader;
 import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
@@ -34,7 +28,7 @@ public class WoodenCeilingTorchBlock extends CeilingTorchBlock implements IWoode
 
 	public WoodenCeilingTorchBlock(WoodType woodType)
 	{
-		super(Block.Properties.from(Blocks.TORCH));
+		super(Block.Properties.from(Blocks.TORCH), () -> WoodenBlocks.getBlock(WoodenObjectType.TORCH, woodType));
 		this.woodType = woodType;
 		setRegistryName(new ResourceLocation(CeilingTorch.MODID, "ilikewood_" + woodType.toString() + "_torch"));
 	}
@@ -52,18 +46,6 @@ public class WoodenCeilingTorchBlock extends CeilingTorchBlock implements IWoode
 	}
 
 	@Override
-	public BlockState updatePostPlacement(BlockState state, Direction facing, BlockState facingState, IWorld world, BlockPos currentPos, BlockPos facingPos)
-	{
-		return facing == Direction.UP && !isValidPosition(state, world, currentPos) ? Blocks.AIR.getDefaultState() : super.updatePostPlacement(state, facing, facingState, world, currentPos, facingPos);
-	}
-
-	@Override
-	public boolean isValidPosition(BlockState state, IWorldReader world, BlockPos pos)
-	{
-		return hasEnoughSolidSide(world, pos.up(), Direction.DOWN);
-	}
-
-	@Override
 	@OnlyIn(Dist.CLIENT)
 	public void animateTick(BlockState state, World world, BlockPos pos, Random rand)
 	{
@@ -72,17 +54,5 @@ public class WoodenCeilingTorchBlock extends CeilingTorchBlock implements IWoode
 		double d2 = pos.getZ() + 0.5D;
 
 		world.addParticle(ParticleTypes.SMOKE, d0, d1, d2, 0.0D, 0.0D, 0.0D);
-	}
-
-	@Override
-	public ResourceLocation getLootTable()
-	{
-		return WoodenBlocks.getBlock(WoodenObjectType.TORCH, getWoodType()).getLootTable();
-	}
-
-	@Override
-	public ItemStack getPickBlock(BlockState state, RayTraceResult target, IBlockReader world, BlockPos pos, PlayerEntity player)
-	{
-		return new ItemStack(WoodenBlocks.getBlock(WoodenObjectType.TORCH, getWoodType()));
 	}
 }

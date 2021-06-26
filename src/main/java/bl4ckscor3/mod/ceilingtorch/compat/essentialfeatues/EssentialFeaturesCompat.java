@@ -9,14 +9,8 @@ import bl4ckscor3.mod.ceilingtorch.CeilingTorch;
 import bl4ckscor3.mod.ceilingtorch.ICeilingTorchCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.vanilla.RedstoneCeilingTorchBlock;
 import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
 import net.minecraft.block.material.Material;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.RayTraceResult;
-import net.minecraft.world.IBlockReader;
 import net.minecraftforge.event.RegistryEvent.Register;
 
 public class EssentialFeaturesCompat implements ICeilingTorchCompat
@@ -33,19 +27,9 @@ public class EssentialFeaturesCompat implements ICeilingTorchCompat
 			final int index = i;
 
 			//the properties are not like the vanilla redstone torch, but Essential Features has it like this, so i'm doing it as well
-			event.getRegistry().register(TORCHES[i] = new RedstoneCeilingTorchBlock(Block.Properties.create(Material.REDSTONE_LIGHT).lightValue(7)) {
-				@Override
-				public ResourceLocation getLootTable()
-				{
-					return ((Block)ModBlocks.STAINED_REDSTONE_TORCHES[index].getLeft()).getLootTable();
-				}
-
-				@Override
-				public ItemStack getPickBlock(BlockState state, RayTraceResult target, IBlockReader world, BlockPos pos, PlayerEntity player)
-				{
-					return new ItemStack((Block)ModBlocks.STAINED_REDSTONE_TORCHES[index].getLeft());
-				}
-			}.setRegistryName(new ResourceLocation(CeilingTorch.MODID, "essentialfeatures_" + COLORS[i] + "_stained_redstone_torch")));
+			event.getRegistry().register(TORCHES[i] = new RedstoneCeilingTorchBlock(Block.Properties.create(Material.REDSTONE_LIGHT)
+					.lightValue(7),
+					() -> ((Block)ModBlocks.STAINED_REDSTONE_TORCHES[index].getLeft())).setRegistryName(new ResourceLocation(CeilingTorch.MODID, "essentialfeatures_" + COLORS[i] + "_stained_redstone_torch")));
 		}
 	}
 

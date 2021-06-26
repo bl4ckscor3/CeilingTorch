@@ -25,15 +25,28 @@ public class VanillaCompat implements ICeilingTorchCompat
 	@Override
 	public void registerBlocks(RegistryEvent.Register<Block> event)
 	{
-		event.getRegistry().register(new CeilingTorchBlock(Block.Properties.create(Material.MISCELLANEOUS).doesNotBlockMovement().hardnessAndResistance(0.0F).lightValue(14).sound(SoundType.WOOD).lootFrom(Blocks.TORCH)).setRegistryName(new ResourceLocation(CeilingTorch.MODID, "torch")));
-		event.getRegistry().register(new RedstoneCeilingTorchBlock(Block.Properties.create(Material.MISCELLANEOUS).doesNotBlockMovement().hardnessAndResistance(0.0F).lightValue(7).sound(SoundType.WOOD).lootFrom(Blocks.REDSTONE_TORCH)).setRegistryName(new ResourceLocation(CeilingTorch.MODID, "redstone_torch")));
+		event.getRegistry().register(new CeilingTorchBlock(Block.Properties.create(Material.MISCELLANEOUS)
+				.doesNotBlockMovement()
+				.hardnessAndResistance(0.0F)
+				.lightValue(14)
+				.sound(SoundType.WOOD),
+				() -> Blocks.TORCH).setRegistryName(new ResourceLocation(CeilingTorch.MODID, "torch")));
+		event.getRegistry().register(new RedstoneCeilingTorchBlock(Block.Properties.create(Material.MISCELLANEOUS)
+				.doesNotBlockMovement()
+				.hardnessAndResistance(0.0F)
+				.lightValue(7)
+				.sound(SoundType.WOOD),
+				() -> Blocks.REDSTONE_TORCH).setRegistryName(new ResourceLocation(CeilingTorch.MODID, "redstone_torch")));
 	}
 
 	@Override
 	public Map<ResourceLocation,Block> getPlaceEntries()
 	{
 		if(placeEntries == null)
-			placeEntries = ImmutableMap.of(Items.TORCH.getRegistryName(), TORCH, Items.REDSTONE_TORCH.getRegistryName(), REDSTONE_TORCH);
+		{
+			placeEntries = ImmutableMap.of(Items.TORCH.getRegistryName(), TORCH,
+					Items.REDSTONE_TORCH.getRegistryName(), REDSTONE_TORCH);
+		}
 
 		return placeEntries;
 	}

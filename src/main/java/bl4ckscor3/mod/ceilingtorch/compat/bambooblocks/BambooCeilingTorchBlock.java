@@ -8,13 +8,9 @@ import bl4ckscor3.mod.ceilingtorch.compat.vanilla.CeilingTorchBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.LeavesBlock;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.ItemStack;
 import net.minecraft.particles.ParticleTypes;
 import net.minecraft.util.Direction;
-import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.util.math.shapes.ISelectionContext;
 import net.minecraft.util.math.shapes.VoxelShape;
 import net.minecraft.world.IBlockReader;
@@ -29,7 +25,7 @@ public class BambooCeilingTorchBlock extends CeilingTorchBlock
 
 	public BambooCeilingTorchBlock(Block.Properties properties)
 	{
-		super(properties);
+		super(properties, BambooBlocksRegistry.BAMBOO_TORCH);
 	}
 
 	@Override
@@ -54,17 +50,5 @@ public class BambooCeilingTorchBlock extends CeilingTorchBlock
 
 		world.addParticle(ParticleTypes.SMOKE, x, y, z, 0.0D, 0.0D, 0.0D);
 		world.addParticle(ParticleTypes.FLAME, x, y, z, 0.0D, 0.0D, 0.0D);
-	}
-
-	@Override
-	public ResourceLocation getLootTable()
-	{
-		return BambooBlocksRegistry.BAMBOO_TORCH.get().getLootTable();
-	}
-
-	@Override
-	public ItemStack getPickBlock(BlockState state, RayTraceResult target, IBlockReader world, BlockPos pos, PlayerEntity player)
-	{
-		return new ItemStack(BambooBlocksRegistry.BAMBOO_TORCH.get());
 	}
 }

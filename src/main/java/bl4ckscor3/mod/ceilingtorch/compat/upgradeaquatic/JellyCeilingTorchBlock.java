@@ -1,9 +1,11 @@
 package bl4ckscor3.mod.ceilingtorch.compat.upgradeaquatic;
 
+import java.util.function.Supplier;
+
 import com.teamabnormals.upgrade_aquatic.common.blocks.BlockJellyTorch;
-import com.teamabnormals.upgrade_aquatic.core.registry.UABlocks;
 
 import bl4ckscor3.mod.ceilingtorch.compat.vanilla.CeilingTorchBlock;
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.player.PlayerEntity;
@@ -22,12 +24,14 @@ import net.minecraft.world.IWorldReader;
 public class JellyCeilingTorchBlock extends BlockJellyTorch
 {
 	protected final JellyTorchType torchType;
+	private final Supplier<Block> originalBlock;
 
-	public JellyCeilingTorchBlock(Properties properties, JellyTorchType torchType)
+	public JellyCeilingTorchBlock(Properties properties, JellyTorchType torchType, Supplier<Block> originalBlock)
 	{
 		super(properties, torchType);
 
 		this.torchType = torchType;
+		this.originalBlock = originalBlock;
 		setDefaultState(stateContainer.getBaseState().with(WATERLOGGED, false));
 	}
 
@@ -55,48 +59,12 @@ public class JellyCeilingTorchBlock extends BlockJellyTorch
 	@Override
 	public ResourceLocation getLootTable()
 	{
-		switch(torchType)
-		{
-			default: case PINK:
-				return UABlocks.PINK_JELLY_TORCH.get().getLootTable();
-			case PURPLE:
-				return UABlocks.PURPLE_JELLY_TORCH.get().getLootTable();
-			case BLUE:
-				return UABlocks.BLUE_JELLY_TORCH.get().getLootTable();
-			case GREEN:
-				return UABlocks.GREEN_JELLY_TORCH.get().getLootTable();
-			case YELLOW:
-				return UABlocks.YELLOW_JELLY_TORCH.get().getLootTable();
-			case ORANGE:
-				return UABlocks.ORANGE_JELLY_TORCH.get().getLootTable();
-			case RED:
-				return UABlocks.RED_JELLY_TORCH.get().getLootTable();
-			case WHITE:
-				return UABlocks.WHITE_JELLY_TORCH.get().getLootTable();
-		}
+		return originalBlock.get().getLootTable();
 	}
 
 	@Override
 	public ItemStack getPickBlock(BlockState state, RayTraceResult target, IBlockReader world, BlockPos pos, PlayerEntity player)
 	{
-		switch(torchType)
-		{
-			default: case PINK:
-				return new ItemStack(UABlocks.PINK_JELLY_TORCH.get());
-			case PURPLE:
-				return new ItemStack(UABlocks.PURPLE_JELLY_TORCH.get());
-			case BLUE:
-				return new ItemStack(UABlocks.BLUE_JELLY_TORCH.get());
-			case GREEN:
-				return new ItemStack(UABlocks.GREEN_JELLY_TORCH.get());
-			case YELLOW:
-				return new ItemStack(UABlocks.YELLOW_JELLY_TORCH.get());
-			case ORANGE:
-				return new ItemStack(UABlocks.ORANGE_JELLY_TORCH.get());
-			case RED:
-				return new ItemStack(UABlocks.RED_JELLY_TORCH.get());
-			case WHITE:
-				return new ItemStack(UABlocks.WHITE_JELLY_TORCH.get());
-		}
+		return new ItemStack(originalBlock.get());
 	}
 }

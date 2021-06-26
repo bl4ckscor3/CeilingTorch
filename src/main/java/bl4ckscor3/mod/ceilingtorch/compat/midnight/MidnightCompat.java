@@ -24,10 +24,14 @@ public class MidnightCompat implements ICeilingTorchCompat
 	@Override
 	public void registerBlocks(RegistryEvent.Register<Block> event)
 	{
-		event.getRegistry().register(bogshroomCeilingSporch = new CeilingSporchBlock(SporchType.BOGSHROOM, Block.Properties.from(Blocks.TORCH)).setRegistryName(new ResourceLocation(CeilingTorch.MODID, "midnight_bogshroom_sporch")));
-		event.getRegistry().register(dewshroomCeilingSporch = new CeilingSporchBlock(SporchType.DEWSHROOM, Block.Properties.from(Blocks.TORCH)).setRegistryName(new ResourceLocation(CeilingTorch.MODID, "midnight_dewshroom_sporch")));
-		event.getRegistry().register(nightshroomCeilingSporch = new CeilingSporchBlock(SporchType.NIGHTSHROOM, Block.Properties.from(Blocks.TORCH)).setRegistryName(new ResourceLocation(CeilingTorch.MODID, "midnight_nightshroom_sporch")));
-		event.getRegistry().register(viridshroomCeilingSporch = new CeilingSporchBlock(SporchType.VIRIDSHROOM, Block.Properties.from(Blocks.TORCH)).setRegistryName(new ResourceLocation(CeilingTorch.MODID, "midnight_viridshroom_sporch")));
+		event.getRegistry().register(bogshroomCeilingSporch = new CeilingSporchBlock(SporchType.BOGSHROOM, Block.Properties.from(Blocks.TORCH), () -> MidnightBlocks.BOGSHROOM_SPORCH)
+				.setRegistryName(new ResourceLocation(CeilingTorch.MODID, "midnight_bogshroom_sporch")));
+		event.getRegistry().register(dewshroomCeilingSporch = new CeilingSporchBlock(SporchType.DEWSHROOM, Block.Properties.from(Blocks.TORCH), () -> MidnightBlocks.DEWSHROOM_SPORCH)
+				.setRegistryName(new ResourceLocation(CeilingTorch.MODID, "midnight_dewshroom_sporch")));
+		event.getRegistry().register(nightshroomCeilingSporch = new CeilingSporchBlock(SporchType.NIGHTSHROOM, Block.Properties.from(Blocks.TORCH), () -> MidnightBlocks.NIGHTSHROOM_SPORCH)
+				.setRegistryName(new ResourceLocation(CeilingTorch.MODID, "midnight_nightshroom_sporch")));
+		event.getRegistry().register(viridshroomCeilingSporch = new CeilingSporchBlock(SporchType.VIRIDSHROOM, Block.Properties.from(Blocks.TORCH), () -> MidnightBlocks.VIRIDSHROOM_SPORCH)
+				.setRegistryName(new ResourceLocation(CeilingTorch.MODID, "midnight_viridshroom_sporch")));
 	}
 
 	@Override

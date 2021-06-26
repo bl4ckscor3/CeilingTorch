@@ -1,12 +1,12 @@
 package bl4ckscor3.mod.ceilingtorch.compat.magicaltorches;
 
 import java.util.Random;
+import java.util.function.Supplier;
 
 import javax.annotation.Nonnull;
 
 import bl4ckscor3.mod.ceilingtorch.CeilingTorch;
 import bl4ckscor3.mod.ceilingtorch.compat.vanilla.CeilingTorchBlock;
-import de.geheimagentnr1.magical_torches.elements.blocks.ModBlocks;
 import de.geheimagentnr1.magical_torches.elements.blocks.torches.spawn_blocking.GrandTorch;
 import de.geheimagentnr1.magical_torches.elements.blocks.torches.spawn_blocking.MediumTorch;
 import de.geheimagentnr1.magical_torches.elements.blocks.torches.spawn_blocking.MegaTorch;
@@ -18,17 +18,14 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.IWaterLoggable;
 import net.minecraft.block.material.PushReaction;
-import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.fluid.Fluids;
 import net.minecraft.fluid.IFluidState;
 import net.minecraft.item.BlockItemUseContext;
-import net.minecraft.item.ItemStack;
 import net.minecraft.state.StateContainer;
 import net.minecraft.state.properties.BlockStateProperties;
 import net.minecraft.util.Direction;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.util.math.shapes.ISelectionContext;
 import net.minecraft.util.math.shapes.VoxelShape;
 import net.minecraft.util.math.shapes.VoxelShapes;
@@ -42,9 +39,9 @@ public class SpawnBlockingCeilingTorchBlock extends CeilingTorchBlock implements
 	private final String name;
 	private final VoxelShape shape;
 
-	public SpawnBlockingCeilingTorchBlock(Block.Properties properties, String spawnBlockRegistryName, ISpawnBlockerFactory spawnBlockerFactory)
+	public SpawnBlockingCeilingTorchBlock(Block.Properties properties, String spawnBlockRegistryName, ISpawnBlockerFactory spawnBlockerFactory, Supplier<Block> originalBlock)
 	{
-		super(properties);
+		super(properties, originalBlock);
 
 		setDefaultState(getDefaultState().with(BlockStateProperties.WATERLOGGED, false));
 		SpawnBlockingCapability.registerSpawnBlocker(new ResourceLocation(CeilingTorch.MODID, spawnBlockRegistryName), this.spawnBlockerFactory = spawnBlockerFactory);
@@ -79,32 +76,6 @@ public class SpawnBlockingCeilingTorchBlock extends CeilingTorchBlock implements
 	public PushReaction getPushReaction(BlockState state)
 	{
 		return PushReaction.DESTROY;
-	}
-
-	@Override
-	public ResourceLocation getLootTable()
-	{
-		switch(name)
-		{
-			case SmallTorch.registry_name: return ModBlocks.SMALL_TORCH.getLootTable();
-			case MediumTorch.registry_name: return ModBlocks.MEDIUM_TORCH.getLootTable();
-			case GrandTorch.registry_name: return ModBlocks.GRAND_TORCH.getLootTable();
-			case MegaTorch.registry_name: return ModBlocks.MEGA_TORCH.getLootTable();
-			default: return super.getLootTable();
-		}
-	}
-
-	@Override
-	public ItemStack getPickBlock(BlockState state, RayTraceResult target, IBlockReader world, BlockPos pos, PlayerEntity player)
-	{
-		switch(name)
-		{
-			case SmallTorch.registry_name: return new ItemStack(ModBlocks.SMALL_TORCH);
-			case MediumTorch.registry_name: return new ItemStack(ModBlocks.MEDIUM_TORCH);
-			case GrandTorch.registry_name: return new ItemStack(ModBlocks.GRAND_TORCH);
-			case MegaTorch.registry_name: return new ItemStack(ModBlocks.MEGA_TORCH);
-			default: return ItemStack.EMPTY;
-		}
 	}
 
 	@Override

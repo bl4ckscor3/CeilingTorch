@@ -19,7 +19,7 @@ archivesBaseName = 'ceilingtorch-1.15.2'
 sourceCompatibility = targetCompatibility = compileJava.sourceCompatibility = compileJava.targetCompatibility = '1.8'
 
 minecraft {
-    mappings channel: 'snapshot', version: '20201227-1.15.1'
+    mappings channel: 'snapshot', version: '20210626-1.15.1'
 	
     runs {
         client {
