@@ -7,7 +7,6 @@ import com.google.common.collect.ImmutableMap;
 import bl4ckscor3.mod.ceilingtorch.CeilingTorch;
 import bl4ckscor3.mod.ceilingtorch.ICeilingTorchCompat;
 import knightminer.inspirations.utility.InspirationsUtility;
-import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
@@ -29,14 +28,14 @@ public class InspirationsCompat implements ICeilingTorchCompat
 	@Override
 	public void registerBlocks(RegistryEvent.Register<Block> event)
 	{
-		event.getRegistry().register(ceilingTorchLever = new CeilingTorchLeverBlock(AbstractBlock.Properties.from(Blocks.TORCH).lootFrom(() -> InspirationsUtility.torchLeverFloor), ParticleTypes.FLAME) {
+		event.getRegistry().register(ceilingTorchLever = new CeilingTorchLeverBlock(Block.Properties.from(Blocks.TORCH).lootFrom(() -> InspirationsUtility.torchLeverFloor), ParticleTypes.FLAME) {
 			@Override
 			public ItemStack getPickBlock(BlockState state, RayTraceResult target, IBlockReader world, BlockPos pos, PlayerEntity player)
 			{
 				return new ItemStack(InspirationsUtility.torchLeverItem);
 			}
 		}.setRegistryName(new ResourceLocation(CeilingTorch.MODID, "inspirations_torch_lever")));
-		event.getRegistry().register(ceilingSoulTorchLever = new CeilingTorchLeverBlock(AbstractBlock.Properties.from(Blocks.SOUL_TORCH).lootFrom(() -> InspirationsUtility.soulLeverFloor), ParticleTypes.SOUL_FIRE_FLAME) {
+		event.getRegistry().register(ceilingSoulTorchLever = new CeilingTorchLeverBlock(Block.Properties.from(Blocks.SOUL_TORCH).lootFrom(() -> InspirationsUtility.soulLeverFloor), ParticleTypes.SOUL_FIRE_FLAME) {
 			@Override
 			public ItemStack getPickBlock(BlockState state, RayTraceResult target, IBlockReader world, BlockPos pos, PlayerEntity player)
 			{
@@ -49,8 +48,10 @@ public class InspirationsCompat implements ICeilingTorchCompat
 	public Map<ResourceLocation,Block> getPlaceEntries()
 	{
 		if(placeEntries == null)
+		{
 			placeEntries = ImmutableMap.of(InspirationsUtility.torchLeverItem.getRegistryName(), ceilingTorchLever,
 					InspirationsUtility.soulLeverItem.getRegistryName(), ceilingSoulTorchLever);
+		}
 
 		return placeEntries;
 	}

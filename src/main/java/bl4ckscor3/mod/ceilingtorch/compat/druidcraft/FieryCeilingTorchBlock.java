@@ -3,7 +3,6 @@ package bl4ckscor3.mod.ceilingtorch.compat.druidcraft;
 import java.util.Random;
 
 import com.vulp.druidcraft.blocks.FieryTorchBlock;
-import com.vulp.druidcraft.registry.BlockRegistry;
 import com.vulp.druidcraft.registry.ItemRegistry;
 import com.vulp.druidcraft.registry.ParticleRegistry;
 
@@ -15,7 +14,6 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.fluid.Fluids;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Direction;
-import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.util.math.shapes.ISelectionContext;
@@ -69,12 +67,6 @@ public class FieryCeilingTorchBlock extends FieryTorchBlock
 
 		world.addParticle(ParticleRegistry.fiery_spark, false, x + offset0, y + offset2 - 0.3D, z + offset3, 0.0F, 0.0F, 0.0F);
 		world.addParticle(ParticleRegistry.fiery_glow, false, x, y - 0.3D, z, 0.0F, 0.0F, 0.0F);
-	}
-
-	@Override
-	public ResourceLocation getLootTable()
-	{
-		return BlockRegistry.fiery_torch.getLootTable();
 	}
 
 	@Override

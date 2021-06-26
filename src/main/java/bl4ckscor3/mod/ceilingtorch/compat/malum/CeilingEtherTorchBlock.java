@@ -2,6 +2,7 @@ package bl4ckscor3.mod.ceilingtorch.compat.malum;
 
 import java.awt.Color;
 import java.util.Random;
+import java.util.function.Supplier;
 
 import com.sammy.malum.common.blocks.lighting.IColor;
 
@@ -24,9 +25,9 @@ public class CeilingEtherTorchBlock extends CeilingTorchBlock implements IColor,
 {
 	private final Color color;
 
-	public CeilingEtherTorchBlock(Properties properties, Color color)
+	public CeilingEtherTorchBlock(Properties properties, Color color, Supplier<Block> originalBlock)
 	{
-		super(properties, null);
+		super(properties, null, originalBlock);
 
 		setDefaultState(getDefaultState().with(BlockStateProperties.WATERLOGGED, false));
 		this.color = color;

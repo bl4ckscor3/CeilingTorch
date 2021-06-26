@@ -1,13 +1,18 @@
 package bl4ckscor3.mod.ceilingtorch.compat.extendedlights;
 
+import java.util.function.Supplier;
+
 import com.polyvalord.extlights.blocks.basic.BlockWL;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.fluid.Fluids;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.util.math.shapes.ISelectionContext;
 import net.minecraft.util.math.shapes.VoxelShape;
 import net.minecraft.util.math.shapes.VoxelShapes;
@@ -18,10 +23,13 @@ import net.minecraft.world.IWorldReader;
 public class ModernCeilingTorchBlock extends BlockWL
 {
 	private static final VoxelShape SHAPE = VoxelShapes.or(Block.makeCuboidShape(6.0D, 15.0D, 6.0D, 10.0D, 16.0D, 10.0D), Block.makeCuboidShape(7.0D, 7.0D, 7.0D, 9.0D, 15.0D, 9.0D));
+	private final Supplier<Block> originalBlock;
 
-	public ModernCeilingTorchBlock(Properties properties)
+	public ModernCeilingTorchBlock(Properties properties, Supplier<Block> originalBlock)
 	{
-		super(properties);
+		super(properties.lootFrom(originalBlock));
+
+		this.originalBlock = originalBlock;
 	}
 
 	@Override
@@ -43,5 +51,11 @@ public class ModernCeilingTorchBlock extends BlockWL
 	public boolean isValidPosition(BlockState state, IWorldReader world, BlockPos pos)
 	{
 		return hasEnoughSolidSide(world, pos.up(), Direction.DOWN);
+	}
+
+	@Override
+	public ItemStack getPickBlock(BlockState state, RayTraceResult target, IBlockReader world, BlockPos pos, PlayerEntity player)
+	{
+		return new ItemStack(originalBlock.get());
 	}
 }

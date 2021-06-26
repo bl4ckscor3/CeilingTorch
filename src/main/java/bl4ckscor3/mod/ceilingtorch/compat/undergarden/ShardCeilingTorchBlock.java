@@ -4,12 +4,9 @@ import java.util.Random;
 
 import bl4ckscor3.mod.ceilingtorch.compat.vanilla.CeilingTorchBlock;
 import net.minecraft.block.BlockState;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.ItemStack;
 import net.minecraft.particles.ParticleTypes;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
 import quek.undergarden.registry.UGBlocks;
@@ -19,13 +16,7 @@ public class ShardCeilingTorchBlock extends CeilingTorchBlock
 {
 	public ShardCeilingTorchBlock(Properties properties)
 	{
-		super(properties, ParticleTypes.FLAME);
-	}
-
-	@Override
-	public ItemStack getPickBlock(BlockState state, RayTraceResult target, IBlockReader world, BlockPos pos, PlayerEntity player)
-	{
-		return new ItemStack(UGBlocks.SHARD_TORCH.get());
+		super(properties, ParticleTypes.FLAME, UGBlocks.SHARD_TORCH);
 	}
 
 	@Override

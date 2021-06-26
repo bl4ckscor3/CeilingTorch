@@ -2,7 +2,6 @@ package bl4ckscor3.mod.ceilingtorch.compat.secretrooms;
 
 import java.util.Random;
 
-import com.wynprice.secretrooms.server.blocks.SecretBlocks;
 import com.wynprice.secretrooms.server.blocks.TorchLever;
 import com.wynprice.secretrooms.server.items.SecretItems;
 
@@ -14,7 +13,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.particles.ParticleTypes;
 import net.minecraft.state.properties.BlockStateProperties;
 import net.minecraft.util.Direction;
-import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.util.math.shapes.ISelectionContext;
@@ -68,12 +66,6 @@ public class CeilingTorchLeverBlock extends TorchLever
 
 		world.addParticle(ParticleTypes.SMOKE, x, y + offset, z, 0.0D, 0.0D, 0.0D);
 		world.addParticle(particleData, x, y + offset, z, 0.0D, 0.0D, 0.0D);
-	}
-
-	@Override
-	public ResourceLocation getLootTable()
-	{
-		return SecretBlocks.TORCH_LEVER.get().getLootTable();
 	}
 
 	@Override

@@ -22,16 +22,28 @@ public class IceAndFireCompat implements ICeilingTorchCompat
 	@Override
 	public void registerBlocks(RegistryEvent.Register<Block> event)
 	{
-		event.getRegistry().register(burntCeilingTorch = new BurntCeilingTorchBlock(Block.Properties.create(Material.WOOD).setLightLevel(state -> 0).sound(SoundType.WOOD).notSolid().variableOpacity()).setRegistryName(new ResourceLocation(CeilingTorch.MODID, "ice_and_fire_burnt_torch")));
-		event.getRegistry().register(dreadCeilingTorch = new DreadCeilingTorchBlock(Block.Properties.create(Material.WOOD).setLightLevel(state -> 7).sound(SoundType.STONE).notSolid().variableOpacity()).setRegistryName(new ResourceLocation(CeilingTorch.MODID, "ice_and_fire_dread_torch")));
+		event.getRegistry().register(burntCeilingTorch = new BurntCeilingTorchBlock(Block.Properties.create(Material.WOOD)
+				.setLightLevel(state -> 0)
+				.sound(SoundType.WOOD)
+				.notSolid()
+				.variableOpacity())
+				.setRegistryName(new ResourceLocation(CeilingTorch.MODID, "ice_and_fire_burnt_torch")));
+		event.getRegistry().register(dreadCeilingTorch = new DreadCeilingTorchBlock(Block.Properties.create(Material.WOOD)
+				.setLightLevel(state -> 7)
+				.sound(SoundType.STONE)
+				.notSolid()
+				.variableOpacity())
+				.setRegistryName(new ResourceLocation(CeilingTorch.MODID, "ice_and_fire_dread_torch")));
 	}
 
 	@Override
 	public Map<ResourceLocation,Block> getPlaceEntries()
 	{
 		if(placeEntries == null)
+		{
 			placeEntries = ImmutableMap.of(IafBlockRegistry.BURNT_TORCH.getRegistryName(), burntCeilingTorch,
 					IafBlockRegistry.DREAD_TORCH.getRegistryName(), dreadCeilingTorch);
+		}
 
 		return placeEntries;
 	}

@@ -28,18 +28,12 @@ public class TorchmasterCompat implements ICeilingTorchCompat
 	@Override
 	public void registerBlocks(RegistryEvent.Register<Block> event)
 	{
-		event.getRegistry().register(megaCeilingTorch = new EntityBlockingLightBlock(Block.Properties
-				.create(Material.WOOD)
+		event.getRegistry().register(megaCeilingTorch = new EntityBlockingLightBlock(Block.Properties.create(Material.WOOD)
+				.lootFrom(() -> ModBlocks.blockMegaTorch)
 				.hardnessAndResistance(1.0F, 1.0F)
 				.setLightLevel(state -> 15),
 				pos -> CeilingTorch.MODID + ":MCT_" + pos.getX() + "_" + pos.getY() + "_" + pos.getZ(),
 				MegaCeilingTorchEntityBlockingLight::new, -0.025F, MegatorchEntityBlockingLight.SHAPE) {
-			@Override
-			public ResourceLocation getLootTable()
-			{
-				return ModBlocks.blockMegaTorch.getLootTable();
-			}
-
 			@Override
 			public ItemStack getPickBlock(BlockState state, RayTraceResult target, IBlockReader world, BlockPos pos, PlayerEntity player)
 			{

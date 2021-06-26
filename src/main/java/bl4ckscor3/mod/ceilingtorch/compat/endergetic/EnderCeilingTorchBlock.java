@@ -7,25 +7,15 @@ import com.minecraftabnormals.endergetic.core.registry.EEBlocks;
 
 import bl4ckscor3.mod.ceilingtorch.compat.vanilla.CeilingTorchBlock;
 import net.minecraft.block.BlockState;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.ItemStack;
 import net.minecraft.particles.ParticleTypes;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.RayTraceResult;
-import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
 
 public class EnderCeilingTorchBlock extends CeilingTorchBlock
 {
 	public EnderCeilingTorchBlock(Properties properties)
 	{
-		super(properties, null);
-	}
-
-	@Override
-	public ItemStack getPickBlock(BlockState state, RayTraceResult target, IBlockReader world, BlockPos pos, PlayerEntity player)
-	{
-		return new ItemStack(EEBlocks.ENDER_TORCH.get());
+		super(properties, null, EEBlocks.ENDER_TORCH);
 	}
 
 	@Override

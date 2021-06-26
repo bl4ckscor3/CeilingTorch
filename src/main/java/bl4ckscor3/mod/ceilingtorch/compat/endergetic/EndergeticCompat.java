@@ -20,7 +20,7 @@ public class EndergeticCompat implements ICeilingTorchCompat
 	@Override
 	public void registerBlocks(RegistryEvent.Register<Block> event)
 	{
-		event.getRegistry().register(enderCeilingTorch = new EnderCeilingTorchBlock(Block.Properties.from(Blocks.TORCH).lootFrom(EEBlocks.ENDER_TORCH)).setRegistryName(new ResourceLocation(CeilingTorch.MODID, "endergetic_ender_torch")));
+		event.getRegistry().register(enderCeilingTorch = new EnderCeilingTorchBlock(Block.Properties.from(Blocks.TORCH)).setRegistryName(new ResourceLocation(CeilingTorch.MODID, "endergetic_ender_torch")));
 	}
 
 	@Override

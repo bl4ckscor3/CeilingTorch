@@ -13,11 +13,8 @@ import de.geheimagentnr1.magical_torches.elements.capabilities.spawn_blocking.IS
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.material.PushReaction;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.util.math.shapes.ISelectionContext;
 import net.minecraft.util.math.shapes.VoxelShape;
 import net.minecraft.util.math.shapes.VoxelShapes;
@@ -31,7 +28,7 @@ public class ChickenEggCeilingTorchBlock extends CeilingTorchBlock
 
 	public ChickenEggCeilingTorchBlock(Properties properties)
 	{
-		super(properties, null);
+		super(properties, null, () -> ModBlocks.CHICKEN_EGG_TORCH);
 		ChickenEggSpawningCapability.registerChickenEggBlocker(new ResourceLocation(CeilingTorch.MODID, ChickenEggTorch.registry_name), spawnBlockerFactory = ChickenEggTorchBlocker::new);
 	}
 
@@ -68,17 +65,5 @@ public class ChickenEggCeilingTorchBlock extends CeilingTorchBlock
 		super.onReplaced(state, world, pos, newState, isMoving);
 
 		world.getCapability(ModCapabilities.CHICKEN_EGG_SPAWNING).ifPresent(capability -> capability.removeSpawnBlocker(spawnBlockerFactory.build(pos)));
-	}
-
-	@Override
-	public ResourceLocation getLootTable()
-	{
-		return ModBlocks.CHICKEN_EGG_TORCH.getLootTable();
-	}
-
-	@Override
-	public ItemStack getPickBlock(BlockState state, RayTraceResult target, IBlockReader world, BlockPos pos, PlayerEntity player)
-	{
-		return new ItemStack(ModBlocks.CHICKEN_EGG_TORCH);
 	}
 }

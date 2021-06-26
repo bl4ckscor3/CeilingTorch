@@ -7,7 +7,6 @@ import java.util.Random;
 
 import javax.annotation.Nullable;
 
-import lotr.common.init.LOTRBlocks;
 import lotr.common.init.LOTRItems;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -24,7 +23,6 @@ import net.minecraft.state.properties.DoubleBlockHalf;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.Direction;
 import net.minecraft.util.Direction.Axis;
-import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.util.math.shapes.ISelectionContext;
@@ -148,12 +146,6 @@ public class CeilingOrcTorchBlock extends Block
 	public List<ItemStack> getDrops(BlockState state, LootContext.Builder builder)
 	{
 		return state.get(HALF) == DoubleBlockHalf.LOWER ? Arrays.asList(new ItemStack(LOTRItems.ORC_TORCH.get())) : new ArrayList<>();
-	}
-
-	@Override
-	public ResourceLocation getLootTable()
-	{
-		return LOTRBlocks.ORC_TORCH.get().getLootTable();
 	}
 
 	@Override

@@ -21,9 +21,9 @@ public class LotrCeilingTorchBlock extends CeilingTorchBlock
 	public static final VoxelShape CEILING_SHAPE = Block.makeCuboidShape(6.0D, 6.0D, 6.0D, 10.0D, 16.0D, 10.0D);
 	private final List<Supplier<? extends IParticleData>> particles;
 
-	public LotrCeilingTorchBlock(Block.Properties properties, Supplier<? extends IParticleData>... particles)
+	public LotrCeilingTorchBlock(Block.Properties properties, Supplier<Block> originalBlock, Supplier<? extends IParticleData>... particles)
 	{
-		super(properties, ParticleTypes.FLAME);
+		super(properties, ParticleTypes.FLAME, originalBlock);
 
 		this.particles = Arrays.asList(particles);
 	}

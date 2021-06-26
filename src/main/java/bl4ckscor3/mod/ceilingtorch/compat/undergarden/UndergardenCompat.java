@@ -23,7 +23,9 @@ public class UndergardenCompat implements ICeilingTorchCompat
 	@Override
 	public void registerBlocks(RegistryEvent.Register<Block> event)
 	{
-		event.getRegistry().register(shardCeilingTorch = new ShardCeilingTorchBlock(Block.Properties.from(Blocks.TORCH).setLightLevel(state -> 6).lootFrom(UGBlocks.SHARD_TORCH)).setRegistryName(new ResourceLocation(CeilingTorch.MODID, "undergarden_shard_torch")));
+		event.getRegistry().register(shardCeilingTorch = new ShardCeilingTorchBlock(Block.Properties.from(Blocks.TORCH)
+				.setLightLevel(state -> 6))
+				.setRegistryName(new ResourceLocation(CeilingTorch.MODID, "undergarden_shard_torch")));
 	}
 
 	@Override
