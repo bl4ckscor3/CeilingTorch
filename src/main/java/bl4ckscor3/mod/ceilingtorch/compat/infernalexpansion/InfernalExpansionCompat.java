@@ -3,8 +3,8 @@ package bl4ckscor3.mod.ceilingtorch.compat.infernalexpansion;
 import java.util.Map;
 
 import com.google.common.collect.ImmutableMap;
-import com.nekomaster1000.infernalexp.init.ModBlocks;
-import com.nekomaster1000.infernalexp.init.ModItems;
+import com.nekomaster1000.infernalexp.init.IEBlocks;
+import com.nekomaster1000.infernalexp.init.IEItems;
 
 import bl4ckscor3.mod.ceilingtorch.CeilingTorch;
 import bl4ckscor3.mod.ceilingtorch.ICeilingTorchCompat;
@@ -24,14 +24,14 @@ public class InfernalExpansionCompat implements ICeilingTorchCompat
 	public void registerBlocks(RegistryEvent.Register<Block> event)
 	{
 		event.getRegistry().register(glowlightCeilingTorch = new CeilingTorchBlock(Block.Properties.from(Blocks.TORCH),
-				ParticleTypes.CRIT, ModBlocks.GLOW_TORCH).setRegistryName(new ResourceLocation(CeilingTorch.MODID, "infernalexpansion_glowlight_torch")));
+				ParticleTypes.CRIT, IEBlocks.GLOW_TORCH).setRegistryName(new ResourceLocation(CeilingTorch.MODID, "infernalexpansion_glowlight_torch")));
 	}
 
 	@Override
 	public Map<ResourceLocation,Block> getPlaceEntries()
 	{
 		if(placeEntries == null)
-			placeEntries = ImmutableMap.of(ModItems.GLOW_TORCH.get().getRegistryName(), glowlightCeilingTorch);
+			placeEntries = ImmutableMap.of(IEItems.GLOW_TORCH.get().getRegistryName(), glowlightCeilingTorch);
 
 		return placeEntries;
 	}
