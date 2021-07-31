@@ -5,10 +5,10 @@ import java.util.Random;
 import androsa.gaiadimension.registry.ModBlocks;
 import androsa.gaiadimension.registry.ModParticles;
 import bl4ckscor3.mod.ceilingtorch.compat.vanilla.CeilingTorchBlock;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.level.Level;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
@@ -21,7 +21,7 @@ public class PyriteCeilingTorchBlock extends CeilingTorchBlock
 
 	@Override
 	@OnlyIn(Dist.CLIENT)
-	public void animateTick(BlockState state, World world, BlockPos pos, Random rand)
+	public void animateTick(BlockState state, Level world, BlockPos pos, Random rand)
 	{
 		double x = pos.getX() + rand.nextDouble() * 0.7D;
 		double y = pos.getY() + rand.nextDouble() * 0.7D;

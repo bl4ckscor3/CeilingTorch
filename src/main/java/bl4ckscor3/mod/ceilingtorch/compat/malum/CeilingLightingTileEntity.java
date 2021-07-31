@@ -8,9 +8,9 @@ import com.sammy.malum.core.init.particles.MalumParticles;
 import com.sammy.malum.core.systems.particles.ParticleManager;
 import com.sammy.malum.core.systems.tileentities.SimpleTileEntity;
 
-import net.minecraft.tileentity.ITickableTileEntity;
+import net.minecraft.world.level.block.entity.TickableBlockEntity;
 
-public class CeilingLightingTileEntity extends SimpleTileEntity implements ITickableTileEntity
+public class CeilingLightingTileEntity extends SimpleTileEntity implements TickableBlockEntity
 {
 	public CeilingLightingTileEntity()
 	{

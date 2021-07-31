@@ -4,29 +4,29 @@ import java.util.Random;
 import java.util.function.Supplier;
 
 import bl4ckscor3.mod.ceilingtorch.compat.vanilla.CeilingTorchBlock;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.LeavesBlock;
-import net.minecraft.particles.IParticleData;
-import net.minecraft.particles.ParticleTypes;
-import net.minecraft.util.Direction;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.shapes.ISelectionContext;
-import net.minecraft.util.math.shapes.VoxelShape;
-import net.minecraft.util.math.vector.Vector3d;
-import net.minecraft.world.IBlockReader;
-import net.minecraft.world.IWorldReader;
-import net.minecraft.world.World;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.LeavesBlock;
+import net.minecraft.core.particles.ParticleOptions;
+import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.core.Direction;
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.phys.shapes.CollisionContext;
+import net.minecraft.world.phys.shapes.VoxelShape;
+import net.minecraft.world.phys.Vec3;
+import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.LevelReader;
+import net.minecraft.world.level.Level;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
-import net.minecraft.block.AbstractBlock.OffsetType;
+import net.minecraft.world.level.block.state.BlockBehaviour.OffsetType;
 
 public class BambooCeilingTorchBlock extends CeilingTorchBlock
 {
 	protected static final VoxelShape SHAPE = Block.box(5.5D, 2.0D, 5.5D, 10.5D, 16.0D, 10.5D);
 
-	public BambooCeilingTorchBlock(Block.Properties properties, IParticleData particleData, Supplier<Block> originalBlock)
+	public BambooCeilingTorchBlock(Block.Properties properties, ParticleOptions particleData, Supplier<Block> originalBlock)
 	{
 		super(properties, particleData, originalBlock);
 	}
@@ -38,24 +38,24 @@ public class BambooCeilingTorchBlock extends CeilingTorchBlock
 	}
 
 	@Override
-	public VoxelShape getShape(BlockState state, IBlockReader world, BlockPos pos, ISelectionContext context)
+	public VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context)
 	{
-		Vector3d offset = state.getOffset(world, pos);
+		Vec3 offset = state.getOffset(world, pos);
 
 		return SHAPE.move(offset.x, offset.y, offset.z);
 	}
 
 	@Override
-	public boolean canSurvive(BlockState state, IWorldReader world, BlockPos pos)
+	public boolean canSurvive(BlockState state, LevelReader world, BlockPos pos)
 	{
 		return canSupportCenter(world, pos.above(), Direction.DOWN) || world.getBlockState(pos.above()).getBlock() instanceof LeavesBlock;
 	}
 
 	@Override
 	@OnlyIn(Dist.CLIENT)
-	public void animateTick(BlockState state, World world, BlockPos pos, Random rand)
+	public void animateTick(BlockState state, Level world, BlockPos pos, Random rand)
 	{
-		Vector3d offset = state.getOffset(world, pos);
+		Vec3 offset = state.getOffset(world, pos);
 		double x = pos.getX() + 0.5D + offset.x;
 		double y = pos.getY() + 0.2D + offset.y;
 		double z = pos.getZ() + 0.5D + offset.z;

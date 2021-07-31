@@ -7,23 +7,23 @@ import java.util.function.Supplier;
 import com.sammy.malum.common.blocks.lighting.IColor;
 
 import bl4ckscor3.mod.ceilingtorch.compat.vanilla.CeilingTorchBlock;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.IWaterLoggable;
-import net.minecraft.fluid.FluidState;
-import net.minecraft.fluid.Fluids;
-import net.minecraft.state.StateContainer;
-import net.minecraft.state.properties.BlockStateProperties;
-import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.Direction;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.IBlockReader;
-import net.minecraft.world.IWorld;
-import net.minecraft.world.World;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.SimpleWaterloggedBlock;
+import net.minecraft.world.level.material.FluidState;
+import net.minecraft.world.level.material.Fluids;
+import net.minecraft.world.level.block.state.StateDefinition;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.core.Direction;
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.Level;
 
-import net.minecraft.block.AbstractBlock.Properties;
+import net.minecraft.world.level.block.state.BlockBehaviour.Properties;
 
-public class CeilingEtherTorchBlock extends CeilingTorchBlock implements IColor, IWaterLoggable
+public class CeilingEtherTorchBlock extends CeilingTorchBlock implements IColor, SimpleWaterloggedBlock
 {
 	private final Color color;
 
@@ -36,10 +36,10 @@ public class CeilingEtherTorchBlock extends CeilingTorchBlock implements IColor,
 	}
 
 	@Override
-	public void animateTick(BlockState state, World world, BlockPos pos, Random rand) {}
+	public void animateTick(BlockState state, Level world, BlockPos pos, Random rand) {}
 
 	@Override
-	public BlockState updateShape(BlockState state, Direction facing, BlockState facingState, IWorld world, BlockPos currentPos, BlockPos facingPos)
+	public BlockState updateShape(BlockState state, Direction facing, BlockState facingState, LevelAccessor world, BlockPos currentPos, BlockPos facingPos)
 	{
 		if(state.getValue(BlockStateProperties.WATERLOGGED))
 			world.getLiquidTicks().scheduleTick(currentPos, Fluids.WATER, Fluids.WATER.getTickDelay(world));
@@ -54,7 +54,7 @@ public class CeilingEtherTorchBlock extends CeilingTorchBlock implements IColor,
 	}
 
 	@Override
-	public void createBlockStateDefinition(StateContainer.Builder<Block, BlockState> builder)
+	public void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder)
 	{
 		builder.add(BlockStateProperties.WATERLOGGED);
 	}
@@ -66,7 +66,7 @@ public class CeilingEtherTorchBlock extends CeilingTorchBlock implements IColor,
 	}
 
 	@Override
-	public TileEntity createTileEntity(BlockState state, IBlockReader world)
+	public BlockEntity createTileEntity(BlockState state, BlockGetter world)
 	{
 		return new CeilingLightingTileEntity();
 	}

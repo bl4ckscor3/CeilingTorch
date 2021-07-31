@@ -7,16 +7,16 @@ import com.google.common.collect.ImmutableMap;
 import bl4ckscor3.mod.ceilingtorch.CeilingTorch;
 import bl4ckscor3.mod.ceilingtorch.ICeilingTorchCompat;
 import knightminer.inspirations.utility.InspirationsUtility;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.ItemStack;
-import net.minecraft.particles.ParticleTypes;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.RayTraceResult;
-import net.minecraft.world.IBlockReader;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.phys.HitResult;
+import net.minecraft.world.level.BlockGetter;
 import net.minecraftforge.event.RegistryEvent;
 
 public class InspirationsCompat implements ICeilingTorchCompat
@@ -30,14 +30,14 @@ public class InspirationsCompat implements ICeilingTorchCompat
 	{
 		event.getRegistry().register(ceilingTorchLever = new CeilingTorchLeverBlock(Block.Properties.copy(Blocks.TORCH).lootFrom(() -> InspirationsUtility.torchLeverFloor), ParticleTypes.FLAME) {
 			@Override
-			public ItemStack getPickBlock(BlockState state, RayTraceResult target, IBlockReader world, BlockPos pos, PlayerEntity player)
+			public ItemStack getPickBlock(BlockState state, HitResult target, BlockGetter world, BlockPos pos, Player player)
 			{
 				return new ItemStack(InspirationsUtility.torchLeverItem);
 			}
 		}.setRegistryName(new ResourceLocation(CeilingTorch.MODID, "inspirations_torch_lever")));
 		event.getRegistry().register(ceilingSoulTorchLever = new CeilingTorchLeverBlock(Block.Properties.copy(Blocks.SOUL_TORCH).lootFrom(() -> InspirationsUtility.soulLeverFloor), ParticleTypes.SOUL_FIRE_FLAME) {
 			@Override
-			public ItemStack getPickBlock(BlockState state, RayTraceResult target, IBlockReader world, BlockPos pos, PlayerEntity player)
+			public ItemStack getPickBlock(BlockState state, HitResult target, BlockGetter world, BlockPos pos, Player player)
 			{
 				return new ItemStack(InspirationsUtility.soulLeverItem);
 			}

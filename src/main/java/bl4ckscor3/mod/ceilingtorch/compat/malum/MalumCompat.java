@@ -8,9 +8,9 @@ import com.sammy.malum.core.init.blocks.MalumBlocks;
 
 import bl4ckscor3.mod.ceilingtorch.CeilingTorch;
 import bl4ckscor3.mod.ceilingtorch.ICeilingTorchCompat;
-import net.minecraft.block.Block;
-import net.minecraft.tileentity.TileEntityType;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.entity.BlockEntityType;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.RegistryObject;
 
@@ -28,7 +28,7 @@ public class MalumCompat implements ICeilingTorchCompat
 	public static Block brownEtherCeilingTorch;
 	public static Block greenEtherCeilingTorch;
 	public static Block redEtherCeilingTorch;
-	public static final RegistryObject<TileEntityType<?>> ETHER_CEILING_TORCH = CeilingTorch.TILE_ENTITIES.register("malum_ether_torch", () -> TileEntityType.Builder.of(CeilingLightingTileEntity::new,
+	public static final RegistryObject<BlockEntityType<?>> ETHER_CEILING_TORCH = CeilingTorch.TILE_ENTITIES.register("malum_ether_torch", () -> BlockEntityType.Builder.of(CeilingLightingTileEntity::new,
 			orangeEtherCeilingTorch,
 			magentaEtherCeilingTorch,
 			lightBlueEtherCeilingTorch,

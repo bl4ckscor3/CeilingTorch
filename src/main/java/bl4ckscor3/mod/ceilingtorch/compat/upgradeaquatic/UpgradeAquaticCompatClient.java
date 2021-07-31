@@ -1,7 +1,7 @@
 package bl4ckscor3.mod.ceilingtorch.compat.upgradeaquatic;
 
 import net.minecraft.client.renderer.RenderType;
-import net.minecraft.client.renderer.RenderTypeLookup;
+import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 
 public class UpgradeAquaticCompatClient
@@ -10,13 +10,13 @@ public class UpgradeAquaticCompatClient
 	{
 		RenderType translucent = RenderType.translucent();
 
-		RenderTypeLookup.setRenderLayer(UpgradeAquaticCompat.pinkJellyTorch, translucent);
-		RenderTypeLookup.setRenderLayer(UpgradeAquaticCompat.purpleJellyTorch, translucent);
-		RenderTypeLookup.setRenderLayer(UpgradeAquaticCompat.blueJellyTorch, translucent);
-		RenderTypeLookup.setRenderLayer(UpgradeAquaticCompat.greenJellyTorch, translucent);
-		RenderTypeLookup.setRenderLayer(UpgradeAquaticCompat.yellowJellyTorch, translucent);
-		RenderTypeLookup.setRenderLayer(UpgradeAquaticCompat.orangeJellyTorch, translucent);
-		RenderTypeLookup.setRenderLayer(UpgradeAquaticCompat.redJellyTorch, translucent);
-		RenderTypeLookup.setRenderLayer(UpgradeAquaticCompat.whiteJellyTorch, translucent);
+		ItemBlockRenderTypes.setRenderLayer(UpgradeAquaticCompat.pinkJellyTorch, translucent);
+		ItemBlockRenderTypes.setRenderLayer(UpgradeAquaticCompat.purpleJellyTorch, translucent);
+		ItemBlockRenderTypes.setRenderLayer(UpgradeAquaticCompat.blueJellyTorch, translucent);
+		ItemBlockRenderTypes.setRenderLayer(UpgradeAquaticCompat.greenJellyTorch, translucent);
+		ItemBlockRenderTypes.setRenderLayer(UpgradeAquaticCompat.yellowJellyTorch, translucent);
+		ItemBlockRenderTypes.setRenderLayer(UpgradeAquaticCompat.orangeJellyTorch, translucent);
+		ItemBlockRenderTypes.setRenderLayer(UpgradeAquaticCompat.redJellyTorch, translucent);
+		ItemBlockRenderTypes.setRenderLayer(UpgradeAquaticCompat.whiteJellyTorch, translucent);
 	}
 }

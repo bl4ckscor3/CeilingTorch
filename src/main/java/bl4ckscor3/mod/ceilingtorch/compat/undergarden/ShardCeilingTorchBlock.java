@@ -3,16 +3,16 @@ package bl4ckscor3.mod.ceilingtorch.compat.undergarden;
 import java.util.Random;
 
 import bl4ckscor3.mod.ceilingtorch.compat.vanilla.CeilingTorchBlock;
-import net.minecraft.block.BlockState;
-import net.minecraft.particles.ParticleTypes;
-import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.IBlockReader;
-import net.minecraft.world.World;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.Level;
 import quek.undergarden.registry.UGBlocks;
 import quek.undergarden.registry.UGParticleTypes;
 
-import net.minecraft.block.AbstractBlock.Properties;
+import net.minecraft.world.level.block.state.BlockBehaviour.Properties;
 
 public class ShardCeilingTorchBlock extends CeilingTorchBlock
 {
@@ -28,13 +28,13 @@ public class ShardCeilingTorchBlock extends CeilingTorchBlock
 	}
 
 	@Override
-	public TileEntity createTileEntity(BlockState state, IBlockReader world)
+	public BlockEntity createTileEntity(BlockState state, BlockGetter world)
 	{
 		return UndergardenCompat.ETHER_CEILING_TORCH.get().create();
 	}
 
 	@Override
-	public void animateTick(BlockState state, World world, BlockPos pos, Random rand)
+	public void animateTick(BlockState state, Level world, BlockPos pos, Random rand)
 	{
 		double x = pos.getX() + 0.5D;
 		double y = pos.getY() + 0.3D;

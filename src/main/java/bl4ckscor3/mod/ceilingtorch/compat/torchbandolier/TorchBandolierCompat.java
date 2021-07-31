@@ -7,16 +7,16 @@ import com.google.common.collect.ImmutableMap;
 import bl4ckscor3.mod.ceilingtorch.CeilingTorch;
 import bl4ckscor3.mod.ceilingtorch.ICeilingTorchCompat;
 import bl4ckscor3.mod.ceilingtorch.PlaceHandler;
-import net.minecraft.block.AirBlock;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.entity.player.PlayerInventory;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.ActionResultType;
-import net.minecraft.util.Direction;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.level.block.AirBlock;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.entity.player.Inventory;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.core.Direction;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.core.BlockPos;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent.Register;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent.RightClickBlock;
@@ -34,7 +34,7 @@ public class TorchBandolierCompat implements ICeilingTorchCompat
 	{
 		if(event.getFace() == Direction.DOWN && event.getItemStack().getItem() instanceof TorchBandolierItem)
 		{
-			PlayerEntity player = event.getPlayer();
+			Player player = event.getPlayer();
 			ItemStack stack = event.getItemStack();
 			TorchBandolierItem bandolier = (TorchBandolierItem)stack.getItem();
 			Block torch = bandolier.getTorchBlock();
@@ -67,7 +67,7 @@ public class TorchBandolierCompat implements ICeilingTorchCompat
 						if(torchCount == 0  && player != null)
 							player.setSlot(getSlotFor(stack, player.inventory), new ItemStack(ModItems.EMPTY_TORCH_BANDOLIER.get()));
 
-						event.setCancellationResult(ActionResultType.SUCCESS);
+						event.setCancellationResult(InteractionResult.SUCCESS);
 						return;
 					}
 				}
@@ -76,7 +76,7 @@ public class TorchBandolierCompat implements ICeilingTorchCompat
 	}
 
 	//PlayerInventory#getSlotFor is client side only
-	public static int getSlotFor(ItemStack stack1, PlayerInventory inv)
+	public static int getSlotFor(ItemStack stack1, Inventory inv)
 	{
 		for(int i = 0; i < inv.items.size(); ++i)
 		{

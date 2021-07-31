@@ -8,10 +8,10 @@ import com.williambl.essentialfeatures.common.block.ModBlocks;
 import bl4ckscor3.mod.ceilingtorch.CeilingTorch;
 import bl4ckscor3.mod.ceilingtorch.ICeilingTorchCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.vanilla.RedstoneCeilingTorchBlock;
-import net.minecraft.block.Block;
-import net.minecraft.block.RedstoneTorchBlock;
-import net.minecraft.block.material.Material;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.RedstoneTorchBlock;
+import net.minecraft.world.level.material.Material;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.event.RegistryEvent.Register;
 
 public class EssentialFeaturesCompat implements ICeilingTorchCompat

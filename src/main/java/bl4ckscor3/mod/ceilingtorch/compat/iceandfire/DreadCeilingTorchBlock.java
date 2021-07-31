@@ -7,22 +7,22 @@ import com.github.alexthe666.iceandfire.block.IDreadBlock;
 import com.github.alexthe666.iceandfire.block.IafBlockRegistry;
 
 import bl4ckscor3.mod.ceilingtorch.compat.vanilla.CeilingTorchBlock;
-import net.minecraft.block.BlockState;
-import net.minecraft.particles.RedstoneParticleData;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.core.particles.DustParticleOptions;
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.level.Level;
 
-import net.minecraft.block.AbstractBlock.Properties;
+import net.minecraft.world.level.block.state.BlockBehaviour.Properties;
 
 public class DreadCeilingTorchBlock extends CeilingTorchBlock implements IDreadBlock
 {
 	public DreadCeilingTorchBlock(Properties properties)
 	{
-		super(properties, RedstoneParticleData.REDSTONE, () -> IafBlockRegistry.DREAD_TORCH);
+		super(properties, DustParticleOptions.REDSTONE, () -> IafBlockRegistry.DREAD_TORCH);
 	}
 
 	@Override
-	public void animateTick(BlockState state, World world, BlockPos pos, Random rand)
+	public void animateTick(BlockState state, Level world, BlockPos pos, Random rand)
 	{
 		IceAndFire.PROXY.spawnParticle("dread_torch", pos.getX() + 0.5D, pos.getY() + 0.4D, pos.getZ() + 0.5D, 0.0D, 0.0D, 0.0D);
 	}

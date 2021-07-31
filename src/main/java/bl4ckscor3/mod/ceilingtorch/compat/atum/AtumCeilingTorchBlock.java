@@ -8,15 +8,15 @@ import com.teammetallurgy.atum.blocks.lighting.INebuTorch;
 import com.teammetallurgy.atum.init.AtumParticles;
 
 import bl4ckscor3.mod.ceilingtorch.compat.vanilla.CeilingTorchBlock;
-import net.minecraft.block.Block;
-import net.minecraft.block.SoundType;
-import net.minecraft.block.material.Material;
-import net.minecraft.particles.IParticleData;
-import net.minecraft.particles.ParticleTypes;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.SoundType;
+import net.minecraft.world.level.material.Material;
+import net.minecraft.core.particles.ParticleOptions;
+import net.minecraft.core.particles.ParticleTypes;
 
 public class AtumCeilingTorchBlock extends CeilingTorchBlock implements INebuTorch
 {
-	public AtumCeilingTorchBlock(int lightValue, IParticleData particleType, Supplier<Block> originalBlock)
+	public AtumCeilingTorchBlock(int lightValue, ParticleOptions particleType, Supplier<Block> originalBlock)
 	{
 		super(Block.Properties.of(Material.DECORATION).noCollission().strength(0.0F).lightLevel(s -> lightValue).sound(SoundType.WOOD), particleType, originalBlock);
 	}
