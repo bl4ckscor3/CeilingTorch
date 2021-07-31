@@ -7,16 +7,15 @@ import com.google.common.collect.ImmutableMap;
 import bl4ckscor3.mod.ceilingtorch.CeilingTorch;
 import bl4ckscor3.mod.ceilingtorch.ICeilingTorchCompat;
 import bl4ckscor3.mod.ceilingtorch.PlaceHandler;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.AirBlock;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.entity.player.Inventory;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.core.Direction;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.core.BlockPos;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent.Register;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent.RightClickBlock;
@@ -65,7 +64,7 @@ public class TorchBandolierCompat implements ICeilingTorchCompat
 							TorchBandolierItem.setTorchCount(stack, --torchCount);
 
 						if(torchCount == 0  && player != null)
-							player.setSlot(getSlotFor(stack, player.inventory), new ItemStack(ModItems.EMPTY_TORCH_BANDOLIER.get()));
+							player.getInventory().setItem(player.getInventory().findSlotMatchingItem(stack), new ItemStack(ModItems.EMPTY_TORCH_BANDOLIER.get()));
 
 						event.setCancellationResult(InteractionResult.SUCCESS);
 						return;
@@ -73,19 +72,6 @@ public class TorchBandolierCompat implements ICeilingTorchCompat
 				}
 			}
 		}
-	}
-
-	//PlayerInventory#getSlotFor is client side only
-	public static int getSlotFor(ItemStack stack1, Inventory inv)
-	{
-		for(int i = 0; i < inv.items.size(); ++i)
-		{
-			ItemStack stack2 = inv.items.get(i);
-			if(!stack2.isEmpty() && (stack1.getItem() == stack2.getItem() && ItemStack.tagMatches(stack1, stack2)))
-				return i;
-		}
-
-		return -1;
 	}
 
 	@Override
