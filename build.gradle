@@ -1,7 +1,6 @@
 buildscript {
     repositories {
         maven { url = 'https://files.minecraftforge.net/maven' }
-        jcenter()
         mavenCentral()
     }
     dependencies {
@@ -12,14 +11,15 @@ buildscript {
 apply plugin: 'net.minecraftforge.gradle'
 apply plugin: 'eclipse'
 
-version = 'v1.13.2'
+version = '1.13.2'
 group = 'bl4ckscor3.mod.ceilingtorch'
-archivesBaseName = 'ceilingtorch-1.16.5'
+archivesBaseName = 'ceilingtorch-1.17.1'
 
-sourceCompatibility = targetCompatibility = compileJava.sourceCompatibility = compileJava.targetCompatibility = '1.8'
+java.toolchain.languageVersion = JavaLanguageVersion.of(16)
+println('Java: ' + System.getProperty('java.version') + ' JVM: ' + System.getProperty('java.vm.version') + '(' + System.getProperty('java.vendor') + ') Arch: ' + System.getProperty('os.arch'))
 
 minecraft {
-    mappings channel: 'official', version: '1.16.5'
+    mappings channel: 'official', version: '1.17.1'
     accessTransformer = file('src/main/resources/META-INF/accesstransformer.cfg')
 	
     runs {
@@ -40,6 +40,7 @@ minecraft {
         server {
             workingDirectory project.file('run/server')
             property 'forge.logging.console.level', 'debug'
+			args '-nogui'
             //fixes refmap of deps
             property 'mixin.env.remapRefMap', 'true'
             property 'mixin.env.refMapRemappingFile', "${projectDir}/build/createSrgToMcp/output.srg"
@@ -63,13 +64,13 @@ repositories {
 }
 
 dependencies {
-    minecraft 'net.minecraftforge:forge:1.16.5-36.1.24'
-	runtimeOnly fg.deobf("mezz.jei:jei-1.16.5:7.7.0.103")
+    minecraft 'net.minecraftforge:forge:1.17.1-37.0.17'
+	//runtimeOnly fg.deobf("mezz.jei:jei-1.16.5:7.7.0.103")
 	
-    implementation fg.deobf("curse.maven:magical-torches-389917:3302078")
-	implementation fg.deobf("curse.maven:sbm-bone-torch-238695:3100862")
-    implementation fg.deobf("curse.maven:silent-lib-242998:3235738") //silent gear and torch bandolier dependency
-    implementation fg.deobf("curse.maven:torch-bandolier-299337:3235254")
+    implementation fg.deobf("curse.maven:magical-torches-389917:3404171")
+	implementation fg.deobf("curse.maven:sbm-bone-torch-238695:3404075")
+    implementation fg.deobf("curse.maven:silent-lib-242998:3400030") //silent gear and torch bandolier dependency
+    implementation fg.deobf("curse.maven:torch-bandolier-299337:3404771")
 }
 
 jar {
@@ -82,19 +83,4 @@ jar {
                     "Implementation-Vendor" :"bl4ckscor3",
                     "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")],)
     }
-}
-
-processResources {
-	//replace ${version} in mods.toml
-	inputs.property 'version', project.version
-
-	from(sourceSets.main.resources.srcDirs) {
-		include 'META-INF/mods.toml'
-
-		expand 'version': project.version
-	}
-
-	from(sourceSets.main.resources.srcDirs) {
-		exclude 'META-INF/mods.toml'
-	}
 }
