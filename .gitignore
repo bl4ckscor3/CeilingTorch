@@ -8,3 +8,4 @@
 /.settings
 *.launch
 /logs
+/old_compat
