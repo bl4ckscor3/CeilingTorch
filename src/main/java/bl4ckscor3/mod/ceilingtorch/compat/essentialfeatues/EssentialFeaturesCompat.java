@@ -28,8 +28,8 @@ public class EssentialFeaturesCompat implements ICeilingTorchCompat
 			final int index = i;
 
 			//the properties are not like the vanilla redstone torch, but Essential Features has it like this, so i'm doing it as well
-			event.getRegistry().register(TORCHES[i] = new RedstoneCeilingTorchBlock(Block.Properties.create(Material.REDSTONE_LIGHT)
-					.setLightLevel(state -> state.get(RedstoneTorchBlock.LIT) ? 7 : 0),
+			event.getRegistry().register(TORCHES[i] = new RedstoneCeilingTorchBlock(Block.Properties.of(Material.BUILDABLE_GLASS)
+					.lightLevel(state -> state.getValue(RedstoneTorchBlock.LIT) ? 7 : 0),
 					() -> (Block)ModBlocks.STAINED_REDSTONE_TORCHES[index].getLeft()).setRegistryName(new ResourceLocation(CeilingTorch.MODID, "essentialfeatures_" + COLORS[i] + "_stained_redstone_torch")));
 		}
 	}

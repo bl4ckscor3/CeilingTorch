@@ -21,6 +21,8 @@ import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
+import net.minecraft.block.AbstractBlock.Properties;
+
 public class RedstoneCeilingTorchBlock extends RedstoneTorchBlock
 {
 	private final Supplier<Block> originalBlock;
@@ -39,46 +41,46 @@ public class RedstoneCeilingTorchBlock extends RedstoneTorchBlock
 	}
 
 	@Override
-	public BlockState updatePostPlacement(BlockState state, Direction facing, BlockState facingState, IWorld world, BlockPos currentPos, BlockPos facingPos)
+	public BlockState updateShape(BlockState state, Direction facing, BlockState facingState, IWorld world, BlockPos currentPos, BlockPos facingPos)
 	{
-		return facing == Direction.UP && !isValidPosition(state, world, currentPos) ? Blocks.AIR.getDefaultState() : super.updatePostPlacement(state, facing, facingState, world, currentPos, facingPos);
+		return facing == Direction.UP && !canSurvive(state, world, currentPos) ? Blocks.AIR.defaultBlockState() : super.updateShape(state, facing, facingState, world, currentPos, facingPos);
 	}
 
 	@Override
-	public boolean isValidPosition(BlockState state, IWorldReader world, BlockPos pos)
+	public boolean canSurvive(BlockState state, IWorldReader world, BlockPos pos)
 	{
-		return hasEnoughSolidSide(world, pos.up(), Direction.DOWN);
+		return canSupportCenter(world, pos.above(), Direction.DOWN);
 	}
 
 	@Override
-	public int getWeakPower(BlockState state, IBlockReader access, BlockPos pos, Direction side)
+	public int getSignal(BlockState state, IBlockReader access, BlockPos pos, Direction side)
 	{
-		return state.get(LIT) && Direction.DOWN != side ? 15 : 0;
+		return state.getValue(LIT) && Direction.DOWN != side ? 15 : 0;
 	}
 
 	@Override
-	public int getStrongPower(BlockState state, IBlockReader access, BlockPos pos, Direction side)
+	public int getDirectSignal(BlockState state, IBlockReader access, BlockPos pos, Direction side)
 	{
-		return side == Direction.UP ? state.getWeakPower(access, pos, side) : 0;
+		return side == Direction.UP ? state.getSignal(access, pos, side) : 0;
 	}
 
 	@Override
-	protected boolean shouldBeOff(World world, BlockPos pos, BlockState state)
+	protected boolean hasNeighborSignal(World world, BlockPos pos, BlockState state)
 	{
-		return world.isSidePowered(pos.up(), Direction.UP);
+		return world.hasSignal(pos.above(), Direction.UP);
 	}
 
 	@Override
 	@OnlyIn(Dist.CLIENT)
 	public void animateTick(BlockState state, World world, BlockPos pos, Random rand)
 	{
-		if(state.get(LIT))
+		if(state.getValue(LIT))
 		{
 			double x = pos.getX() + 0.5D + (rand.nextDouble() - 0.5D) * 0.2D;
 			double y = pos.getY() + 0.7D + (rand.nextDouble() - 0.5D) * 0.2D;
 			double z = pos.getZ() + 0.5D + (rand.nextDouble() - 0.5D) * 0.2D;
 
-			world.addParticle(particleData, x, y - 0.25D, z, 0.0D, 0.0D, 0.0D);
+			world.addParticle(flameParticle, x, y - 0.25D, z, 0.0D, 0.0D, 0.0D);
 		}
 	}
 

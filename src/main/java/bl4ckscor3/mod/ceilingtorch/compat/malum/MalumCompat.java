@@ -28,7 +28,7 @@ public class MalumCompat implements ICeilingTorchCompat
 	public static Block brownEtherCeilingTorch;
 	public static Block greenEtherCeilingTorch;
 	public static Block redEtherCeilingTorch;
-	public static final RegistryObject<TileEntityType<?>> ETHER_CEILING_TORCH = CeilingTorch.TILE_ENTITIES.register("malum_ether_torch", () -> TileEntityType.Builder.create(CeilingLightingTileEntity::new,
+	public static final RegistryObject<TileEntityType<?>> ETHER_CEILING_TORCH = CeilingTorch.TILE_ENTITIES.register("malum_ether_torch", () -> TileEntityType.Builder.of(CeilingLightingTileEntity::new,
 			orangeEtherCeilingTorch,
 			magentaEtherCeilingTorch,
 			lightBlueEtherCeilingTorch,
@@ -97,6 +97,6 @@ public class MalumCompat implements ICeilingTorchCompat
 
 	private Block.Properties getProperties()
 	{
-		return MalumBlocks.RUNEWOOD_PROPERTIES().doesNotBlockMovement().zeroHardnessAndResistance().setLightLevel(state -> 14);
+		return MalumBlocks.RUNEWOOD_PROPERTIES().noCollission().instabreak().lightLevel(state -> 14);
 	}
 }

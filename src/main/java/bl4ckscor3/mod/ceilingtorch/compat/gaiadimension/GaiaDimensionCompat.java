@@ -20,9 +20,9 @@ public class GaiaDimensionCompat implements ICeilingTorchCompat
 	@Override
 	public void registerBlocks(RegistryEvent.Register<Block> event)
 	{
-		event.getRegistry().register(pyriteCeilingTorch = new PyriteCeilingTorchBlock(Block.Properties.create(Material.MISCELLANEOUS)
-				.hardnessAndResistance(0.0F)
-				.setLightLevel(state -> 14))
+		event.getRegistry().register(pyriteCeilingTorch = new PyriteCeilingTorchBlock(Block.Properties.of(Material.DECORATION)
+				.strength(0.0F)
+				.lightLevel(state -> 14))
 				.setRegistryName(new ResourceLocation(CeilingTorch.MODID, "gaiadimension_pyrite_torch")));
 	}
 

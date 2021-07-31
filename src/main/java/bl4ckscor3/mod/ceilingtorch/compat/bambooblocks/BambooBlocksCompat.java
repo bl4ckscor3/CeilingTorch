@@ -23,16 +23,16 @@ public class BambooBlocksCompat implements ICeilingTorchCompat
 	@Override
 	public void registerBlocks(RegistryEvent.Register<Block> event)
 	{
-		event.getRegistry().register(bambooCeilingTorch = new BambooCeilingTorchBlock(Block.Properties.create(Material.MISCELLANEOUS)
-				.doesNotBlockMovement()
-				.hardnessAndResistance(0.0F)
-				.setLightLevel(state -> 14)
+		event.getRegistry().register(bambooCeilingTorch = new BambooCeilingTorchBlock(Block.Properties.of(Material.DECORATION)
+				.noCollission()
+				.strength(0.0F)
+				.lightLevel(state -> 14)
 				.sound(SoundType.BAMBOO),
 				ParticleTypes.FLAME, BambooBlocksRegistry.BAMBOO_TORCH).setRegistryName(new ResourceLocation(CeilingTorch.MODID, "bambooblocks_bamboo_torch")));
-		event.getRegistry().register(soulBambooCeilingTorch = new BambooCeilingTorchBlock(Block.Properties.create(Material.MISCELLANEOUS)
-				.doesNotBlockMovement()
-				.hardnessAndResistance(0.0F)
-				.setLightLevel(state -> 10)
+		event.getRegistry().register(soulBambooCeilingTorch = new BambooCeilingTorchBlock(Block.Properties.of(Material.DECORATION)
+				.noCollission()
+				.strength(0.0F)
+				.lightLevel(state -> 10)
 				.sound(SoundType.BAMBOO),
 				ParticleTypes.SOUL_FIRE_FLAME, BambooBlocksRegistry.SOUL_BAMBOO_TORCH).setRegistryName(new ResourceLocation(CeilingTorch.MODID, "bambooblocks_soul_bamboo_torch")));
 	}

@@ -20,9 +20,11 @@ import net.minecraft.world.IBlockReader;
 import net.minecraft.world.IWorld;
 import net.minecraft.world.IWorldReader;
 
+import net.minecraft.block.AbstractBlock.Properties;
+
 public class ModernCeilingTorchBlock extends BlockWL
 {
-	private static final VoxelShape SHAPE = VoxelShapes.or(Block.makeCuboidShape(6.0D, 15.0D, 6.0D, 10.0D, 16.0D, 10.0D), Block.makeCuboidShape(7.0D, 7.0D, 7.0D, 9.0D, 15.0D, 9.0D));
+	private static final VoxelShape SHAPE = VoxelShapes.or(Block.box(6.0D, 15.0D, 6.0D, 10.0D, 16.0D, 10.0D), Block.box(7.0D, 7.0D, 7.0D, 9.0D, 15.0D, 9.0D));
 	private final Supplier<Block> originalBlock;
 
 	public ModernCeilingTorchBlock(Properties properties, Supplier<Block> originalBlock)
@@ -39,18 +41,18 @@ public class ModernCeilingTorchBlock extends BlockWL
 	}
 
 	@Override
-	public BlockState updatePostPlacement(BlockState state, Direction facing, BlockState facingState, IWorld world, BlockPos currentPos, BlockPos facingPos)
+	public BlockState updateShape(BlockState state, Direction facing, BlockState facingState, IWorld world, BlockPos currentPos, BlockPos facingPos)
 	{
-		if(state.get(WATERLOGGED))
-			world.getPendingFluidTicks().scheduleTick(currentPos, Fluids.WATER, Fluids.WATER.getTickRate(world));
+		if(state.getValue(WATERLOGGED))
+			world.getLiquidTicks().scheduleTick(currentPos, Fluids.WATER, Fluids.WATER.getTickDelay(world));
 
-		return facing == Direction.UP && !isValidPosition(state, world, currentPos) ? Blocks.AIR.getDefaultState() : super.updatePostPlacement(state, facing, facingState, world, currentPos, facingPos);
+		return facing == Direction.UP && !canSurvive(state, world, currentPos) ? Blocks.AIR.defaultBlockState() : super.updateShape(state, facing, facingState, world, currentPos, facingPos);
 	}
 
 	@Override
-	public boolean isValidPosition(BlockState state, IWorldReader world, BlockPos pos)
+	public boolean canSurvive(BlockState state, IWorldReader world, BlockPos pos)
 	{
-		return hasEnoughSolidSide(world, pos.up(), Direction.DOWN);
+		return canSupportCenter(world, pos.above(), Direction.DOWN);
 	}
 
 	@Override

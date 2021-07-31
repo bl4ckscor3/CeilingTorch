@@ -25,21 +25,21 @@ public class ChaosAwakensCompat implements ICeilingTorchCompat
 	@Override
 	public void registerBlocks(RegistryEvent.Register<Block> event)
 	{
-		event.getRegistry().register(crystalCeilingTorch = new CeilingTorchBlock(Block.Properties.create(Material.MISCELLANEOUS)
-				.doesNotBlockMovement()
-				.zeroHardnessAndResistance()
-				.setLightLevel(state -> 14).sound(SoundType.WOOD)
+		event.getRegistry().register(crystalCeilingTorch = new CeilingTorchBlock(Block.Properties.of(Material.DECORATION)
+				.noCollission()
+				.instabreak()
+				.lightLevel(state -> 14).sound(SoundType.WOOD)
 				, ParticleTypes.FLAME, CABlocks.CRYSTAL_TORCH).setRegistryName(new ResourceLocation(CeilingTorch.MODID, "chaosawakens_crystal_torch")));
-		event.getRegistry().register(sunstoneCeilingTorch = new CeilingTorchBlock(Block.Properties.create(Material.MISCELLANEOUS)
-				.doesNotBlockMovement()
-				.zeroHardnessAndResistance()
-				.setLightLevel(state -> 12)
+		event.getRegistry().register(sunstoneCeilingTorch = new CeilingTorchBlock(Block.Properties.of(Material.DECORATION)
+				.noCollission()
+				.instabreak()
+				.lightLevel(state -> 12)
 				.sound(SoundType.WOOD),
 				ParticleTypes.END_ROD, CABlocks.SUNSTONE_TORCH).setRegistryName(new ResourceLocation(CeilingTorch.MODID, "chaosawakens_sunstone_torch")));
-		event.getRegistry().register(extremeCeilingTorch = new CeilingTorchBlock(Block.Properties.create(Material.MISCELLANEOUS)
-				.doesNotBlockMovement()
-				.zeroHardnessAndResistance()
-				.setLightLevel(state -> 15)
+		event.getRegistry().register(extremeCeilingTorch = new CeilingTorchBlock(Block.Properties.of(Material.DECORATION)
+				.noCollission()
+				.instabreak()
+				.lightLevel(state -> 15)
 				.sound(SoundType.WOOD),
 				ParticleTypes.FLAME, CABlocks.EXTREME_TORCH).setRegistryName(new ResourceLocation(CeilingTorch.MODID, "chaosawakens_extreme_torch")));
 	}

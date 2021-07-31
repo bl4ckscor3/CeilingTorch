@@ -32,7 +32,7 @@ public interface ICeilingTorchCompat
 	 */
 	public default BlockState getStateToPlace(ItemStack stack, Block block)
 	{
-		return block.getDefaultState();
+		return block.defaultBlockState();
 	}
 
 	/**

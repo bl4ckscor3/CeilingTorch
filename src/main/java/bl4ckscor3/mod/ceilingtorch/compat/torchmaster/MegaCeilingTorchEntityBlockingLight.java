@@ -14,7 +14,7 @@ public class MegaCeilingTorchEntityBlockingLight extends MegatorchEntityBlocking
 	@Override
 	public boolean cleanupCheck(World world)
 	{
-		return world.isBlockLoaded(getPos()) && world.getBlockState(getPos()).getBlock() != TorchmasterCompat.megaCeilingTorch;
+		return world.hasChunkAt(getPos()) && world.getBlockState(getPos()).getBlock() != TorchmasterCompat.megaCeilingTorch;
 	}
 
 	@Override

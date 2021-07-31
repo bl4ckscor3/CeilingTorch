@@ -42,10 +42,10 @@ public class MagicalTorchesCompat implements ICeilingTorchCompat
 				.setRegistryName(new ResourceLocation(CeilingTorch.MODID, "magical_torches_grand_torch")));
 		event.getRegistry().register(megaCeilingTorch = new SpawnBlockingCeilingTorchBlock(getProperties(), MegaTorch.registry_name, MegaTorchSpawnBlocker::new, () -> ModBlocks.MEGA_TORCH)
 				.setRegistryName(new ResourceLocation(CeilingTorch.MODID, "magical_torches_mega_torch")));
-		event.getRegistry().register(soundMufflingCeilingTorch = new SoundMufflingCeilingTorchBlock(Block.Properties.create(Material.WOOD)
-				.hardnessAndResistance(3.0F)
+		event.getRegistry().register(soundMufflingCeilingTorch = new SoundMufflingCeilingTorchBlock(Block.Properties.of(Material.WOOD)
+				.strength(3.0F)
 				.sound(SoundType.WOOD)
-				.doesNotBlockMovement())
+				.noCollission())
 				.setRegistryName(new ResourceLocation(CeilingTorch.MODID, "magical_torches_sound_muffling_torch")));
 		event.getRegistry().register(chickenEggCeilingTorch = new ChickenEggCeilingTorchBlock(getProperties())
 				.setRegistryName(new ResourceLocation(CeilingTorch.MODID, "magical_torches_chicken_egg_torch")));
@@ -70,6 +70,6 @@ public class MagicalTorchesCompat implements ICeilingTorchCompat
 
 	private Block.Properties getProperties()
 	{
-		return Block.Properties.create(Material.WOOD).hardnessAndResistance(3.0F).sound(SoundType.WOOD).doesNotBlockMovement().setLightLevel(state -> 15);
+		return Block.Properties.of(Material.WOOD).strength(3.0F).sound(SoundType.WOOD).noCollission().lightLevel(state -> 15);
 	}
 }

@@ -20,6 +20,9 @@ import net.minecraft.world.IBlockReader;
 import net.minecraft.world.IWorld;
 import net.minecraft.world.IWorldReader;
 
+import com.minecraftabnormals.upgrade_aquatic.common.blocks.JellyTorchBlock.JellyTorchType;
+import net.minecraft.block.AbstractBlock.Properties;
+
 public class JellyCeilingTorchBlock extends JellyTorchBlock
 {
 	protected final JellyTorchType torchType;
@@ -31,7 +34,7 @@ public class JellyCeilingTorchBlock extends JellyTorchBlock
 
 		this.torchType = torchType;
 		this.originalBlock = originalBlock;
-		setDefaultState(stateContainer.getBaseState().with(WATERLOGGED, false));
+		registerDefaultState(stateDefinition.any().setValue(WATERLOGGED, false));
 	}
 
 	@Override
@@ -41,18 +44,18 @@ public class JellyCeilingTorchBlock extends JellyTorchBlock
 	}
 
 	@Override
-	public BlockState updatePostPlacement(BlockState state, Direction facing, BlockState facingState, IWorld world, BlockPos currentPos, BlockPos facingPos)
+	public BlockState updateShape(BlockState state, Direction facing, BlockState facingState, IWorld world, BlockPos currentPos, BlockPos facingPos)
 	{
-		if(state.get(WATERLOGGED))
-			world.getPendingFluidTicks().scheduleTick(currentPos, Fluids.WATER, Fluids.WATER.getTickRate(world));
+		if(state.getValue(WATERLOGGED))
+			world.getLiquidTicks().scheduleTick(currentPos, Fluids.WATER, Fluids.WATER.getTickDelay(world));
 
-		return facing == Direction.UP && !isValidPosition(state, world, currentPos) ? Blocks.AIR.getDefaultState() : state;
+		return facing == Direction.UP && !canSurvive(state, world, currentPos) ? Blocks.AIR.defaultBlockState() : state;
 	}
 
 	@Override
-	public boolean isValidPosition(BlockState state, IWorldReader world, BlockPos pos)
+	public boolean canSurvive(BlockState state, IWorldReader world, BlockPos pos)
 	{
-		return hasEnoughSolidSide(world, pos.up(), Direction.DOWN);
+		return canSupportCenter(world, pos.above(), Direction.DOWN);
 	}
 
 	@Override

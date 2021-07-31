@@ -17,10 +17,10 @@ public class CeilingShardTorchTileEntity extends TileEntity implements ITickable
 	@Override
 	public void tick()
 	{
-		if(world.getGameTime() % 20L == 0L)
+		if(level.getGameTime() % 20L == 0L)
 		{
-			world.getEntitiesWithinAABB(LivingEntity.class, new AxisAlignedBB(pos.getX() - 4, pos.getY() - 4, pos.getZ() - 4, pos.getX() + 4, pos.getY() + 4, pos.getZ() + 4), e -> e.getType().isContained(Entities.ROTSPAWN))
-			.forEach(e -> e.attackEntityFrom(UGDamageSources.SHARD_TORCH, 4.0F));
+			level.getEntitiesOfClass(LivingEntity.class, new AxisAlignedBB(worldPosition.getX() - 4, worldPosition.getY() - 4, worldPosition.getZ() - 4, worldPosition.getX() + 4, worldPosition.getY() + 4, worldPosition.getZ() + 4), e -> e.getType().is(Entities.ROTSPAWN))
+			.forEach(e -> e.hurt(UGDamageSources.SHARD_TORCH, 4.0F));
 		}
 	}
 }

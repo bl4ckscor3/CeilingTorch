@@ -35,60 +35,60 @@ public class LotrCompat implements ICeilingTorchCompat
 	public void registerBlocks(RegistryEvent.Register<Block> event)
 	{
 		//blubber torch
-		event.getRegistry().register(ceilingBlubberTorch = new LotrCeilingTorchBlock(Block.Properties.create(Material.MISCELLANEOUS)
-				.doesNotBlockMovement()
-				.hardnessAndResistance(0.0F)
-				.setLightLevel(state -> 14)
+		event.getRegistry().register(ceilingBlubberTorch = new LotrCeilingTorchBlock(Block.Properties.of(Material.DECORATION)
+				.noCollission()
+				.strength(0.0F)
+				.lightLevel(state -> 14)
 				.sound(SoundType.WOOD),
 				LOTRBlocks.BLUBBER_TORCH, () -> ParticleTypes.SMOKE, () -> ParticleTypes.FLAME).setRegistryName("lotr_blubber_torch"));
 		//blue mallorn torch
-		event.getRegistry().register(ceilingBlueMallornTorch = new LotrCeilingTorchBlock(Block.Properties.create(Material.MISCELLANEOUS)
-				.doesNotBlockMovement()
-				.hardnessAndResistance(0.0F)
-				.setLightLevel(state -> 14)
+		event.getRegistry().register(ceilingBlueMallornTorch = new LotrCeilingTorchBlock(Block.Properties.of(Material.DECORATION)
+				.noCollission()
+				.strength(0.0F)
+				.lightLevel(state -> 14)
 				.sound(SoundType.WOOD),
 				LOTRBlocks.BLUE_MALLORN_TORCH, LOTRParticles.BLUE_ELVEN_GLOW).setRegistryName("lotr_blue_mallorn_torch"));
 		//dwarven torch
-		event.getRegistry().register(ceilingDwarvenTorch = new LotrCeilingTorchBlock(Block.Properties.create(Material.MISCELLANEOUS)
-				.doesNotBlockMovement()
-				.hardnessAndResistance(0.0F)
-				.setLightLevel(state -> 14)
+		event.getRegistry().register(ceilingDwarvenTorch = new LotrCeilingTorchBlock(Block.Properties.of(Material.DECORATION)
+				.noCollission()
+				.strength(0.0F)
+				.lightLevel(state -> 14)
 				.sound(SoundType.WOOD),
 				LOTRBlocks.DWARVEN_TORCH, () -> ParticleTypes.SMOKE, () -> ParticleTypes.FLAME).setRegistryName("lotr_dwarven_torch"));
 		//gold mallorn torch
-		event.getRegistry().register(ceilingGoldMallornTorch = new LotrCeilingTorchBlock(Block.Properties.create(Material.MISCELLANEOUS)
-				.doesNotBlockMovement()
-				.hardnessAndResistance(0.0F)
-				.setLightLevel(state -> 14)
+		event.getRegistry().register(ceilingGoldMallornTorch = new LotrCeilingTorchBlock(Block.Properties.of(Material.DECORATION)
+				.noCollission()
+				.strength(0.0F)
+				.lightLevel(state -> 14)
 				.sound(SoundType.WOOD),
 				LOTRBlocks.GOLD_MALLORN_TORCH, LOTRParticles.GOLD_ELVEN_GLOW).setRegistryName("lotr_gold_mallorn_torch"));
 		//green mallorn torch
-		event.getRegistry().register(ceilingGreenMallornTorch = new LotrCeilingTorchBlock(Block.Properties.create(Material.MISCELLANEOUS)
-				.doesNotBlockMovement()
-				.hardnessAndResistance(0.0F)
-				.setLightLevel(state -> 14)
+		event.getRegistry().register(ceilingGreenMallornTorch = new LotrCeilingTorchBlock(Block.Properties.of(Material.DECORATION)
+				.noCollission()
+				.strength(0.0F)
+				.lightLevel(state -> 14)
 				.sound(SoundType.WOOD),
 				LOTRBlocks.GREEN_MALLORN_TORCH, LOTRParticles.GREEN_ELVEN_GLOW).setRegistryName("lotr_green_mallorn_torch"));
 		//high elven torch
-		event.getRegistry().register(ceilingHighElvenTorch = new LotrCeilingTorchBlock(Block.Properties.create(Material.MISCELLANEOUS)
-				.doesNotBlockMovement()
-				.hardnessAndResistance(0.0F)
-				.setLightLevel(state -> 14)
+		event.getRegistry().register(ceilingHighElvenTorch = new LotrCeilingTorchBlock(Block.Properties.of(Material.DECORATION)
+				.noCollission()
+				.strength(0.0F)
+				.lightLevel(state -> 14)
 				.sound(SoundType.WOOD),
 				LOTRBlocks.HIGH_ELVEN_TORCH, LOTRParticles.BLUE_ELVEN_GLOW).setRegistryName("lotr_high_elven_torch"));
 		//orc torch
-		event.getRegistry().register(ceilingOrcTorch = new CeilingOrcTorchBlock(Block.Properties.create(Material.MISCELLANEOUS)
+		event.getRegistry().register(ceilingOrcTorch = new CeilingOrcTorchBlock(Block.Properties.of(Material.DECORATION)
 				.lootFrom(LOTRBlocks.ORC_TORCH)
-				.doesNotBlockMovement()
-				.hardnessAndResistance(0.0F)
-				.setLightLevel(state -> state.get(CeilingOrcTorchBlock.HALF) == DoubleBlockHalf.LOWER ? 12 : 0)
+				.noCollission()
+				.strength(0.0F)
+				.lightLevel(state -> state.getValue(CeilingOrcTorchBlock.HALF) == DoubleBlockHalf.LOWER ? 12 : 0)
 				.sound(SoundType.WOOD))
 				.setRegistryName("lotr_orc_torch"));
 		//silver mallorn torch
-		event.getRegistry().register(ceilingSilverMallonTorch = new LotrCeilingTorchBlock(Block.Properties.create(Material.MISCELLANEOUS)
-				.doesNotBlockMovement()
-				.hardnessAndResistance(0.0F)
-				.setLightLevel(state -> 14)
+		event.getRegistry().register(ceilingSilverMallonTorch = new LotrCeilingTorchBlock(Block.Properties.of(Material.DECORATION)
+				.noCollission()
+				.strength(0.0F)
+				.lightLevel(state -> 14)
 				.sound(SoundType.WOOD),
 				LOTRBlocks.SILVER_MALLORN_TORCH, LOTRParticles.SILVER_ELVEN_GLOW).setRegistryName("lotr_silver_mallorn_torch"));
 	}
@@ -98,7 +98,7 @@ public class LotrCompat implements ICeilingTorchCompat
 	public void onPlace(RightClickBlock event, BlockPos placeAt, BlockState state)
 	{
 		if(state.getBlock() == ceilingOrcTorch)
-			event.getWorld().setBlockState(placeAt.down(), ceilingOrcTorch.getDefaultState().with(CeilingOrcTorchBlock.HALF, DoubleBlockHalf.LOWER), 27);
+			event.getWorld().setBlock(placeAt.below(), ceilingOrcTorch.defaultBlockState().setValue(CeilingOrcTorchBlock.HALF, DoubleBlockHalf.LOWER), 27);
 	}
 
 	@Override

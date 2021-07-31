@@ -35,97 +35,97 @@ import net.minecraft.world.World;
 public class CeilingOrcTorchBlock extends Block
 {
 	public static final EnumProperty<DoubleBlockHalf> HALF = BlockStateProperties.DOUBLE_BLOCK_HALF;
-	private static final VoxelShape UPPER_SHAPE = Block.makeCuboidShape(7.0D, 0.0D, 7.0D, 9.0D, 16.0D, 9.0D);
-	private static final VoxelShape LOWER_SHAPE = Block.makeCuboidShape(7.0D, 7.0D, 7.0D, 9.0D, 16.0D, 9.0D);
+	private static final VoxelShape UPPER_SHAPE = Block.box(7.0D, 0.0D, 7.0D, 9.0D, 16.0D, 9.0D);
+	private static final VoxelShape LOWER_SHAPE = Block.box(7.0D, 7.0D, 7.0D, 9.0D, 16.0D, 9.0D);
 
 	public CeilingOrcTorchBlock(Block.Properties properties)
 	{
 		super(properties);
-		setDefaultState(stateContainer.getBaseState().with(HALF, DoubleBlockHalf.UPPER));
+		registerDefaultState(stateDefinition.any().setValue(HALF, DoubleBlockHalf.UPPER));
 	}
 
 	@Override
 	public VoxelShape getShape(BlockState state, IBlockReader world, BlockPos pos, ISelectionContext ctx)
 	{
-		return state.get(HALF) == DoubleBlockHalf.LOWER ? LOWER_SHAPE : UPPER_SHAPE;
+		return state.getValue(HALF) == DoubleBlockHalf.LOWER ? LOWER_SHAPE : UPPER_SHAPE;
 	}
 
 	@Override
-	public BlockState updatePostPlacement(BlockState state, Direction facing, BlockState facingState, IWorld world, BlockPos currentPos, BlockPos facingPos)
+	public BlockState updateShape(BlockState state, Direction facing, BlockState facingState, IWorld world, BlockPos currentPos, BlockPos facingPos)
 	{
-		DoubleBlockHalf half = state.get(HALF);
+		DoubleBlockHalf half = state.getValue(HALF);
 
-		if(facing.getAxis() != Axis.Y || half == DoubleBlockHalf.UPPER != (facing == Direction.DOWN) || facingState.getBlock() == this && facingState.get(HALF) != half)
+		if(facing.getAxis() != Axis.Y || half == DoubleBlockHalf.UPPER != (facing == Direction.DOWN) || facingState.getBlock() == this && facingState.getValue(HALF) != half)
 		{
-			if(half == DoubleBlockHalf.UPPER && facing == Direction.UP && !state.isValidPosition(world, currentPos))
-				return Blocks.AIR.getDefaultState();
+			if(half == DoubleBlockHalf.UPPER && facing == Direction.UP && !state.canSurvive(world, currentPos))
+				return Blocks.AIR.defaultBlockState();
 
-			if(state.isValidPosition(world, currentPos))
-				return super.updatePostPlacement(state, facing, facingState, world, currentPos, facingPos);
+			if(state.canSurvive(world, currentPos))
+				return super.updateShape(state, facing, facingState, world, currentPos, facingPos);
 		}
 
-		return Blocks.AIR.getDefaultState();
+		return Blocks.AIR.defaultBlockState();
 	}
 
 	@Override
 	@Nullable
 	public BlockState getStateForPlacement(BlockItemUseContext ctx)
 	{
-		BlockPos pos = ctx.getPos();
+		BlockPos pos = ctx.getClickedPos();
 
-		return pos.getY() > 0 && ctx.getWorld().getBlockState(pos.down()).isReplaceable(ctx) ? super.getStateForPlacement(ctx) : null;
+		return pos.getY() > 0 && ctx.getLevel().getBlockState(pos.below()).canBeReplaced(ctx) ? super.getStateForPlacement(ctx) : null;
 	}
 
 	@Override
-	public boolean isValidPosition(BlockState state, IWorldReader world, BlockPos pos)
+	public boolean canSurvive(BlockState state, IWorldReader world, BlockPos pos)
 	{
-		if(state.get(HALF) == DoubleBlockHalf.LOWER)
+		if(state.getValue(HALF) == DoubleBlockHalf.LOWER)
 		{
 			if(state.getBlock() != this)
 				return true;
 			else
 			{
-				BlockState aboveState = world.getBlockState(pos.up());
+				BlockState aboveState = world.getBlockState(pos.above());
 
-				return aboveState.getBlock() == this && aboveState.get(HALF) == DoubleBlockHalf.UPPER;
+				return aboveState.getBlock() == this && aboveState.getValue(HALF) == DoubleBlockHalf.UPPER;
 			}
 		}
 		else
-			return hasEnoughSolidSide(world, pos.up(), Direction.DOWN);
+			return canSupportCenter(world, pos.above(), Direction.DOWN);
 	}
 
 	@Override
-	public void harvestBlock(World world, PlayerEntity player, BlockPos pos, BlockState state, TileEntity te, ItemStack stack)
+	public void playerDestroy(World world, PlayerEntity player, BlockPos pos, BlockState state, TileEntity te, ItemStack stack)
 	{
-		super.harvestBlock(world, player, pos, Blocks.AIR.getDefaultState(), te, stack);
+		super.playerDestroy(world, player, pos, Blocks.AIR.defaultBlockState(), te, stack);
 	}
 
 	@Override
-	public void onBlockHarvested(World world, BlockPos pos, BlockState state, PlayerEntity player)
+	public void playerWillDestroy(World world, BlockPos pos, BlockState state, PlayerEntity player)
 	{
-		DoubleBlockHalf half = state.get(HALF);
-		BlockPos otherHalfPos = half == DoubleBlockHalf.LOWER ? pos.up() : pos.down();
+		DoubleBlockHalf half = state.getValue(HALF);
+		BlockPos otherHalfPos = half == DoubleBlockHalf.LOWER ? pos.above() : pos.below();
 		BlockState otherHalfState = world.getBlockState(otherHalfPos);
 
-		if(otherHalfState.getBlock() == this && otherHalfState.get(HALF) != half)
+		if(otherHalfState.getBlock() == this && otherHalfState.getValue(HALF) != half)
 		{
-			world.setBlockState(otherHalfPos, Blocks.AIR.getDefaultState(), 35);
-			world.playEvent(player, 2001, otherHalfPos, Block.getStateId(otherHalfState));
+			world.setBlock(otherHalfPos, Blocks.AIR.defaultBlockState(), 35);
+			world.levelEvent(player, 2001, otherHalfPos, Block.getId(otherHalfState));
 
-			if(!world.isRemote && !player.isCreative())
+			if(!world.isClientSide && !player.isCreative())
 			{
-				spawnDrops(state, world, pos, null, player, player.getHeldItemMainhand());
-				spawnDrops(otherHalfState, world, otherHalfPos, null, player, player.getHeldItemMainhand());
+				dropResources(state, world, pos, null, player, player.getMainHandItem());
+				dropResources(otherHalfState, world, otherHalfPos, null, player, player.getMainHandItem());
 			}
 		}
 
-		super.onBlockHarvested(world, pos, state, player);
+		super.playerWillDestroy(world, pos, state, player);
 	}
 
 	@Override
 	public void animateTick(BlockState state, World world, BlockPos pos, Random rand)
 	{
-		if(state.get(HALF) == DoubleBlockHalf.LOWER)
+		if(state.getValue(HALF) == DoubleBlockHalf.LOWER)
 		{
 			double x = pos.getX() + 0.5D;
 			double y = pos.getY() + 0.45D;
@@ -137,7 +137,7 @@ public class CeilingOrcTorchBlock extends Block
 	}
 
 	@Override
-	protected void fillStateContainer(Builder<Block,BlockState> builder)
+	protected void createBlockStateDefinition(Builder<Block,BlockState> builder)
 	{
 		builder.add(HALF);
 	}
@@ -145,7 +145,7 @@ public class CeilingOrcTorchBlock extends Block
 	@Override
 	public List<ItemStack> getDrops(BlockState state, LootContext.Builder builder)
 	{
-		return state.get(HALF) == DoubleBlockHalf.LOWER ? Arrays.asList(new ItemStack(LOTRItems.ORC_TORCH.get())) : new ArrayList<>();
+		return state.getValue(HALF) == DoubleBlockHalf.LOWER ? Arrays.asList(new ItemStack(LOTRItems.ORC_TORCH.get())) : new ArrayList<>();
 	}
 
 	@Override

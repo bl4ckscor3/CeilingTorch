@@ -12,6 +12,8 @@ import net.minecraft.world.World;
 import quek.undergarden.registry.UGBlocks;
 import quek.undergarden.registry.UGParticleTypes;
 
+import net.minecraft.block.AbstractBlock.Properties;
+
 public class ShardCeilingTorchBlock extends CeilingTorchBlock
 {
 	public ShardCeilingTorchBlock(Properties properties)

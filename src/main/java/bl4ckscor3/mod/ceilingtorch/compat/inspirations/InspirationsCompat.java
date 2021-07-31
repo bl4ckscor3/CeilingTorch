@@ -28,14 +28,14 @@ public class InspirationsCompat implements ICeilingTorchCompat
 	@Override
 	public void registerBlocks(RegistryEvent.Register<Block> event)
 	{
-		event.getRegistry().register(ceilingTorchLever = new CeilingTorchLeverBlock(Block.Properties.from(Blocks.TORCH).lootFrom(() -> InspirationsUtility.torchLeverFloor), ParticleTypes.FLAME) {
+		event.getRegistry().register(ceilingTorchLever = new CeilingTorchLeverBlock(Block.Properties.copy(Blocks.TORCH).lootFrom(() -> InspirationsUtility.torchLeverFloor), ParticleTypes.FLAME) {
 			@Override
 			public ItemStack getPickBlock(BlockState state, RayTraceResult target, IBlockReader world, BlockPos pos, PlayerEntity player)
 			{
 				return new ItemStack(InspirationsUtility.torchLeverItem);
 			}
 		}.setRegistryName(new ResourceLocation(CeilingTorch.MODID, "inspirations_torch_lever")));
-		event.getRegistry().register(ceilingSoulTorchLever = new CeilingTorchLeverBlock(Block.Properties.from(Blocks.SOUL_TORCH).lootFrom(() -> InspirationsUtility.soulLeverFloor), ParticleTypes.SOUL_FIRE_FLAME) {
+		event.getRegistry().register(ceilingSoulTorchLever = new CeilingTorchLeverBlock(Block.Properties.copy(Blocks.SOUL_TORCH).lootFrom(() -> InspirationsUtility.soulLeverFloor), ParticleTypes.SOUL_FIRE_FLAME) {
 			@Override
 			public ItemStack getPickBlock(BlockState state, RayTraceResult target, IBlockReader world, BlockPos pos, PlayerEntity player)
 			{

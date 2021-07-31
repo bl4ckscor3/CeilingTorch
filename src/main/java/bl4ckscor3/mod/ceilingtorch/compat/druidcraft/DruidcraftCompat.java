@@ -22,11 +22,11 @@ public class DruidcraftCompat implements ICeilingTorchCompat
 	@Override
 	public void registerBlocks(RegistryEvent.Register<Block> event)
 	{
-		event.getRegistry().register(fieryCeilingTorch = new FieryCeilingTorchBlock(Block.Properties.create(Material.MISCELLANEOUS)
+		event.getRegistry().register(fieryCeilingTorch = new FieryCeilingTorchBlock(Block.Properties.of(Material.DECORATION)
 				.lootFrom(() -> BlockRegistry.fiery_torch)
-				.doesNotBlockMovement()
-				.hardnessAndResistance(0.0F)
-				.setLightLevel(state -> 15)
+				.noCollission()
+				.strength(0.0F)
+				.lightLevel(state -> 15)
 				.sound(SoundType.BAMBOO)).setRegistryName(new ResourceLocation(CeilingTorch.MODID, "druidcraft_fiery_torch")));
 	}
 

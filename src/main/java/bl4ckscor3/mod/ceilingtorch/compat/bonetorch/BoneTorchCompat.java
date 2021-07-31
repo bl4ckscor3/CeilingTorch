@@ -23,10 +23,10 @@ public class BoneTorchCompat implements ICeilingTorchCompat
 	@Override
 	public void registerBlocks(RegistryEvent.Register<Block> event)
 	{
-		event.getRegistry().register(ceilingBoneTorch = new CeilingTorchBlock(Block.Properties.create(Material.MISCELLANEOUS)
-				.doesNotBlockMovement()
-				.hardnessAndResistance(0.0F)
-				.setLightLevel(state -> 14)
+		event.getRegistry().register(ceilingBoneTorch = new CeilingTorchBlock(Block.Properties.of(Material.DECORATION)
+				.noCollission()
+				.strength(0.0F)
+				.lightLevel(state -> 14)
 				.sound(SoundType.WOOD),
 				ParticleTypes.FLAME, () ->  BoneTorchMod.blockTorch).setRegistryName(new ResourceLocation(CeilingTorch.MODID, "bonetorch_bonetorch")));
 	}

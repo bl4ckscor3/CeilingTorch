@@ -17,14 +17,14 @@ import quek.undergarden.registry.UGBlocks;
 public class UndergardenCompat implements ICeilingTorchCompat
 {
 	public static Block shardCeilingTorch;
-	public static final RegistryObject<TileEntityType<?>> ETHER_CEILING_TORCH = CeilingTorch.TILE_ENTITIES.register("undergarden_shard_torch", () -> TileEntityType.Builder.create(CeilingShardTorchTileEntity::new, shardCeilingTorch).build(null));
+	public static final RegistryObject<TileEntityType<?>> ETHER_CEILING_TORCH = CeilingTorch.TILE_ENTITIES.register("undergarden_shard_torch", () -> TileEntityType.Builder.of(CeilingShardTorchTileEntity::new, shardCeilingTorch).build(null));
 	private Map<ResourceLocation,Block> placeEntries;
 
 	@Override
 	public void registerBlocks(RegistryEvent.Register<Block> event)
 	{
-		event.getRegistry().register(shardCeilingTorch = new ShardCeilingTorchBlock(Block.Properties.from(Blocks.TORCH)
-				.setLightLevel(state -> 6))
+		event.getRegistry().register(shardCeilingTorch = new ShardCeilingTorchBlock(Block.Properties.copy(Blocks.TORCH)
+				.lightLevel(state -> 6))
 				.setRegistryName(new ResourceLocation(CeilingTorch.MODID, "undergarden_shard_torch")));
 	}
 

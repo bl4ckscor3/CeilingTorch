@@ -9,6 +9,8 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import pokecube.legends.init.BlockInit;
 
+import net.minecraft.block.AbstractBlock.Properties;
+
 public class UltraCeilingTorchBlock extends CeilingTorchBlock
 {
 	public UltraCeilingTorchBlock(Properties properties)

@@ -28,20 +28,20 @@ public class ExtendedLightsCompat implements ICeilingTorchCompat
 	@Override
 	public void registerBlocks(RegistryEvent.Register<Block> event)
 	{
-		event.getRegistry().register(modernCeilingTorchWhite = new ModernCeilingTorchBlock(Block.Properties.create(Material.IRON)
-				.hardnessAndResistance(1.0F)
-				.setLightLevel(state -> 15)
+		event.getRegistry().register(modernCeilingTorchWhite = new ModernCeilingTorchBlock(Block.Properties.of(Material.METAL)
+				.strength(1.0F)
+				.lightLevel(state -> 15)
 				.sound(SoundType.METAL),
 				() -> RegBlocks.light_modern_ground_torch_white).setRegistryName(new ResourceLocation(CeilingTorch.MODID, "extended_lights_modern_torch_white")));
-		event.getRegistry().register(modernCeilingTorchBlack = new ModernCeilingTorchBlock(Block.Properties.create(Material.IRON)
-				.hardnessAndResistance(1.0F)
-				.setLightLevel(state -> 15)
+		event.getRegistry().register(modernCeilingTorchBlack = new ModernCeilingTorchBlock(Block.Properties.of(Material.METAL)
+				.strength(1.0F)
+				.lightLevel(state -> 15)
 				.sound(SoundType.METAL),
 				() -> RegBlocks.light_modern_ground_torch_black).setRegistryName(new ResourceLocation(CeilingTorch.MODID, "extended_lights_modern_torch_black")));
-		event.getRegistry().register(glowstoneCeilingTorch = new CeilingTorchBlock(Block.Properties.create(Material.MISCELLANEOUS)
-				.hardnessAndResistance(0.0F)
-				.doesNotBlockMovement()
-				.setLightLevel(state -> 14)
+		event.getRegistry().register(glowstoneCeilingTorch = new CeilingTorchBlock(Block.Properties.of(Material.DECORATION)
+				.strength(0.0F)
+				.noCollission()
+				.lightLevel(state -> 14)
 				.sound(SoundType.WOOD),
 				null, () -> RegBlocks.light_torch_glowstone) {
 			@Override

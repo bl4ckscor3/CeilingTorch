@@ -25,7 +25,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 
 public class CeilingTorchBlock extends TorchBlock
 {
-	public static final VoxelShape CEILING_SHAPE = Block.makeCuboidShape(6.0D, 6.0D, 6.0D, 10.0D, 16.0D, 10.0D);
+	public static final VoxelShape CEILING_SHAPE = Block.box(6.0D, 6.0D, 6.0D, 10.0D, 16.0D, 10.0D);
 	private final Supplier<Block> originalBlock;
 
 	public CeilingTorchBlock(Block.Properties properties, IParticleData particleData, Supplier<Block> originalBlock)
@@ -42,15 +42,15 @@ public class CeilingTorchBlock extends TorchBlock
 	}
 
 	@Override
-	public BlockState updatePostPlacement(BlockState state, Direction facing, BlockState facingState, IWorld world, BlockPos currentPos, BlockPos facingPos)
+	public BlockState updateShape(BlockState state, Direction facing, BlockState facingState, IWorld world, BlockPos currentPos, BlockPos facingPos)
 	{
-		return facing == Direction.UP && !isValidPosition(state, world, currentPos) ? Blocks.AIR.getDefaultState() : super.updatePostPlacement(state, facing, facingState, world, currentPos, facingPos);
+		return facing == Direction.UP && !canSurvive(state, world, currentPos) ? Blocks.AIR.defaultBlockState() : super.updateShape(state, facing, facingState, world, currentPos, facingPos);
 	}
 
 	@Override
-	public boolean isValidPosition(BlockState state, IWorldReader world, BlockPos pos)
+	public boolean canSurvive(BlockState state, IWorldReader world, BlockPos pos)
 	{
-		return hasEnoughSolidSide(world, pos.up(), Direction.DOWN);
+		return canSupportCenter(world, pos.above(), Direction.DOWN);
 	}
 
 	@Override
@@ -62,7 +62,7 @@ public class CeilingTorchBlock extends TorchBlock
 		double z = pos.getZ() + 0.5D;
 
 		world.addParticle(ParticleTypes.SMOKE, x, y, z, 0.0D, 0.0D, 0.0D);
-		world.addParticle(particleData, x, y, z, 0.0D, 0.0D, 0.0D);
+		world.addParticle(flameParticle, x, y, z, 0.0D, 0.0D, 0.0D);
 	}
 
 	@Override

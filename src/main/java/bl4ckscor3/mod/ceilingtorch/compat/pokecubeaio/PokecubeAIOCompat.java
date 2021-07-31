@@ -20,9 +20,9 @@ public class PokecubeAIOCompat implements ICeilingTorchCompat
 	@Override
 	public void registerBlocks(RegistryEvent.Register<Block> event)
 	{
-		event.getRegistry().register(ultraCeilingTorch = new UltraCeilingTorchBlock(Block.Properties.create(Material.MISCELLANEOUS)
-				.hardnessAndResistance(0.0F)
-				.doesNotBlockMovement())
+		event.getRegistry().register(ultraCeilingTorch = new UltraCeilingTorchBlock(Block.Properties.of(Material.DECORATION)
+				.strength(0.0F)
+				.noCollission())
 				.setRegistryName(new ResourceLocation(CeilingTorch.MODID, "pokecube_legends_ultra_torch1")));
 	}
 

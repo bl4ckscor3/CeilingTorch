@@ -11,11 +11,13 @@ import net.minecraft.particles.RedstoneParticleData;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
+import net.minecraft.block.AbstractBlock.Properties;
+
 public class BurntCeilingTorchBlock extends CeilingTorchBlock implements IDreadBlock
 {
 	public BurntCeilingTorchBlock(Properties properties)
 	{
-		super(properties, RedstoneParticleData.REDSTONE_DUST, () -> IafBlockRegistry.BURNT_TORCH);
+		super(properties, RedstoneParticleData.REDSTONE, () -> IafBlockRegistry.BURNT_TORCH);
 	}
 
 	@Override

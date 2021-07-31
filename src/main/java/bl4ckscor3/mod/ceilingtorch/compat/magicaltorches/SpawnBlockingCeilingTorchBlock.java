@@ -41,17 +41,17 @@ public class SpawnBlockingCeilingTorchBlock extends CeilingTorchBlock implements
 	{
 		super(properties, null, originalBlock);
 
-		setDefaultState(getDefaultState().with(BlockStateProperties.WATERLOGGED, false));
+		registerDefaultState(defaultBlockState().setValue(BlockStateProperties.WATERLOGGED, false));
 		SpawnBlockingCapability.registerSpawnBlocker(new ResourceLocation(CeilingTorch.MODID, spawnBlockRegistryName), this.spawnBlockerFactory = spawnBlockerFactory);
 		name = spawnBlockRegistryName;
 
 		switch(name)
 		{
-			case SmallTorch.registry_name: shape = Block.makeCuboidShape(7.0D, 6.0D, 7.0D, 9.0D, 16.0D, 9.0D); break;
-			case MediumTorch.registry_name: shape = Block.makeCuboidShape(6.5D, 5.0D, 6.5D, 9.5D, 16.0D, 9.5D); break;
-			case GrandTorch.registry_name: shape = Block.makeCuboidShape(6.0D, 4.0D, 6.0D, 10.0D, 16.0D, 10.0D); break;
-			case MegaTorch.registry_name: shape = Block.makeCuboidShape(6.0D, 3.0D, 6.0D, 10.0D, 16.0D, 10.0D); break;
-			default: shape = VoxelShapes.fullCube();
+			case SmallTorch.registry_name: shape = Block.box(7.0D, 6.0D, 7.0D, 9.0D, 16.0D, 9.0D); break;
+			case MediumTorch.registry_name: shape = Block.box(6.5D, 5.0D, 6.5D, 9.5D, 16.0D, 9.5D); break;
+			case GrandTorch.registry_name: shape = Block.box(6.0D, 4.0D, 6.0D, 10.0D, 16.0D, 10.0D); break;
+			case MegaTorch.registry_name: shape = Block.box(6.0D, 3.0D, 6.0D, 10.0D, 16.0D, 10.0D); break;
+			default: shape = VoxelShapes.block();
 		}
 	}
 
@@ -71,21 +71,21 @@ public class SpawnBlockingCeilingTorchBlock extends CeilingTorchBlock implements
 	}
 
 	@Override
-	public PushReaction getPushReaction(BlockState state)
+	public PushReaction getPistonPushReaction(BlockState state)
 	{
 		return PushReaction.DESTROY;
 	}
 
 	@Override
-	public void onBlockAdded(BlockState state, World world, BlockPos pos, BlockState oldState, boolean isMoving)
+	public void onPlace(BlockState state, World world, BlockPos pos, BlockState oldState, boolean isMoving)
 	{
 		world.getCapability(ModCapabilities.SPAWN_BLOCKING).ifPresent(capability -> capability.addSpawnBlocker(spawnBlockerFactory.build(pos)));
 	}
 
 	@Override
-	public void onReplaced(BlockState state, World world, BlockPos pos, BlockState newState, boolean isMoving)
+	public void onRemove(BlockState state, World world, BlockPos pos, BlockState newState, boolean isMoving)
 	{
-		super.onReplaced(state, world, pos, newState, isMoving);
+		super.onRemove(state, world, pos, newState, isMoving);
 
 		world.getCapability(ModCapabilities.SPAWN_BLOCKING).ifPresent(capability -> capability.removeSpawnBlocker(spawnBlockerFactory.build(pos)));
 	}
@@ -93,32 +93,32 @@ public class SpawnBlockingCeilingTorchBlock extends CeilingTorchBlock implements
 	@Override
 	public FluidState getFluidState(BlockState state)
 	{
-		return state.get(BlockStateProperties.WATERLOGGED) ? Fluids.WATER.getStillFluidState(false) : super.getFluidState(state);
+		return state.getValue(BlockStateProperties.WATERLOGGED) ? Fluids.WATER.getSource(false) : super.getFluidState(state);
 	}
 
 	@Override
 	public BlockState getStateForPlacement(BlockItemUseContext context)
 	{
-		BlockPos pos = context.getPos();
-		BlockState state = context.getWorld().getBlockState(pos);
+		BlockPos pos = context.getClickedPos();
+		BlockState state = context.getLevel().getBlockState(pos);
 
 		if(state.getBlock() == this)
-			return state.with(BlockStateProperties.WATERLOGGED, false);
+			return state.setValue(BlockStateProperties.WATERLOGGED, false);
 		else
-			return getDefaultState().with(BlockStateProperties.WATERLOGGED, context.getWorld().getFluidState(pos).getFluid() == Fluids.WATER);
+			return defaultBlockState().setValue(BlockStateProperties.WATERLOGGED, context.getLevel().getFluidState(pos).getType() == Fluids.WATER);
 	}
 
 	@Override
-	public BlockState updatePostPlacement(BlockState state, Direction facing, BlockState facingState, IWorld world, BlockPos currentPos, BlockPos facingPos)
+	public BlockState updateShape(BlockState state, Direction facing, BlockState facingState, IWorld world, BlockPos currentPos, BlockPos facingPos)
 	{
-		if(state.get(BlockStateProperties.WATERLOGGED))
-			world.getPendingFluidTicks().scheduleTick(currentPos, Fluids.WATER, Fluids.WATER.getTickRate(world));
+		if(state.getValue(BlockStateProperties.WATERLOGGED))
+			world.getLiquidTicks().scheduleTick(currentPos, Fluids.WATER, Fluids.WATER.getTickDelay(world));
 
 		return state;
 	}
 
 	@Override
-	protected void fillStateContainer(StateContainer.Builder<Block, BlockState> builder)
+	protected void createBlockStateDefinition(StateContainer.Builder<Block, BlockState> builder)
 	{
 		builder.add(BlockStateProperties.WATERLOGGED);
 	}

@@ -27,6 +27,6 @@ public class PyriteCeilingTorchBlock extends CeilingTorchBlock
 		double y = pos.getY() + rand.nextDouble() * 0.7D;
 		double z = pos.getZ() + rand.nextDouble() * 0.7D;
 
-		world.addParticle(particleData, x, y, z, 0.0D, 0.0D, 0.0D);
+		world.addParticle(flameParticle, x, y, z, 0.0D, 0.0D, 0.0D);
 	}
 }

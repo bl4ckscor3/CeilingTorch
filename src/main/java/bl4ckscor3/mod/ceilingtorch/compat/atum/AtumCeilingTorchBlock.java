@@ -18,7 +18,7 @@ public class AtumCeilingTorchBlock extends CeilingTorchBlock implements INebuTor
 {
 	public AtumCeilingTorchBlock(int lightValue, IParticleData particleType, Supplier<Block> originalBlock)
 	{
-		super(Block.Properties.create(Material.MISCELLANEOUS).doesNotBlockMovement().hardnessAndResistance(0.0F).setLightLevel(s -> lightValue).sound(SoundType.WOOD), particleType, originalBlock);
+		super(Block.Properties.of(Material.DECORATION).noCollission().strength(0.0F).lightLevel(s -> lightValue).sound(SoundType.WOOD), particleType, originalBlock);
 	}
 
 	public AtumCeilingTorchBlock(int lightValue, Supplier<Block> originalBlock)
@@ -34,12 +34,12 @@ public class AtumCeilingTorchBlock extends CeilingTorchBlock implements INebuTor
 	@Override
 	public boolean isNebuTorch()
 	{
-		return particleData != ParticleTypes.FLAME;
+		return flameParticle != ParticleTypes.FLAME;
 	}
 
 	@Override
 	public God getGod()
 	{
-		return AtumTorchBlock.GODS.get(particleData);
+		return AtumTorchBlock.GODS.get(flameParticle);
 	}
 }

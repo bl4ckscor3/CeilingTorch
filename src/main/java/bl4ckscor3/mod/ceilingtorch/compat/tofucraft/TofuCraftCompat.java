@@ -26,32 +26,32 @@ public class TofuCraftCompat implements ICeilingTorchCompat
 	@Override
 	public void registerBlocks(Register<Block> event)
 	{
-		event.getRegistry().register(tofuCeilingTorchMomen = new CeilingTorchBlock(Block.Properties.create(TofuMaterial.TOFU)
-				.hardnessAndResistance(0.0F, 0.5F)
-				.setLightLevel(state -> 14)
-				.doesNotBlockMovement()
-				.notSolid()
+		event.getRegistry().register(tofuCeilingTorchMomen = new CeilingTorchBlock(Block.Properties.of(TofuMaterial.TOFU)
+				.strength(0.0F, 0.5F)
+				.lightLevel(state -> 14)
+				.noCollission()
+				.noOcclusion()
 				.sound(SoundType.SNOW),
 				ParticleTypes.FLAME, () -> TofuBlocks.TOFUTORCH_MOMEN).setRegistryName(new ResourceLocation(CeilingTorch.MODID, "tofucraft_tofutorch_momen")));
-		event.getRegistry().register(tofuCeilingTorchIshi = new CeilingTorchBlock(Block.Properties.create(TofuMaterial.TOFU)
-				.hardnessAndResistance(0.0F, 6.0F)
-				.setLightLevel(state -> 14)
-				.doesNotBlockMovement()
-				.notSolid()
+		event.getRegistry().register(tofuCeilingTorchIshi = new CeilingTorchBlock(Block.Properties.of(TofuMaterial.TOFU)
+				.strength(0.0F, 6.0F)
+				.lightLevel(state -> 14)
+				.noCollission()
+				.noOcclusion()
 				.sound(SoundType.STONE),
 				ParticleTypes.FLAME, () -> TofuBlocks.TOFUTORCH_ISHI).setRegistryName(new ResourceLocation(CeilingTorch.MODID, "tofucraft_tofutorch_ishi")));
-		event.getRegistry().register(tofuCeilingTorchMetal = new CeilingTorchBlock(Block.Properties.create(TofuMaterial.TOFU)
-				.hardnessAndResistance(0.0F, 7.5F)
-				.setLightLevel(state -> 14)
-				.doesNotBlockMovement()
-				.notSolid()
+		event.getRegistry().register(tofuCeilingTorchMetal = new CeilingTorchBlock(Block.Properties.of(TofuMaterial.TOFU)
+				.strength(0.0F, 7.5F)
+				.lightLevel(state -> 14)
+				.noCollission()
+				.noOcclusion()
 				.sound(SoundType.METAL),
 				ParticleTypes.FLAME, () -> TofuBlocks.TOFUTORCH_METAL).setRegistryName(new ResourceLocation(CeilingTorch.MODID, "tofucraft_tofutorch_metal")));
-		event.getRegistry().register(tofuCeilingTorchKinu = new CeilingTorchBlock(Block.Properties.create(TofuMaterial.TOFU)
-				.hardnessAndResistance(0.0F, 0.5F)
-				.setLightLevel(state -> 14)
-				.doesNotBlockMovement()
-				.notSolid()
+		event.getRegistry().register(tofuCeilingTorchKinu = new CeilingTorchBlock(Block.Properties.of(TofuMaterial.TOFU)
+				.strength(0.0F, 0.5F)
+				.lightLevel(state -> 14)
+				.noCollission()
+				.noOcclusion()
 				.sound(SoundType.SNOW),
 				ParticleTypes.FLAME, () -> TofuBlocks.TOFUTORCH_KINU).setRegistryName(new ResourceLocation(CeilingTorch.MODID, "tofucraft_tofutorch_kinu")));
 	}

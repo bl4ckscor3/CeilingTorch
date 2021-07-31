@@ -24,6 +24,8 @@ import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
+import net.minecraft.block.AbstractBlock.Properties;
+
 public class CeilingTorchLeverBlock extends TorchLever
 {
 	public CeilingTorchLeverBlock(Properties properties)
@@ -38,21 +40,21 @@ public class CeilingTorchLeverBlock extends TorchLever
 	}
 
 	@Override
-	public BlockState updatePostPlacement(BlockState state, Direction facing, BlockState facingState, IWorld world, BlockPos currentPos, BlockPos facingPos)
+	public BlockState updateShape(BlockState state, Direction facing, BlockState facingState, IWorld world, BlockPos currentPos, BlockPos facingPos)
 	{
-		return facing == Direction.UP && !isValidPosition(state, world, currentPos) ? Blocks.AIR.getDefaultState() : super.updatePostPlacement(state, facing, facingState, world, currentPos, facingPos);
+		return facing == Direction.UP && !canSurvive(state, world, currentPos) ? Blocks.AIR.defaultBlockState() : super.updateShape(state, facing, facingState, world, currentPos, facingPos);
 	}
 
 	@Override
-	public boolean isValidPosition(BlockState state, IWorldReader world, BlockPos pos)
+	public boolean canSurvive(BlockState state, IWorldReader world, BlockPos pos)
 	{
-		return hasEnoughSolidSide(world, pos.up(), Direction.DOWN);
+		return canSupportCenter(world, pos.above(), Direction.DOWN);
 	}
 
 	@Override
-	public int getStrongPower(BlockState state, IBlockReader world, BlockPos pos, Direction side)
+	public int getDirectSignal(BlockState state, IBlockReader world, BlockPos pos, Direction side)
 	{
-		return state.get(BlockStateProperties.POWERED) && side == Direction.DOWN ? 15 : 0;
+		return state.getValue(BlockStateProperties.POWERED) && side == Direction.DOWN ? 15 : 0;
 	}
 
 	@Override
@@ -65,7 +67,7 @@ public class CeilingTorchLeverBlock extends TorchLever
 		double offset = -0.25D;
 
 		world.addParticle(ParticleTypes.SMOKE, x, y + offset, z, 0.0D, 0.0D, 0.0D);
-		world.addParticle(particleData, x, y + offset, z, 0.0D, 0.0D, 0.0D);
+		world.addParticle(flameParticle, x, y + offset, z, 0.0D, 0.0D, 0.0D);
 	}
 
 	@Override

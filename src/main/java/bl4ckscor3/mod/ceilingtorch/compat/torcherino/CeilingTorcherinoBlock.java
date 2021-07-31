@@ -52,37 +52,37 @@ public class CeilingTorcherinoBlock extends TorcherinoBlock
 	}
 
 	@Override
-	public BlockState updatePostPlacement(BlockState state, Direction facing, BlockState facingState, IWorld world, BlockPos currentPos, BlockPos facingPos)
+	public BlockState updateShape(BlockState state, Direction facing, BlockState facingState, IWorld world, BlockPos currentPos, BlockPos facingPos)
 	{
-		return facing == Direction.UP && !isValidPosition(state, world, currentPos) ? Blocks.AIR.getDefaultState() : state;
+		return facing == Direction.UP && !canSurvive(state, world, currentPos) ? Blocks.AIR.defaultBlockState() : state;
 	}
 
 	@Override
-	public boolean isValidPosition(BlockState state, IWorldReader world, BlockPos pos)
+	public boolean canSurvive(BlockState state, IWorldReader world, BlockPos pos)
 	{
-		return hasEnoughSolidSide(world, pos.up(), Direction.DOWN);
+		return canSupportCenter(world, pos.above(), Direction.DOWN);
 	}
 
 	@Override
 	public BlockState getStateForPlacement(BlockItemUseContext ctx)
 	{
-		boolean powered = ctx.getWorld().isBlockPowered(ctx.getPos().up());
+		boolean powered = ctx.getLevel().hasNeighborSignal(ctx.getClickedPos().above());
 
-		return super.getStateForPlacement(ctx).with(BlockStateProperties.POWERED, powered);
+		return super.getStateForPlacement(ctx).setValue(BlockStateProperties.POWERED, powered);
 	}
 
 	@Override
 	public void neighborChanged(BlockState state, World world, BlockPos pos, Block block, BlockPos fromPos, boolean b)
 	{
-		if(!world.isRemote)
+		if(!world.isClientSide)
 		{
-			boolean powered = world.isBlockPowered(pos.up());
+			boolean powered = world.hasNeighborSignal(pos.above());
 
-			if(state.get(BlockStateProperties.POWERED) != powered)
+			if(state.getValue(BlockStateProperties.POWERED) != powered)
 			{
-				world.setBlockState(pos, state.with(BlockStateProperties.POWERED, powered));
+				world.setBlockAndUpdate(pos, state.setValue(BlockStateProperties.POWERED, powered));
 
-				TileEntity te = world.getTileEntity(pos);
+				TileEntity te = world.getBlockEntity(pos);
 
 				if(te instanceof TorcherinoTileEntity)
 					((TorcherinoTileEntity)te).setPoweredByRedstone(powered);
@@ -124,9 +124,9 @@ public class CeilingTorcherinoBlock extends TorcherinoBlock
 	}
 
 	@Override
-	public String getTranslationKey()
+	public String getDescriptionId()
 	{
-		return getVanillaTorcherino().getTranslationKey();
+		return getVanillaTorcherino().getDescriptionId();
 	}
 
 	/**
