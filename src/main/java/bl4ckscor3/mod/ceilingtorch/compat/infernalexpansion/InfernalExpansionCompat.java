@@ -3,10 +3,11 @@ package bl4ckscor3.mod.ceilingtorch.compat.infernalexpansion;
 import java.util.Map;
 import java.util.Random;
 
+import org.infernalstudios.infernalexp.init.IEBlocks;
+import org.infernalstudios.infernalexp.init.IEItems;
+import org.infernalstudios.infernalexp.init.IEParticleTypes;
+
 import com.google.common.collect.ImmutableMap;
-import com.nekomaster1000.infernalexp.init.IEBlocks;
-import com.nekomaster1000.infernalexp.init.IEItems;
-import com.nekomaster1000.infernalexp.init.IEParticleTypes;
 
 import bl4ckscor3.mod.ceilingtorch.CeilingTorch;
 import bl4ckscor3.mod.ceilingtorch.ICeilingTorchCompat;

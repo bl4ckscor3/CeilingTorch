@@ -12,7 +12,7 @@ buildscript {
 apply plugin: 'net.minecraftforge.gradle'
 apply plugin: 'eclipse'
 
-version = 'v1.13.2'
+version = 'v1.13.3'
 group = 'bl4ckscor3.mod.ceilingtorch'
 archivesBaseName = 'ceilingtorch-1.16.5'
 
@@ -81,7 +81,7 @@ dependencies {
     //implementation fg.deobf("curse.maven:geckolib-388172:3282081") //chaos awakens dependency
     //implementation fg.deobf("curse.maven:i-like-wood-324164:3285752")
     //implementation fg.deobf("curse.maven:ice-and-fire-dragons-264231:3217622")
-    //implementation fg.deobf("curse.maven:infernal-expansion-395078:3389285")
+    implementation fg.deobf("curse.maven:infernal-expansion-395078:3414229")
     //implementation fg.deobf("curse.maven:inspirations-284007:3308942")
     //implementation fg.deobf("curse.maven:magical-torches-389917:3302078")
     //implementation fg.deobf("curse.maven:mantle-74924:3326538") //inspirations dependency
