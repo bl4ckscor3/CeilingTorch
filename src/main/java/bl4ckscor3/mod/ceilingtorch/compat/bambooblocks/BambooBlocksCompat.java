@@ -3,7 +3,7 @@ package bl4ckscor3.mod.ceilingtorch.compat.bambooblocks;
 import java.util.Map;
 
 import com.google.common.collect.ImmutableMap;
-import com.minecraftabnormals.bamboo_blocks.core.BambooBlocksRegistry;
+import com.minecraftabnormals.bamboo_blocks.core.registry.BBBlocks;
 
 import bl4ckscor3.mod.ceilingtorch.CeilingTorch;
 import bl4ckscor3.mod.ceilingtorch.ICeilingTorchCompat;
@@ -28,13 +28,13 @@ public class BambooBlocksCompat implements ICeilingTorchCompat
 				.hardnessAndResistance(0.0F)
 				.setLightLevel(state -> 14)
 				.sound(SoundType.BAMBOO),
-				ParticleTypes.FLAME, BambooBlocksRegistry.BAMBOO_TORCH).setRegistryName(new ResourceLocation(CeilingTorch.MODID, "bambooblocks_bamboo_torch")));
+				ParticleTypes.FLAME, BBBlocks.BAMBOO_TORCH).setRegistryName(new ResourceLocation(CeilingTorch.MODID, "bambooblocks_bamboo_torch")));
 		event.getRegistry().register(soulBambooCeilingTorch = new BambooCeilingTorchBlock(Block.Properties.create(Material.MISCELLANEOUS)
 				.doesNotBlockMovement()
 				.hardnessAndResistance(0.0F)
 				.setLightLevel(state -> 10)
 				.sound(SoundType.BAMBOO),
-				ParticleTypes.SOUL_FIRE_FLAME, BambooBlocksRegistry.SOUL_BAMBOO_TORCH).setRegistryName(new ResourceLocation(CeilingTorch.MODID, "bambooblocks_soul_bamboo_torch")));
+				ParticleTypes.SOUL_FIRE_FLAME, BBBlocks.SOUL_BAMBOO_TORCH).setRegistryName(new ResourceLocation(CeilingTorch.MODID, "bambooblocks_soul_bamboo_torch")));
 	}
 
 	@Override
@@ -42,8 +42,8 @@ public class BambooBlocksCompat implements ICeilingTorchCompat
 	{
 		if(placeEntries == null)
 		{
-			placeEntries = ImmutableMap.of(BambooBlocksRegistry.BAMBOO_TORCH.get().getRegistryName(), bambooCeilingTorch,
-					BambooBlocksRegistry.SOUL_BAMBOO_TORCH.get().getRegistryName(), soulBambooCeilingTorch);
+			placeEntries = ImmutableMap.of(BBBlocks.BAMBOO_TORCH.get().getRegistryName(), bambooCeilingTorch,
+					BBBlocks.SOUL_BAMBOO_TORCH.get().getRegistryName(), soulBambooCeilingTorch);
 		}
 
 		return placeEntries;
