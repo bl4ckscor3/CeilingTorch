@@ -12,7 +12,7 @@ buildscript {
 apply plugin: 'net.minecraftforge.gradle'
 apply plugin: 'eclipse'
 
-version = 'v1.13.4'
+version = 'v1.13.5'
 group = 'bl4ckscor3.mod.ceilingtorch'
 archivesBaseName = 'ceilingtorch-1.16.5'
 
@@ -88,8 +88,8 @@ dependencies {
     //implementation fg.deobf("curse.maven:malum-484064:3374475")
     //implementation fg.deobf("curse.maven:nethercraft-classic-342087:3248559")
     //implementation fg.deobf("curse.maven:pokecube-aoi-285121:3308917")
-	//implementation fg.deobf("curse.maven:sbm-bone-torch-238695:3100862")
-	//implementation fg.deobf("curse.maven:secretroomsmod-59652:3373743")
+    //implementation fg.deobf("curse.maven:sbm-bone-torch-238695:3100862")
+    //implementation fg.deobf("curse.maven:secretroomsmod-59652:3373743")
     //implementation fg.deobf("curse.maven:silent-gear-297039:3335628")
     //implementation fg.deobf("curse.maven:silent-lib-242998:3235738") //silent gear and torch bandolier dependency
     //implementation fg.deobf("curse.maven:the-lord-of-the-rings-mod-renewed-406893:3329470")

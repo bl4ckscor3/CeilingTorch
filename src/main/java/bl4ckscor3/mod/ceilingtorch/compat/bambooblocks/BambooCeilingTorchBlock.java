@@ -8,8 +8,10 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.LeavesBlock;
 import net.minecraft.particles.IParticleData;
+import net.minecraft.particles.ParticleType;
 import net.minecraft.particles.ParticleTypes;
 import net.minecraft.util.Direction;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.shapes.ISelectionContext;
 import net.minecraft.util.math.shapes.VoxelShape;
@@ -19,10 +21,12 @@ import net.minecraft.world.IWorldReader;
 import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
+import net.minecraftforge.registries.ForgeRegistries;
 
 public class BambooCeilingTorchBlock extends CeilingTorchBlock
 {
 	protected static final VoxelShape SHAPE = Block.makeCuboidShape(5.5D, 2.0D, 5.5D, 10.5D, 16.0D, 10.5D);
+	private IParticleData particle;
 
 	public BambooCeilingTorchBlock(Block.Properties properties, IParticleData particleData, Supplier<Block> originalBlock)
 	{
@@ -59,6 +63,18 @@ public class BambooCeilingTorchBlock extends CeilingTorchBlock
 		double z = pos.getZ() + 0.5D + offset.z;
 
 		world.addParticle(ParticleTypes.SMOKE, x, y, z, 0.0D, 0.0D, 0.0D);
-		world.addParticle(particleData, x, y, z, 0.0D, 0.0D, 0.0D);
+		world.addParticle(particleData == null ? getParticle() : particleData, x, y, z, 0.0D, 0.0D, 0.0D);
+	}
+
+	private IParticleData getParticle()
+	{
+		if(particle == null)
+		{
+			ParticleType<?> enderFlame = ForgeRegistries.PARTICLE_TYPES.getValue(new ResourceLocation("endergetic", "ender_flame"));
+
+			particle = enderFlame != null ? (IParticleData)enderFlame : ParticleTypes.SOUL_FIRE_FLAME;
+		}
+
+		return particle;
 	}
 }
