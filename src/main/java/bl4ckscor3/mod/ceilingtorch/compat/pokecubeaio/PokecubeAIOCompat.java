@@ -14,13 +14,13 @@ import pokecube.legends.init.BlockInit;
 
 public class PokecubeAIOCompat implements ICeilingTorchCompat
 {
-	public static Block ultraCeilingTorch;
+	public static Block infectedCeilingTorch;
 	private Map<ResourceLocation,Block> placeEntries;
 
 	@Override
 	public void registerBlocks(RegistryEvent.Register<Block> event)
 	{
-		event.getRegistry().register(ultraCeilingTorch = new UltraCeilingTorchBlock(Block.Properties.create(Material.MISCELLANEOUS)
+		event.getRegistry().register(infectedCeilingTorch = new InfectedCeilingTorchBlock(Block.Properties.create(Material.MISCELLANEOUS)
 				.hardnessAndResistance(0.0F)
 				.doesNotBlockMovement())
 				.setRegistryName(new ResourceLocation(CeilingTorch.MODID, "pokecube_legends_ultra_torch1")));
@@ -30,7 +30,7 @@ public class PokecubeAIOCompat implements ICeilingTorchCompat
 	public Map<ResourceLocation,Block> getPlaceEntries()
 	{
 		if(placeEntries == null)
-			placeEntries = ImmutableMap.of(BlockInit.ULTRA_TORCH1.get().getRegistryName(), ultraCeilingTorch);
+			placeEntries = ImmutableMap.of(BlockInit.INFECTED_TORCH.get().getRegistryName(), infectedCeilingTorch);
 
 		return placeEntries;
 	}

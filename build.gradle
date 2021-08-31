@@ -87,7 +87,7 @@ dependencies {
     //implementation fg.deobf("curse.maven:mantle-74924:3439180") //inspirations dependency
     //implementation fg.deobf("curse.maven:malum-484064:3374475")
     //implementation fg.deobf("curse.maven:nethercraft-classic-342087:3248559")
-    //implementation fg.deobf("curse.maven:pokecube-aoi-285121:3308917")
+    implementation fg.deobf("curse.maven:pokecube-aoi-285121:3432755")
     //implementation fg.deobf("curse.maven:sbm-bone-torch-238695:3100862")
     //implementation fg.deobf("curse.maven:secretroomsmod-59652:3373743")
     //implementation fg.deobf("curse.maven:silent-gear-297039:3335628")
