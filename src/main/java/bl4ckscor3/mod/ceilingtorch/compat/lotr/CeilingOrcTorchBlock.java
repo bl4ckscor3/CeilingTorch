@@ -79,19 +79,23 @@ public class CeilingOrcTorchBlock extends Block
 	@Override
 	public boolean isValidPosition(BlockState state, IWorldReader world, BlockPos pos)
 	{
-		if(state.get(HALF) == DoubleBlockHalf.LOWER)
+		if(state.get(HALF) == DoubleBlockHalf.UPPER)
 		{
-			if(state.getBlock() != this)
-				return true;
-			else
+			if(hasEnoughSolidSide(world, pos.up(), Direction.DOWN))
 			{
-				BlockState aboveState = world.getBlockState(pos.up());
+				BlockPos downPos = pos.down();
+				BlockState stateBelow = world.getBlockState(downPos);
 
-				return aboveState.getBlock() == this && aboveState.get(HALF) == DoubleBlockHalf.UPPER;
+				return stateBelow.isAir(world, downPos);
 			}
+			else return false;
 		}
 		else
-			return hasEnoughSolidSide(world, pos.up(), Direction.DOWN);
+		{
+			BlockState aboveState = world.getBlockState(pos.up());
+
+			return aboveState.getBlock() == this && aboveState.get(HALF) == DoubleBlockHalf.UPPER;
+		}
 	}
 
 	@Override
