@@ -12,24 +12,24 @@ import de.geheimagentnr1.magical_torches.elements.blocks.torches.spawn_blocking.
 import de.geheimagentnr1.magical_torches.elements.capabilities.ModCapabilities;
 import de.geheimagentnr1.magical_torches.elements.capabilities.spawn_blocking.ISpawnBlockerFactory;
 import de.geheimagentnr1.magical_torches.elements.capabilities.spawn_blocking.SpawnBlockingCapability;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.SimpleWaterloggedBlock;
-import net.minecraft.world.level.material.PushReaction;
-import net.minecraft.world.level.material.FluidState;
-import net.minecraft.world.level.material.Fluids;
-import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.core.BlockPos;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.VoxelShape;
-import net.minecraft.world.phys.shapes.Shapes;
+import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.SimpleWaterloggedBlock;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.StateDefinition;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.world.level.material.FluidState;
+import net.minecraft.world.level.material.Fluids;
+import net.minecraft.world.level.material.PushReaction;
+import net.minecraft.world.phys.shapes.CollisionContext;
+import net.minecraft.world.phys.shapes.Shapes;
+import net.minecraft.world.phys.shapes.VoxelShape;
 
 public class SpawnBlockingCeilingTorchBlock extends CeilingTorchBlock implements SimpleWaterloggedBlock
 {
@@ -44,15 +44,13 @@ public class SpawnBlockingCeilingTorchBlock extends CeilingTorchBlock implements
 		registerDefaultState(defaultBlockState().setValue(BlockStateProperties.WATERLOGGED, false));
 		SpawnBlockingCapability.registerSpawnBlocker(new ResourceLocation(CeilingTorch.MODID, spawnBlockRegistryName), this.spawnBlockerFactory = spawnBlockerFactory);
 		name = spawnBlockRegistryName;
-
-		switch(name)
-		{
-			case SmallTorch.registry_name: shape = Block.box(7.0D, 6.0D, 7.0D, 9.0D, 16.0D, 9.0D); break;
-			case MediumTorch.registry_name: shape = Block.box(6.5D, 5.0D, 6.5D, 9.5D, 16.0D, 9.5D); break;
-			case GrandTorch.registry_name: shape = Block.box(6.0D, 4.0D, 6.0D, 10.0D, 16.0D, 10.0D); break;
-			case MegaTorch.registry_name: shape = Block.box(6.0D, 3.0D, 6.0D, 10.0D, 16.0D, 10.0D); break;
-			default: shape = Shapes.block();
-		}
+		shape = switch(name) {
+			case SmallTorch.registry_name -> Block.box(7.0D, 6.0D, 7.0D, 9.0D, 16.0D, 9.0D);
+			case MediumTorch.registry_name -> Block.box(6.5D, 5.0D, 6.5D, 9.5D, 16.0D, 9.5D);
+			case GrandTorch.registry_name -> Block.box(6.0D, 4.0D, 6.0D, 10.0D, 16.0D, 10.0D);
+			case MegaTorch.registry_name -> Block.box(6.0D, 3.0D, 6.0D, 10.0D, 16.0D, 10.0D);
+			default -> Shapes.block();
+		};
 	}
 
 	@Override
@@ -112,7 +110,7 @@ public class SpawnBlockingCeilingTorchBlock extends CeilingTorchBlock implements
 	public BlockState updateShape(BlockState state, Direction facing, BlockState facingState, LevelAccessor world, BlockPos currentPos, BlockPos facingPos)
 	{
 		if(state.getValue(BlockStateProperties.WATERLOGGED))
-			world.getLiquidTicks().scheduleTick(currentPos, Fluids.WATER, Fluids.WATER.getTickDelay(world));
+			world.scheduleTick(currentPos, Fluids.WATER, Fluids.WATER.getTickDelay(world));
 
 		return state;
 	}
