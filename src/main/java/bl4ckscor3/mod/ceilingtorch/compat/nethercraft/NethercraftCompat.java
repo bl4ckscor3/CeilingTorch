@@ -23,9 +23,9 @@ public class NethercraftCompat implements ICeilingTorchCompat
 	@Override
 	public void registerBlocks(Register<Block> event)
 	{
-		event.getRegistry().register(charcoalCeilingTorch = new CeilingTorchBlock(Block.Properties.from(Blocks.TORCH),
+		event.getRegistry().register(charcoalCeilingTorch = new CeilingTorchBlock(Block.Properties.copy(Blocks.TORCH),
 				ParticleTypes.FLAME, () -> NetherBlocks.charcoal_torch).setRegistryName(new ResourceLocation(CeilingTorch.MODID, "nethercraft_charcoal_torch")));
-		event.getRegistry().register(fouliteCeilingTorch = new CeilingTorchBlock(Block.Properties.from(Blocks.TORCH),
+		event.getRegistry().register(fouliteCeilingTorch = new CeilingTorchBlock(Block.Properties.copy(Blocks.TORCH),
 				ParticleTypes.SMOKE, () -> NetherBlocks.foulite_torch).setRegistryName(new ResourceLocation(CeilingTorch.MODID, "nethercraft_foulite_torch")));
 	}
 

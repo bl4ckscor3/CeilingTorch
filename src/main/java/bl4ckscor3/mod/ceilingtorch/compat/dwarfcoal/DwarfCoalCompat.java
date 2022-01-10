@@ -24,14 +24,14 @@ public class DwarfCoalCompat implements ICeilingTorchCompat
 	@Override
 	public void registerBlocks(RegistryEvent.Register<Block> event)
 	{
-		event.getRegistry().register(dwarfCeilingTorch = new DwarfCeilingTorchBlock(Block.Properties.from(Blocks.TORCH)
-				.setLightLevel(state -> 10),
+		event.getRegistry().register(dwarfCeilingTorch = new DwarfCeilingTorchBlock(Block.Properties.copy(Blocks.TORCH)
+				.lightLevel(state -> 10),
 				ModBlocks.DWARF_TORCH).setRegistryName(new ResourceLocation(CeilingTorch.MODID, "dwarfcoal_dwarf_torch")));
-		event.getRegistry().register(stoneDwarfCeilingTorch = new DwarfCeilingTorchBlock(Block.Properties.from(Blocks.TORCH)
-				.setLightLevel(state -> 10),
+		event.getRegistry().register(stoneDwarfCeilingTorch = new DwarfCeilingTorchBlock(Block.Properties.copy(Blocks.TORCH)
+				.lightLevel(state -> 10),
 				ModBlocks.STONE_DWARF_TORCH).setRegistryName(new ResourceLocation(CeilingTorch.MODID, "dwarfcoal_stone_dwarf_torch")));
-		event.getRegistry().register(stoneCeilingTorch = new CeilingTorchBlock(Block.Properties.from(Blocks.TORCH)
-				.setLightLevel(state -> 14),
+		event.getRegistry().register(stoneCeilingTorch = new CeilingTorchBlock(Block.Properties.copy(Blocks.TORCH)
+				.lightLevel(state -> 14),
 				ParticleTypes.FLAME, ModBlocks.STONE_TORCH).setRegistryName(new ResourceLocation(CeilingTorch.MODID, "dwarfcoal_stone_torch")));
 	}
 

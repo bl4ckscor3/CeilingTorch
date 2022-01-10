@@ -8,7 +8,7 @@ public class UpgradeAquaticCompatClient
 {
 	public static void onFMLClientSetup(FMLClientSetupEvent event)
 	{
-		RenderType translucent = RenderType.getTranslucent();
+		RenderType translucent = RenderType.translucent();
 
 		RenderTypeLookup.setRenderLayer(UpgradeAquaticCompat.pinkJellyTorch, translucent);
 		RenderTypeLookup.setRenderLayer(UpgradeAquaticCompat.purpleJellyTorch, translucent);

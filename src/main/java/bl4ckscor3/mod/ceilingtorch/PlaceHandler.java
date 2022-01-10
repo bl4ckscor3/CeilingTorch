@@ -27,10 +27,10 @@ public class PlaceHandler
 		{
 			BlockPos pos = event.getPos();
 			Direction face = event.getFace();
-			BlockPos placeAt = pos.offset(face);
+			BlockPos placeAt = pos.relative(face);
 			World world = event.getWorld();
 
-			if(face == Direction.DOWN && (world.isAirBlock(placeAt) || !world.getFluidState(placeAt).isEmpty()))
+			if(face == Direction.DOWN && (world.isEmptyBlock(placeAt) || !world.getFluidState(placeAt).isEmpty()))
 			{
 				ItemStack held = event.getItemStack();
 				ResourceLocation rl = held.getItem().getRegistryName();
@@ -56,18 +56,18 @@ public class PlaceHandler
 
 	public static boolean placeTorch(ICeilingTorchCompat compat, RightClickBlock event, ItemStack held, Block block, BlockPos pos, BlockPos placeAt, World world, BlockState state)
 	{
-		if(block.isValidPosition(state, world, placeAt))
+		if(block.canSurvive(state, world, placeAt))
 		{
 			SoundType soundType;
 
-			if(state.hasProperty(BlockStateProperties.WATERLOGGED) && world.getFluidState(placeAt).getFluid() == Fluids.WATER)
-				state = state.with(BlockStateProperties.WATERLOGGED, true);
+			if(state.hasProperty(BlockStateProperties.WATERLOGGED) && world.getFluidState(placeAt).getType() == Fluids.WATER)
+				state = state.setValue(BlockStateProperties.WATERLOGGED, true);
 
-			world.setBlockState(placeAt, state);
+			world.setBlockAndUpdate(placeAt, state);
 			compat.onPlace(event, placeAt, state);
 			soundType = block.getSoundType(state, world, pos, event.getPlayer());
 			world.playSound(null, pos.getX(), pos.getY(), pos.getZ(), soundType.getPlaceSound(), SoundCategory.BLOCKS, soundType.getVolume(), soundType.getPitch() - 0.2F);
-			event.getPlayer().swingArm(event.getHand());
+			event.getPlayer().swing(event.getHand());
 
 			if(!event.getPlayer().isCreative())
 				held.shrink(1);

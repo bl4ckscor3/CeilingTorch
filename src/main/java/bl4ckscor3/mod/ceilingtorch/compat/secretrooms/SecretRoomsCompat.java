@@ -20,10 +20,10 @@ public class SecretRoomsCompat implements ICeilingTorchCompat
 	@Override
 	public void registerBlocks(Register<Block> event)
 	{
-		event.getRegistry().register(ceilingTorchLever = new CeilingTorchLeverBlock(Block.Properties.create(Material.WOOD)
+		event.getRegistry().register(ceilingTorchLever = new CeilingTorchLeverBlock(Block.Properties.of(Material.WOOD)
 				.lootFrom(SecretBlocks.TORCH_LEVER)
-				.setLightLevel(state -> 14)
-				.notSolid())
+				.lightLevel(state -> 14)
+				.noOcclusion())
 				.setRegistryName("secretroomsmod_torch_lever"));
 	}
 

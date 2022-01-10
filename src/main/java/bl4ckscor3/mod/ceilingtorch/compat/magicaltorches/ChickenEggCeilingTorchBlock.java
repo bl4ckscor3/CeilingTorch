@@ -23,7 +23,7 @@ import net.minecraft.world.World;
 
 public class ChickenEggCeilingTorchBlock extends CeilingTorchBlock
 {
-	private static final VoxelShape SHAPE = Block.makeCuboidShape(6.5D, 6.0D, 6.5D, 9.5D, 16.0D, 9.5D);
+	private static final VoxelShape SHAPE = Block.box(6.5D, 6.0D, 6.5D, 9.5D, 16.0D, 9.5D);
 	private final ISpawnBlockerFactory spawnBlockerFactory;
 
 	public ChickenEggCeilingTorchBlock(Properties properties)
@@ -48,21 +48,21 @@ public class ChickenEggCeilingTorchBlock extends CeilingTorchBlock
 	}
 
 	@Override
-	public PushReaction getPushReaction(BlockState state)
+	public PushReaction getPistonPushReaction(BlockState state)
 	{
 		return PushReaction.DESTROY;
 	}
 
 	@Override
-	public void onBlockAdded(BlockState state, World world, BlockPos pos, BlockState oldState, boolean isMoving)
+	public void onPlace(BlockState state, World world, BlockPos pos, BlockState oldState, boolean isMoving)
 	{
 		world.getCapability(ModCapabilities.CHICKEN_EGG_SPAWNING).ifPresent(capability -> capability.addSpawnBlocker(spawnBlockerFactory.build(pos)));
 	}
 
 	@Override
-	public void onReplaced(BlockState state, World world, BlockPos pos, BlockState newState, boolean isMoving)
+	public void onRemove(BlockState state, World world, BlockPos pos, BlockState newState, boolean isMoving)
 	{
-		super.onReplaced(state, world, pos, newState, isMoving);
+		super.onRemove(state, world, pos, newState, isMoving);
 
 		world.getCapability(ModCapabilities.CHICKEN_EGG_SPAWNING).ifPresent(capability -> capability.removeSpawnBlocker(spawnBlockerFactory.build(pos)));
 	}

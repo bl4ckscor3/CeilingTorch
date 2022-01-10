@@ -26,25 +26,25 @@ public class BambooBlocksCompat implements ICeilingTorchCompat
 	@Override
 	public void registerBlocks(RegistryEvent.Register<Block> event)
 	{
-		event.getRegistry().register(bambooCeilingTorch = new BambooCeilingTorchBlock(Block.Properties.create(Material.MISCELLANEOUS)
-				.doesNotBlockMovement()
-				.hardnessAndResistance(0.0F)
-				.setLightLevel(state -> 14)
+		event.getRegistry().register(bambooCeilingTorch = new BambooCeilingTorchBlock(Block.Properties.of(Material.DECORATION)
+				.noCollission()
+				.strength(0.0F)
+				.lightLevel(state -> 14)
 				.sound(SoundType.BAMBOO),
 				ParticleTypes.FLAME, BBBlocks.BAMBOO_TORCH).setRegistryName(new ResourceLocation(CeilingTorch.MODID, "bambooblocks_bamboo_torch")));
-		event.getRegistry().register(soulBambooCeilingTorch = new BambooCeilingTorchBlock(Block.Properties.create(Material.MISCELLANEOUS)
-				.doesNotBlockMovement()
-				.hardnessAndResistance(0.0F)
-				.setLightLevel(state -> 10)
+		event.getRegistry().register(soulBambooCeilingTorch = new BambooCeilingTorchBlock(Block.Properties.of(Material.DECORATION)
+				.noCollission()
+				.strength(0.0F)
+				.lightLevel(state -> 10)
 				.sound(SoundType.BAMBOO),
 				ParticleTypes.SOUL_FIRE_FLAME, BBBlocks.SOUL_BAMBOO_TORCH).setRegistryName(new ResourceLocation(CeilingTorch.MODID, "bambooblocks_soul_bamboo_torch")));
 
 		if(ModList.get().isLoaded("endergetic"))
 		{
-			event.getRegistry().register(enderBambooCeilingTorch = new BambooCeilingTorchBlock(Block.Properties.create(Material.MISCELLANEOUS)
-					.doesNotBlockMovement()
-					.hardnessAndResistance(0.0F)
-					.setLightLevel(state -> 14)
+			event.getRegistry().register(enderBambooCeilingTorch = new BambooCeilingTorchBlock(Block.Properties.of(Material.DECORATION)
+					.noCollission()
+					.strength(0.0F)
+					.lightLevel(state -> 14)
 					.sound(SoundType.BAMBOO),
 					null, BBBlocks.ENDER_BAMBOO_TORCH).setRegistryName(new ResourceLocation(CeilingTorch.MODID, "bambooblocks_ender_bamboo_torch")));
 		}

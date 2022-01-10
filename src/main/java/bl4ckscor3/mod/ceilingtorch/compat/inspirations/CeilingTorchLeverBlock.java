@@ -36,22 +36,22 @@ public class CeilingTorchLeverBlock extends TorchLeverBlock
 	}
 
 	@Override
-	public BlockState updatePostPlacement(BlockState state, Direction facing, BlockState facingState, IWorld world, BlockPos currentPos, BlockPos facingPos)
+	public BlockState updateShape(BlockState state, Direction facing, BlockState facingState, IWorld world, BlockPos currentPos, BlockPos facingPos)
 	{
-		return facing == Direction.UP && !isValidPosition(state, world, currentPos) ? Blocks.AIR.getDefaultState() : state;
+		return facing == Direction.UP && !canSurvive(state, world, currentPos) ? Blocks.AIR.defaultBlockState() : state;
 	}
 
 	@Override
-	public boolean isValidPosition(BlockState state, IWorldReader world, BlockPos pos)
+	public boolean canSurvive(BlockState state, IWorldReader world, BlockPos pos)
 	{
-		return hasEnoughSolidSide(world, pos.up(), Direction.DOWN);
+		return canSupportCenter(world, pos.above(), Direction.DOWN);
 	}
 
 	@Override
 	@OnlyIn(Dist.CLIENT)
 	public void animateTick(BlockState state, World world, BlockPos pos, Random rand)
 	{
-		Direction swing = state.get(SWING);
+		Direction swing = state.getValue(SWING);
 		double x = pos.getX() + 0.5D;
 		double y = pos.getY() + 0.7D;
 		double z = pos.getZ() + 0.5D;
@@ -61,12 +61,12 @@ public class CeilingTorchLeverBlock extends TorchLeverBlock
 
 		if(swing != Direction.UP)
 		{
-			offsetX = 0.23D * swing.getXOffset();
+			offsetX = 0.23D * swing.getStepX();
 			offsetY += 0.05D;
-			offsetZ = 0.23D * swing.getZOffset();
+			offsetZ = 0.23D * swing.getStepZ();
 		}
 
-		world.addParticle(particleData, x + offsetX, y + offsetY, z + offsetZ, 0.0D, 0.0D, 0.0D);
+		world.addParticle(flameParticle, x + offsetX, y + offsetY, z + offsetZ, 0.0D, 0.0D, 0.0D);
 		world.addParticle(ParticleTypes.FLAME, x + offsetX, y + offsetY, z + offsetZ, 0.0D, 0.0D, 0.0D);
 	}
 }

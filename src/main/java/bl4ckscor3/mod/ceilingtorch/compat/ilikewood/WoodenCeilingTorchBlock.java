@@ -23,12 +23,12 @@ import yamahari.ilikewood.util.IWooden;
 
 public class WoodenCeilingTorchBlock extends CeilingTorchBlock implements IWooden
 {
-	protected static final VoxelShape CEILING_SHAPE = Block.makeCuboidShape(6.0D, 3.0D, 6.0D, 10.0D, 16.0D, 10.0D);
+	protected static final VoxelShape CEILING_SHAPE = Block.box(6.0D, 3.0D, 6.0D, 10.0D, 16.0D, 10.0D);
 	private final IWoodType woodType;
 
 	public WoodenCeilingTorchBlock(IWoodType woodType)
 	{
-		super(Block.Properties.from(Blocks.TORCH), ParticleTypes.SMOKE, () -> ILikeWood.getBlock(woodType, WoodenBlockType.TORCH));
+		super(Block.Properties.copy(Blocks.TORCH), ParticleTypes.SMOKE, () -> ILikeWood.getBlock(woodType, WoodenBlockType.TORCH));
 		this.woodType = woodType;
 		setRegistryName(new ResourceLocation(CeilingTorch.MODID, "ilikewood_" + woodType.getName() + "_torch"));
 	}
@@ -53,6 +53,6 @@ public class WoodenCeilingTorchBlock extends CeilingTorchBlock implements IWoode
 		double d1 = pos.getY() + 0.1D;
 		double d2 = pos.getZ() + 0.5D;
 
-		world.addParticle(particleData, d0, d1, d2, 0.0D, 0.0D, 0.0D);
+		world.addParticle(flameParticle, d0, d1, d2, 0.0D, 0.0D, 0.0D);
 	}
 }

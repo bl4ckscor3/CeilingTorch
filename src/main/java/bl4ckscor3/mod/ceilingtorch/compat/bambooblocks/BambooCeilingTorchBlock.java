@@ -25,7 +25,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 
 public class BambooCeilingTorchBlock extends CeilingTorchBlock
 {
-	protected static final VoxelShape SHAPE = Block.makeCuboidShape(5.5D, 2.0D, 5.5D, 10.5D, 16.0D, 10.5D);
+	protected static final VoxelShape SHAPE = Block.box(5.5D, 2.0D, 5.5D, 10.5D, 16.0D, 10.5D);
 	private IParticleData particle;
 
 	public BambooCeilingTorchBlock(Block.Properties properties, IParticleData particleData, Supplier<Block> originalBlock)
@@ -44,13 +44,13 @@ public class BambooCeilingTorchBlock extends CeilingTorchBlock
 	{
 		Vector3d offset = state.getOffset(world, pos);
 
-		return SHAPE.withOffset(offset.x, offset.y, offset.z);
+		return SHAPE.move(offset.x, offset.y, offset.z);
 	}
 
 	@Override
-	public boolean isValidPosition(BlockState state, IWorldReader world, BlockPos pos)
+	public boolean canSurvive(BlockState state, IWorldReader world, BlockPos pos)
 	{
-		return hasEnoughSolidSide(world, pos.up(), Direction.DOWN) || world.getBlockState(pos.up()).getBlock() instanceof LeavesBlock;
+		return canSupportCenter(world, pos.above(), Direction.DOWN) || world.getBlockState(pos.above()).getBlock() instanceof LeavesBlock;
 	}
 
 	@Override
@@ -63,7 +63,7 @@ public class BambooCeilingTorchBlock extends CeilingTorchBlock
 		double z = pos.getZ() + 0.5D + offset.z;
 
 		world.addParticle(ParticleTypes.SMOKE, x, y, z, 0.0D, 0.0D, 0.0D);
-		world.addParticle(particleData == null ? getParticle() : particleData, x, y, z, 0.0D, 0.0D, 0.0D);
+		world.addParticle(flameParticle == null ? getParticle() : flameParticle, x, y, z, 0.0D, 0.0D, 0.0D);
 	}
 
 	private IParticleData getParticle()

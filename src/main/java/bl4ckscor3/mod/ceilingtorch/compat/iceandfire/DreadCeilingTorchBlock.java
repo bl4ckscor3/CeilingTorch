@@ -16,7 +16,7 @@ public class DreadCeilingTorchBlock extends CeilingTorchBlock implements IDreadB
 {
 	public DreadCeilingTorchBlock(Properties properties)
 	{
-		super(properties, RedstoneParticleData.REDSTONE_DUST, () -> IafBlockRegistry.DREAD_TORCH);
+		super(properties, RedstoneParticleData.REDSTONE, () -> IafBlockRegistry.DREAD_TORCH);
 	}
 
 	@Override

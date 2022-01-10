@@ -59,13 +59,13 @@ public class TorchBandolierCompat implements ICeilingTorchCompat
 					BlockPos pos = event.getPos();
 					BlockState state = compat.getStateToPlace(stack, block);
 
-					if(PlaceHandler.placeTorch(compat, event, ItemStack.EMPTY, block, pos, pos.offset(event.getFace()), event.getWorld(), state))
+					if(PlaceHandler.placeTorch(compat, event, ItemStack.EMPTY, block, pos, pos.relative(event.getFace()), event.getWorld(), state))
 					{
 						if(consumeTorch)
 							TorchBandolierItem.setTorchCount(stack, --torchCount);
 
 						if(torchCount == 0  && player != null)
-							player.replaceItemInInventory(getSlotFor(stack, player.inventory), new ItemStack(ModItems.EMPTY_TORCH_BANDOLIER.get()));
+							player.setSlot(getSlotFor(stack, player.inventory), new ItemStack(ModItems.EMPTY_TORCH_BANDOLIER.get()));
 
 						event.setCancellationResult(ActionResultType.SUCCESS);
 						return;
@@ -78,10 +78,10 @@ public class TorchBandolierCompat implements ICeilingTorchCompat
 	//PlayerInventory#getSlotFor is client side only
 	public static int getSlotFor(ItemStack stack1, PlayerInventory inv)
 	{
-		for(int i = 0; i < inv.mainInventory.size(); ++i)
+		for(int i = 0; i < inv.items.size(); ++i)
 		{
-			ItemStack stack2 = inv.mainInventory.get(i);
-			if(!stack2.isEmpty() && (stack1.getItem() == stack2.getItem() && ItemStack.areItemStackTagsEqual(stack1, stack2)))
+			ItemStack stack2 = inv.items.get(i);
+			if(!stack2.isEmpty() && (stack1.getItem() == stack2.getItem() && ItemStack.tagMatches(stack1, stack2)))
 				return i;
 		}
 

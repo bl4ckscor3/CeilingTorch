@@ -22,17 +22,17 @@ public class IceAndFireCompat implements ICeilingTorchCompat
 	@Override
 	public void registerBlocks(RegistryEvent.Register<Block> event)
 	{
-		event.getRegistry().register(burntCeilingTorch = new BurntCeilingTorchBlock(Block.Properties.create(Material.WOOD)
-				.setLightLevel(state -> 0)
+		event.getRegistry().register(burntCeilingTorch = new BurntCeilingTorchBlock(Block.Properties.of(Material.WOOD)
+				.lightLevel(state -> 0)
 				.sound(SoundType.WOOD)
-				.notSolid()
-				.variableOpacity())
+				.noOcclusion()
+				.dynamicShape())
 				.setRegistryName(new ResourceLocation(CeilingTorch.MODID, "ice_and_fire_burnt_torch")));
-		event.getRegistry().register(dreadCeilingTorch = new DreadCeilingTorchBlock(Block.Properties.create(Material.WOOD)
-				.setLightLevel(state -> 7)
+		event.getRegistry().register(dreadCeilingTorch = new DreadCeilingTorchBlock(Block.Properties.of(Material.WOOD)
+				.lightLevel(state -> 7)
 				.sound(SoundType.STONE)
-				.notSolid()
-				.variableOpacity())
+				.noOcclusion()
+				.dynamicShape())
 				.setRegistryName(new ResourceLocation(CeilingTorch.MODID, "ice_and_fire_dread_torch")));
 	}
 

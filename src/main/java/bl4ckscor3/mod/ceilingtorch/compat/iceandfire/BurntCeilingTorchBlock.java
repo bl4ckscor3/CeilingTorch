@@ -15,7 +15,7 @@ public class BurntCeilingTorchBlock extends CeilingTorchBlock implements IDreadB
 {
 	public BurntCeilingTorchBlock(Properties properties)
 	{
-		super(properties, RedstoneParticleData.REDSTONE_DUST, () -> IafBlockRegistry.BURNT_TORCH);
+		super(properties, RedstoneParticleData.REDSTONE, () -> IafBlockRegistry.BURNT_TORCH);
 	}
 
 	@Override

@@ -28,21 +28,21 @@ public class VanillaCompat implements ICeilingTorchCompat
 	@Override
 	public void registerBlocks(RegistryEvent.Register<Block> event)
 	{
-		event.getRegistry().register(new CeilingTorchBlock(Block.Properties.create(Material.MISCELLANEOUS)
-				.doesNotBlockMovement()
-				.hardnessAndResistance(0.0F)
-				.setLightLevel(state -> 14)
+		event.getRegistry().register(new CeilingTorchBlock(Block.Properties.of(Material.DECORATION)
+				.noCollission()
+				.strength(0.0F)
+				.lightLevel(state -> 14)
 				.sound(SoundType.WOOD),
 				ParticleTypes.FLAME, () -> Blocks.TORCH).setRegistryName(new ResourceLocation(CeilingTorch.MODID, "torch")));
-		event.getRegistry().register(new RedstoneCeilingTorchBlock(Block.Properties.create(Material.MISCELLANEOUS)
-				.doesNotBlockMovement()
-				.hardnessAndResistance(0.0F)
-				.setLightLevel(state -> state.get(RedstoneTorchBlock.LIT) ? 7 : 0)
+		event.getRegistry().register(new RedstoneCeilingTorchBlock(Block.Properties.of(Material.DECORATION)
+				.noCollission()
+				.strength(0.0F)
+				.lightLevel(state -> state.getValue(RedstoneTorchBlock.LIT) ? 7 : 0)
 				.sound(SoundType.WOOD), () -> Blocks.REDSTONE_TORCH).setRegistryName(new ResourceLocation(CeilingTorch.MODID, "redstone_torch")));
-		event.getRegistry().register(new CeilingTorchBlock(Block.Properties.create(Material.MISCELLANEOUS)
-				.doesNotBlockMovement()
-				.hardnessAndResistance(0.0F)
-				.setLightLevel(state -> 10)
+		event.getRegistry().register(new CeilingTorchBlock(Block.Properties.of(Material.DECORATION)
+				.noCollission()
+				.strength(0.0F)
+				.lightLevel(state -> 10)
 				.sound(SoundType.WOOD),
 				ParticleTypes.SOUL_FIRE_FLAME, () -> Blocks.SOUL_TORCH).setRegistryName(new ResourceLocation(CeilingTorch.MODID, "soul_torch")));
 	}

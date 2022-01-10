@@ -29,7 +29,7 @@ public class InfernalExpansionCompat implements ICeilingTorchCompat
 	@Override
 	public void registerBlocks(RegistryEvent.Register<Block> event)
 	{
-		event.getRegistry().register(glowlightCeilingTorch = new CeilingTorchBlock(Block.Properties.from(Blocks.TORCH), null, IEBlocks.GLOW_TORCH) {
+		event.getRegistry().register(glowlightCeilingTorch = new CeilingTorchBlock(Block.Properties.copy(Blocks.TORCH), null, IEBlocks.GLOW_TORCH) {
 			@Override
 			public void animateTick(BlockState state, World world, BlockPos pos, Random rand)
 			{

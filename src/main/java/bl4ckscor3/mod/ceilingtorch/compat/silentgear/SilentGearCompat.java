@@ -23,10 +23,10 @@ public class SilentGearCompat implements ICeilingTorchCompat
 	@Override
 	public void registerBlocks(Register<Block> event)
 	{
-		event.getRegistry().register(stoneCeilingTorch = new CeilingTorchBlock(Block.Properties.create(Material.MISCELLANEOUS)
-				.doesNotBlockMovement()
-				.hardnessAndResistance(0.0F)
-				.setLightLevel(state -> 14)
+		event.getRegistry().register(stoneCeilingTorch = new CeilingTorchBlock(Block.Properties.of(Material.DECORATION)
+				.noCollission()
+				.strength(0.0F)
+				.lightLevel(state -> 14)
 				.sound(SoundType.STONE),
 				ParticleTypes.FLAME, () -> ModBlocks.STONE_TORCH.asBlock()).setRegistryName(new ResourceLocation(CeilingTorch.MODID, "silentgear_stone_torch")));
 	}

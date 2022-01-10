@@ -29,7 +29,7 @@ public class CeilingEtherTorchBlock extends CeilingTorchBlock implements IColor,
 	{
 		super(properties, null, originalBlock);
 
-		setDefaultState(getDefaultState().with(BlockStateProperties.WATERLOGGED, false));
+		registerDefaultState(defaultBlockState().setValue(BlockStateProperties.WATERLOGGED, false));
 		this.color = color;
 	}
 
@@ -37,22 +37,22 @@ public class CeilingEtherTorchBlock extends CeilingTorchBlock implements IColor,
 	public void animateTick(BlockState state, World world, BlockPos pos, Random rand) {}
 
 	@Override
-	public BlockState updatePostPlacement(BlockState state, Direction facing, BlockState facingState, IWorld world, BlockPos currentPos, BlockPos facingPos)
+	public BlockState updateShape(BlockState state, Direction facing, BlockState facingState, IWorld world, BlockPos currentPos, BlockPos facingPos)
 	{
-		if(state.get(BlockStateProperties.WATERLOGGED))
-			world.getPendingFluidTicks().scheduleTick(currentPos, Fluids.WATER, Fluids.WATER.getTickRate(world));
+		if(state.getValue(BlockStateProperties.WATERLOGGED))
+			world.getLiquidTicks().scheduleTick(currentPos, Fluids.WATER, Fluids.WATER.getTickDelay(world));
 
-		return super.updatePostPlacement(state, facing, facingState, world, currentPos, facingPos);
+		return super.updateShape(state, facing, facingState, world, currentPos, facingPos);
 	}
 
 	@Override
 	public FluidState getFluidState(BlockState state)
 	{
-		return state.get(BlockStateProperties.WATERLOGGED) ? Fluids.WATER.getStillFluidState(false) : super.getFluidState(state);
+		return state.getValue(BlockStateProperties.WATERLOGGED) ? Fluids.WATER.getSource(false) : super.getFluidState(state);
 	}
 
 	@Override
-	public void fillStateContainer(StateContainer.Builder<Block, BlockState> builder)
+	public void createBlockStateDefinition(StateContainer.Builder<Block, BlockState> builder)
 	{
 		builder.add(BlockStateProperties.WATERLOGGED);
 	}
