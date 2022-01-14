@@ -67,15 +67,15 @@ repositories {
 
 dependencies {
     minecraft 'net.minecraftforge:forge:1.16.5-36.2.23'
-	runtimeOnly fg.deobf("mezz.jei:jei-1.16.5:7.7.1.139")
+	runtimeOnly fg.deobf("mezz.jei:jei-1.16.5:7.7.1.144")
 	
-    implementation fg.deobf("curse.maven:abnormals-core-382216:3351059") //bamboo blocks, endergetic, and upgrade aquatic dependency
-    implementation fg.deobf("curse.maven:atum-59621:3433770")
-    implementation fg.deobf("curse.maven:bamboo-blocks-348215:3416596")
+    implementation fg.deobf("curse.maven:blueprint-382216:3457851") //bamboo blocks, endergetic, and upgrade aquatic dependency
+    implementation fg.deobf("curse.maven:atum-59621:3543926")
+    implementation fg.deobf("curse.maven:bamboo-blocks-348215:3549078")
     implementation fg.deobf("curse.maven:chaos-awakens-475414:3326209")
     implementation fg.deobf("curse.maven:citadel-331936:3441028") //ice and fire dependency
     implementation fg.deobf("curse.maven:curios-309927:3343065") //atum and malum dependency
-    implementation fg.deobf("curse.maven:druidcraft-340991:3177267")
+    implementation fg.deobf("curse.maven:druidcraft-340991:3507029")
     implementation fg.deobf("curse.maven:dwarf-coal-324177:3189806")
     implementation fg.deobf("curse.maven:essential-features-287431:3244902")
     implementation fg.deobf("curse.maven:endergetic-291509:3154938")
@@ -84,23 +84,23 @@ dependencies {
     implementation fg.deobf("curse.maven:geckolib-388172:3282081") //chaos awakens dependency
     implementation fg.deobf("curse.maven:i-like-wood-324164:3285752")
     implementation fg.deobf("curse.maven:ice-and-fire-dragons-264231:3441117")
-    implementation fg.deobf("curse.maven:infernal-expansion-395078:3421482")
+    implementation fg.deobf("curse.maven:infernal-expansion-395078:3526021")
     implementation fg.deobf("curse.maven:inspirations-284007:3414517")
     implementation fg.deobf("curse.maven:magical-torches-389917:3302078")
     implementation fg.deobf("curse.maven:mantle-74924:3439180") //inspirations dependency
     implementation fg.deobf("curse.maven:malum-484064:3374475")
     implementation fg.deobf("curse.maven:nethercraft-classic-342087:3248559")
-    implementation fg.deobf("curse.maven:pokecube-aoi-285121:3432755")
+    implementation fg.deobf("curse.maven:pokecube-aoi-285121:3600594")
     implementation fg.deobf("curse.maven:sbm-bone-torch-238695:3100862")
-    implementation fg.deobf("curse.maven:secretroomsmod-59652:3373743")
-    implementation fg.deobf("curse.maven:silent-gear-297039:3335628")
-    implementation fg.deobf("curse.maven:silent-lib-242998:3235738") //silent gear and torch bandolier dependency
-    implementation fg.deobf("curse.maven:the-lord-of-the-rings-mod-renewed-406893:3454291")
-    implementation fg.deobf("curse.maven:the-undergarden-379849:3361666")
-    implementation fg.deobf("curse.maven:tofucraftreload-317469:3392541")
-    implementation fg.deobf("curse.maven:torch-bandolier-299337:3235254")
+    implementation fg.deobf("curse.maven:secretroomsmod-59652:3598850")
+    implementation fg.deobf("curse.maven:silent-gear-297039:3585058")
+    implementation fg.deobf("curse.maven:silent-lib-242998:3385768") //silent gear and torch bandolier dependency
+    implementation fg.deobf("curse.maven:the-lord-of-the-rings-mod-renewed-406893:3603789")
+    implementation fg.deobf("curse.maven:the-undergarden-379849:3477594")
+    implementation fg.deobf("curse.maven:tofucraftreload-317469:3454680")
+    implementation fg.deobf("curse.maven:torch-bandolier-299337:3398768")
     implementation fg.deobf("curse.maven:torchmaster-254268:3433163")
-    implementation fg.deobf("curse.maven:upgrade-aquatic-326895:3249419")
+    implementation fg.deobf("curse.maven:upgrade-aquatic-326895:3561148")
 }
 
 jar {
