@@ -7,7 +7,6 @@ import com.google.common.collect.ImmutableMap;
 import bl4ckscor3.mod.ceilingtorch.CeilingTorch;
 import bl4ckscor3.mod.ceilingtorch.ICeilingTorchCompat;
 import bl4ckscor3.mod.ceilingtorch.PlaceHandler;
-import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.InteractionResult;
@@ -15,7 +14,6 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.AirBlock;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent.Register;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent.RightClickBlock;
@@ -54,11 +52,7 @@ public class TorchBandolierCompat implements ICeilingTorchCompat
 
 				if(placeEntries.containsKey(rl))
 				{
-					Block block = placeEntries.get(rl);
-					BlockPos pos = event.getPos();
-					BlockState state = compat.getStateToPlace(stack, block);
-
-					if(PlaceHandler.placeTorch(compat, event, ItemStack.EMPTY, block, pos.relative(event.getFace()), event.getWorld(), state))
+					if(PlaceHandler.placeTorch(compat, event, ItemStack.EMPTY, event.getPos().relative(event.getFace()), event.getWorld(), placeEntries.get(rl).defaultBlockState()))
 					{
 						if(consumeTorch)
 							TorchBandolierItem.setTorchCount(stack, --torchCount);

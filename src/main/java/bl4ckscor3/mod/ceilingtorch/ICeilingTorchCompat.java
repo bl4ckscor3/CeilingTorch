@@ -5,6 +5,7 @@ import java.util.Map;
 import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.event.RegistryEvent;
@@ -26,13 +27,15 @@ public interface ICeilingTorchCompat
 	public Map<ResourceLocation,Block> getPlaceEntries();
 
 	/**
-	 * Used to find out which blockstate to place based on the ItemStack that was rightclicked with
-	 * @stack The stack that was rightclicked to place the ceiling torch
-	 * @block The block to place
+	 * Used to find out which blockstate to place
+	 * @param level The level to place in
+	 * @param pos The position to place at
+	 * @param block The block to place
+	 * @param stack The stack that was rightclicked to place the ceiling torch
 	 */
-	public default BlockState getStateToPlace(ItemStack stack, Block block)
+	public default BlockState getStateToPlace(Level level, BlockPos pos, BlockState state, ItemStack stack)
 	{
-		return block.defaultBlockState();
+		return state;
 	}
 
 	/**
@@ -41,7 +44,7 @@ public interface ICeilingTorchCompat
 	 * @param placeAt The position to place the block at
 	 * @param state The state to place
 	 */
-	public default void onPlace(RightClickBlock event, BlockPos placeAt, BlockState state){}
+	public default void onPlace(RightClickBlock event, BlockPos placeAt, BlockState state) {}
 
 	/**
 	 * If this returns true, CeilingTorch will handle setting the render type. If this returns false, the mod adding compatibility needs to handle setting the render type themselves.

@@ -11,8 +11,6 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.material.Fluids;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.util.BlockSnapshot;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent.RightClickBlock;
@@ -46,29 +44,23 @@ public class PlaceHandler
 					Map<ResourceLocation,Block> placeEntries = compat.getPlaceEntries();
 
 					if(placeEntries.containsKey(rl))
-					{
-						Block block = placeEntries.get(rl);
-						BlockState state = compat.getStateToPlace(held, block);
-
-						placeTorch(compat, event, held, block, placeAt, level, state);
-					}
+						placeTorch(compat, event, held, placeAt, level, placeEntries.get(rl).defaultBlockState());
 				}
 			}
 		}
 	}
 
-	public static boolean placeTorch(ICeilingTorchCompat compat, RightClickBlock event, ItemStack held, Block block, BlockPos placeAt, Level level, BlockState state)
+	public static boolean placeTorch(ICeilingTorchCompat compat, RightClickBlock event, ItemStack held, BlockPos placeAt, Level level, BlockState state)
 	{
+		state = compat.getStateToPlace(level, placeAt, state, held);
+
 		if(state.canSurvive(level, placeAt))
 		{
 			SoundType soundType;
 
-			if(state.hasProperty(BlockStateProperties.WATERLOGGED) && level.getFluidState(placeAt).getType() == Fluids.WATER)
-				state = state.setValue(BlockStateProperties.WATERLOGGED, true);
-
 			level.setBlockAndUpdate(placeAt, state);
 			compat.onPlace(event, placeAt, state);
-			soundType = block.getSoundType(state, level, placeAt, event.getPlayer());
+			soundType = state.getBlock().getSoundType(state, level, placeAt, event.getPlayer());
 			level.playSound(null, placeAt.getX(), placeAt.getY(), placeAt.getZ(), soundType.getPlaceSound(), SoundSource.BLOCKS, soundType.getVolume(), soundType.getPitch() - 0.2F);
 			event.getPlayer().swing(event.getHand());
 
