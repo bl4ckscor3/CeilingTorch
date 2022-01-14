@@ -10,6 +10,7 @@ import bl4ckscor3.mod.ceilingtorch.compat.bonetorch.BoneTorchCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.ilikewood.ILikeWoodCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.magicaltorches.MagicalTorchesCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.malum.MalumCompat;
+import bl4ckscor3.mod.ceilingtorch.compat.pokecubeaio.PokecubeAIOCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.torchbandolier.TorchBandolierCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.vanilla.VanillaCompat;
 import net.minecraft.world.level.block.Block;
@@ -53,6 +54,9 @@ public class CeilingTorch
 
 		if(ModList.get().isLoaded("malum"))
 			preliminaryCompatList.put("malum", MalumCompat::new);
+
+		if(ModList.get().isLoaded("pokecube_legends"))
+			preliminaryCompatList.put("pokecube_legends", PokecubeAIOCompat::new);
 
 		if(ModList.get().isLoaded("torchbandolier"))
 			preliminaryCompatList.put("torchbandolier", TorchBandolierCompat::new);
