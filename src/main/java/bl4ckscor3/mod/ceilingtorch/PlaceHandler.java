@@ -21,16 +21,16 @@ import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 public class PlaceHandler
 {
 	@SubscribeEvent
-	public static void onBlockEntityPlace(RightClickBlock event)
+	public static void onRightClickBlock(RightClickBlock event)
 	{
 		if(!event.getPlayer().isSpectator()) //because apparently this is a thing
 		{
 			BlockPos pos = event.getPos();
 			Direction face = event.getFace();
 			BlockPos placeAt = pos.relative(face);
-			Level world = event.getWorld();
+			Level level = event.getWorld();
 
-			if(face == Direction.DOWN && (world.isEmptyBlock(placeAt) || !world.getFluidState(placeAt).isEmpty()))
+			if(face == Direction.DOWN && (level.isEmptyBlock(placeAt) || !level.getFluidState(placeAt).isEmpty()))
 			{
 				ItemStack held = event.getItemStack();
 				ResourceLocation rl = held.getItem().getRegistryName();
@@ -47,32 +47,32 @@ public class PlaceHandler
 						Block block = placeEntries.get(rl);
 						BlockState state = compat.getStateToPlace(held, block);
 
-						placeTorch(compat, event, held, block, pos, placeAt, world, state);
+						placeTorch(compat, event, held, block, placeAt, level, state);
 					}
 				}
 			}
 		}
 	}
 
-	public static boolean placeTorch(ICeilingTorchCompat compat, RightClickBlock event, ItemStack held, Block block, BlockPos pos, BlockPos placeAt, Level world, BlockState state)
+	public static boolean placeTorch(ICeilingTorchCompat compat, RightClickBlock event, ItemStack held, Block block, BlockPos placeAt, Level level, BlockState state)
 	{
-		if(block.canSurvive(state, world, placeAt))
+		if(state.canSurvive(level, placeAt))
 		{
 			SoundType soundType;
 
-			if(state.hasProperty(BlockStateProperties.WATERLOGGED) && world.getFluidState(placeAt).getType() == Fluids.WATER)
+			if(state.hasProperty(BlockStateProperties.WATERLOGGED) && level.getFluidState(placeAt).getType() == Fluids.WATER)
 				state = state.setValue(BlockStateProperties.WATERLOGGED, true);
 
-			world.setBlockAndUpdate(placeAt, state);
+			level.setBlockAndUpdate(placeAt, state);
 			compat.onPlace(event, placeAt, state);
-			soundType = block.getSoundType(state, world, pos, event.getPlayer());
-			world.playSound(null, pos.getX(), pos.getY(), pos.getZ(), soundType.getPlaceSound(), SoundSource.BLOCKS, soundType.getVolume(), soundType.getPitch() - 0.2F);
+			soundType = block.getSoundType(state, level, placeAt, event.getPlayer());
+			level.playSound(null, placeAt.getX(), placeAt.getY(), placeAt.getZ(), soundType.getPlaceSound(), SoundSource.BLOCKS, soundType.getVolume(), soundType.getPitch() - 0.2F);
 			event.getPlayer().swing(event.getHand());
 
 			if(!event.getPlayer().isCreative())
 				held.shrink(1);
 
-			MinecraftForge.EVENT_BUS.post(new EntityPlaceEvent(BlockSnapshot.create(world.dimension(), world, placeAt), world.getBlockState(event.getPos()), event.getPlayer()));
+			MinecraftForge.EVENT_BUS.post(new EntityPlaceEvent(BlockSnapshot.create(level.dimension(), level, placeAt), level.getBlockState(event.getPos()), event.getPlayer()));
 			return true;
 		}
 
