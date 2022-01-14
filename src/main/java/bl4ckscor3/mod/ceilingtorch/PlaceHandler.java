@@ -13,7 +13,10 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.common.util.BlockSnapshot;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent.RightClickBlock;
+import net.minecraftforge.event.world.BlockEvent.EntityPlaceEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 
@@ -21,7 +24,7 @@ import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 public class PlaceHandler
 {
 	@SubscribeEvent
-	public static void onBlockEntityPlace(RightClickBlock event)
+	public static void onRightClickBlock(RightClickBlock event)
 	{
 		if(!event.getPlayer().isSpectator()) //because apparently this is a thing
 		{
@@ -47,16 +50,16 @@ public class PlaceHandler
 						Block block = placeEntries.get(rl);
 						BlockState state = compat.getStateToPlace(held, block);
 
-						placeTorch(compat, event, held, block, pos, placeAt, world, state);
+						placeTorch(compat, event, held, block, placeAt, world, state);
 					}
 				}
 			}
 		}
 	}
 
-	public static boolean placeTorch(ICeilingTorchCompat compat, RightClickBlock event, ItemStack held, Block block, BlockPos pos, BlockPos placeAt, World world, BlockState state)
+	public static boolean placeTorch(ICeilingTorchCompat compat, RightClickBlock event, ItemStack held, Block block, BlockPos placeAt, World world, BlockState state)
 	{
-		if(block.canSurvive(state, world, placeAt))
+		if(state.canSurvive(world, placeAt))
 		{
 			SoundType soundType;
 
@@ -65,8 +68,8 @@ public class PlaceHandler
 
 			world.setBlockAndUpdate(placeAt, state);
 			compat.onPlace(event, placeAt, state);
-			soundType = block.getSoundType(state, world, pos, event.getPlayer());
-			world.playSound(null, pos.getX(), pos.getY(), pos.getZ(), soundType.getPlaceSound(), SoundCategory.BLOCKS, soundType.getVolume(), soundType.getPitch() - 0.2F);
+			soundType = block.getSoundType(state, world, placeAt, event.getPlayer());
+			world.playSound(null, placeAt.getX(), placeAt.getY(), placeAt.getZ(), soundType.getPlaceSound(), SoundCategory.BLOCKS, soundType.getVolume(), soundType.getPitch() - 0.2F);
 			event.getPlayer().swing(event.getHand());
 
 			if(!event.getPlayer().isCreative())
