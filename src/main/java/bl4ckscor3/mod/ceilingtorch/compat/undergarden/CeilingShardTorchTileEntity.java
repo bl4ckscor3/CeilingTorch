@@ -11,7 +11,7 @@ public class CeilingShardTorchTileEntity extends TileEntity implements ITickable
 {
 	public CeilingShardTorchTileEntity()
 	{
-		super(UndergardenCompat.ETHER_CEILING_TORCH.get());
+		super(UndergardenCompat.SHARD_CEILING_TORCH.get());
 	}
 
 	@Override

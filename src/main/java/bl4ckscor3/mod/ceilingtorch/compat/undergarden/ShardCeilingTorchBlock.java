@@ -28,7 +28,7 @@ public class ShardCeilingTorchBlock extends CeilingTorchBlock
 	@Override
 	public TileEntity createTileEntity(BlockState state, IBlockReader world)
 	{
-		return UndergardenCompat.ETHER_CEILING_TORCH.get().create();
+		return UndergardenCompat.SHARD_CEILING_TORCH.get().create();
 	}
 
 	@Override
