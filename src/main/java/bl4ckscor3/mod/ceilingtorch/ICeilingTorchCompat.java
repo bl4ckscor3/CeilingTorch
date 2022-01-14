@@ -41,7 +41,7 @@ public interface ICeilingTorchCompat
 	 * @param placeAt The position to place the block at
 	 * @param state The state to place
 	 */
-	public default void onPlace(RightClickBlock event, BlockPos placeAt, BlockState state){}
+	public default void onPlace(RightClickBlock event, BlockPos placeAt, BlockState state) {}
 
 	/**
 	 * If this returns true, CeilingTorch will handle setting the render type. If this returns false, the mod adding compatibility needs to handle setting the render type themselves.
