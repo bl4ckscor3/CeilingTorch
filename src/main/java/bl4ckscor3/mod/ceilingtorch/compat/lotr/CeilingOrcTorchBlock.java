@@ -86,7 +86,7 @@ public class CeilingOrcTorchBlock extends Block
 				BlockPos downPos = pos.below();
 				BlockState stateBelow = world.getBlockState(downPos);
 
-				return stateBelow.isAir(world, downPos);
+				return stateBelow.isAir(world, downPos) || stateBelow.is(this);
 			}
 			else return false;
 		}
