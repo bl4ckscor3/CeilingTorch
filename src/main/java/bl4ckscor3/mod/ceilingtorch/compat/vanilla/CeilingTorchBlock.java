@@ -68,6 +68,11 @@ public class CeilingTorchBlock extends TorchBlock
 	@Override
 	public ItemStack getPickBlock(BlockState state, RayTraceResult target, IBlockReader world, BlockPos pos, PlayerEntity player)
 	{
-		return new ItemStack(originalBlock.get());
+		return new ItemStack(getOriginalBlock());
+	}
+
+	public Block getOriginalBlock()
+	{
+		return originalBlock.get();
 	}
 }
