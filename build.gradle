@@ -71,8 +71,10 @@ dependencies {
 	
 	runtimeOnly fg.deobf("mezz.jei:jei-1.18.1:9.2.1.69")
     implementation fg.deobf("curse.maven:aquatic-torches-563637:3598497")
+    implementation fg.deobf("curse.maven:curios-309927:3600023") //malum dependency
     implementation fg.deobf("curse.maven:i-like-wood-324164:3592431")
     implementation fg.deobf("curse.maven:magical-torches-389917:3563789")
+    implementation fg.deobf("curse.maven:malum-484064:3587803")
 	implementation fg.deobf("curse.maven:sbm-bone-torch-238695:3553564")
     implementation fg.deobf("curse.maven:silent-lib-242998:3543045") //torch bandolier dependency
     implementation fg.deobf("curse.maven:torch-bandolier-299337:3550328")

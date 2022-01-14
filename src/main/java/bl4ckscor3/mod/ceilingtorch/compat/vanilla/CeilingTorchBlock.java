@@ -36,37 +36,37 @@ public class CeilingTorchBlock extends TorchBlock
 	}
 
 	@Override
-	public VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context)
+	public VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context)
 	{
 		return CEILING_SHAPE;
 	}
 
 	@Override
-	public BlockState updateShape(BlockState state, Direction facing, BlockState facingState, LevelAccessor world, BlockPos currentPos, BlockPos facingPos)
+	public BlockState updateShape(BlockState state, Direction facing, BlockState facingState, LevelAccessor level, BlockPos currentPos, BlockPos facingPos)
 	{
-		return facing == Direction.UP && !canSurvive(state, world, currentPos) ? Blocks.AIR.defaultBlockState() : super.updateShape(state, facing, facingState, world, currentPos, facingPos);
+		return facing == Direction.UP && !canSurvive(state, level, currentPos) ? Blocks.AIR.defaultBlockState() : super.updateShape(state, facing, facingState, level, currentPos, facingPos);
 	}
 
 	@Override
-	public boolean canSurvive(BlockState state, LevelReader world, BlockPos pos)
+	public boolean canSurvive(BlockState state, LevelReader level, BlockPos pos)
 	{
-		return canSupportCenter(world, pos.above(), Direction.DOWN);
+		return canSupportCenter(level, pos.above(), Direction.DOWN);
 	}
 
 	@Override
 	@OnlyIn(Dist.CLIENT)
-	public void animateTick(BlockState state, Level world, BlockPos pos, Random rand)
+	public void animateTick(BlockState state, Level level, BlockPos pos, Random rand)
 	{
 		double x = pos.getX() + 0.5D;
 		double y = pos.getY() + 0.45D;
 		double z = pos.getZ() + 0.5D;
 
-		world.addParticle(ParticleTypes.SMOKE, x, y, z, 0.0D, 0.0D, 0.0D);
-		world.addParticle(flameParticle, x, y, z, 0.0D, 0.0D, 0.0D);
+		level.addParticle(ParticleTypes.SMOKE, x, y, z, 0.0D, 0.0D, 0.0D);
+		level.addParticle(flameParticle, x, y, z, 0.0D, 0.0D, 0.0D);
 	}
 
 	@Override
-	public ItemStack getCloneItemStack(BlockState state, HitResult target, BlockGetter world, BlockPos pos, Player player)
+	public ItemStack getCloneItemStack(BlockState state, HitResult target, BlockGetter level, BlockPos pos, Player player)
 	{
 		return new ItemStack(originalBlock.get());
 	}
