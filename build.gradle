@@ -14,7 +14,7 @@ apply plugin: 'net.minecraftforge.gradle'
 apply plugin: 'org.parchmentmc.librarian.forgegradle'
 apply plugin: 'eclipse'
 
-version = 'v1.13.8'
+version = 'v1.14'
 group = 'bl4ckscor3.mod.ceilingtorch'
 archivesBaseName = 'ceilingtorch-1.16.5'
 
