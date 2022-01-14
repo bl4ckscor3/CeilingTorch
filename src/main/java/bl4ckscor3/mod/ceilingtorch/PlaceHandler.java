@@ -72,6 +72,7 @@ public class PlaceHandler
 			if(!event.getPlayer().isCreative())
 				held.shrink(1);
 
+			MinecraftForge.EVENT_BUS.post(new EntityPlaceEvent(BlockSnapshot.create(world.dimension(), world, placeAt), world.getBlockState(event.getPos()), event.getPlayer()));
 			return true;
 		}
 
