@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "aquatictorches:block/aquatic_torch", "x": 180
+    }
+  }
+}
