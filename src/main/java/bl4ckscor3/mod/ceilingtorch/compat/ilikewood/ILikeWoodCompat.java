@@ -1,8 +1,11 @@
 package bl4ckscor3.mod.ceilingtorch.compat.ilikewood;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableMap.Builder;
 
 import bl4ckscor3.mod.ceilingtorch.ICeilingTorchCompat;
 import net.minecraft.block.Block;
@@ -15,27 +18,29 @@ import yamahari.ilikewood.util.Util;
 
 public class ILikeWoodCompat implements ICeilingTorchCompat
 {
-	public static Block oakTorch;
-	public static Block spruceTorch;
-	public static Block birchTorch;
-	public static Block jungleTorch;
-	public static Block acaciaTorch;
-	public static Block darkOakTorch;
-	public static Block warpedTorch;
-	public static Block crimsonTorch;
+	public static List<WoodenCeilingTorchBlock> ceilingTorchList = new ArrayList<>();
 	private Map<ResourceLocation,Block> placeEntries;
 
 	@Override
 	public void registerBlocks(RegistryEvent.Register<Block> event)
 	{
-		event.getRegistry().register(oakTorch = new WoodenCeilingTorchBlock(VanillaWoodTypes.OAK));
-		event.getRegistry().register(spruceTorch = new WoodenCeilingTorchBlock(VanillaWoodTypes.SPRUCE));
-		event.getRegistry().register(birchTorch = new WoodenCeilingTorchBlock(VanillaWoodTypes.BIRCH));
-		event.getRegistry().register(jungleTorch = new WoodenCeilingTorchBlock(VanillaWoodTypes.JUNGLE));
-		event.getRegistry().register(acaciaTorch = new WoodenCeilingTorchBlock(VanillaWoodTypes.ACACIA));
-		event.getRegistry().register(darkOakTorch = new WoodenCeilingTorchBlock(VanillaWoodTypes.DARK_OAK));
-		event.getRegistry().register(warpedTorch = new WoodenCeilingTorchBlock(VanillaWoodTypes.WARPED));
-		event.getRegistry().register(crimsonTorch = new WoodenCeilingTorchBlock(VanillaWoodTypes.CRIMSON));
+		ceilingTorchList.add(new WoodenCeilingTorchBlock(VanillaWoodTypes.OAK, WoodenBlockType.TORCH));
+		ceilingTorchList.add(new WoodenCeilingTorchBlock(VanillaWoodTypes.SPRUCE, WoodenBlockType.TORCH));
+		ceilingTorchList.add(new WoodenCeilingTorchBlock(VanillaWoodTypes.BIRCH, WoodenBlockType.TORCH));
+		ceilingTorchList.add(new WoodenCeilingTorchBlock(VanillaWoodTypes.JUNGLE, WoodenBlockType.TORCH));
+		ceilingTorchList.add(new WoodenCeilingTorchBlock(VanillaWoodTypes.ACACIA, WoodenBlockType.TORCH));
+		ceilingTorchList.add(new WoodenCeilingTorchBlock(VanillaWoodTypes.DARK_OAK, WoodenBlockType.TORCH));
+		ceilingTorchList.add(new WoodenCeilingTorchBlock(VanillaWoodTypes.WARPED, WoodenBlockType.TORCH));
+		ceilingTorchList.add(new WoodenCeilingTorchBlock(VanillaWoodTypes.CRIMSON, WoodenBlockType.TORCH));
+		ceilingTorchList.add(new WoodenCeilingTorchBlock(VanillaWoodTypes.OAK, WoodenBlockType.SOUL_TORCH));
+		ceilingTorchList.add(new WoodenCeilingTorchBlock(VanillaWoodTypes.SPRUCE, WoodenBlockType.SOUL_TORCH));
+		ceilingTorchList.add(new WoodenCeilingTorchBlock(VanillaWoodTypes.BIRCH, WoodenBlockType.SOUL_TORCH));
+		ceilingTorchList.add(new WoodenCeilingTorchBlock(VanillaWoodTypes.JUNGLE, WoodenBlockType.SOUL_TORCH));
+		ceilingTorchList.add(new WoodenCeilingTorchBlock(VanillaWoodTypes.ACACIA, WoodenBlockType.SOUL_TORCH));
+		ceilingTorchList.add(new WoodenCeilingTorchBlock(VanillaWoodTypes.DARK_OAK, WoodenBlockType.SOUL_TORCH));
+		ceilingTorchList.add(new WoodenCeilingTorchBlock(VanillaWoodTypes.WARPED, WoodenBlockType.SOUL_TORCH));
+		ceilingTorchList.add(new WoodenCeilingTorchBlock(VanillaWoodTypes.CRIMSON, WoodenBlockType.SOUL_TORCH));
+		ceilingTorchList.forEach(event.getRegistry()::register);
 	}
 
 	@Override
@@ -43,22 +48,17 @@ public class ILikeWoodCompat implements ICeilingTorchCompat
 	{
 		if(placeEntries == null)
 		{
-			placeEntries = ImmutableMap.<ResourceLocation,Block>builder()
-					.put(registryNameOf(VanillaWoodTypes.OAK), oakTorch)
-					.put(registryNameOf(VanillaWoodTypes.SPRUCE), spruceTorch)
-					.put(registryNameOf(VanillaWoodTypes.BIRCH), birchTorch)
-					.put(registryNameOf(VanillaWoodTypes.JUNGLE), jungleTorch)
-					.put(registryNameOf(VanillaWoodTypes.ACACIA), acaciaTorch)
-					.put(registryNameOf(VanillaWoodTypes.DARK_OAK), darkOakTorch)
-					.put(registryNameOf(VanillaWoodTypes.WARPED), warpedTorch)
-					.put(registryNameOf(VanillaWoodTypes.CRIMSON), crimsonTorch).build();
+			Builder<ResourceLocation, Block> builder = ImmutableMap.<ResourceLocation,Block>builder();
+
+			ceilingTorchList.forEach(torch -> builder.put(registryNameOf(torch.woodType, torch.blockType), torch));
+			placeEntries = builder.build();
 		}
 
 		return placeEntries;
 	}
 
-	private ResourceLocation registryNameOf(IWoodType woodType)
+	private ResourceLocation registryNameOf(IWoodType woodType, WoodenBlockType blockType)
 	{
-		return new ResourceLocation("ilikewood", Util.toRegistryName(woodType.getName(), WoodenBlockType.TORCH.getName()));
+		return new ResourceLocation("ilikewood", Util.toRegistryName(woodType.getName(), blockType.getName()));
 	}
 }

@@ -24,13 +24,15 @@ import yamahari.ilikewood.util.IWooden;
 public class WoodenCeilingTorchBlock extends CeilingTorchBlock implements IWooden
 {
 	protected static final VoxelShape CEILING_SHAPE = Block.box(6.0D, 3.0D, 6.0D, 10.0D, 16.0D, 10.0D);
-	private final IWoodType woodType;
+	protected final IWoodType woodType;
+	protected final WoodenBlockType blockType;
 
-	public WoodenCeilingTorchBlock(IWoodType woodType)
+	public WoodenCeilingTorchBlock(IWoodType woodType, WoodenBlockType blockType)
 	{
-		super(Block.Properties.copy(Blocks.TORCH), ParticleTypes.SMOKE, () -> ILikeWood.getBlock(woodType, WoodenBlockType.TORCH));
+		super(Block.Properties.copy(getVanillaTorchForWoodenBlockType(blockType)), ParticleTypes.SMOKE, () -> ILikeWood.getBlock(woodType, blockType));
 		this.woodType = woodType;
-		setRegistryName(new ResourceLocation(CeilingTorch.MODID, "ilikewood_" + woodType.getName() + "_torch"));
+		this.blockType = blockType;
+		setRegistryName(new ResourceLocation(CeilingTorch.MODID, "ilikewood_" + woodType.getName() + "_" + blockType.getName()));
 	}
 
 	@Override
@@ -54,5 +56,14 @@ public class WoodenCeilingTorchBlock extends CeilingTorchBlock implements IWoode
 		double d2 = pos.getZ() + 0.5D;
 
 		world.addParticle(flameParticle, d0, d1, d2, 0.0D, 0.0D, 0.0D);
+	}
+
+	private static Block getVanillaTorchForWoodenBlockType(WoodenBlockType type) {
+		if(type == WoodenBlockType.TORCH)
+			return Blocks.TORCH;
+		else if(type == WoodenBlockType.SOUL_TORCH)
+			return Blocks.SOUL_TORCH;
+		else
+			return Blocks.AIR;
 	}
 }
