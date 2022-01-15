@@ -81,6 +81,7 @@ dependencies {
     implementation fg.deobf("curse.maven:silent-lib-242998:3543045") //silent gear and torch bandolier dependency
     implementation fg.deobf("curse.maven:tofucraftreload-317469:3605477")
     implementation fg.deobf("curse.maven:torch-bandolier-299337:3550328")
+    implementation fg.deobf("curse.maven:torchmaster-254268:3601659")
 }
 
 jar {
