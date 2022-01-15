@@ -1,5 +1,0 @@
-{
-    "variants": {
-        "": { "model": "torcherino:block/torcherino", "x": 180 }
-    }
-}
