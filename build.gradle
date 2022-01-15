@@ -77,7 +77,8 @@ dependencies {
     implementation fg.deobf("curse.maven:malum-484064:3587803")
     implementation fg.deobf("curse.maven:pokecube-aoi-285121:3605178")
 	implementation fg.deobf("curse.maven:sbm-bone-torch-238695:3553564")
-    implementation fg.deobf("curse.maven:silent-lib-242998:3543045") //torch bandolier dependency
+    implementation fg.deobf("curse.maven:silent-gear-297039:3600192")
+    implementation fg.deobf("curse.maven:silent-lib-242998:3543045") //silent gear and torch bandolier dependency
     implementation fg.deobf("curse.maven:torch-bandolier-299337:3550328")
 }
 
