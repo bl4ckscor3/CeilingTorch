@@ -68,6 +68,11 @@ public class CeilingTorchBlock extends TorchBlock
 	@Override
 	public ItemStack getCloneItemStack(BlockState state, HitResult target, BlockGetter level, BlockPos pos, Player player)
 	{
-		return new ItemStack(originalBlock.get());
+		return new ItemStack(getOriginalBlock());
+	}
+
+	public Block getOriginalBlock()
+	{
+		return originalBlock.get();
 	}
 }
