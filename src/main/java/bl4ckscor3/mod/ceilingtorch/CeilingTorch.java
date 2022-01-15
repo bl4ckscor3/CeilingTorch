@@ -12,6 +12,7 @@ import bl4ckscor3.mod.ceilingtorch.compat.magicaltorches.MagicalTorchesCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.malum.MalumCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.pokecubeaio.PokecubeAIOCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.silentgear.SilentGearCompat;
+import bl4ckscor3.mod.ceilingtorch.compat.tofucraft.TofuCraftCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.torchbandolier.TorchBandolierCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.vanilla.VanillaCompat;
 import net.minecraft.world.level.block.Block;
@@ -64,6 +65,9 @@ public class CeilingTorch
 
 		if(ModList.get().isLoaded("torchbandolier"))
 			preliminaryCompatList.put("torchbandolier", TorchBandolierCompat::new);
+
+		if(ModList.get().isLoaded("tofucraft"))
+			preliminaryCompatList.put("tofucraft", TofuCraftCompat::new);
 	}
 
 	@SubscribeEvent

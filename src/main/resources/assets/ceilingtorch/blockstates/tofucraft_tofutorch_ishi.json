@@ -1,0 +1,5 @@
+{
+    "variants": {
+        "": { "model": "tofucraft:block/tofutorch_ishi", "x": 180 }
+    }
+}
