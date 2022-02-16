@@ -3,8 +3,8 @@ package bl4ckscor3.mod.ceilingtorch.compat.moshiz;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.ProfitOrange.MoShiz.init.MoShizBlocks;
-import com.ProfitOrange.MoShiz.particle.TypesParticle;
+import com.ProfitOrange.MoShiz.init.DeferredBlocks;
+import com.ProfitOrange.MoShiz.init.MoShizParticles;
 import com.ProfitOrange.MoShiz.util.ColorDye;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableMap.Builder;
@@ -39,23 +39,23 @@ public class MoShizCompat implements ICeilingTorchCompat
 	@Override
 	public void registerBlocks(RegistryEvent.Register<Block> event)
 	{
-		event.getRegistry().register(fouliteCeilingTorch = new CeilingTorchBlock(Block.Properties.copy(Blocks.TORCH), TypesParticle.GREEN_FLAME, () -> MoShizBlocks.foulite_torch).setRegistryName("moshiz_foulite_torch"));
-		addColoredCeilingTorch(0x1D1D21, Items.BLACK_DYE, new MoShizCeilingTorchBlock(Block.Properties.copy(Blocks.TORCH), () -> MoShizBlocks.black_torch).setRegistryName("moshiz_black_torch"));
-		addColoredCeilingTorch(ColorDye.red, Items.RED_DYE, new MoShizCeilingTorchBlock(Block.Properties.copy(Blocks.TORCH), () -> MoShizBlocks.red_torch).setRegistryName("moshiz_red_torch"));
-		addColoredCeilingTorch(ColorDye.green, Items.GREEN_DYE, new MoShizCeilingTorchBlock(Block.Properties.copy(Blocks.TORCH), () -> MoShizBlocks.green_torch).setRegistryName("moshiz_green_torch"));
-		addColoredCeilingTorch(ColorDye.brown, Items.BROWN_DYE, new MoShizCeilingTorchBlock(Block.Properties.copy(Blocks.TORCH), () -> MoShizBlocks.brown_torch).setRegistryName("moshiz_brown_torch"));
-		addColoredCeilingTorch(ColorDye.blue, Items.BLUE_DYE, new MoShizCeilingTorchBlock(Block.Properties.copy(Blocks.TORCH), () -> MoShizBlocks.blue_torch).setRegistryName("moshiz_blue_torch"));
-		addColoredCeilingTorch(ColorDye.purple, Items.PURPLE_DYE, new MoShizCeilingTorchBlock(Block.Properties.copy(Blocks.TORCH), () -> MoShizBlocks.purple_torch).setRegistryName("moshiz_purple_torch"));
-		addColoredCeilingTorch(ColorDye.cyan, Items.CYAN_DYE, new MoShizCeilingTorchBlock(Block.Properties.copy(Blocks.TORCH), () -> MoShizBlocks.cyan_torch).setRegistryName("moshiz_cyan_torch"));
-		addColoredCeilingTorch(ColorDye.light_grey, Items.LIGHT_GRAY_DYE, new MoShizCeilingTorchBlock(Block.Properties.copy(Blocks.TORCH), () -> MoShizBlocks.light_grey_torch).setRegistryName("moshiz_light_grey_torch"));
-		addColoredCeilingTorch(ColorDye.grey, Items.GRAY_DYE, new MoShizCeilingTorchBlock(Block.Properties.copy(Blocks.TORCH), () -> MoShizBlocks.grey_torch).setRegistryName("moshiz_grey_torch"));
-		addColoredCeilingTorch(ColorDye.pink, Items.PINK_DYE, new MoShizCeilingTorchBlock(Block.Properties.copy(Blocks.TORCH), () -> MoShizBlocks.pink_torch).setRegistryName("moshiz_pink_torch"));
-		addColoredCeilingTorch(ColorDye.lime, Items.LIME_DYE, new MoShizCeilingTorchBlock(Block.Properties.copy(Blocks.TORCH), () -> MoShizBlocks.lime_torch).setRegistryName("moshiz_lime_torch"));
-		addColoredCeilingTorch(ColorDye.yellow, Items.YELLOW_DYE, new MoShizCeilingTorchBlock(Block.Properties.copy(Blocks.TORCH), () -> MoShizBlocks.yellow_torch).setRegistryName("moshiz_yellow_torch"));
-		addColoredCeilingTorch(ColorDye.light_blue, Items.LIGHT_BLUE_DYE, new MoShizCeilingTorchBlock(Block.Properties.copy(Blocks.TORCH), () -> MoShizBlocks.light_blue_torch).setRegistryName("moshiz_light_blue_torch"));
-		addColoredCeilingTorch(ColorDye.magenta, Items.MAGENTA_DYE, new MoShizCeilingTorchBlock(Block.Properties.copy(Blocks.TORCH), () -> MoShizBlocks.magenta_torch).setRegistryName("moshiz_magenta_torch"));
-		addColoredCeilingTorch(ColorDye.orange, Items.ORANGE_DYE, new MoShizCeilingTorchBlock(Block.Properties.copy(Blocks.TORCH), () -> MoShizBlocks.orange_torch).setRegistryName("moshiz_orange_torch"));
-		addColoredCeilingTorch(ColorDye.white, Items.WHITE_DYE, new MoShizCeilingTorchBlock(Block.Properties.copy(Blocks.TORCH), () -> MoShizBlocks.white_torch).setRegistryName("moshiz_white_torch"));
+		event.getRegistry().register(fouliteCeilingTorch = new CeilingTorchBlock(Block.Properties.copy(Blocks.TORCH), MoShizParticles.GREEN_FLAME.get(), DeferredBlocks.FOULITE_TORCH).setRegistryName("moshiz_foulite_torch"));
+		addColoredCeilingTorch(0x1D1D21, Items.BLACK_DYE, new MoShizCeilingTorchBlock(Block.Properties.copy(Blocks.TORCH), DeferredBlocks.BLACK_TORCH).setRegistryName("moshiz_black_torch"));
+		addColoredCeilingTorch(ColorDye.red, Items.RED_DYE, new MoShizCeilingTorchBlock(Block.Properties.copy(Blocks.TORCH), DeferredBlocks.RED_TORCH).setRegistryName("moshiz_red_torch"));
+		addColoredCeilingTorch(ColorDye.green, Items.GREEN_DYE, new MoShizCeilingTorchBlock(Block.Properties.copy(Blocks.TORCH), DeferredBlocks.GREEN_TORCH).setRegistryName("moshiz_green_torch"));
+		addColoredCeilingTorch(ColorDye.brown, Items.BROWN_DYE, new MoShizCeilingTorchBlock(Block.Properties.copy(Blocks.TORCH), DeferredBlocks.BROWN_TORCH).setRegistryName("moshiz_brown_torch"));
+		addColoredCeilingTorch(ColorDye.blue, Items.BLUE_DYE, new MoShizCeilingTorchBlock(Block.Properties.copy(Blocks.TORCH), DeferredBlocks.BLUE_TORCH).setRegistryName("moshiz_blue_torch"));
+		addColoredCeilingTorch(ColorDye.purple, Items.PURPLE_DYE, new MoShizCeilingTorchBlock(Block.Properties.copy(Blocks.TORCH), DeferredBlocks.PURPLE_TORCH).setRegistryName("moshiz_purple_torch"));
+		addColoredCeilingTorch(ColorDye.cyan, Items.CYAN_DYE, new MoShizCeilingTorchBlock(Block.Properties.copy(Blocks.TORCH), DeferredBlocks.CYAN_TORCH).setRegistryName("moshiz_cyan_torch"));
+		addColoredCeilingTorch(ColorDye.light_grey, Items.LIGHT_GRAY_DYE, new MoShizCeilingTorchBlock(Block.Properties.copy(Blocks.TORCH), DeferredBlocks.LIGHT_GREY_TORCH).setRegistryName("moshiz_light_grey_torch"));
+		addColoredCeilingTorch(ColorDye.grey, Items.GRAY_DYE, new MoShizCeilingTorchBlock(Block.Properties.copy(Blocks.TORCH), DeferredBlocks.GREY_TORCH).setRegistryName("moshiz_grey_torch"));
+		addColoredCeilingTorch(ColorDye.pink, Items.PINK_DYE, new MoShizCeilingTorchBlock(Block.Properties.copy(Blocks.TORCH), DeferredBlocks.PINK_TORCH).setRegistryName("moshiz_pink_torch"));
+		addColoredCeilingTorch(ColorDye.lime, Items.LIME_DYE, new MoShizCeilingTorchBlock(Block.Properties.copy(Blocks.TORCH), DeferredBlocks.LIME_TORCH).setRegistryName("moshiz_lime_torch"));
+		addColoredCeilingTorch(ColorDye.yellow, Items.YELLOW_DYE, new MoShizCeilingTorchBlock(Block.Properties.copy(Blocks.TORCH), DeferredBlocks.YELLOW_TORCH).setRegistryName("moshiz_yellow_torch"));
+		addColoredCeilingTorch(ColorDye.light_blue, Items.LIGHT_BLUE_DYE, new MoShizCeilingTorchBlock(Block.Properties.copy(Blocks.TORCH), DeferredBlocks.LIGHT_BLUE_TORCH).setRegistryName("moshiz_light_blue_torch"));
+		addColoredCeilingTorch(ColorDye.magenta, Items.MAGENTA_DYE, new MoShizCeilingTorchBlock(Block.Properties.copy(Blocks.TORCH), DeferredBlocks.MAGENTA_TORCH).setRegistryName("moshiz_magenta_torch"));
+		addColoredCeilingTorch(ColorDye.orange, Items.ORANGE_DYE, new MoShizCeilingTorchBlock(Block.Properties.copy(Blocks.TORCH), DeferredBlocks.ORANGE_TORCH).setRegistryName("moshiz_orange_torch"));
+		addColoredCeilingTorch(ColorDye.white, Items.WHITE_DYE, new MoShizCeilingTorchBlock(Block.Properties.copy(Blocks.TORCH), DeferredBlocks.WHITE_TORCH).setRegistryName("moshiz_white_torch"));
 		coloredCeilingTorches.forEach((dye, torch) -> event.getRegistry().register(torch));
 	}
 
@@ -66,7 +66,7 @@ public class MoShizCompat implements ICeilingTorchCompat
 		{
 			Builder<ResourceLocation, Block> builder = ImmutableMap.<ResourceLocation,Block>builder();
 
-			builder.put(MoShizBlocks.foulite_torch.getRegistryName(), fouliteCeilingTorch);
+			builder.put(DeferredBlocks.FOULITE_TORCH.get().getRegistryName(), fouliteCeilingTorch);
 			coloredCeilingTorches.forEach((dye, torch) -> builder.put(((CeilingTorchBlock)torch).getOriginalBlock().getRegistryName(), torch));
 			placeEntries = builder.build();
 		}
