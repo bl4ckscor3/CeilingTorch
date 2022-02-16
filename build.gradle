@@ -22,7 +22,7 @@ java.toolchain.languageVersion = JavaLanguageVersion.of(17)
 println('Java: ' + System.getProperty('java.version') + ' JVM: ' + System.getProperty('java.vm.version') + '(' + System.getProperty('java.vendor') + ') Arch: ' + System.getProperty('os.arch'))
 
 minecraft {
-    mappings channel: 'parchment', version: '2021.12.19-1.18.1'
+    mappings channel: 'parchment', version: '2022.02.13-1.18.1'
     accessTransformer = file('src/main/resources/META-INF/accesstransformer.cfg')
 	
     runs {
@@ -63,24 +63,27 @@ repositories {
     }
     maven {
         url "https://www.cursemaven.com"
+        content {
+            includeGroup "curse.maven"
     }
+}
 }
 
 dependencies {
-    minecraft 'net.minecraftforge:forge:1.18.1-39.0.20'
+    minecraft 'net.minecraftforge:forge:1.18.1-39.0.79'
 	
 	runtimeOnly fg.deobf("mezz.jei:jei-1.18.1:9.2.1.69")
     implementation fg.deobf("curse.maven:aquatic-torches-563637:3598497")
     implementation fg.deobf("curse.maven:curios-309927:3600023") //malum dependency
-    implementation fg.deobf("curse.maven:i-like-wood-324164:3592431")
-    implementation fg.deobf("curse.maven:magical-torches-389917:3563789")
+    implementation fg.deobf("curse.maven:i-like-wood-324164:3638992")
+    implementation fg.deobf("curse.maven:magical-torches-389917:3607363")
     implementation fg.deobf("curse.maven:malum-484064:3587803")
     implementation fg.deobf("curse.maven:mo-shiz-mod-62536:3594681")
-    implementation fg.deobf("curse.maven:pokecube-aoi-285121:3605178")
+    implementation fg.deobf("curse.maven:pokecube-aoi-285121:3623820")
 	implementation fg.deobf("curse.maven:sbm-bone-torch-238695:3553564")
-    implementation fg.deobf("curse.maven:silent-gear-297039:3600192")
+    implementation fg.deobf("curse.maven:silent-gear-297039:3639667")
     implementation fg.deobf("curse.maven:silent-lib-242998:3543045") //silent gear and torch bandolier dependency
-    implementation fg.deobf("curse.maven:tofucraftreload-317469:3605477")
+    implementation fg.deobf("curse.maven:tofucraftreload-317469:3639784")
     implementation fg.deobf("curse.maven:torch-bandolier-299337:3550328")
     implementation fg.deobf("curse.maven:torchmaster-254268:3601659")
 }
