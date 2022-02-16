@@ -2,16 +2,16 @@ package bl4ckscor3.mod.ceilingtorch.compat.malum;
 
 import java.awt.Color;
 
-import com.sammy.malum.common.blockentity.EtherTileEntity;
+import com.sammy.malum.common.blockentity.EtherBlockEntity;
 import com.sammy.malum.core.helper.ColorHelper;
-import com.sammy.malum.core.registry.misc.ParticleRegistry;
+import com.sammy.malum.core.setup.ParticleRegistry;
 import com.sammy.malum.core.systems.rendering.RenderUtilities;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 
-public class CeilingEtherTorchBlockEntity extends EtherTileEntity
+public class CeilingEtherTorchBlockEntity extends EtherBlockEntity
 {
 	public CeilingEtherTorchBlockEntity(BlockPos pos, BlockState state)
 	{
