@@ -2,6 +2,7 @@ package bl4ckscor3.mod.ceilingtorch.compat.moshiz;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
 
 import com.ProfitOrange.MoShiz.init.DeferredBlocks;
 import com.ProfitOrange.MoShiz.init.MoShizParticles;
@@ -11,13 +12,18 @@ import com.google.common.collect.ImmutableMap.Builder;
 
 import bl4ckscor3.mod.ceilingtorch.ICeilingTorchCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.vanilla.CeilingTorchBlock;
+import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleType;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
@@ -39,7 +45,19 @@ public class MoShizCompat implements ICeilingTorchCompat
 	@Override
 	public void registerBlocks(RegistryEvent.Register<Block> event)
 	{
-		event.getRegistry().register(fouliteCeilingTorch = new CeilingTorchBlock(Block.Properties.copy(Blocks.TORCH), MoShizParticles.GREEN_FLAME.get(), DeferredBlocks.FOULITE_TORCH).setRegistryName("moshiz_foulite_torch"));
+		event.getRegistry().register(fouliteCeilingTorch = new CeilingTorchBlock(Block.Properties.copy(Blocks.TORCH), null, DeferredBlocks.FOULITE_TORCH) {
+			@Override
+			@OnlyIn(Dist.CLIENT)
+			public void animateTick(BlockState state, Level level, BlockPos pos, Random rand)
+			{
+				double x = pos.getX() + 0.5D;
+				double y = pos.getY() + 0.45D;
+				double z = pos.getZ() + 0.5D;
+
+				level.addParticle(ParticleTypes.SMOKE, x, y, z, 0.0D, 0.0D, 0.0D);
+				level.addParticle(MoShizParticles.GREEN_FLAME.get(), x, y, z, 0.0D, 0.0D, 0.0D);
+			}
+		}.setRegistryName("moshiz_foulite_torch"));
 		addColoredCeilingTorch(0x1D1D21, Items.BLACK_DYE, new MoShizCeilingTorchBlock(Block.Properties.copy(Blocks.TORCH), DeferredBlocks.BLACK_TORCH).setRegistryName("moshiz_black_torch"));
 		addColoredCeilingTorch(ColorDye.red, Items.RED_DYE, new MoShizCeilingTorchBlock(Block.Properties.copy(Blocks.TORCH), DeferredBlocks.RED_TORCH).setRegistryName("moshiz_red_torch"));
 		addColoredCeilingTorch(ColorDye.green, Items.GREEN_DYE, new MoShizCeilingTorchBlock(Block.Properties.copy(Blocks.TORCH), DeferredBlocks.GREEN_TORCH).setRegistryName("moshiz_green_torch"));
