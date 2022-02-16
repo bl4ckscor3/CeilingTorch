@@ -7,9 +7,9 @@ import com.wynprice.secretrooms.server.blocks.SecretBlocks;
 import com.wynprice.secretrooms.server.items.SecretItems;
 
 import bl4ckscor3.mod.ceilingtorch.ICeilingTorchCompat;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.material.Material;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.event.RegistryEvent.Register;
 
 public class SecretRoomsCompat implements ICeilingTorchCompat

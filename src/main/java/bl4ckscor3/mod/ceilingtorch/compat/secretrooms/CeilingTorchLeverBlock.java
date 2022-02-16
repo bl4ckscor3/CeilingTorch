@@ -24,8 +24,6 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
-import net.minecraft.world.level.block.state.BlockBehaviour.Properties;
-
 public class CeilingTorchLeverBlock extends TorchLever
 {
 	public CeilingTorchLeverBlock(Properties properties)
