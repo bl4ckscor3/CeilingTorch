@@ -14,7 +14,7 @@ apply plugin: 'net.minecraftforge.gradle'
 apply plugin: 'org.parchmentmc.librarian.forgegradle'
 apply plugin: 'eclipse'
 
-version = '1.14'
+version = '1.15'
 group = 'bl4ckscor3.mod.ceilingtorch'
 archivesBaseName = 'ceilingtorch-1.18.1'
 
@@ -81,6 +81,7 @@ dependencies {
     implementation fg.deobf("curse.maven:mo-shiz-mod-62536:3646749")
     implementation fg.deobf("curse.maven:pokecube-aoi-285121:3623820")
 	implementation fg.deobf("curse.maven:sbm-bone-torch-238695:3553564")
+    implementation fg.deobf("curse.maven:secretroomsmod-59652:3613983")
     implementation fg.deobf("curse.maven:silent-gear-297039:3639667")
     implementation fg.deobf("curse.maven:silent-lib-242998:3543045") //silent gear and torch bandolier dependency
     implementation fg.deobf("curse.maven:tofucraftreload-317469:3639784")
