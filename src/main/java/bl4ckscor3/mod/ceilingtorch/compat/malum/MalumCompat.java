@@ -4,8 +4,7 @@ import java.util.Map;
 
 import com.google.common.collect.ImmutableMap;
 import com.sammy.malum.common.item.ether.AbstractEtherItem;
-import com.sammy.malum.core.helper.ColorHelper;
-import com.sammy.malum.core.setup.block.BlockRegistry;
+import com.sammy.malum.core.setup.content.block.BlockRegistry;
 
 import bl4ckscor3.mod.ceilingtorch.CeilingTorch;
 import bl4ckscor3.mod.ceilingtorch.ICeilingTorchCompat;
@@ -71,8 +70,8 @@ public class MalumCompat implements ICeilingTorchCompat
 			ItemStack held = event.getItemStack();
 			AbstractEtherItem item = (AbstractEtherItem)held.getItem();
 
-			be.firstColor = ColorHelper.getColor(item.getFirstColor(held));
-			be.secondColor = ColorHelper.getColor(item.getSecondColor(held));
+			be.setFirstColor(item.getFirstColor(held));
+			be.setSecondColor(item.getSecondColor(held));
 		}
 	}
 
