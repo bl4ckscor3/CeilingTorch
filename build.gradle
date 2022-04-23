@@ -1,6 +1,6 @@
 buildscript {
     repositories {
-        maven { url = 'https://files.minecraftforge.net/maven' }
+        maven { url = 'https://maven.minecraftforge.net/' }
         maven { url = 'https://maven.parchmentmc.org' }
         mavenCentral()
     }
@@ -75,18 +75,18 @@ dependencies {
 	runtimeOnly fg.deobf("mezz.jei:jei-1.18.2:9.7.0.193")
     implementation fg.deobf("curse.maven:aquatic-torches-563637:3598497")
     implementation fg.deobf("curse.maven:curios-309927:3748873") //malum dependency
-    implementation fg.deobf("curse.maven:i-like-wood-324164:3638992")
-    implementation fg.deobf("curse.maven:magical-torches-389917:3607363")
+    implementation fg.deobf("curse.maven:i-like-wood-324164:3726545")
+    implementation fg.deobf("curse.maven:magical-torches-389917:3683920")
     implementation fg.deobf("curse.maven:malum-484064:3763971")
-    implementation fg.deobf("curse.maven:mo-shiz-mod-62536:3646749")
-    implementation fg.deobf("curse.maven:pokecube-aoi-285121:3623820")
+    implementation fg.deobf("curse.maven:mo-shiz-mod-62536:3710568")
+    implementation fg.deobf("curse.maven:pokecube-aoi-285121:3651313")
 	implementation fg.deobf("curse.maven:sbm-bone-torch-238695:3553564")
     implementation fg.deobf("curse.maven:secretroomsmod-59652:3613983")
-    implementation fg.deobf("curse.maven:silent-gear-297039:3639667")
-    implementation fg.deobf("curse.maven:silent-lib-242998:3543045") //silent gear and torch bandolier dependency
+    implementation fg.deobf("curse.maven:silent-gear-297039:3726039")
+    implementation fg.deobf("curse.maven:silent-lib-242998:3708359") //silent gear and torch bandolier dependency
     implementation fg.deobf("curse.maven:tofucraftreload-317469:3639784")
-    implementation fg.deobf("curse.maven:torch-bandolier-299337:3550328")
-    implementation fg.deobf("curse.maven:torchmaster-254268:3601659")
+    implementation fg.deobf("curse.maven:torch-bandolier-299337:3759999")
+    implementation fg.deobf("curse.maven:torchmaster-254268:3724596")
 }
 
 jar {
