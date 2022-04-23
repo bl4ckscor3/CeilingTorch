@@ -22,16 +22,13 @@ java.toolchain.languageVersion = JavaLanguageVersion.of(8)
 println('Java: ' + System.getProperty('java.version') + ' JVM: ' + System.getProperty('java.vm.version') + '(' + System.getProperty('java.vendor') + ') Arch: ' + System.getProperty('os.arch'))
 
 minecraft {
-    mappings channel: 'parchment', version: '2021.10.17-1.16.5'
+    mappings channel: 'parchment', version: '2022.03.06-1.16.5'
     accessTransformer = file('src/main/resources/META-INF/accesstransformer.cfg')
 	
     runs {
         client {
             workingDirectory project.file('run/client')
             property 'forge.logging.console.level', 'debug'
-            //fixes refmap of deps
-            property 'mixin.env.remapRefMap', 'true'
-            property 'mixin.env.refMapRemappingFile', "${projectDir}/build/createSrgToMcp/output.srg"
 
             mods {
                 ceilingtorch {
@@ -43,9 +40,6 @@ minecraft {
         server {
             workingDirectory project.file('run/server')
             property 'forge.logging.console.level', 'debug'
-            //fixes refmap of deps
-            property 'mixin.env.remapRefMap', 'true'
-            property 'mixin.env.refMapRemappingFile', "${projectDir}/build/createSrgToMcp/output.srg"
 
             mods {
                 ceilingtorch {
@@ -66,19 +60,19 @@ repositories {
 }
 
 dependencies {
-    minecraft 'net.minecraftforge:forge:1.16.5-36.2.23'
-	runtimeOnly fg.deobf("mezz.jei:jei-1.16.5:7.7.1.144")
+    minecraft 'net.minecraftforge:forge:1.16.5-36.2.34'
+	runtimeOnly fg.deobf("mezz.jei:jei-1.16.5:7.7.1.152")
 	
-    implementation fg.deobf("curse.maven:blueprint-382216:3457851") //bamboo blocks, endergetic, and upgrade aquatic dependency
-    implementation fg.deobf("curse.maven:atum-59621:3543926")
+    implementation fg.deobf("curse.maven:blueprint-382216:3607198") //bamboo blocks, endergetic, and upgrade aquatic dependency
+    implementation fg.deobf("curse.maven:atum-59621:3760512")
     implementation fg.deobf("curse.maven:bamboo-blocks-348215:3549078")
     implementation fg.deobf("curse.maven:chaos-awakens-475414:3326209")
     implementation fg.deobf("curse.maven:citadel-331936:3441028") //ice and fire dependency
-    implementation fg.deobf("curse.maven:curios-309927:3343065") //atum and malum dependency
+    implementation fg.deobf("curse.maven:curios-309927:3725386") //atum and malum dependency
     implementation fg.deobf("curse.maven:druidcraft-340991:3507029")
     implementation fg.deobf("curse.maven:dwarf-coal-324177:3189806")
+    implementation fg.deobf("curse.maven:endergetic-291509:3750371")
     implementation fg.deobf("curse.maven:essential-features-287431:3244902")
-    implementation fg.deobf("curse.maven:endergetic-291509:3154938")
     implementation fg.deobf("curse.maven:extended-lights-335051:3144281")
     implementation fg.deobf("curse.maven:gaia-dimension-302529:3317421")
     implementation fg.deobf("curse.maven:geckolib-388172:3282081") //chaos awakens dependency
@@ -89,14 +83,14 @@ dependencies {
     implementation fg.deobf("curse.maven:magical-torches-389917:3302078")
     implementation fg.deobf("curse.maven:mantle-74924:3439180") //inspirations dependency
     implementation fg.deobf("curse.maven:malum-484064:3374475")
-    implementation fg.deobf("curse.maven:mo-shiz-mod-62536:3559143")
+    implementation fg.deobf("curse.maven:mo-shiz-mod-62536:3736310")
     implementation fg.deobf("curse.maven:nethercraft-classic-342087:3248559")
     implementation fg.deobf("curse.maven:pokecube-aoi-285121:3600594")
     implementation fg.deobf("curse.maven:sbm-bone-torch-238695:3100862")
     implementation fg.deobf("curse.maven:secretroomsmod-59652:3598850")
     implementation fg.deobf("curse.maven:silent-gear-297039:3585058")
     implementation fg.deobf("curse.maven:silent-lib-242998:3385768") //silent gear and torch bandolier dependency
-    implementation fg.deobf("curse.maven:the-lord-of-the-rings-mod-renewed-406893:3603789")
+    implementation fg.deobf("curse.maven:the-lord-of-the-rings-mod-renewed-406893:3661524")
     implementation fg.deobf("curse.maven:the-undergarden-379849:3477594")
     implementation fg.deobf("curse.maven:tofucraftreload-317469:3454680")
     implementation fg.deobf("curse.maven:torch-bandolier-299337:3398768")
