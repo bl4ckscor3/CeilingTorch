@@ -32,28 +32,28 @@ public class TofuCraftCompat implements ICeilingTorchCompat
 				.noCollission()
 				.noOcclusion()
 				.sound(SoundType.SNOW),
-				ParticleTypes.FLAME, () -> TofuBlocks.TOFUTORCH_MOMEN).setRegistryName(new ResourceLocation(CeilingTorch.MODID, "tofucraft_tofutorch_momen")));
+				ParticleTypes.FLAME, TofuBlocks.TOFUTORCH_MOMEN).setRegistryName(new ResourceLocation(CeilingTorch.MODID, "tofucraft_tofutorch_momen")));
 		event.getRegistry().register(tofuCeilingTorchIshi = new CeilingTorchBlock(Block.Properties.of(TofuMaterial.TOFU)
 				.strength(0.0F, 6.0F)
 				.lightLevel(state -> 14)
 				.noCollission()
 				.noOcclusion()
 				.sound(SoundType.STONE),
-				ParticleTypes.FLAME, () -> TofuBlocks.TOFUTORCH_ISHI).setRegistryName(new ResourceLocation(CeilingTorch.MODID, "tofucraft_tofutorch_ishi")));
+				ParticleTypes.FLAME, TofuBlocks.TOFUTORCH_ISHI).setRegistryName(new ResourceLocation(CeilingTorch.MODID, "tofucraft_tofutorch_ishi")));
 		event.getRegistry().register(tofuCeilingTorchMetal = new CeilingTorchBlock(Block.Properties.of(TofuMaterial.TOFU)
 				.strength(0.0F, 7.5F)
 				.lightLevel(state -> 14)
 				.noCollission()
 				.noOcclusion()
 				.sound(SoundType.METAL),
-				ParticleTypes.FLAME, () -> TofuBlocks.TOFUTORCH_METAL).setRegistryName(new ResourceLocation(CeilingTorch.MODID, "tofucraft_tofutorch_metal")));
+				ParticleTypes.FLAME, TofuBlocks.TOFUTORCH_METAL).setRegistryName(new ResourceLocation(CeilingTorch.MODID, "tofucraft_tofutorch_metal")));
 		event.getRegistry().register(tofuCeilingTorchKinu = new CeilingTorchBlock(Block.Properties.of(TofuMaterial.TOFU)
 				.strength(0.0F, 0.5F)
 				.lightLevel(state -> 14)
 				.noCollission()
 				.noOcclusion()
 				.sound(SoundType.SNOW),
-				ParticleTypes.FLAME, () -> TofuBlocks.TOFUTORCH_KINU).setRegistryName(new ResourceLocation(CeilingTorch.MODID, "tofucraft_tofutorch_kinu")));
+				ParticleTypes.FLAME, TofuBlocks.TOFUTORCH_KINU).setRegistryName(new ResourceLocation(CeilingTorch.MODID, "tofucraft_tofutorch_kinu")));
 	}
 
 	@Override
@@ -61,10 +61,10 @@ public class TofuCraftCompat implements ICeilingTorchCompat
 	{
 		if(placeEntries == null)
 		{
-			placeEntries = ImmutableMap.of(TofuBlocks.TOFUTORCH_MOMEN.getRegistryName(), tofuCeilingTorchMomen,
-					TofuBlocks.TOFUTORCH_ISHI.getRegistryName(), tofuCeilingTorchIshi,
-					TofuBlocks.TOFUTORCH_METAL.getRegistryName(), tofuCeilingTorchMetal,
-					TofuBlocks.TOFUTORCH_KINU.getRegistryName(), tofuCeilingTorchKinu);
+			placeEntries = ImmutableMap.of(TofuBlocks.TOFUTORCH_MOMEN.get().getRegistryName(), tofuCeilingTorchMomen,
+					TofuBlocks.TOFUTORCH_ISHI.get().getRegistryName(), tofuCeilingTorchIshi,
+					TofuBlocks.TOFUTORCH_METAL.get().getRegistryName(), tofuCeilingTorchMetal,
+					TofuBlocks.TOFUTORCH_KINU.get().getRegistryName(), tofuCeilingTorchKinu);
 		}
 
 		return placeEntries;
