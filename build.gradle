@@ -17,7 +17,7 @@ apply plugin: 'org.spongepowered.mixin'
 apply plugin: 'org.parchmentmc.librarian.forgegradle'
 apply plugin: 'eclipse'
 
-version = '1.16'
+version = '1.16.1'
 group = 'bl4ckscor3.mod.ceilingtorch'
 archivesBaseName = 'ceilingtorch-1.18.2'
 
@@ -74,8 +74,9 @@ dependencies {
     implementation fg.deobf("curse.maven:curios-309927:3748873") //malum dependency
     implementation fg.deobf("curse.maven:i-like-wood-324164:3726545")
     implementation fg.deobf("curse.maven:magical-torches-389917:3683920")
-    implementation fg.deobf("curse.maven:malum-484064:3763971")
+    implementation fg.deobf("curse.maven:malum-484064:3768401")
     implementation fg.deobf("curse.maven:mo-shiz-mod-62536:3710568")
+    implementation fg.deobf("curse.maven:ortuslib-616457:3768197") //malum dependency
     implementation fg.deobf("curse.maven:pokecube-aoi-285121:3651313")
 	implementation fg.deobf("curse.maven:sbm-bone-torch-238695:3553564")
     implementation fg.deobf("curse.maven:secretroomsmod-59652:3613983")

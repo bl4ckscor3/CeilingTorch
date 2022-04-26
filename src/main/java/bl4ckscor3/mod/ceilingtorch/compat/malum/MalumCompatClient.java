@@ -14,7 +14,7 @@ public class MalumCompatClient
 	public static void onFMLClientSetup(FMLClientSetupEvent event)
 	{
 		Minecraft.getInstance().getBlockColors().register((state, level, pos, tintIndex) -> {
-			if(tintIndex == 0 && level.getBlockEntity(pos) instanceof CeilingEtherTorchBlockEntity be && be.firstColor != null)
+			if(tintIndex == 1 && level.getBlockEntity(pos) instanceof CeilingEtherTorchBlockEntity be && be.firstColor != null)
 				return be.firstColor.getRGB();
 
 			return 0xFFFFFF;

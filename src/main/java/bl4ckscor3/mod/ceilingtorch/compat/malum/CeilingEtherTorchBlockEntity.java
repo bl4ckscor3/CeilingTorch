@@ -3,9 +3,10 @@ package bl4ckscor3.mod.ceilingtorch.compat.malum;
 import java.awt.Color;
 
 import com.sammy.malum.common.blockentity.EtherBlockEntity;
-import com.sammy.malum.core.helper.ColorHelper;
 import com.sammy.malum.core.setup.client.ParticleRegistry;
-import com.sammy.malum.core.systems.rendering.particle.ParticleBuilders;
+import com.sammy.ortus.helpers.ColorHelper;
+import com.sammy.ortus.setup.OrtusParticles;
+import com.sammy.ortus.systems.rendering.particle.ParticleBuilders;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.block.entity.BlockEntityType;
@@ -33,8 +34,8 @@ public class CeilingEtherTorchBlockEntity extends EtherBlockEntity
 		float scale = 0.17F + level.random.nextFloat() * 0.03F;
 		float velocity = 0.04F + level.random.nextFloat() * 0.02F;
 
-		ParticleBuilders.create(ParticleRegistry.SPARKLE_PARTICLE).setScale(scale * 2.0F, 0.0F).setLifetime(lifeTime).setAlpha(0.2F).setColor(firstColor, secondColor).setColorCurveMultiplier(1.5F).spawn(level, x, y, z);
-		ParticleBuilders.create(ParticleRegistry.WISP_PARTICLE).setScale(scale, 0.0F).setLifetime(lifeTime).setAlpha(0.9F, 0.5F).setColor(firstColor, secondColor).setColorCurveMultiplier(2.0F).addMotion(0.0D, velocity, 0.0D).setSpin(level.random.nextFloat() * 0.5F).spawn(level, x, y, z);
+		ParticleBuilders.create(OrtusParticles.SPARKLE_PARTICLE).setScale(scale * 2.0F, 0.0F).setLifetime(lifeTime).setAlpha(0.2F).setColor(firstColor, secondColor).setColorCurveMultiplier(1.5F).spawn(level, x, y, z);
+		ParticleBuilders.create(OrtusParticles.WISP_PARTICLE).setScale(scale, 0.0F).setLifetime(lifeTime).setAlpha(0.9F, 0.5F).setColor(firstColor, secondColor).setColorCurveMultiplier(2.0F).addMotion(0.0D, velocity, 0.0D).setSpin(level.random.nextFloat() * 0.5F).spawn(level, x, y, z);
 
 		if(level.getGameTime() % 2L == 0L && level.random.nextFloat() < 0.25F)
 		{
