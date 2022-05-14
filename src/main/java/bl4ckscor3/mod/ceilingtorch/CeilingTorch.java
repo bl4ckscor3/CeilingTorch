@@ -8,6 +8,7 @@ import java.util.function.Supplier;
 import bl4ckscor3.mod.ceilingtorch.compat.aquatictorches.AquaticTorchesCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.bonetorch.BoneTorchCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.ilikewood.ILikeWoodCompat;
+import bl4ckscor3.mod.ceilingtorch.compat.integrateddynamics.IntegratedDynamicsCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.magicaltorches.MagicalTorchesCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.malum.MalumCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.moshiz.MoShizCompat;
@@ -54,6 +55,9 @@ public class CeilingTorch
 
 		if(ModList.get().isLoaded("ilikewood"))
 			preliminaryCompatList.put("ilikewood", ILikeWoodCompat::new);
+
+		if(ModList.get().isLoaded("integrateddynamics"))
+			preliminaryCompatList.put("integrateddynamics", IntegratedDynamicsCompat::new);
 
 		if(ModList.get().isLoaded("magical_torches"))
 			preliminaryCompatList.put("magical_torches", MagicalTorchesCompat::new);
