@@ -12,6 +12,7 @@ import bl4ckscor3.mod.ceilingtorch.compat.integrateddynamics.IntegratedDynamicsC
 import bl4ckscor3.mod.ceilingtorch.compat.magicaltorches.MagicalTorchesCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.malum.MalumCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.moshiz.MoShizCompat;
+import bl4ckscor3.mod.ceilingtorch.compat.nethersdelight.NethersDelightCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.pokecubeaio.PokecubeAIOCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.secretrooms.SecretRoomsCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.silentgear.SilentGearCompat;
@@ -58,6 +59,9 @@ public class CeilingTorch
 
 		if(ModList.get().isLoaded("integrateddynamics"))
 			preliminaryCompatList.put("integrateddynamics", IntegratedDynamicsCompat::new);
+
+		if(ModList.get().isLoaded("nethersdelight"))
+			preliminaryCompatList.put("nethersdelight", NethersDelightCompat::new);
 
 		if(ModList.get().isLoaded("magical_torches"))
 			preliminaryCompatList.put("magical_torches", MagicalTorchesCompat::new);
