@@ -68,7 +68,9 @@ dependencies {
     implementation fg.deobf("curse.maven:bamboo-blocks-348215:3549078")
     implementation fg.deobf("curse.maven:chaos-awakens-475414:3326209")
     implementation fg.deobf("curse.maven:citadel-331936:3441028") //ice and fire dependency
+    implementation fg.deobf("curse.maven:common-capabilities-247007:3482420") //integrated dynamics dependency
     implementation fg.deobf("curse.maven:curios-309927:3725386") //atum and malum dependency
+    implementation fg.deobf("curse.maven:cyclops-core-232758:3756546") //integrated dynamics dependency
     implementation fg.deobf("curse.maven:druidcraft-340991:3507029")
     implementation fg.deobf("curse.maven:dwarf-coal-324177:3189806")
     implementation fg.deobf("curse.maven:endergetic-291509:3750371")
@@ -80,6 +82,7 @@ dependencies {
     implementation fg.deobf("curse.maven:ice-and-fire-dragons-264231:3441117")
     implementation fg.deobf("curse.maven:infernal-expansion-395078:3526021")
     implementation fg.deobf("curse.maven:inspirations-284007:3414517")
+    implementation fg.deobf("curse.maven:integrated-dynamics-236307:3782101")
     implementation fg.deobf("curse.maven:magical-torches-389917:3302078")
     implementation fg.deobf("curse.maven:mantle-74924:3439180") //inspirations dependency
     implementation fg.deobf("curse.maven:malum-484064:3374475")
