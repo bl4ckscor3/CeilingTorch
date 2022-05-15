@@ -60,9 +60,6 @@ public class CeilingTorch
 		if(ModList.get().isLoaded("integrateddynamics"))
 			preliminaryCompatList.put("integrateddynamics", IntegratedDynamicsCompat::new);
 
-		if(ModList.get().isLoaded("nethersdelight"))
-			preliminaryCompatList.put("nethersdelight", NethersDelightCompat::new);
-
 		if(ModList.get().isLoaded("magical_torches"))
 			preliminaryCompatList.put("magical_torches", MagicalTorchesCompat::new);
 
@@ -71,6 +68,9 @@ public class CeilingTorch
 
 		if(ModList.get().isLoaded("ms"))
 			preliminaryCompatList.put("ms", MoShizCompat::new);
+
+		if(ModList.get().isLoaded("nethersdelight"))
+			preliminaryCompatList.put("nethersdelight", NethersDelightCompat::new);
 
 		if(ModList.get().isLoaded("pokecube_legends"))
 			preliminaryCompatList.put("pokecube_legends", PokecubeAIOCompat::new);
