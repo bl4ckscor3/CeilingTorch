@@ -1,0 +1,5 @@
+{
+    "variants": {
+        "": { "model": "nethers_delight:block/propelplant_torch", "x": 180 }
+    }
+}

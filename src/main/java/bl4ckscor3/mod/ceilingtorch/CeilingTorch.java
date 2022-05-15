@@ -25,6 +25,7 @@ import bl4ckscor3.mod.ceilingtorch.compat.magicaltorches.MagicalTorchesCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.malum.MalumCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.moshiz.MoShizCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.nethercraft.NethercraftCompat;
+import bl4ckscor3.mod.ceilingtorch.compat.nethersdelight.NethersDelightCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.pokecubeaio.PokecubeAIOCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.secretrooms.SecretRoomsCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.silentgear.SilentGearCompat;
@@ -120,6 +121,9 @@ public class CeilingTorch
 
 		if(ModList.get().isLoaded("nethercraft"))
 			preliminaryCompatList.put("nethercraft", NethercraftCompat::new);
+
+		if(ModList.get().isLoaded("nethers_delight"))
+			preliminaryCompatList.put("nethers_delight", NethersDelightCompat::new);
 
 		if(ModList.get().isLoaded("pokecube_legends"))
 			preliminaryCompatList.put("pokecube_legends", PokecubeAIOCompat::new);

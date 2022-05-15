@@ -63,7 +63,7 @@ dependencies {
     minecraft 'net.minecraftforge:forge:1.16.5-36.2.34'
 	runtimeOnly fg.deobf("mezz.jei:jei-1.16.5:7.7.1.152")
 	
-    implementation fg.deobf("curse.maven:blueprint-382216:3607198") //bamboo blocks, endergetic, and upgrade aquatic dependency
+    implementation fg.deobf("curse.maven:blueprint-382216:3607198") //bamboo blocks, endergetic, nether's delight, and upgrade aquatic dependency
     implementation fg.deobf("curse.maven:atum-59621:3760512")
     implementation fg.deobf("curse.maven:bamboo-blocks-348215:3549078")
     implementation fg.deobf("curse.maven:chaos-awakens-475414:3326209")
@@ -73,6 +73,7 @@ dependencies {
     implementation fg.deobf("curse.maven:cyclops-core-232758:3756546") //integrated dynamics dependency
     implementation fg.deobf("curse.maven:druidcraft-340991:3507029")
     implementation fg.deobf("curse.maven:dwarf-coal-324177:3189806")
+    implementation fg.deobf("curse.maven:farmers-delight-398521:3765350") //nether's delight dependency
     implementation fg.deobf("curse.maven:endergetic-291509:3750371")
     implementation fg.deobf("curse.maven:essential-features-287431:3244902")
     implementation fg.deobf("curse.maven:extended-lights-335051:3144281")
@@ -88,6 +89,7 @@ dependencies {
     implementation fg.deobf("curse.maven:malum-484064:3374475")
     implementation fg.deobf("curse.maven:mo-shiz-mod-62536:3736310")
     implementation fg.deobf("curse.maven:nethercraft-classic-342087:3248559")
+    implementation fg.deobf("curse.maven:nethers-delight-496394:3443481")
     implementation fg.deobf("curse.maven:pokecube-aoi-285121:3600594")
     implementation fg.deobf("curse.maven:sbm-bone-torch-238695:3100862")
     implementation fg.deobf("curse.maven:secretroomsmod-59652:3598850")
