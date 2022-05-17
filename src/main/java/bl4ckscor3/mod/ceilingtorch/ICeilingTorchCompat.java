@@ -27,10 +27,11 @@ public interface ICeilingTorchCompat
 
 	/**
 	 * Used to find out which blockstate to place based on the ItemStack that was rightclicked with
-	 * @stack The stack that was rightclicked to place the ceiling torch
-	 * @block The block to place
+	 * @param event The event during which the ceiling torch is being placed
+	 * @param stack The stack that was rightclicked to place the ceiling torch
+	 * @param block The block to place
 	 */
-	public default BlockState getStateToPlace(ItemStack stack, Block block)
+	public default BlockState getStateToPlace(RightClickBlock event, ItemStack stack, Block block)
 	{
 		return block.defaultBlockState();
 	}

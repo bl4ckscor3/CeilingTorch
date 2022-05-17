@@ -57,7 +57,7 @@ public class TorchBandolierCompat implements ICeilingTorchCompat
 				{
 					Block block = placeEntries.get(rl);
 					BlockPos pos = event.getPos();
-					BlockState state = compat.getStateToPlace(stack, block);
+					BlockState state = compat.getStateToPlace(event, stack, block);
 
 					if(PlaceHandler.placeTorch(compat, event, ItemStack.EMPTY, block, pos.relative(event.getFace()), event.getWorld(), state))
 					{

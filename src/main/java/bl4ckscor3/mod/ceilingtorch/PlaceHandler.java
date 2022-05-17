@@ -48,7 +48,7 @@ public class PlaceHandler
 					if(placeEntries.containsKey(rl))
 					{
 						Block block = placeEntries.get(rl);
-						BlockState state = compat.getStateToPlace(held, block);
+						BlockState state = compat.getStateToPlace(event, held, block);
 
 						placeTorch(compat, event, held, block, placeAt, world, state);
 					}
