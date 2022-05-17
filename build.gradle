@@ -64,6 +64,7 @@ dependencies {
 	runtimeOnly fg.deobf("mezz.jei:jei-1.16.5:7.7.1.152")
 	
     implementation fg.deobf("curse.maven:blueprint-382216:3607198") //bamboo blocks, endergetic, nether's delight, and upgrade aquatic dependency
+    implementation fg.deobf("curse.maven:additional-lights-384991:3116438")
     implementation fg.deobf("curse.maven:atum-59621:3760512")
     implementation fg.deobf("curse.maven:bamboo-blocks-348215:3549078")
     implementation fg.deobf("curse.maven:chaos-awakens-475414:3326209")
