@@ -52,7 +52,7 @@ public class PlaceHandler
 
 	public static boolean placeTorch(ICeilingTorchCompat compat, RightClickBlock event, ItemStack held, BlockPos placeAt, Level level, BlockState state)
 	{
-		state = compat.getStateToPlace(level, placeAt, state, held);
+		state = compat.getStateToPlace(event, level, placeAt, state, held);
 
 		if(state.canSurvive(level, placeAt))
 		{

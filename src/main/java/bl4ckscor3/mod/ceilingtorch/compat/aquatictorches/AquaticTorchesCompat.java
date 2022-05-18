@@ -17,6 +17,7 @@ import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.level.material.Material;
 import net.minecraftforge.event.RegistryEvent;
+import net.minecraftforge.event.entity.player.PlayerInteractEvent.RightClickBlock;
 import realmayus.aquatictorches.AquaticTorches;
 
 public class AquaticTorchesCompat implements ICeilingTorchCompat
@@ -45,7 +46,7 @@ public class AquaticTorchesCompat implements ICeilingTorchCompat
 	}
 
 	@Override
-	public BlockState getStateToPlace(Level level, BlockPos pos, BlockState state, ItemStack stack)
+	public BlockState getStateToPlace(RightClickBlock event, Level level, BlockPos pos, BlockState state, ItemStack stack)
 	{
 		FluidState fluidState = level.getFluidState(pos);
 		boolean isFlowing = fluidState.getType() == Fluids.FLOWING_WATER;

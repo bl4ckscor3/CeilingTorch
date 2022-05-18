@@ -26,6 +26,7 @@ import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.level.material.Material;
 import net.minecraftforge.event.RegistryEvent;
+import net.minecraftforge.event.entity.player.PlayerInteractEvent.RightClickBlock;
 
 public class MagicalTorchesCompat implements ICeilingTorchCompat
 {
@@ -75,7 +76,7 @@ public class MagicalTorchesCompat implements ICeilingTorchCompat
 	}
 
 	@Override
-	public BlockState getStateToPlace(Level level, BlockPos pos, BlockState state, ItemStack stack)
+	public BlockState getStateToPlace(RightClickBlock event, Level level, BlockPos pos, BlockState state, ItemStack stack)
 	{
 		if(state.getBlock() instanceof SpawnBlockingCeilingTorchBlock)
 			return state.setValue(BlockStateProperties.WATERLOGGED, level.getFluidState(pos).getType() == Fluids.WATER);

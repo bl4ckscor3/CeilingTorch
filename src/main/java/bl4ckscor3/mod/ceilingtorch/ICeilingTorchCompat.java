@@ -30,10 +30,10 @@ public interface ICeilingTorchCompat
 	 * Used to find out which blockstate to place
 	 * @param level The level to place in
 	 * @param pos The position to place at
-	 * @param block The block to place
+	 * @param state The state to place
 	 * @param stack The stack that was rightclicked to place the ceiling torch
 	 */
-	public default BlockState getStateToPlace(Level level, BlockPos pos, BlockState state, ItemStack stack)
+	public default BlockState getStateToPlace(RightClickBlock event, Level level, BlockPos pos, BlockState state, ItemStack stack)
 	{
 		return state;
 	}

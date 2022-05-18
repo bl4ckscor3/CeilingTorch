@@ -57,7 +57,7 @@ public class MalumCompat implements ICeilingTorchCompat
 	}
 
 	@Override
-	public BlockState getStateToPlace(Level level, BlockPos pos, BlockState state, ItemStack stack)
+	public BlockState getStateToPlace(RightClickBlock event, Level level, BlockPos pos, BlockState state, ItemStack stack)
 	{
 		return state.setValue(BlockStateProperties.WATERLOGGED, level.getFluidState(pos).getType() == Fluids.WATER);
 	}
