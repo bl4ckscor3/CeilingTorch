@@ -17,7 +17,7 @@ apply plugin: 'org.spongepowered.mixin'
 apply plugin: 'org.parchmentmc.librarian.forgegradle'
 apply plugin: 'eclipse'
 
-version = '1.17.1'
+version = '1.18'
 group = 'bl4ckscor3.mod.ceilingtorch'
 archivesBaseName = 'ceilingtorch-1.18.2'
 
@@ -70,27 +70,28 @@ dependencies {
     minecraft 'net.minecraftforge:forge:1.18.2-40.1.0'
 	
 	runtimeOnly fg.deobf("mezz.jei:jei-1.18.2:9.7.0.193")
-    implementation fg.deobf("curse.maven:aquatic-torches-563637:3598497")
-    implementation fg.deobf("curse.maven:common-capabilities-247007:3768491") //integrated dynamics dependency
-    implementation fg.deobf("curse.maven:curios-309927:3748873") //malum dependency
-    implementation fg.deobf("curse.maven:cyclops-core-232758:3778682") //integrated dynamics dependency
-    implementation fg.deobf("curse.maven:farmers-delight-398521:3784851") //nether's delight dependency
-    implementation fg.deobf("curse.maven:i-like-wood-324164:3726545")
-    implementation fg.deobf("curse.maven:integrated-dynamics-236307:3782127")
-    implementation fg.deobf("curse.maven:magical-torches-389917:3683920")
-    implementation fg.deobf("curse.maven:malum-484064:3768401")
-    implementation fg.deobf("curse.maven:mo-shiz-mod-62536:3710568")
-    implementation fg.deobf("curse.maven:nethers-delight-496394:3756127")
-    implementation fg.deobf("curse.maven:ortuslib-616457:3768197") //malum dependency
-    implementation fg.deobf("curse.maven:pokecube-aoi-285121:3651313")
-	implementation fg.deobf("curse.maven:sbm-bone-torch-238695:3553564")
-    implementation fg.deobf("curse.maven:secretroomsmod-59652:3613983")
-    implementation fg.deobf("curse.maven:silent-gear-297039:3726039")
-    implementation fg.deobf("curse.maven:silent-lib-242998:3708359") //silent gear and torch bandolier dependency
-    implementation fg.deobf("curse.maven:tofucraftreload-317469:3759013")
-    implementation fg.deobf("curse.maven:the-undergarden-379849:3758789")
-    implementation fg.deobf("curse.maven:torch-bandolier-299337:3759999")
-    implementation fg.deobf("curse.maven:torchmaster-254268:3724596")
+    implementation fg.deobf("curse.maven:additional-lights-384991:3795952")
+    //implementation fg.deobf("curse.maven:aquatic-torches-563637:3598497")
+    //implementation fg.deobf("curse.maven:common-capabilities-247007:3768491") //integrated dynamics dependency
+    //implementation fg.deobf("curse.maven:curios-309927:3748873") //malum dependency
+    //implementation fg.deobf("curse.maven:cyclops-core-232758:3778682") //integrated dynamics dependency
+    //implementation fg.deobf("curse.maven:farmers-delight-398521:3784851") //nether's delight dependency
+    //implementation fg.deobf("curse.maven:i-like-wood-324164:3726545")
+    //implementation fg.deobf("curse.maven:integrated-dynamics-236307:3782127")
+    //implementation fg.deobf("curse.maven:magical-torches-389917:3683920")
+    //implementation fg.deobf("curse.maven:malum-484064:3768401")
+    //implementation fg.deobf("curse.maven:mo-shiz-mod-62536:3710568")
+    //implementation fg.deobf("curse.maven:nethers-delight-496394:3756127")
+    //implementation fg.deobf("curse.maven:ortuslib-616457:3768197") //malum dependency
+    //implementation fg.deobf("curse.maven:pokecube-aoi-285121:3651313")
+	//implementation fg.deobf("curse.maven:sbm-bone-torch-238695:3553564")
+    //implementation fg.deobf("curse.maven:secretroomsmod-59652:3613983")
+    //implementation fg.deobf("curse.maven:silent-gear-297039:3726039")
+    //implementation fg.deobf("curse.maven:silent-lib-242998:3708359") //silent gear and torch bandolier dependency
+    //implementation fg.deobf("curse.maven:tofucraftreload-317469:3759013")
+    //implementation fg.deobf("curse.maven:the-undergarden-379849:3758789")
+    //implementation fg.deobf("curse.maven:torch-bandolier-299337:3759999")
+    //implementation fg.deobf("curse.maven:torchmaster-254268:3724596")
 }
 
 jar {
