@@ -4,21 +4,15 @@ import java.util.Map;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent.RightClickBlock;
 
 public interface ICeilingTorchCompat
 {
-	/**
-	 * Called from CeilingTorch's block register event. Register all your compat blocks here.
-	 * @param event The Block register event.
-	 */
-	public void registerBlocks(RegistryEvent.Register<Block> event);
-
 	/**
 	 * Used to find out which block to place when an item from the mod of this compat is rightclicked on the bottom of a block.
 	 * Ideally, you would not return a new map every time this is called.
@@ -54,5 +48,25 @@ public interface ICeilingTorchCompat
 	public default boolean hasCutoutMippedRenderType(Block b)
 	{
 		return true;
+	}
+
+	/**
+	 * Helper method to get the registry name of a block
+	 * @param block The block to get the registry name of
+	 * @return The registry name of the block
+	 */
+	public default ResourceLocation getRegistryName(Block block)
+	{
+		return CeilingTorch.getRegistryName(block);
+	}
+
+	/**
+	 * Helper method to get the registry name of an item
+	 * @param block The item to get the registry name of
+	 * @return The registry name of the item
+	 */
+	public default ResourceLocation getRegistryName(Item item)
+	{
+		return CeilingTorch.getRegistryName(item);
 	}
 }

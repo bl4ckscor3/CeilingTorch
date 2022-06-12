@@ -14,47 +14,37 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.RedstoneTorchBlock;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.material.Material;
-import net.minecraftforge.event.RegistryEvent;
-import net.minecraftforge.registries.ObjectHolder;
+import net.minecraftforge.registries.RegistryObject;
 
-@ObjectHolder(CeilingTorch.MODID)
 public class VanillaCompat implements ICeilingTorchCompat
 {
-	public static final Block TORCH = null;
-	public static final Block REDSTONE_TORCH = null;
-	public static final Block SOUL_TORCH = null;
+	public static final RegistryObject<Block> CEILING_TORCH = CeilingTorch.BLOCKS.register("torch", () -> new CeilingTorchBlock(Block.Properties.of(Material.DECORATION)
+			.noCollission()
+			.strength(0.0F)
+			.lightLevel(state -> 14)
+			.sound(SoundType.WOOD),
+			ParticleTypes.FLAME, () -> Blocks.TORCH));
+	public static final RegistryObject<Block> CEILING_REDSTONE_TORCH = CeilingTorch.BLOCKS.register("redstone_torch", () -> new RedstoneCeilingTorchBlock(Block.Properties.of(Material.DECORATION)
+			.noCollission()
+			.strength(0.0F)
+			.lightLevel(state -> state.getValue(RedstoneTorchBlock.LIT) ? 7 : 0)
+			.sound(SoundType.WOOD), () -> Blocks.REDSTONE_TORCH));
+	public static final RegistryObject<Block> CEILING_SOUL_TORCH = CeilingTorch.BLOCKS.register("soul_torch", () -> new CeilingTorchBlock(Block.Properties.of(Material.DECORATION)
+			.noCollission()
+			.strength(0.0F)
+			.lightLevel(state -> 10)
+			.sound(SoundType.WOOD),
+			ParticleTypes.SOUL_FIRE_FLAME, () -> Blocks.SOUL_TORCH));
 	private Map<ResourceLocation,Block> placeEntries;
-
-	@Override
-	public void registerBlocks(RegistryEvent.Register<Block> event)
-	{
-		event.getRegistry().register(new CeilingTorchBlock(Block.Properties.of(Material.DECORATION)
-				.noCollission()
-				.strength(0.0F)
-				.lightLevel(state -> 14)
-				.sound(SoundType.WOOD),
-				ParticleTypes.FLAME, () -> Blocks.TORCH).setRegistryName(new ResourceLocation(CeilingTorch.MODID, "torch")));
-		event.getRegistry().register(new RedstoneCeilingTorchBlock(Block.Properties.of(Material.DECORATION)
-				.noCollission()
-				.strength(0.0F)
-				.lightLevel(state -> state.getValue(RedstoneTorchBlock.LIT) ? 7 : 0)
-				.sound(SoundType.WOOD), () -> Blocks.REDSTONE_TORCH).setRegistryName(new ResourceLocation(CeilingTorch.MODID, "redstone_torch")));
-		event.getRegistry().register(new CeilingTorchBlock(Block.Properties.of(Material.DECORATION)
-				.noCollission()
-				.strength(0.0F)
-				.lightLevel(state -> 10)
-				.sound(SoundType.WOOD),
-				ParticleTypes.SOUL_FIRE_FLAME, () -> Blocks.SOUL_TORCH).setRegistryName(new ResourceLocation(CeilingTorch.MODID, "soul_torch")));
-	}
 
 	@Override
 	public Map<ResourceLocation,Block> getPlaceEntries()
 	{
 		if(placeEntries == null)
 		{
-			placeEntries = ImmutableMap.of(Items.TORCH.getRegistryName(), TORCH,
-					Items.REDSTONE_TORCH.getRegistryName(), REDSTONE_TORCH,
-					Items.SOUL_TORCH.getRegistryName(), SOUL_TORCH);
+			placeEntries = ImmutableMap.of(getRegistryName(Items.TORCH), CEILING_TORCH.get(),
+					getRegistryName(Items.REDSTONE_TORCH), CEILING_REDSTONE_TORCH.get(),
+					getRegistryName(Items.SOUL_TORCH), CEILING_SOUL_TORCH.get());
 		}
 
 		return placeEntries;

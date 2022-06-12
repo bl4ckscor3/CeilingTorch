@@ -1,10 +1,10 @@
 package bl4ckscor3.mod.ceilingtorch.compat.vanilla;
 
-import java.util.Random;
 import java.util.function.Supplier;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.BlockGetter;
@@ -70,7 +70,7 @@ public class RedstoneCeilingTorchBlock extends RedstoneTorchBlock
 
 	@Override
 	@OnlyIn(Dist.CLIENT)
-	public void animateTick(BlockState state, Level world, BlockPos pos, Random rand)
+	public void animateTick(BlockState state, Level world, BlockPos pos, RandomSource rand)
 	{
 		if(state.getValue(LIT))
 		{

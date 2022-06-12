@@ -34,7 +34,7 @@ public class PlaceHandler
 			if(face == Direction.DOWN && (level.isEmptyBlock(placeAt) || !level.getFluidState(placeAt).isEmpty()))
 			{
 				ItemStack held = event.getItemStack();
-				ResourceLocation rl = held.getItem().getRegistryName();
+				ResourceLocation rl = CeilingTorch.getRegistryName(held.getItem());
 				Map<String,ICeilingTorchCompat> compatList = CeilingTorch.getCompatList();
 				String modid = rl.getNamespace();
 

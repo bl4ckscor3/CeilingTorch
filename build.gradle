@@ -5,6 +5,7 @@ buildscript {
         maven { url = 'https://repo.spongepowered.org/maven' }
         mavenCentral()
     }
+
     dependencies {
         classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '5.1.+', changing: true
         classpath group: 'org.spongepowered', name: 'mixingradle', version: '0.7.+'
@@ -19,13 +20,13 @@ apply plugin: 'eclipse'
 
 version = '1.18'
 group = 'bl4ckscor3.mod.ceilingtorch'
-archivesBaseName = 'ceilingtorch-1.18.2'
+archivesBaseName = 'ceilingtorch-1.19'
 
 java.toolchain.languageVersion = JavaLanguageVersion.of(17)
 println('Java: ' + System.getProperty('java.version') + ' JVM: ' + System.getProperty('java.vm.version') + '(' + System.getProperty('java.vendor') + ') Arch: ' + System.getProperty('os.arch'))
 
 minecraft {
-    mappings channel: 'parchment', version: '2022.03.13-1.18.2'
+    mappings channel: 'parchment', version: '1.18.2-2022.06.05-1.19'
     accessTransformer = file('src/main/resources/META-INF/accesstransformer.cfg')
 	
     runs {
@@ -67,10 +68,10 @@ repositories {
 }
 
 dependencies {
-    minecraft 'net.minecraftforge:forge:1.18.2-40.1.0'
+    minecraft 'net.minecraftforge:forge:1.19-41.0.17'
 	
-	runtimeOnly fg.deobf("mezz.jei:jei-1.18.2:9.7.0.193")
-    implementation fg.deobf("curse.maven:additional-lights-384991:3795952")
+	//runtimeOnly fg.deobf("mezz.jei:jei-1.18.2:9.7.0.193")
+    //implementation fg.deobf("curse.maven:additional-lights-384991:3795952")
     //implementation fg.deobf("curse.maven:aquatic-torches-563637:3598497")
     //implementation fg.deobf("curse.maven:common-capabilities-247007:3768491") //integrated dynamics dependency
     //implementation fg.deobf("curse.maven:curios-309927:3748873") //malum dependency

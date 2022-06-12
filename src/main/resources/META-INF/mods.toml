@@ -1,6 +1,6 @@
 modLoader="javafml"
-loaderVersion="[38,)"
-license="GNU GPL v3.0 https://github.com/bl4ckscor3/CeilingTorch/blob/1.18/LICENSE"
+loaderVersion="[41,)"
+license="GNU GPL v3.0 https://github.com/bl4ckscor3/CeilingTorch/blob/1.19/LICENSE"
 issueTrackerURL="https://github.com/bl4ckscor3/CeilingTorch/issues"
 authors="bl4ckscor3"
 
@@ -14,13 +14,13 @@ authors="bl4ckscor3"
 [[dependencies.ceilingtorch]]
     modId="forge"
     mandatory=true
-    versionRange="[38,)"
+    versionRange="[41,)"
     ordering="NONE"
     side="BOTH"
 
 [[dependencies.ceilingtorch]]
     modId="minecraft"
     mandatory=true
-    versionRange="[1.18,1.19)"
+    versionRange="[1.19,1.20)"
     ordering="NONE"
     side="BOTH"

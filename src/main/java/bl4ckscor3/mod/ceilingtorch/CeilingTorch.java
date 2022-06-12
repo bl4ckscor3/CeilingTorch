@@ -6,9 +6,10 @@ import java.util.Map.Entry;
 import java.util.function.Supplier;
 
 import bl4ckscor3.mod.ceilingtorch.compat.vanilla.VanillaCompat;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntityType;
-import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.common.Mod;
@@ -17,6 +18,7 @@ import net.minecraftforge.fml.common.Mod.EventBusSubscriber.Bus;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraftforge.registries.RegisterEvent;
 
 @Mod(CeilingTorch.MODID)
 @EventBusSubscriber(bus=Bus.MOD)
@@ -25,10 +27,13 @@ public class CeilingTorch
 	public static final String MODID = "ceilingtorch";
 	private static final Map<String,ICeilingTorchCompat> COMPAT_LIST = new HashMap<>();
 	private static Map<String,Supplier<ICeilingTorchCompat>> preliminaryCompatList = new HashMap<>();
-	public static final DeferredRegister<BlockEntityType<?>> BLOCK_ENTITIES = DeferredRegister.create(ForgeRegistries.BLOCK_ENTITIES, CeilingTorch.MODID);
+	public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, MODID);
+	public static final DeferredRegister<BlockEntityType<?>> BLOCK_ENTITIES = DeferredRegister.create(ForgeRegistries.BLOCK_ENTITIES, MODID);
+	private static boolean initialized = false;
 
 	public CeilingTorch()
 	{
+		BLOCKS.register(FMLJavaModLoadingContext.get().getModEventBus());
 		BLOCK_ENTITIES.register(FMLJavaModLoadingContext.get().getModEventBus());
 		preliminaryCompatList.put("minecraft", VanillaCompat::new);
 
@@ -36,18 +41,14 @@ public class CeilingTorch
 	}
 
 	@SubscribeEvent
-	public static void registerBlocks(RegistryEvent.Register<Block> event)
+	public static void onRegister(RegisterEvent event)
 	{
-		for(Entry<String,Supplier<ICeilingTorchCompat>> entry : preliminaryCompatList.entrySet())
+		if(!initialized)
 		{
-			COMPAT_LIST.put(entry.getKey(), entry.getValue().get());
-		}
-
-		preliminaryCompatList = null;
-
-		for(ICeilingTorchCompat compat : COMPAT_LIST.values())
-		{
-			compat.registerBlocks(event);
+			for(Entry<String,Supplier<ICeilingTorchCompat>> entry : preliminaryCompatList.entrySet())
+			{
+				COMPAT_LIST.put(entry.getKey(), entry.getValue().get());
+			}
 		}
 	}
 
@@ -65,5 +66,15 @@ public class CeilingTorch
 	public static Map<String,ICeilingTorchCompat> getCompatList()
 	{
 		return COMPAT_LIST;
+	}
+
+	public static ResourceLocation getRegistryName(Block block)
+	{
+		return ForgeRegistries.BLOCKS.getKey(block);
+	}
+
+	public static ResourceLocation getRegistryName(Item item)
+	{
+		return ForgeRegistries.ITEMS.getKey(item);
 	}
 }
