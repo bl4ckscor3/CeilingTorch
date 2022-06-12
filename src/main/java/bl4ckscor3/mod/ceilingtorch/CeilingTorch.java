@@ -5,6 +5,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.function.Supplier;
 
+import bl4ckscor3.mod.ceilingtorch.compat.bonetorch.BoneTorchCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.vanilla.VanillaCompat;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
@@ -38,6 +39,8 @@ public class CeilingTorch
 		preliminaryCompatList.put("minecraft", VanillaCompat::new);
 
 		//cannot use addCompat because then the compat class will be classloaded which may crash if the mod is not present
+		if(ModList.get().isLoaded("bonetorch"))
+			preliminaryCompatList.put("bonetorch", BoneTorchCompat::new);
 	}
 
 	@SubscribeEvent
