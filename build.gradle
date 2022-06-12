@@ -79,7 +79,7 @@ dependencies {
     //implementation fg.deobf("curse.maven:farmers-delight-398521:3784851") //nether's delight dependency
     //implementation fg.deobf("curse.maven:i-like-wood-324164:3726545")
     //implementation fg.deobf("curse.maven:integrated-dynamics-236307:3782127")
-    //implementation fg.deobf("curse.maven:magical-torches-389917:3683920")
+    implementation fg.deobf("curse.maven:magical-torches-389917:3829046")
     //implementation fg.deobf("curse.maven:malum-484064:3768401")
     //implementation fg.deobf("curse.maven:mo-shiz-mod-62536:3710568")
     //implementation fg.deobf("curse.maven:nethers-delight-496394:3756127")
