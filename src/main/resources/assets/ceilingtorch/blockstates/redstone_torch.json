@@ -1,6 +1,0 @@
-{
-    "variants": {
-        "lit=true":  { "model": "block/redstone_torch", "x": 180 },
-        "lit=false":  { "model": "block/redstone_torch_off", "x": 180 }
-    }
-}

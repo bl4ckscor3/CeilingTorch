@@ -1,7 +1,0 @@
-{
-  "variants": {
-    "": {
-      "model": "ms:block/torch/generic", "x": 180
-    }
-  }
-}
