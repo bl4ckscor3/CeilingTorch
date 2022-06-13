@@ -1,0 +1,5 @@
+{
+    "variants": {
+        "": { "model": "block/soul_torch", "x": 180 }
+    }
+}
