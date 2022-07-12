@@ -14,7 +14,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.util.BlockSnapshot;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent.RightClickBlock;
-import net.minecraftforge.event.world.BlockEvent.EntityPlaceEvent;
+import net.minecraftforge.event.level.BlockEvent.EntityPlaceEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 
@@ -24,12 +24,12 @@ public class PlaceHandler
 	@SubscribeEvent
 	public static void onRightClickBlock(RightClickBlock event)
 	{
-		if(!event.getPlayer().isSpectator()) //because apparently this is a thing
+		if(!event.getEntity().isSpectator()) //because apparently this is a thing
 		{
 			BlockPos pos = event.getPos();
 			Direction face = event.getFace();
 			BlockPos placeAt = pos.relative(face);
-			Level level = event.getWorld();
+			Level level = event.getLevel();
 
 			if(face == Direction.DOWN && (level.isEmptyBlock(placeAt) || !level.getFluidState(placeAt).isEmpty()))
 			{
@@ -60,14 +60,14 @@ public class PlaceHandler
 
 			level.setBlockAndUpdate(placeAt, state);
 			compat.onPlace(event, placeAt, state);
-			soundType = state.getBlock().getSoundType(state, level, placeAt, event.getPlayer());
+			soundType = state.getBlock().getSoundType(state, level, placeAt, event.getEntity());
 			level.playSound(null, placeAt.getX(), placeAt.getY(), placeAt.getZ(), soundType.getPlaceSound(), SoundSource.BLOCKS, soundType.getVolume(), soundType.getPitch() - 0.2F);
-			event.getPlayer().swing(event.getHand());
+			event.getEntity().swing(event.getHand());
 
-			if(!event.getPlayer().isCreative())
+			if(!event.getEntity().isCreative())
 				held.shrink(1);
 
-			MinecraftForge.EVENT_BUS.post(new EntityPlaceEvent(BlockSnapshot.create(level.dimension(), level, placeAt), level.getBlockState(event.getPos()), event.getPlayer()));
+			MinecraftForge.EVENT_BUS.post(new EntityPlaceEvent(BlockSnapshot.create(level.dimension(), level, placeAt), level.getBlockState(event.getPos()), event.getEntity()));
 			return true;
 		}
 
