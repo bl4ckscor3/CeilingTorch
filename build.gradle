@@ -20,13 +20,13 @@ apply plugin: 'eclipse'
 
 version = '1.18.1'
 group = 'bl4ckscor3.mod.ceilingtorch'
-archivesBaseName = 'ceilingtorch-1.19'
+archivesBaseName = 'ceilingtorch-1.19.2'
 
 java.toolchain.languageVersion = JavaLanguageVersion.of(17)
 println('Java: ' + System.getProperty('java.version') + ' JVM: ' + System.getProperty('java.vm.version') + '(' + System.getProperty('java.vendor') + ') Arch: ' + System.getProperty('os.arch'))
 
 minecraft {
-    mappings channel: 'parchment', version: '1.18.2-2022.07.03-1.19'
+    mappings channel: 'parchment', version: '2022.08.28-1.19.2'
     accessTransformer = file('src/main/resources/META-INF/accesstransformer.cfg')
 	
     runs {
@@ -68,9 +68,9 @@ repositories {
 }
 
 dependencies {
-    minecraft 'net.minecraftforge:forge:1.19-41.0.94'
+    minecraft 'net.minecraftforge:forge:1.19.2-43.1.2'
 	
-	//runtimeOnly fg.deobf("mezz.jei:jei-1.18.2:9.7.0.193")
+	runtimeOnly fg.deobf("curse.maven:jei-238222:3944627")
     //implementation fg.deobf("curse.maven:additional-lights-384991:3795952")
     //implementation fg.deobf("curse.maven:aquatic-torches-563637:3598497")
     //implementation fg.deobf("curse.maven:common-capabilities-247007:3768491") //integrated dynamics dependency
@@ -79,7 +79,7 @@ dependencies {
     //implementation fg.deobf("curse.maven:farmers-delight-398521:3784851") //nether's delight dependency
     //implementation fg.deobf("curse.maven:i-like-wood-324164:3726545")
     //implementation fg.deobf("curse.maven:integrated-dynamics-236307:3782127")
-    implementation fg.deobf("curse.maven:magical-torches-389917:3829046")
+    implementation fg.deobf("curse.maven:magical-torches-389917:3932573")
     //implementation fg.deobf("curse.maven:malum-484064:3768401")
     //implementation fg.deobf("curse.maven:mo-shiz-mod-62536:3710568")
     //implementation fg.deobf("curse.maven:nethers-delight-496394:3756127")
@@ -92,7 +92,7 @@ dependencies {
     //implementation fg.deobf("curse.maven:tofucraftreload-317469:3759013")
     //implementation fg.deobf("curse.maven:the-undergarden-379849:3758789")
     //implementation fg.deobf("curse.maven:torch-bandolier-299337:3759999")
-    implementation fg.deobf("curse.maven:torchmaster-254268:3823258")
+    implementation fg.deobf("curse.maven:torchmaster-254268:3890066")
 }
 
 jar {
