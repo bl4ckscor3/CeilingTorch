@@ -77,7 +77,7 @@ dependencies {
     //implementation fg.deobf("curse.maven:curios-309927:3748873") //malum dependency
     implementation fg.deobf("curse.maven:cyclops-core-232758:3929867") //integrated dynamics dependency
     //implementation fg.deobf("curse.maven:farmers-delight-398521:3784851") //nether's delight dependency
-    //implementation fg.deobf("curse.maven:i-like-wood-324164:3726545")
+    implementation fg.deobf("curse.maven:i-like-wood-324164:3948090")
     implementation fg.deobf("curse.maven:integrated-dynamics-236307:3957305")
     implementation fg.deobf("curse.maven:magical-torches-389917:3932573")
     //implementation fg.deobf("curse.maven:malum-484064:3768401")

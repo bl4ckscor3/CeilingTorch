@@ -28,8 +28,7 @@ public class AdditionalLightsCompat implements ICeilingTorchCompat
 	private static final HashMap<Supplier<Block>,Supplier<Block>> CEILING_TO_NORMAL = new HashMap<>();
 	private Map<ResourceLocation,Block> placeEntries;
 
-	static
-	{
+	static {
 		ModBlockList[] supportedBlocks = {
 				ModBlockList.ALTorch_Acacia,
 				ModBlockList.ALTorch_Birch,

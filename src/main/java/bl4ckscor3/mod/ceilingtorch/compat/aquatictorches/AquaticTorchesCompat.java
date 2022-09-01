@@ -30,7 +30,6 @@ public class AquaticTorchesCompat implements ICeilingTorchCompat
 			.sound(SoundType.WOOD), ParticleTypes.GLOW_SQUID_INK, AquaticTorches.AQUATIC_TORCH));
 	private Map<ResourceLocation,Block> placeEntries;
 
-
 	@Override
 	public Map<ResourceLocation,Block> getPlaceEntries()
 	{
