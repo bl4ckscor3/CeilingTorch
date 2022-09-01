@@ -12,6 +12,7 @@ import net.minecraftforge.fml.event.lifecycle.InterModProcessEvent;
 @EventBusSubscriber(modid=CeilingTorch.MODID, bus=Bus.MOD, value=Dist.CLIENT)
 public class CeilingTorchClient
 {
+	@SuppressWarnings("removal")
 	@SubscribeEvent
 	public static void onInterModProcess(InterModProcessEvent event)
 	{
