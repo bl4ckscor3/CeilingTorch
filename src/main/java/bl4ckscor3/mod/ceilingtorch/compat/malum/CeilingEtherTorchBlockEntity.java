@@ -6,6 +6,7 @@ import com.sammy.malum.common.blockentity.EtherBlockEntity;
 import com.sammy.malum.core.setup.client.ParticleRegistry;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import team.lodestar.lodestone.helpers.ColorHelper;
@@ -24,11 +25,11 @@ public class CeilingEtherTorchBlockEntity extends EtherBlockEntity
 	@Override
 	public void tick()
 	{
-		if(firstColor == null || secondColor == null)
+		if(firstColor == null)
 			return;
 
 		Color firstColor = ColorHelper.darker(this.firstColor, 1);
-		Color secondColor = ColorHelper.brighter(this.secondColor, 1);
+		Color secondColor = this.secondColor == null ? this.firstColor : ColorHelper.brighter(this.secondColor, 1);
 		double x = worldPosition.getX() + 0.5D;
 		double y = worldPosition.getY() + 0.4D;
 		double z = worldPosition.getZ() + 0.5D;
@@ -105,6 +106,29 @@ public class CeilingEtherTorchBlockEntity extends EtherBlockEntity
 				//@formatter:on
 			}
 		}
+	}
+
+	@Override
+	public void load(CompoundTag tag)
+	{
+		if(getBlockState().getBlock() == MalumCompat.iridescentEtherCeilingTorch)
+		{
+			if(tag.contains("secondColor"))
+				setSecondColor(tag.getInt("secondColor"));
+			else
+				setSecondColor(4607909);
+		}
+
+		super.load(tag);
+	}
+
+	@Override
+	protected void saveAdditional(CompoundTag tag)
+	{
+		if(getBlockState().getBlock() == MalumCompat.iridescentEtherCeilingTorch && secondColor != null && secondColorRGB != 4607909)
+			tag.putInt("secondColor", secondColorRGB);
+
+		super.saveAdditional(tag);
 	}
 
 	@Override
