@@ -60,6 +60,9 @@ public class CeilingTorch
 			{
 				COMPAT_LIST.put(entry.getKey(), entry.getValue().get());
 			}
+
+			initialized = true;
+			preliminaryCompatList = null;
 		}
 	}
 
