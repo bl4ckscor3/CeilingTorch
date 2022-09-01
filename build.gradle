@@ -72,7 +72,7 @@ dependencies {
 	
 	runtimeOnly fg.deobf("curse.maven:jei-238222:3944627")
     implementation fg.deobf("curse.maven:additional-lights-384991:3910778")
-    //implementation fg.deobf("curse.maven:aquatic-torches-563637:3598497")
+    implementation fg.deobf("curse.maven:aquatic-torches-563637:3908516")
     //implementation fg.deobf("curse.maven:common-capabilities-247007:3768491") //integrated dynamics dependency
     //implementation fg.deobf("curse.maven:curios-309927:3748873") //malum dependency
     //implementation fg.deobf("curse.maven:cyclops-core-232758:3778682") //integrated dynamics dependency
