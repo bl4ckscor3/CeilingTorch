@@ -11,6 +11,7 @@ import bl4ckscor3.mod.ceilingtorch.compat.bonetorch.BoneTorchCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.ilikewood.ILikeWoodCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.integrateddynamics.IntegratedDynamicsCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.magicaltorches.MagicalTorchesCompat;
+import bl4ckscor3.mod.ceilingtorch.compat.tofucraft.TofuCraftCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.torchmaster.TorchmasterCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.vanilla.VanillaCompat;
 import net.minecraft.resources.ResourceLocation;
@@ -62,6 +63,9 @@ public class CeilingTorch
 
 		if(ModList.get().isLoaded("magical_torches"))
 			preliminaryCompatList.put("magical_torches", MagicalTorchesCompat::new);
+
+		if(ModList.get().isLoaded("tofucraft"))
+			preliminaryCompatList.put("tofucraft", TofuCraftCompat::new);
 
 		if(ModList.get().isLoaded("torchmaster"))
 			preliminaryCompatList.put("torchmaster", TorchmasterCompat::new);
