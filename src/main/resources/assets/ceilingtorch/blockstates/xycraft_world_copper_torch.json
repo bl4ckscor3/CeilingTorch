@@ -1,0 +1,5 @@
+{
+    "variants": {
+        "": { "model": "xycraft_world:block/copper_torch", "x": 180 }
+    }
+}
