@@ -88,10 +88,10 @@ dependencies {
 	implementation fg.deobf("curse.maven:sbm-bone-torch-238695:3829265")
     //implementation fg.deobf("curse.maven:secretroomsmod-59652:3613983")
     //implementation fg.deobf("curse.maven:silent-gear-297039:3726039")
-    //implementation fg.deobf("curse.maven:silent-lib-242998:3708359") //silent gear and torch bandolier dependency
+    implementation fg.deobf("curse.maven:silent-lib-242998:3968715") //silent gear and torch bandolier dependency
     implementation fg.deobf("curse.maven:tofucraftreload-317469:3944644")
     //implementation fg.deobf("curse.maven:the-undergarden-379849:3758789")
-    //implementation fg.deobf("curse.maven:torch-bandolier-299337:3759999")
+    implementation fg.deobf("curse.maven:torch-bandolier-299337:3968596")
     implementation fg.deobf("curse.maven:torchmaster-254268:3890066")
     implementation fg.deobf("curse.maven:xycraft-653786:3964053") //xycraft: world dependency
     implementation fg.deobf("curse.maven:xycraft-world-653789:3964054")

@@ -13,6 +13,7 @@ import bl4ckscor3.mod.ceilingtorch.compat.integrateddynamics.IntegratedDynamicsC
 import bl4ckscor3.mod.ceilingtorch.compat.magicaltorches.MagicalTorchesCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.nethersdelight.NethersDelightCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.tofucraft.TofuCraftCompat;
+import bl4ckscor3.mod.ceilingtorch.compat.torchbandolier.TorchBandolierCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.torchmaster.TorchmasterCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.vanilla.VanillaCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.xycraftworld.XyCraftWorldCompat;
@@ -71,6 +72,9 @@ public class CeilingTorch
 
 		if(ModList.get().isLoaded("tofucraft"))
 			preliminaryCompatList.put("tofucraft", TofuCraftCompat::new);
+
+		if(ModList.get().isLoaded("torchbandolier"))
+			preliminaryCompatList.put("torchbandolier", TorchBandolierCompat::new);
 
 		if(ModList.get().isLoaded("torchmaster"))
 			preliminaryCompatList.put("torchmaster", TorchmasterCompat::new);
