@@ -8,7 +8,9 @@ import com.sammy.malum.core.setup.content.block.BlockRegistry;
 
 import bl4ckscor3.mod.ceilingtorch.CeilingTorch;
 import bl4ckscor3.mod.ceilingtorch.ICeilingTorchCompat;
+import bl4ckscor3.mod.ceilingtorch.compat.vanilla.CeilingTorchBlock;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
@@ -27,6 +29,7 @@ public class MalumCompat implements ICeilingTorchCompat
 {
 	public static Block etherCeilingTorch;
 	public static Block iridescentEtherCeilingTorch;
+	public static Block blazingCeilingTorch;
 	public static final RegistryObject<BlockEntityType<?>> ETHER_CEILING_TORCH = CeilingTorch.BLOCK_ENTITIES.register("malum_ether_torch", () -> BlockEntityType.Builder.of(CeilingEtherTorchBlockEntity::new,
 			etherCeilingTorch,
 			iridescentEtherCeilingTorch).build(null));
@@ -42,6 +45,7 @@ public class MalumCompat implements ICeilingTorchCompat
 	{
 		event.getRegistry().register(etherCeilingTorch = new CeilingEtherTorchBlock(getProperties(), BlockRegistry.ETHER_TORCH).setRegistryName("malum_ether_torch"));
 		event.getRegistry().register(iridescentEtherCeilingTorch = new CeilingEtherTorchBlock(getProperties(), BlockRegistry.IRIDESCENT_ETHER_TORCH).setRegistryName("malum_iridescent_ether_torch"));
+		event.getRegistry().register(blazingCeilingTorch = new CeilingTorchBlock(getProperties(), ParticleTypes.FLAME, BlockRegistry.BLAZING_TORCH).setRegistryName("malum_blazing_torch"));
 	}
 
 	@Override
@@ -50,7 +54,8 @@ public class MalumCompat implements ICeilingTorchCompat
 		if(placeEntries == null)
 		{
 			placeEntries = ImmutableMap.of(BlockRegistry.ETHER_TORCH.get().getRegistryName(), etherCeilingTorch,
-					BlockRegistry.IRIDESCENT_ETHER_TORCH.get().getRegistryName(), iridescentEtherCeilingTorch);
+					BlockRegistry.IRIDESCENT_ETHER_TORCH.get().getRegistryName(), iridescentEtherCeilingTorch,
+					BlockRegistry.BLAZING_TORCH.get().getRegistryName(), blazingCeilingTorch);
 		}
 
 		return placeEntries;
@@ -59,7 +64,10 @@ public class MalumCompat implements ICeilingTorchCompat
 	@Override
 	public BlockState getStateToPlace(RightClickBlock event, Level level, BlockPos pos, BlockState state, ItemStack stack)
 	{
-		return state.setValue(BlockStateProperties.WATERLOGGED, level.getFluidState(pos).getType() == Fluids.WATER);
+		if(state.getBlock() == blazingCeilingTorch)
+			return state;
+		else
+			return state.setValue(BlockStateProperties.WATERLOGGED, level.getFluidState(pos).getType() == Fluids.WATER);
 	}
 
 	@Override
