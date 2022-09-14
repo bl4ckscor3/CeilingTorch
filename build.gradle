@@ -68,7 +68,7 @@ repositories {
 }
 
 dependencies {
-    minecraft 'net.minecraftforge:forge:1.19.2-43.1.2'
+    minecraft 'net.minecraftforge:forge:1.19.2-43.1.25'
 	
 	runtimeOnly fg.deobf("curse.maven:jei-238222:3944627")
     implementation fg.deobf("curse.maven:additional-lights-384991:3910778")
@@ -78,6 +78,7 @@ dependencies {
     implementation fg.deobf("curse.maven:cyclops-core-232758:3929867") //integrated dynamics dependency
     implementation fg.deobf("curse.maven:farmers-delight-398521:3916069") //nether's delight dependency
     implementation fg.deobf("curse.maven:i-like-wood-324164:3948090")
+    implementation fg.deobf("curse.maven:infernal-expansion-395078:3910069")
     implementation fg.deobf("curse.maven:integrated-dynamics-236307:3957305")
     implementation fg.deobf("curse.maven:magical-torches-389917:3932573")
     //implementation fg.deobf("curse.maven:malum-484064:3768401")
