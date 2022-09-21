@@ -13,6 +13,7 @@ import bl4ckscor3.mod.ceilingtorch.compat.infernalexpansion.InfernalExpansionCom
 import bl4ckscor3.mod.ceilingtorch.compat.integrateddynamics.IntegratedDynamicsCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.magicaltorches.MagicalTorchesCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.nethersdelight.NethersDelightCompat;
+import bl4ckscor3.mod.ceilingtorch.compat.occultism.OccultismCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.tofucraft.TofuCraftCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.torchbandolier.TorchBandolierCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.torchmaster.TorchmasterCompat;
@@ -73,6 +74,9 @@ public class CeilingTorch
 
 		if(ModList.get().isLoaded("magical_torches"))
 			preliminaryCompatList.put("magical_torches", MagicalTorchesCompat::new);
+
+		if(ModList.get().isLoaded("occultism"))
+			preliminaryCompatList.put("occultism", OccultismCompat::new);
 
 		if(ModList.get().isLoaded("tofucraft"))
 			preliminaryCompatList.put("tofucraft", TofuCraftCompat::new);
