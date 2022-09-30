@@ -92,6 +92,7 @@ dependencies {
     implementation fg.deobf("curse.maven:occultism-361026:3996568")
     implementation fg.deobf("curse.maven:patchouli-306770:3936481") //occultism dependency
     implementation fg.deobf("curse.maven:pokecube-aoi-285121:3996002")
+    implementation fg.deobf("curse.maven:projecte-226410:3955047")
 	implementation fg.deobf("curse.maven:sbm-bone-torch-238695:3829265")
     //implementation fg.deobf("curse.maven:secretroomsmod-59652:3613983")
     //implementation fg.deobf("curse.maven:silent-gear-297039:3726039")

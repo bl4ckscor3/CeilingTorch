@@ -16,6 +16,7 @@ import bl4ckscor3.mod.ceilingtorch.compat.magicaltorches.MagicalTorchesCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.nethersdelight.NethersDelightCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.occultism.OccultismCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.pokecubeaio.PokecubeAIOCompat;
+import bl4ckscor3.mod.ceilingtorch.compat.projecte.ProjectECompat;
 import bl4ckscor3.mod.ceilingtorch.compat.tofucraft.TofuCraftCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.torchbandolier.TorchBandolierCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.torchmaster.TorchmasterCompat;
@@ -85,6 +86,9 @@ public class CeilingTorch
 
 		if(ModList.get().isLoaded("pokecube_legends"))
 			preliminaryCompatList.put("pokecube_legends", PokecubeAIOCompat::new);
+
+		if(ModList.get().isLoaded("projecte"))
+			preliminaryCompatList.put("projecte", ProjectECompat::new);
 
 		if(ModList.get().isLoaded("tofucraft"))
 			preliminaryCompatList.put("tofucraft", TofuCraftCompat::new);
