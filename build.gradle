@@ -73,6 +73,7 @@ dependencies {
     implementation fg.deobf("curse.maven:additional-lights-384991:3795952")
     implementation fg.deobf("curse.maven:adorn-for-forge-438784:3796950")
     implementation fg.deobf("curse.maven:aquatic-torches-563637:3598497")
+    implementation fg.deobf("curse.maven:chipped-456956:3748664")
     implementation fg.deobf("curse.maven:common-capabilities-247007:3768491") //integrated dynamics dependency
     implementation fg.deobf("curse.maven:curios-309927:3841948") //malum and occultism dependency
     implementation fg.deobf("curse.maven:cyclops-core-232758:3900719") //integrated dynamics dependency

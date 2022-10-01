@@ -1,0 +1,5 @@
+{
+    "variants": {
+        "": { "model": "chipped:block/torch_8", "x": 180 }
+    }
+}

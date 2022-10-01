@@ -23,9 +23,9 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 
 public class RedstoneCeilingTorchBlock extends RedstoneTorchBlock
 {
-	private final Supplier<Block> originalBlock;
+	private final Supplier<? extends Block> originalBlock;
 
-	public RedstoneCeilingTorchBlock(Properties properties, Supplier<Block> originalBlock)
+	public RedstoneCeilingTorchBlock(Properties properties, Supplier<? extends Block> originalBlock)
 	{
 		super(properties.lootFrom(originalBlock));
 
@@ -86,5 +86,10 @@ public class RedstoneCeilingTorchBlock extends RedstoneTorchBlock
 	public ItemStack getCloneItemStack(BlockState state, HitResult target, BlockGetter world, BlockPos pos, Player player)
 	{
 		return new ItemStack(originalBlock.get());
+	}
+
+	public Block getOriginalBlock()
+	{
+		return originalBlock.get();
 	}
 }

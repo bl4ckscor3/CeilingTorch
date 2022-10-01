@@ -9,6 +9,7 @@ import bl4ckscor3.mod.ceilingtorch.compat.additionallights.AdditionalLightsCompa
 import bl4ckscor3.mod.ceilingtorch.compat.adorn.AdornCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.aquatictorches.AquaticTorchesCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.bonetorch.BoneTorchCompat;
+import bl4ckscor3.mod.ceilingtorch.compat.chipped.ChippedCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.ilikewood.ILikeWoodCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.infernalexpansion.InfernalExpansionCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.integrateddynamics.IntegratedDynamicsCompat;
@@ -65,6 +66,9 @@ public class CeilingTorch
 
 		if(ModList.get().isLoaded("bonetorch"))
 			preliminaryCompatList.put("bonetorch", BoneTorchCompat::new);
+
+		if(ModList.get().isLoaded("chipped"))
+			preliminaryCompatList.put("chipped", ChippedCompat::new);
 
 		if(ModList.get().isLoaded("ilikewood"))
 			preliminaryCompatList.put("ilikewood", ILikeWoodCompat::new);
