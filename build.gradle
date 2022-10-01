@@ -96,7 +96,7 @@ dependencies {
     implementation fg.deobf("curse.maven:reliquary-v1-3-241319:4005376")
 	implementation fg.deobf("curse.maven:sbm-bone-torch-238695:3829265")
     //implementation fg.deobf("curse.maven:secretroomsmod-59652:3613983")
-    //implementation fg.deobf("curse.maven:silent-gear-297039:3726039")
+    implementation fg.deobf("curse.maven:silent-gear-297039:4011220")
     implementation fg.deobf("curse.maven:silent-lib-242998:3968715") //silent gear and torch bandolier dependency
     implementation fg.deobf("curse.maven:tofucraftreload-317469:3944644")
     //implementation fg.deobf("curse.maven:the-undergarden-379849:3758789")
