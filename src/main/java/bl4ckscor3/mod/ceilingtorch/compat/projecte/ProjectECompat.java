@@ -18,7 +18,7 @@ import net.minecraftforge.registries.RegistryObject;
 
 public class ProjectECompat implements ICeilingTorchCompat
 {
-	public static Block interdictionCeilingTorch; //"projecte_interdiction_torch", () -> );
+	public static Block interdictionCeilingTorch;
 	public static final RegistryObject<BlockEntityType<? extends InterdictionTorchBlockEntity>> INTERDICTION_CEILING_TORCH_BLOCK_ENTITY = CeilingTorch.BLOCK_ENTITIES.register("projecte_interdiction_torch", () -> BlockEntityType.Builder.of(InterdictionCeilingTorchBlockEntity::new, interdictionCeilingTorch).build(null));
 	private Map<ResourceLocation,Block> placeEntries;
 
