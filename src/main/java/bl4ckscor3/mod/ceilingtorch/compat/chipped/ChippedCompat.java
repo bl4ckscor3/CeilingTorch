@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.Map;
 
 import com.google.common.collect.ImmutableMap;
-import com.grimbo.chipped.block.ChippedBlockTypes;
 
 import bl4ckscor3.mod.ceilingtorch.ICeilingTorchCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.vanilla.CeilingTorchBlock;
@@ -14,9 +13,8 @@ import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.RedstoneTorchBlock;
-import net.minecraft.world.level.block.TorchBlock;
 import net.minecraftforge.event.RegistryEvent;
+import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
 public class ChippedCompat implements ICeilingTorchCompat
@@ -28,20 +26,22 @@ public class ChippedCompat implements ICeilingTorchCompat
 	@Override
 	public void registerBlocks(RegistryEvent.Register<Block> event)
 	{
-		for(RegistryObject<TorchBlock> block : ChippedBlockTypes.TORCHES)
+		for(int i = 1; i <= 9; i++)
 		{
-			CeilingTorchBlock ceilingBlock = new CeilingTorchBlock(Block.Properties.copy(Blocks.TORCH), ParticleTypes.FLAME, block);
+			RegistryObject<Block> chippedBlock = RegistryObject.create(new ResourceLocation("chipped", "torch_" + i), ForgeRegistries.BLOCKS);
+			CeilingTorchBlock ceilingBlock = new CeilingTorchBlock(Block.Properties.copy(Blocks.TORCH), ParticleTypes.FLAME, chippedBlock);
 
-			ceilingBlock.setRegistryName(block.getId().toString().replace(":", "_"));
+			ceilingBlock.setRegistryName(chippedBlock.getId().toString().replace(":", "_"));
 			event.getRegistry().register(ceilingBlock);
 			SUPPORTED_TORCHES.add(ceilingBlock);
 		}
 
-		for(RegistryObject<RedstoneTorchBlock> block : ChippedBlockTypes.REDSTONE_TORCHES)
+		for(int i = 1; i <= 5; i++)
 		{
-			RedstoneCeilingTorchBlock ceilingBlock = new RedstoneCeilingTorchBlock(Block.Properties.copy(Blocks.REDSTONE_TORCH), block);
+			RegistryObject<Block> chippedBlock = RegistryObject.create(new ResourceLocation("chipped", "redstone_torch_" + i), ForgeRegistries.BLOCKS);
+			RedstoneCeilingTorchBlock ceilingBlock = new RedstoneCeilingTorchBlock(Block.Properties.copy(Blocks.REDSTONE_TORCH), chippedBlock);
 
-			ceilingBlock.setRegistryName(block.getId().toString().replace(":", "_"));
+			ceilingBlock.setRegistryName(chippedBlock.getId().toString().replace(":", "_"));
 			event.getRegistry().register(ceilingBlock);
 			SUPPORTED_REDSTONE_TORCHES.add(ceilingBlock);
 		}

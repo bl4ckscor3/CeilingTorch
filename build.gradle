@@ -17,7 +17,7 @@ apply plugin: 'org.spongepowered.mixin'
 apply plugin: 'org.parchmentmc.librarian.forgegradle'
 apply plugin: 'eclipse'
 
-version = '1.22'
+version = '1.22.1'
 group = 'bl4ckscor3.mod.ceilingtorch'
 archivesBaseName = 'ceilingtorch-1.18.2'
 
@@ -73,8 +73,9 @@ dependencies {
     implementation fg.deobf("curse.maven:additional-lights-384991:3795952")
     implementation fg.deobf("curse.maven:adorn-for-forge-438784:3796950")
     implementation fg.deobf("curse.maven:aquatic-torches-563637:3598497")
-    implementation fg.deobf("curse.maven:chipped-456956:3748664")
+    implementation fg.deobf("curse.maven:chipped-456956:4020976")
     implementation fg.deobf("curse.maven:common-capabilities-247007:3768491") //integrated dynamics dependency
+    implementation fg.deobf("curse.maven:ctm-267602:3933537") //chipped dependency
     implementation fg.deobf("curse.maven:curios-309927:3841948") //malum and occultism dependency
     implementation fg.deobf("curse.maven:cyclops-core-232758:3900719") //integrated dynamics dependency
     implementation fg.deobf("curse.maven:farmers-delight-398521:3834150") //nether's delight dependency
