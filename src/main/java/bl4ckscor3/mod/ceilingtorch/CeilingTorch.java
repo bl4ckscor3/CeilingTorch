@@ -24,6 +24,7 @@ import bl4ckscor3.mod.ceilingtorch.compat.silentgear.SilentGearCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.tofucraft.TofuCraftCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.torchbandolier.TorchBandolierCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.torchmaster.TorchmasterCompat;
+import bl4ckscor3.mod.ceilingtorch.compat.undergarden.UndergardenCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.vanilla.VanillaCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.xycraftworld.XyCraftWorldCompat;
 import net.minecraft.resources.ResourceLocation;
@@ -112,6 +113,9 @@ public class CeilingTorch {
 
 		if (ModList.get().isLoaded("torchmaster"))
 			preliminaryCompatList.put("torchmaster", TorchmasterCompat::new);
+
+		if (ModList.get().isLoaded("undergarden"))
+			preliminaryCompatList.put("undergarden", UndergardenCompat::new);
 
 		if (ModList.get().isLoaded("xycraft_world"))
 			preliminaryCompatList.put("xycraft_world", XyCraftWorldCompat::new);
