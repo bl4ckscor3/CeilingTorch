@@ -70,46 +70,47 @@ dependencies {
     minecraft 'net.minecraftforge:forge:1.18.2-40.1.80'
 	
 	runtimeOnly fg.deobf("mezz.jei:jei-1.18.2:9.7.1.255")
-    implementation fg.deobf("curse.maven:additional-lights-384991:3795952")
-    implementation fg.deobf("curse.maven:adorn-for-forge-438784:3796950")
-    implementation fg.deobf("curse.maven:aquatic-torches-563637:3598497")
-    implementation fg.deobf("curse.maven:architectury-api-419699:3983970") //bamboo everything dependency
-    implementation fg.deobf("curse.maven:bamboo-everything-331723:4022330")
-    implementation fg.deobf("curse.maven:chipped-456956:4020976")
-    implementation fg.deobf("curse.maven:common-capabilities-247007:3768491") //integrated dynamics dependency
-    implementation fg.deobf("curse.maven:ctm-267602:3933537") //chipped dependency
-    implementation fg.deobf("curse.maven:curios-309927:3841948") //malum and occultism dependency
-    implementation fg.deobf("curse.maven:cyclops-core-232758:3900719") //integrated dynamics dependency
-    implementation fg.deobf("curse.maven:farmers-delight-398521:3834150") //nether's delight dependency
-    implementation fg.deobf("curse.maven:geckolib-388172:3989823") //occultism dependency
-    implementation fg.deobf("curse.maven:i-like-wood-324164:3726545")
-    //the following three mods have to be added so i like wood's torches work. however, gradle fails to properly add them as dependencies, so they have to be added manually
-    //implementation fg.deobf("curse.maven:i-like-wood-config-601772:3722470")
-    //implementation fg.deobf("curse.maven:i-like-wood-config-601772:3722487")
-    //implementation fg.deobf("curse.maven:i-like-wood-config-601772:3722491")
-    implementation fg.deobf("curse.maven:infernal-expansion-395078:3854062")
-    implementation fg.deobf("curse.maven:integrated-dynamics-236307:3957292")
-    implementation fg.deobf("curse.maven:kotlin-for-forge-351264:3925887") //adorn dependency
-    implementation fg.deobf("curse.maven:lodestonelib-616457:3961429") //malum dependency
-    implementation fg.deobf("curse.maven:magical-torches-389917:3683920")
-    implementation fg.deobf("curse.maven:malum-484064:3961432")
-    implementation fg.deobf("curse.maven:mo-shiz-mod-62536:3710568")
-    implementation fg.deobf("curse.maven:modonomicon-538392:3999299") //occultism dependency
-    implementation fg.deobf("curse.maven:mysterious-mountain-lib-368098:3857113") //tofucraftreload dependency
-    implementation fg.deobf("curse.maven:nethers-delight-496394:3756127")
-    implementation fg.deobf("curse.maven:occultism-361026:3998312")
-    implementation fg.deobf("curse.maven:patchouli-306770:3846086") //occultism dependency
-    implementation fg.deobf("curse.maven:pokecube-aoi-285121:3956218")
-    implementation fg.deobf("curse.maven:projecte-226410:3722831")
-    implementation fg.deobf("curse.maven:reliquary-v1-3-241319:4001490")
-	implementation fg.deobf("curse.maven:sbm-bone-torch-238695:3553564")
-    implementation fg.deobf("curse.maven:secretroomsmod-59652:3764897")
-    implementation fg.deobf("curse.maven:silent-gear-297039:3941469")
-    implementation fg.deobf("curse.maven:silent-lib-242998:3708359") //silent gear and torch bandolier dependency
-    implementation fg.deobf("curse.maven:tofucraftreload-317469:3940352")
-    implementation fg.deobf("curse.maven:the-undergarden-379849:3810810")
-    implementation fg.deobf("curse.maven:torch-bandolier-299337:3759999")
-    implementation fg.deobf("curse.maven:torchmaster-254268:3724596")
+    //implementation fg.deobf("curse.maven:additional-lights-384991:3795952")
+    //implementation fg.deobf("curse.maven:adorn-for-forge-438784:3796950")
+    //implementation fg.deobf("curse.maven:aquatic-torches-563637:3598497")
+    //implementation fg.deobf("curse.maven:architectury-api-419699:3983970") //bamboo everything dependency
+    //implementation fg.deobf("curse.maven:bamboo-everything-331723:4022330")
+    //implementation fg.deobf("curse.maven:chipped-456956:4020976")
+    //implementation fg.deobf("curse.maven:common-capabilities-247007:3768491") //integrated dynamics dependency
+    //implementation fg.deobf("curse.maven:ctm-267602:3933537") //chipped dependency
+    //implementation fg.deobf("curse.maven:curios-309927:3841948") //malum and occultism dependency
+    //implementation fg.deobf("curse.maven:cyclops-core-232758:3900719") //integrated dynamics dependency
+    //implementation fg.deobf("curse.maven:farmers-delight-398521:3834150") //nether's delight dependency
+    //implementation fg.deobf("curse.maven:geckolib-388172:3989823") //occultism dependency
+    implementation fg.deobf("curse.maven:hardcore-torches-forge-576846:3848149")
+    //implementation fg.deobf("curse.maven:i-like-wood-324164:3726545")
+    ////the following three mods have to be added so i like wood's torches work. however, gradle fails to properly add them as dependencies, so they have to be added manually
+    ////implementation fg.deobf("curse.maven:i-like-wood-config-601772:3722470")
+    ////implementation fg.deobf("curse.maven:i-like-wood-config-601772:3722487")
+    ////implementation fg.deobf("curse.maven:i-like-wood-config-601772:3722491")
+    //implementation fg.deobf("curse.maven:infernal-expansion-395078:3854062")
+    //implementation fg.deobf("curse.maven:integrated-dynamics-236307:3957292")
+    //implementation fg.deobf("curse.maven:kotlin-for-forge-351264:3925887") //adorn dependency
+    //implementation fg.deobf("curse.maven:lodestonelib-616457:3961429") //malum dependency
+    //implementation fg.deobf("curse.maven:magical-torches-389917:3683920")
+    //implementation fg.deobf("curse.maven:malum-484064:3961432")
+    //implementation fg.deobf("curse.maven:mo-shiz-mod-62536:3710568")
+    //implementation fg.deobf("curse.maven:modonomicon-538392:3999299") //occultism dependency
+    //implementation fg.deobf("curse.maven:mysterious-mountain-lib-368098:3857113") //tofucraftreload dependency
+    //implementation fg.deobf("curse.maven:nethers-delight-496394:3756127")
+    //implementation fg.deobf("curse.maven:occultism-361026:3998312")
+    //implementation fg.deobf("curse.maven:patchouli-306770:3846086") //occultism dependency
+    //implementation fg.deobf("curse.maven:pokecube-aoi-285121:3956218")
+    //implementation fg.deobf("curse.maven:projecte-226410:3722831")
+    //implementation fg.deobf("curse.maven:reliquary-v1-3-241319:4001490")
+	//implementation fg.deobf("curse.maven:sbm-bone-torch-238695:3553564")
+    //implementation fg.deobf("curse.maven:secretroomsmod-59652:3764897")
+    //implementation fg.deobf("curse.maven:silent-gear-297039:3941469")
+    //implementation fg.deobf("curse.maven:silent-lib-242998:3708359") //silent gear and torch bandolier dependency
+    //implementation fg.deobf("curse.maven:tofucraftreload-317469:3940352")
+    //implementation fg.deobf("curse.maven:the-undergarden-379849:3810810")
+    //implementation fg.deobf("curse.maven:torch-bandolier-299337:3759999")
+    //implementation fg.deobf("curse.maven:torchmaster-254268:3724596")
 }
 
 jar {
