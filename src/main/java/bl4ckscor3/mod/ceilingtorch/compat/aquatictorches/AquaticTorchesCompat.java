@@ -21,27 +21,26 @@ import net.minecraftforge.event.entity.player.PlayerInteractEvent.RightClickBloc
 import net.minecraftforge.registries.RegistryObject;
 import realmayus.aquatictorches.AquaticTorches;
 
-public class AquaticTorchesCompat implements ICeilingTorchCompat
-{
+public class AquaticTorchesCompat implements ICeilingTorchCompat {
+	//@formatter:off
 	public static final RegistryObject<Block> AQUATIC_CEILING_TORCH = CeilingTorch.BLOCKS.register("aquatictorches_aquatic_torch", () -> new AquaticCeilingTorchBlock(Block.Properties.of(Material.DECORATION)
 			.noCollission()
 			.instabreak()
 			.lightLevel(state -> 15)
 			.sound(SoundType.WOOD), ParticleTypes.GLOW_SQUID_INK, AquaticTorches.AQUATIC_TORCH));
-	private Map<ResourceLocation,Block> placeEntries;
+	//@formatter:on
+	private Map<ResourceLocation, Block> placeEntries;
 
 	@Override
-	public Map<ResourceLocation,Block> getPlaceEntries()
-	{
-		if(placeEntries == null)
+	public Map<ResourceLocation, Block> getPlaceEntries() {
+		if (placeEntries == null)
 			placeEntries = ImmutableMap.of(getRegistryName(AquaticTorches.AQUATIC_TORCH.get()), AQUATIC_CEILING_TORCH.get());
 
 		return placeEntries;
 	}
 
 	@Override
-	public BlockState getStateToPlace(RightClickBlock event, Level level, BlockPos pos, BlockState state, ItemStack stack)
-	{
+	public BlockState getStateToPlace(RightClickBlock event, Level level, BlockPos pos, BlockState state, ItemStack stack) {
 		FluidState fluidState = level.getFluidState(pos);
 		boolean isFlowing = fluidState.getType() == Fluids.FLOWING_WATER;
 		boolean isWater = fluidState.getType() == Fluids.WATER || isFlowing;

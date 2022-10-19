@@ -15,20 +15,20 @@ import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.material.Material;
 import net.minecraftforge.registries.RegistryObject;
 
-public class BoneTorchCompat implements ICeilingTorchCompat
-{
+public class BoneTorchCompat implements ICeilingTorchCompat {
+	//@formatter:off
 	public static final RegistryObject<CeilingTorchBlock> CEILING_BONE_TORCH = CeilingTorch.BLOCKS.register("bonetorch_bonetorch", () -> new CeilingTorchBlock(Block.Properties.of(Material.DECORATION)
 			.noCollission()
 			.strength(0.0F)
 			.lightLevel(state -> 14)
 			.sound(SoundType.WOOD),
 			ParticleTypes.FLAME, BoneTorchMod.BONETORCH));
-	private Map<ResourceLocation,Block> placeEntries;
+	//@formatter:on
+	private Map<ResourceLocation, Block> placeEntries;
 
 	@Override
-	public Map<ResourceLocation,Block> getPlaceEntries()
-	{
-		if(placeEntries == null)
+	public Map<ResourceLocation, Block> getPlaceEntries() {
+		if (placeEntries == null)
 			placeEntries = ImmutableMap.of(getRegistryName(BoneTorchMod.BONETORCH.get()), CEILING_BONE_TORCH.get());
 
 		return placeEntries;

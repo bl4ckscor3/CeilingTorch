@@ -20,8 +20,8 @@ import net.minecraftforge.registries.RegistryObject;
 import pokecube.legends.init.BlockInit;
 import pokecube.legends.init.ParticleInit;
 
-public class PokecubeAIOCompat implements ICeilingTorchCompat
-{
+public class PokecubeAIOCompat implements ICeilingTorchCompat {
+	//@formatter:off
 	public static final RegistryObject<Block> INFECTED_CEILING_TORCH = CeilingTorch.BLOCKS.register("pokecube_legends_infected_torch", () -> new CeilingTorchBlock(
 			Block.Properties.of(Material.DECORATION)
 			.noCollission()
@@ -29,9 +29,9 @@ public class PokecubeAIOCompat implements ICeilingTorchCompat
 			.lightLevel(state -> 10)
 			.sound(SoundType.WOOD),
 			null, BlockInit.INFECTED_TORCH) {
+	//@formatter:on
 		@Override
-		public void animateTick(BlockState state, Level level, BlockPos pos, RandomSource rand)
-		{
+		public void animateTick(BlockState state, Level level, BlockPos pos, RandomSource rand) {
 			double x = pos.getX() + 0.5D;
 			double y = pos.getY() + 0.3D;
 			double z = pos.getZ() + 0.5D;
@@ -40,12 +40,11 @@ public class PokecubeAIOCompat implements ICeilingTorchCompat
 			level.addParticle(ParticleInit.INFECTED_FIRE_FLAME.get(), x, y, z, 0.0D, 0.0D, 0.0D);
 		}
 	});
-	private Map<ResourceLocation,Block> placeEntries;
+	private Map<ResourceLocation, Block> placeEntries;
 
 	@Override
-	public Map<ResourceLocation,Block> getPlaceEntries()
-	{
-		if(placeEntries == null)
+	public Map<ResourceLocation, Block> getPlaceEntries() {
+		if (placeEntries == null)
 			placeEntries = ImmutableMap.of(getRegistryName(BlockInit.INFECTED_TORCH.get()), INFECTED_CEILING_TORCH.get());
 
 		return placeEntries;

@@ -15,20 +15,20 @@ import net.minecraft.world.level.material.Material;
 import net.minecraftforge.registries.RegistryObject;
 import net.silentchaos512.gear.init.ModBlocks;
 
-public class SilentGearCompat implements ICeilingTorchCompat
-{
+public class SilentGearCompat implements ICeilingTorchCompat {
+	//@formatter:off
 	public static final RegistryObject<Block> STONE_CEILING_TORCH = CeilingTorch.BLOCKS.register("silentgear_stone_torch", () -> new CeilingTorchBlock(Block.Properties.of(Material.DECORATION)
 			.noCollission()
 			.strength(0.0F)
 			.lightLevel(state -> 14)
 			.sound(SoundType.STONE),
 			ParticleTypes.FLAME, () -> ModBlocks.STONE_TORCH.asBlock()));
-	private Map<ResourceLocation,Block> placeEntries;
+	//@formatter:on
+	private Map<ResourceLocation, Block> placeEntries;
 
 	@Override
-	public Map<ResourceLocation,Block> getPlaceEntries()
-	{
-		if(placeEntries == null)
+	public Map<ResourceLocation, Block> getPlaceEntries() {
+		if (placeEntries == null)
 			placeEntries = ImmutableMap.of(getRegistryName(ModBlocks.STONE_TORCH.asItem()), STONE_CEILING_TORCH.get());
 
 		return placeEntries;

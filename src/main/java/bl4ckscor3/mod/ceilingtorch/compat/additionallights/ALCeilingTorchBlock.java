@@ -24,10 +24,8 @@ import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.material.Material;
 import net.minecraft.world.level.storage.loot.LootContext;
 
-public class ALCeilingTorchBlock extends CeilingTorchBlock implements IHasFire
-{
-	public ALCeilingTorchBlock(Supplier<Block> originalBlock)
-	{
+public class ALCeilingTorchBlock extends CeilingTorchBlock implements IHasFire {
+	public ALCeilingTorchBlock(Supplier<Block> originalBlock) {
 		super(BlockBehaviour.Properties.of(Material.DECORATION).noCollission().strength(0.0F), null, originalBlock);
 	}
 
@@ -43,26 +41,22 @@ public class ALCeilingTorchBlock extends CeilingTorchBlock implements IHasFire
 	}
 
 	@Override
-	public SoundType getSoundType(BlockState state, LevelReader level, BlockPos pos, Entity entity)
-	{
+	public SoundType getSoundType(BlockState state, LevelReader level, BlockPos pos, Entity entity) {
 		return getOriginalBlock().getSoundType(state, level, pos, entity);
 	}
 
 	@Override
-	public int getLightEmission(BlockState state, BlockGetter level, BlockPos pos)
-	{
+	public int getLightEmission(BlockState state, BlockGetter level, BlockPos pos) {
 		return getOriginalBlock().getLightEmission(state, level, pos);
 	}
 
 	@Override
-	public List<ItemStack> getDrops(BlockState state, LootContext.Builder builder)
-	{
+	public List<ItemStack> getDrops(BlockState state, LootContext.Builder builder) {
 		return getOriginalBlock().getDrops(state, builder);
 	}
 
 	@Override
-	protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder)
-	{
+	protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
 		builder.add(FIRE_TYPE, PREVIOUS_FIRE_TYPE);
 	}
 }

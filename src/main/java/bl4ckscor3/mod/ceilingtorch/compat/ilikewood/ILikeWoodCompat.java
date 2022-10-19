@@ -19,13 +19,12 @@ import yamahari.ilikewood.registry.objecttype.WoodenBlockType;
 import yamahari.ilikewood.registry.woodtype.IWoodType;
 import yamahari.ilikewood.util.Util;
 
-public class ILikeWoodCompat implements ICeilingTorchCompat
-{
+public class ILikeWoodCompat implements ICeilingTorchCompat {
 	public static List<Supplier<WoodenCeilingTorchBlock>> ceilingTorchList = new ArrayList<>();
-	private Map<ResourceLocation,Block> placeEntries;
+	private Map<ResourceLocation, Block> placeEntries;
 
 	static {
-		List<Pair<IWoodType,WoodenBlockType>> toRegister = new ArrayList<>();
+		List<Pair<IWoodType, WoodenBlockType>> toRegister = new ArrayList<>();
 
 		toRegister.add(Pair.of(VanillaWoodTypes.OAK, WoodenBlockType.TORCH));
 		toRegister.add(Pair.of(VanillaWoodTypes.SPRUCE, WoodenBlockType.TORCH));
@@ -43,18 +42,18 @@ public class ILikeWoodCompat implements ICeilingTorchCompat
 		toRegister.add(Pair.of(VanillaWoodTypes.DARK_OAK, WoodenBlockType.SOUL_TORCH));
 		toRegister.add(Pair.of(VanillaWoodTypes.WARPED, WoodenBlockType.SOUL_TORCH));
 		toRegister.add(Pair.of(VanillaWoodTypes.CRIMSON, WoodenBlockType.SOUL_TORCH));
+		//@formatter:off
 		toRegister.stream()
 		.map(pair -> CeilingTorch.BLOCKS.register("ilikewood_" + pair.getLeft().getName() + "_" + pair.getRight().getName(), () -> new WoodenCeilingTorchBlock(pair.getLeft(), pair.getRight())))
 		.forEach(ceilingTorchList::add);
+		//@formatter:on
 		toRegister = null;
 	}
 
 	@Override
-	public Map<ResourceLocation,Block> getPlaceEntries()
-	{
-		if(placeEntries == null)
-		{
-			Builder<ResourceLocation, Block> builder = ImmutableMap.<ResourceLocation,Block>builder();
+	public Map<ResourceLocation, Block> getPlaceEntries() {
+		if (placeEntries == null) {
+			Builder<ResourceLocation, Block> builder = ImmutableMap.<ResourceLocation, Block> builder();
 
 			ceilingTorchList.forEach(torchSupplier -> {
 				WoodenCeilingTorchBlock torch = torchSupplier.get();
@@ -67,8 +66,7 @@ public class ILikeWoodCompat implements ICeilingTorchCompat
 		return placeEntries;
 	}
 
-	private ResourceLocation registryNameOf(IWoodType woodType, WoodenBlockType blockType)
-	{
+	private ResourceLocation registryNameOf(IWoodType woodType, WoodenBlockType blockType) {
 		return new ResourceLocation("ilikewood", Util.toRegistryName(woodType.getName(), blockType.getName()));
 	}
 }

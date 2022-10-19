@@ -28,24 +28,24 @@ import net.minecraft.world.level.material.Material;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent.RightClickBlock;
 import net.minecraftforge.registries.RegistryObject;
 
-public class MagicalTorchesCompat implements ICeilingTorchCompat
-{
+public class MagicalTorchesCompat implements ICeilingTorchCompat {
 	public static final RegistryObject<Block> SMALL_CEILING_TORCH = CeilingTorch.BLOCKS.register("magical_torches_small_torch", () -> new SpawnBlockingCeilingTorchBlock(getProperties(), SmallTorch.registry_name, SmallTorchSpawnBlocker::new, () -> ModBlocks.SMALL_TORCH));
 	public static final RegistryObject<Block> MEDIUM_CEILING_TORCH = CeilingTorch.BLOCKS.register("magical_torches_medium_torch", () -> new SpawnBlockingCeilingTorchBlock(getProperties(), MediumTorch.registry_name, MediumTorchSpawnBlocker::new, () -> ModBlocks.MEDIUM_TORCH));
 	public static final RegistryObject<Block> GRAND_CEILING_TORCH = CeilingTorch.BLOCKS.register("magical_torches_grand_torch", () -> new SpawnBlockingCeilingTorchBlock(getProperties(), GrandTorch.registry_name, GrandTorchSpawnBlocker::new, () -> ModBlocks.GRAND_TORCH));
 	public static final RegistryObject<Block> MEGA_CEILING_TORCH = CeilingTorch.BLOCKS.register("magical_torches_mega_torch", () -> new SpawnBlockingCeilingTorchBlock(getProperties(), MegaTorch.registry_name, MegaTorchSpawnBlocker::new, () -> ModBlocks.MEGA_TORCH));
+	//@formatter:off
 	public static final RegistryObject<Block> SOUND_MUFFLING_CEILING_TORCH = CeilingTorch.BLOCKS.register("magical_torches_sound_muffling_torch", () -> new SoundMufflingCeilingTorchBlock(Block.Properties.of(Material.WOOD)
 			.strength(3.0F)
 			.sound(SoundType.WOOD)
 			.noCollission()));
+	//@formatter:on
 	public static final RegistryObject<Block> CHICKEN_EGG_CEILING_TORCH = CeilingTorch.BLOCKS.register("magical_torches_chicken_egg_torch", () -> new ChickenEggCeilingTorchBlock(getProperties()));
-	private Map<ResourceLocation,Block> placeEntries;
+	private Map<ResourceLocation, Block> placeEntries;
 
 	@Override
-	public Map<ResourceLocation,Block> getPlaceEntries()
-	{
-		if(placeEntries == null)
-		{
+	public Map<ResourceLocation, Block> getPlaceEntries() {
+		if (placeEntries == null) {
+			//@formatter:off
 			placeEntries = ImmutableMap.<ResourceLocation,Block>builder()
 					.put(getRegistryName(ModBlocks.SMALL_TORCH), SMALL_CEILING_TORCH.get())
 					.put(getRegistryName(ModBlocks.MEDIUM_TORCH), MEDIUM_CEILING_TORCH.get())
@@ -53,22 +53,21 @@ public class MagicalTorchesCompat implements ICeilingTorchCompat
 					.put(getRegistryName(ModBlocks.MEGA_TORCH), MEGA_CEILING_TORCH.get())
 					.put(getRegistryName(ModBlocks.SOUND_MUFFLING_TORCH), SOUND_MUFFLING_CEILING_TORCH.get())
 					.put(getRegistryName(ModBlocks.CHICKEN_EGG_TORCH), CHICKEN_EGG_CEILING_TORCH.get()).build();
+			//@formatter:on
 		}
 
 		return placeEntries;
 	}
 
 	@Override
-	public BlockState getStateToPlace(RightClickBlock event, Level level, BlockPos pos, BlockState state, ItemStack stack)
-	{
-		if(state.getBlock() instanceof SpawnBlockingCeilingTorchBlock)
+	public BlockState getStateToPlace(RightClickBlock event, Level level, BlockPos pos, BlockState state, ItemStack stack) {
+		if (state.getBlock() instanceof SpawnBlockingCeilingTorchBlock)
 			return state.setValue(BlockStateProperties.WATERLOGGED, level.getFluidState(pos).getType() == Fluids.WATER);
 
 		return state;
 	}
 
-	private static Block.Properties getProperties()
-	{
+	private static Block.Properties getProperties() {
 		return Block.Properties.of(Material.WOOD).strength(3.0F).sound(SoundType.WOOD).noCollission().lightLevel(state -> 15);
 	}
 }

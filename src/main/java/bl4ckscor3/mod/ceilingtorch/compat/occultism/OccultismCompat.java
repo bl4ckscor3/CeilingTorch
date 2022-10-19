@@ -20,17 +20,17 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.Material;
 import net.minecraftforge.registries.RegistryObject;
 
-public class OccultismCompat implements ICeilingTorchCompat
-{
+public class OccultismCompat implements ICeilingTorchCompat {
+	//@formatter:off
 	public static final RegistryObject<CeilingTorchBlock> CEILING_SPIRIT_TORCH = CeilingTorch.BLOCKS.register("occultism_spirit_torch", () -> new CeilingTorchBlock(Block.Properties.of(Material.DECORATION)
 			.noCollission()
 			.instabreak()
 			.lightLevel(state -> 10)
 			.sound(SoundType.WOOD),
 			null, OccultismBlocks.SPIRIT_TORCH) {
+	//@formatter:on
 		@Override
-		public void animateTick(BlockState state, Level level, BlockPos pos, RandomSource rand)
-		{
+		public void animateTick(BlockState state, Level level, BlockPos pos, RandomSource rand) {
 			double x = pos.getX() + 0.5D;
 			double y = pos.getY() + 0.45D;
 			double z = pos.getZ() + 0.5D;
@@ -39,12 +39,11 @@ public class OccultismCompat implements ICeilingTorchCompat
 			level.addParticle(OccultismParticles.SPIRIT_FIRE_FLAME.get(), x, y, z, 0.0D, 0.0D, 0.0D);
 		}
 	});
-	private Map<ResourceLocation,Block> placeEntries;
+	private Map<ResourceLocation, Block> placeEntries;
 
 	@Override
-	public Map<ResourceLocation,Block> getPlaceEntries()
-	{
-		if(placeEntries == null)
+	public Map<ResourceLocation, Block> getPlaceEntries() {
+		if (placeEntries == null)
 			placeEntries = ImmutableMap.of(getRegistryName(OccultismBlocks.SPIRIT_TORCH.get()), CEILING_SPIRIT_TORCH.get());
 
 		return placeEntries;

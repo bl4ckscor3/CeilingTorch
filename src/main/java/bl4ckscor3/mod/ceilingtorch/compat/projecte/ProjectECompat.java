@@ -15,20 +15,20 @@ import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.material.Material;
 import net.minecraftforge.registries.RegistryObject;
 
-public class ProjectECompat implements ICeilingTorchCompat
-{
+public class ProjectECompat implements ICeilingTorchCompat {
+	//@formatter:off
 	public static final RegistryObject<Block> INTERDICTION_CEILING_TORCH = CeilingTorch.BLOCKS.register("projecte_interdiction_torch", () -> new InterdictionCeilingTorchBlock(Block.Properties.of(Material.DECORATION)
 			.noCollission()
 			.strength(0.0F)
 			.lightLevel(state -> 14)
 			.randomTicks(), ParticleTypes.SOUL_FIRE_FLAME, () -> PEBlocks.INTERDICTION_TORCH.getBlock()));
+	//@formatter:on
 	public static final RegistryObject<BlockEntityType<? extends InterdictionTorchBlockEntity>> INTERDICTION_CEILING_TORCH_BLOCK_ENTITY = CeilingTorch.BLOCK_ENTITIES.register("projecte_interdiction_torch", () -> BlockEntityType.Builder.of(InterdictionCeilingTorchBlockEntity::new, INTERDICTION_CEILING_TORCH.get()).build(null));
-	private Map<ResourceLocation,Block> placeEntries;
+	private Map<ResourceLocation, Block> placeEntries;
 
 	@Override
-	public Map<ResourceLocation,Block> getPlaceEntries()
-	{
-		if(placeEntries == null)
+	public Map<ResourceLocation, Block> getPlaceEntries() {
+		if (placeEntries == null)
 			placeEntries = ImmutableMap.of(getRegistryName(PEBlocks.INTERDICTION_TORCH.getBlock()), INTERDICTION_CEILING_TORCH.get());
 
 		return placeEntries;

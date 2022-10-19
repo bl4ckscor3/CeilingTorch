@@ -21,20 +21,17 @@ import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
 import realmayus.aquatictorches.AquaticTorchBlock;
 
-public class AquaticCeilingTorchBlock extends CeilingTorchBlock implements SimpleWaterloggedBlock
-{
+public class AquaticCeilingTorchBlock extends CeilingTorchBlock implements SimpleWaterloggedBlock {
 	public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
 	public static final IntegerProperty FLOWING_WATER = AquaticTorchBlock.FLOWING_WATER;
 
-	public AquaticCeilingTorchBlock(Properties properties, ParticleOptions particleOptions, Supplier<? extends Block> originalBlock)
-	{
+	public AquaticCeilingTorchBlock(Properties properties, ParticleOptions particleOptions, Supplier<? extends Block> originalBlock) {
 		super(properties, particleOptions, originalBlock);
 		registerDefaultState(stateDefinition.any().setValue(WATERLOGGED, false));
 	}
 
 	@Override
-	public BlockState getStateForPlacement(BlockPlaceContext ctx)
-	{
+	public BlockState getStateForPlacement(BlockPlaceContext ctx) {
 		FluidState fluidState = ctx.getLevel().getFluidState(ctx.getClickedPos());
 		boolean isFlowing = fluidState.getType() == Fluids.FLOWING_WATER;
 		boolean isWater = fluidState.getType() == Fluids.WATER || isFlowing;
@@ -43,20 +40,17 @@ public class AquaticCeilingTorchBlock extends CeilingTorchBlock implements Simpl
 	}
 
 	@Override
-	public BlockState updateShape(BlockState state, Direction facing, BlockState facingState, LevelAccessor level, BlockPos currentPos, BlockPos facingPos)
-	{
-		if(state.getValue(WATERLOGGED))
+	public BlockState updateShape(BlockState state, Direction facing, BlockState facingState, LevelAccessor level, BlockPos currentPos, BlockPos facingPos) {
+		if (state.getValue(WATERLOGGED))
 			level.scheduleTick(currentPos, Fluids.WATER, Fluids.WATER.getTickDelay(level));
 
 		return super.updateShape(state, facing, facingState, level, currentPos, facingPos);
 	}
 
 	@Override
-	public FluidState getFluidState(BlockState state)
-	{
-		if(state.getValue(AquaticTorchBlock.WATERLOGGED))
-		{
-			if(state.getValue(AquaticTorchBlock.FLOWING_WATER) == 8)
+	public FluidState getFluidState(BlockState state) {
+		if (state.getValue(AquaticTorchBlock.WATERLOGGED)) {
+			if (state.getValue(AquaticTorchBlock.FLOWING_WATER) == 8)
 				return Fluids.WATER.getSource(false);
 			else
 				return Fluids.WATER.getFlowing(state.getValue(AquaticTorchBlock.FLOWING_WATER), false);
@@ -66,14 +60,12 @@ public class AquaticCeilingTorchBlock extends CeilingTorchBlock implements Simpl
 	}
 
 	@Override
-	public void animateTick(BlockState blockState, Level level, BlockPos pos, RandomSource random)
-	{
+	public void animateTick(BlockState blockState, Level level, BlockPos pos, RandomSource random) {
 		super.animateTick(blockState, level, pos, random);
 	}
 
 	@Override
-	protected void createBlockStateDefinition(Builder<Block,BlockState> builder)
-	{
+	protected void createBlockStateDefinition(Builder<Block, BlockState> builder) {
 		builder.add(WATERLOGGED, FLOWING_WATER);
 	}
 }

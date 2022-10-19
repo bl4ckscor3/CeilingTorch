@@ -15,8 +15,8 @@ import net.minecraftforge.registries.RegistryObject;
 import tv.soaryn.xycraft.world.content.WorldContent;
 import tv.soaryn.xycraft.world.content.WorldParticleContent;
 
-public class XyCraftWorldCompat implements ICeilingTorchCompat
-{
+public class XyCraftWorldCompat implements ICeilingTorchCompat {
+	//@formatter:off
 	public static final RegistryObject<CeilingTorchBlock> CEILING_ALUMINUM_TORCH = CeilingTorch.BLOCKS.register("xycraft_world_aluminum_torch", () -> new XyCraftCeilingTorchBlock(Block.Properties.of(Material.DECORATION)
 			.noOcclusion()
 			.noCollission()
@@ -31,15 +31,16 @@ public class XyCraftWorldCompat implements ICeilingTorchCompat
 			.lightLevel(state -> 15)
 			.sound(SoundType.WOOD),
 			WorldParticleContent.CopperFlame, () -> WorldContent.CopperTorch.block()));
-	private Map<ResourceLocation,Block> placeEntries;
+	//@formatter:on
+	private Map<ResourceLocation, Block> placeEntries;
 
 	@Override
-	public Map<ResourceLocation,Block> getPlaceEntries()
-	{
-		if(placeEntries == null)
-		{
+	public Map<ResourceLocation, Block> getPlaceEntries() {
+		if (placeEntries == null) {
+			//@formatter:off
 			placeEntries = ImmutableMap.of(getRegistryName(WorldContent.AluminumTorch.block()), CEILING_ALUMINUM_TORCH.get(),
 					getRegistryName(WorldContent.CopperTorch.block()), CEILING_COPPER_TORCH.get());
+			//@formatter:on
 		}
 
 		return placeEntries;

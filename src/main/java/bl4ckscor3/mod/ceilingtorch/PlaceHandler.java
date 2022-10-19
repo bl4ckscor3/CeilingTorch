@@ -18,44 +18,38 @@ import net.minecraftforge.event.level.BlockEvent.EntityPlaceEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 
-@EventBusSubscriber(modid=CeilingTorch.MODID)
-public class PlaceHandler
-{
+@EventBusSubscriber(modid = CeilingTorch.MODID)
+public class PlaceHandler {
 	@SubscribeEvent
-	public static void onRightClickBlock(RightClickBlock event)
-	{
-		if(!event.getEntity().isSpectator()) //because apparently this is a thing
+	public static void onRightClickBlock(RightClickBlock event) {
+		if (!event.getEntity().isSpectator()) //because apparently this is a thing
 		{
 			BlockPos pos = event.getPos();
 			Direction face = event.getFace();
 			BlockPos placeAt = pos.relative(face);
 			Level level = event.getLevel();
 
-			if(face == Direction.DOWN && (level.isEmptyBlock(placeAt) || !level.getFluidState(placeAt).isEmpty()))
-			{
+			if (face == Direction.DOWN && (level.isEmptyBlock(placeAt) || !level.getFluidState(placeAt).isEmpty())) {
 				ItemStack held = event.getItemStack();
 				ResourceLocation rl = CeilingTorch.getRegistryName(held.getItem());
-				Map<String,ICeilingTorchCompat> compatList = CeilingTorch.getCompatList();
+				Map<String, ICeilingTorchCompat> compatList = CeilingTorch.getCompatList();
 				String modid = rl.getNamespace();
 
-				if(compatList.containsKey(modid))
-				{
+				if (compatList.containsKey(modid)) {
 					ICeilingTorchCompat compat = compatList.get(modid);
-					Map<ResourceLocation,Block> placeEntries = compat.getPlaceEntries();
+					Map<ResourceLocation, Block> placeEntries = compat.getPlaceEntries();
 
-					if(placeEntries.containsKey(rl))
+					if (placeEntries.containsKey(rl))
 						placeTorch(compat, event, held, placeAt, level, placeEntries.get(rl).defaultBlockState());
 				}
 			}
 		}
 	}
 
-	public static boolean placeTorch(ICeilingTorchCompat compat, RightClickBlock event, ItemStack held, BlockPos placeAt, Level level, BlockState state)
-	{
+	public static boolean placeTorch(ICeilingTorchCompat compat, RightClickBlock event, ItemStack held, BlockPos placeAt, Level level, BlockState state) {
 		state = compat.getStateToPlace(event, level, placeAt, state, held);
 
-		if(state.canSurvive(level, placeAt))
-		{
+		if (state.canSurvive(level, placeAt)) {
 			SoundType soundType;
 
 			level.setBlockAndUpdate(placeAt, state);
@@ -64,7 +58,7 @@ public class PlaceHandler
 			level.playSound(null, placeAt.getX(), placeAt.getY(), placeAt.getZ(), soundType.getPlaceSound(), SoundSource.BLOCKS, soundType.getVolume(), soundType.getPitch() - 0.2F);
 			event.getEntity().swing(event.getHand());
 
-			if(!event.getEntity().isCreative())
+			if (!event.getEntity().isCreative())
 				held.shrink(1);
 
 			MinecraftForge.EVENT_BUS.post(new EntityPlaceEvent(BlockSnapshot.create(level.dimension(), level, placeAt), level.getBlockState(event.getPos()), event.getEntity()));

@@ -16,20 +16,20 @@ import net.minecraft.world.level.material.MaterialColor;
 import net.minecraftforge.registries.RegistryObject;
 import umpaz.nethersdelight.common.registry.NDBlocks;
 
-public class NethersDelightCompat implements ICeilingTorchCompat
-{
+public class NethersDelightCompat implements ICeilingTorchCompat {
+	//@formatter:off
 	public static final RegistryObject<Block> CEILING_PROPELPLANT_TORCH = CeilingTorch.BLOCKS.register("nethersdelight_propelplant_torch", () -> new CeilingTorchBlock(Block.Properties.of(Material.PLANT, MaterialColor.NETHER)
 			.noCollission()
 			.sound(SoundType.GRASS)
 			.strength(0.1F)
 			.lightLevel(state -> 12),
 			ParticleTypes.FLAME, NDBlocks.PROPELPLANT_TORCH));
-	private Map<ResourceLocation,Block> placeEntries;
+	//@formatter:on
+	private Map<ResourceLocation, Block> placeEntries;
 
 	@Override
-	public Map<ResourceLocation,Block> getPlaceEntries()
-	{
-		if(placeEntries == null)
+	public Map<ResourceLocation, Block> getPlaceEntries() {
+		if (placeEntries == null)
 			placeEntries = ImmutableMap.of(getRegistryName(NDBlocks.PROPELPLANT_TORCH.get()), CEILING_PROPELPLANT_TORCH.get());
 
 		return placeEntries;

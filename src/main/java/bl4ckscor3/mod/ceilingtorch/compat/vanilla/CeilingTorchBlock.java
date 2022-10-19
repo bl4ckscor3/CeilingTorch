@@ -21,39 +21,33 @@ import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
-public class CeilingTorchBlock extends TorchBlock
-{
+public class CeilingTorchBlock extends TorchBlock {
 	public static final VoxelShape CEILING_SHAPE = Block.box(6.0D, 6.0D, 6.0D, 10.0D, 16.0D, 10.0D);
 	private final Supplier<? extends Block> originalBlock;
 
-	public CeilingTorchBlock(Block.Properties properties, ParticleOptions particleData, Supplier<? extends Block> originalBlock)
-	{
+	public CeilingTorchBlock(Block.Properties properties, ParticleOptions particleData, Supplier<? extends Block> originalBlock) {
 		super(properties.lootFrom(originalBlock), particleData);
 
 		this.originalBlock = originalBlock;
 	}
 
 	@Override
-	public VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context)
-	{
+	public VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
 		return CEILING_SHAPE;
 	}
 
 	@Override
-	public BlockState updateShape(BlockState state, Direction facing, BlockState facingState, LevelAccessor level, BlockPos currentPos, BlockPos facingPos)
-	{
+	public BlockState updateShape(BlockState state, Direction facing, BlockState facingState, LevelAccessor level, BlockPos currentPos, BlockPos facingPos) {
 		return facing == Direction.UP && !canSurvive(state, level, currentPos) ? Blocks.AIR.defaultBlockState() : super.updateShape(state, facing, facingState, level, currentPos, facingPos);
 	}
 
 	@Override
-	public boolean canSurvive(BlockState state, LevelReader level, BlockPos pos)
-	{
+	public boolean canSurvive(BlockState state, LevelReader level, BlockPos pos) {
 		return canSupportCenter(level, pos.above(), Direction.DOWN);
 	}
 
 	@Override
-	public void animateTick(BlockState state, Level level, BlockPos pos, RandomSource rand)
-	{
+	public void animateTick(BlockState state, Level level, BlockPos pos, RandomSource rand) {
 		double x = pos.getX() + 0.5D;
 		double y = pos.getY() + 0.45D;
 		double z = pos.getZ() + 0.5D;
@@ -63,13 +57,11 @@ public class CeilingTorchBlock extends TorchBlock
 	}
 
 	@Override
-	public ItemStack getCloneItemStack(BlockState state, HitResult target, BlockGetter level, BlockPos pos, Player player)
-	{
+	public ItemStack getCloneItemStack(BlockState state, HitResult target, BlockGetter level, BlockPos pos, Player player) {
 		return new ItemStack(getOriginalBlock());
 	}
 
-	public Block getOriginalBlock()
-	{
+	public Block getOriginalBlock() {
 		return originalBlock.get();
 	}
 }

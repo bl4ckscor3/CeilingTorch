@@ -16,34 +16,29 @@ import yamahari.ilikewood.registry.objecttype.WoodenBlockType;
 import yamahari.ilikewood.registry.woodtype.IWoodType;
 import yamahari.ilikewood.util.IWooden;
 
-public class WoodenCeilingTorchBlock extends CeilingTorchBlock implements IWooden
-{
+public class WoodenCeilingTorchBlock extends CeilingTorchBlock implements IWooden {
 	protected static final VoxelShape CEILING_SHAPE = Block.box(6.0D, 3.0D, 6.0D, 10.0D, 16.0D, 10.0D);
 	protected final IWoodType woodType;
 	protected final WoodenBlockType blockType;
 
-	public WoodenCeilingTorchBlock(IWoodType woodType, WoodenBlockType blockType)
-	{
+	public WoodenCeilingTorchBlock(IWoodType woodType, WoodenBlockType blockType) {
 		super(Block.Properties.copy(getVanillaTorchForWoodenBlockType(blockType)), ParticleTypes.SMOKE, () -> ILikeWood.getBlock(woodType, blockType));
 		this.woodType = woodType;
 		this.blockType = blockType;
 	}
 
 	@Override
-	public IWoodType getWoodType()
-	{
+	public IWoodType getWoodType() {
 		return woodType;
 	}
 
 	@Override
-	public VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context)
-	{
+	public VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
 		return CEILING_SHAPE;
 	}
 
 	@Override
-	public void animateTick(BlockState state, Level level, BlockPos pos, RandomSource rand)
-	{
+	public void animateTick(BlockState state, Level level, BlockPos pos, RandomSource rand) {
 		double x = pos.getX() + 0.5D;
 		double y = pos.getY() + 0.1D;
 		double z = pos.getZ() + 0.5D;
@@ -52,9 +47,9 @@ public class WoodenCeilingTorchBlock extends CeilingTorchBlock implements IWoode
 	}
 
 	private static Block getVanillaTorchForWoodenBlockType(WoodenBlockType type) {
-		if(type == WoodenBlockType.TORCH)
+		if (type == WoodenBlockType.TORCH)
 			return Blocks.TORCH;
-		else if(type == WoodenBlockType.SOUL_TORCH)
+		else if (type == WoodenBlockType.SOUL_TORCH)
 			return Blocks.SOUL_TORCH;
 		else
 			return Blocks.AIR;

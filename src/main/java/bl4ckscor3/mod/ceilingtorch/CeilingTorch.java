@@ -39,85 +39,80 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegisterEvent;
 
 @Mod(CeilingTorch.MODID)
-@EventBusSubscriber(bus=Bus.MOD)
-public class CeilingTorch
-{
+@EventBusSubscriber(bus = Bus.MOD)
+public class CeilingTorch {
 	public static final String MODID = "ceilingtorch";
-	private static final Map<String,ICeilingTorchCompat> COMPAT_LIST = new HashMap<>();
-	private static Map<String,Supplier<ICeilingTorchCompat>> preliminaryCompatList = new HashMap<>();
+	private static final Map<String, ICeilingTorchCompat> COMPAT_LIST = new HashMap<>();
+	private static Map<String, Supplier<ICeilingTorchCompat>> preliminaryCompatList = new HashMap<>();
 	public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, MODID);
 	public static final DeferredRegister<BlockEntityType<?>> BLOCK_ENTITIES = DeferredRegister.create(ForgeRegistries.BLOCK_ENTITY_TYPES, MODID);
 	private static boolean initialized = false;
 
-	public CeilingTorch()
-	{
+	public CeilingTorch() {
 		BLOCKS.register(FMLJavaModLoadingContext.get().getModEventBus());
 		BLOCK_ENTITIES.register(FMLJavaModLoadingContext.get().getModEventBus());
 		preliminaryCompatList.put("minecraft", VanillaCompat::new);
 
 		//cannot use addCompat because then the compat class will be classloaded which may crash if the mod is not present
-		if(ModList.get().isLoaded("additional_lights"))
+		if (ModList.get().isLoaded("additional_lights"))
 			preliminaryCompatList.put("additional_lights", AdditionalLightsCompat::new);
 
-		if(ModList.get().isLoaded("adorn"))
+		if (ModList.get().isLoaded("adorn"))
 			preliminaryCompatList.put("adorn", AdornCompat::new);
 
-		if(ModList.get().isLoaded("aquatictorches"))
+		if (ModList.get().isLoaded("aquatictorches"))
 			preliminaryCompatList.put("aquatictorches", AquaticTorchesCompat::new);
 
-		if(ModList.get().isLoaded("bonetorch"))
+		if (ModList.get().isLoaded("bonetorch"))
 			preliminaryCompatList.put("bonetorch", BoneTorchCompat::new);
 
-		if(ModList.get().isLoaded("ilikewood"))
+		if (ModList.get().isLoaded("ilikewood"))
 			preliminaryCompatList.put("ilikewood", ILikeWoodCompat::new);
 
-		if(ModList.get().isLoaded("infernalexp"))
+		if (ModList.get().isLoaded("infernalexp"))
 			preliminaryCompatList.put("infernalexp", InfernalExpansionCompat::new);
 
-		if(ModList.get().isLoaded("integrateddynamics"))
+		if (ModList.get().isLoaded("integrateddynamics"))
 			preliminaryCompatList.put("integrateddynamics", IntegratedDynamicsCompat::new);
 
-		if(ModList.get().isLoaded("nethersdelight"))
+		if (ModList.get().isLoaded("nethersdelight"))
 			preliminaryCompatList.put("nethersdelight", NethersDelightCompat::new);
 
-		if(ModList.get().isLoaded("magical_torches"))
+		if (ModList.get().isLoaded("magical_torches"))
 			preliminaryCompatList.put("magical_torches", MagicalTorchesCompat::new);
 
-		if(ModList.get().isLoaded("occultism"))
+		if (ModList.get().isLoaded("occultism"))
 			preliminaryCompatList.put("occultism", OccultismCompat::new);
 
-		if(ModList.get().isLoaded("pokecube_legends"))
+		if (ModList.get().isLoaded("pokecube_legends"))
 			preliminaryCompatList.put("pokecube_legends", PokecubeAIOCompat::new);
 
-		if(ModList.get().isLoaded("projecte"))
+		if (ModList.get().isLoaded("projecte"))
 			preliminaryCompatList.put("projecte", ProjectECompat::new);
 
-		if(ModList.get().isLoaded("reliquary"))
+		if (ModList.get().isLoaded("reliquary"))
 			preliminaryCompatList.put("reliquary", ReliquaryCompat::new);
 
-		if(ModList.get().isLoaded("silentgear"))
+		if (ModList.get().isLoaded("silentgear"))
 			preliminaryCompatList.put("silentgear", SilentGearCompat::new);
 
-		if(ModList.get().isLoaded("tofucraft"))
+		if (ModList.get().isLoaded("tofucraft"))
 			preliminaryCompatList.put("tofucraft", TofuCraftCompat::new);
 
-		if(ModList.get().isLoaded("torchbandolier"))
+		if (ModList.get().isLoaded("torchbandolier"))
 			preliminaryCompatList.put("torchbandolier", TorchBandolierCompat::new);
 
-		if(ModList.get().isLoaded("torchmaster"))
+		if (ModList.get().isLoaded("torchmaster"))
 			preliminaryCompatList.put("torchmaster", TorchmasterCompat::new);
 
-		if(ModList.get().isLoaded("xycraft_world"))
+		if (ModList.get().isLoaded("xycraft_world"))
 			preliminaryCompatList.put("xycraft_world", XyCraftWorldCompat::new);
 	}
 
 	@SubscribeEvent
-	public static void onRegister(RegisterEvent event)
-	{
-		if(!initialized)
-		{
-			for(Entry<String,Supplier<ICeilingTorchCompat>> entry : preliminaryCompatList.entrySet())
-			{
+	public static void onRegister(RegisterEvent event) {
+		if (!initialized) {
+			for (Entry<String, Supplier<ICeilingTorchCompat>> entry : preliminaryCompatList.entrySet()) {
 				COMPAT_LIST.put(entry.getKey(), entry.getValue().get());
 			}
 
@@ -128,27 +123,24 @@ public class CeilingTorch
 
 	/**
 	 * Adds ceiling torch compatibility for the mod with the given modid, if that mod is loaded
+	 *
 	 * @param modid The modid of the mod to add compatibility to
 	 * @param compat The compatibility class
 	 */
-	public static void addCompat(String modid, Supplier<ICeilingTorchCompat> compat)
-	{
-		if(ModList.get().isLoaded(modid))
+	public static void addCompat(String modid, Supplier<ICeilingTorchCompat> compat) {
+		if (ModList.get().isLoaded(modid))
 			preliminaryCompatList.put(modid, compat);
 	}
 
-	public static Map<String,ICeilingTorchCompat> getCompatList()
-	{
+	public static Map<String, ICeilingTorchCompat> getCompatList() {
 		return COMPAT_LIST;
 	}
 
-	public static ResourceLocation getRegistryName(Block block)
-	{
+	public static ResourceLocation getRegistryName(Block block) {
 		return ForgeRegistries.BLOCKS.getKey(block);
 	}
 
-	public static ResourceLocation getRegistryName(Item item)
-	{
+	public static ResourceLocation getRegistryName(Item item) {
 		return ForgeRegistries.ITEMS.getKey(item);
 	}
 }

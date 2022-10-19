@@ -23,12 +23,12 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent.RightClickBlock;
 import net.minecraftforge.registries.RegistryObject;
 
-public class AdditionalLightsCompat implements ICeilingTorchCompat
-{
-	private static final HashMap<Supplier<Block>,Supplier<Block>> CEILING_TO_NORMAL = new HashMap<>();
-	private Map<ResourceLocation,Block> placeEntries;
+public class AdditionalLightsCompat implements ICeilingTorchCompat {
+	private static final HashMap<Supplier<Block>, Supplier<Block>> CEILING_TO_NORMAL = new HashMap<>();
+	private Map<ResourceLocation, Block> placeEntries;
 
 	static {
+		//@formatter:off
 		ModBlockList[] supportedBlocks = {
 				ModBlockList.ALTorch_Acacia,
 				ModBlockList.ALTorch_Birch,
@@ -58,14 +58,14 @@ public class AdditionalLightsCompat implements ICeilingTorchCompat
 				ModBlockList.ALTorch_Warped,
 				ModBlockList.ALTorch_BlackStone
 		};
+		//@formatter:on
 
-		for(ModBlockList block : supportedBlocks)
-		{
+		for (ModBlockList block : supportedBlocks) {
 			Supplier<Block> originalBlock = () -> (Block) AdditionalLights.modBlocks.get(block);
 			RegistryObject<Block> registeredBlock;
 			String registryName = block.name().toLowerCase(Locale.ENGLISH).replace("altorch", "additional_lights_al_torch");
 
-			if(block == ModBlockList.ALTorch_Oak || block == ModBlockList.ALTorch_Spruce || block == ModBlockList.ALTorch_Birch || block == ModBlockList.ALTorch_Jungle || block == ModBlockList.ALTorch_Acacia || block == ModBlockList.ALTorch_Dark_Oak || block == ModBlockList.ALTorch_Crimson || block == ModBlockList.ALTorch_Warped)
+			if (block == ModBlockList.ALTorch_Oak || block == ModBlockList.ALTorch_Spruce || block == ModBlockList.ALTorch_Birch || block == ModBlockList.ALTorch_Jungle || block == ModBlockList.ALTorch_Acacia || block == ModBlockList.ALTorch_Dark_Oak || block == ModBlockList.ALTorch_Crimson || block == ModBlockList.ALTorch_Warped)
 				registryName += "_planks";
 
 			registeredBlock = CeilingTorch.BLOCKS.register(registryName, () -> new ALCeilingTorchBlock(originalBlock));
@@ -74,11 +74,9 @@ public class AdditionalLightsCompat implements ICeilingTorchCompat
 	}
 
 	@Override
-	public Map<ResourceLocation,Block> getPlaceEntries()
-	{
-		if(placeEntries == null)
-		{
-			ImmutableMap.Builder<ResourceLocation,Block> builder = ImmutableMap.builder();
+	public Map<ResourceLocation, Block> getPlaceEntries() {
+		if (placeEntries == null) {
+			ImmutableMap.Builder<ResourceLocation, Block> builder = ImmutableMap.builder();
 
 			CEILING_TO_NORMAL.forEach((ceiling, normal) -> builder.put(getRegistryName(normal.get()), ceiling.get()));
 			placeEntries = builder.build();
@@ -88,8 +86,7 @@ public class AdditionalLightsCompat implements ICeilingTorchCompat
 	}
 
 	@Override
-	public BlockState getStateToPlace(RightClickBlock event, Level level, BlockPos pos, BlockState state, ItemStack stack)
-	{
+	public BlockState getStateToPlace(RightClickBlock event, Level level, BlockPos pos, BlockState state, ItemStack stack) {
 		return state.setValue(IHasFire.FIRE_TYPE, event.getEntity().getOffhandItem().getItem() instanceof SoulWand ? FireTypes.SOUL : FireTypes.NORMAL);
 	}
 }

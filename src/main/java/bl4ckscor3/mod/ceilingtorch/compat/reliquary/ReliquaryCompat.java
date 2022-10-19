@@ -11,15 +11,13 @@ import net.minecraft.world.level.block.Block;
 import net.minecraftforge.registries.RegistryObject;
 import reliquary.init.ModBlocks;
 
-public class ReliquaryCompat implements ICeilingTorchCompat
-{
+public class ReliquaryCompat implements ICeilingTorchCompat {
 	public static final RegistryObject<Block> INTERDICTION_CEILING_TORCH = CeilingTorch.BLOCKS.register("reliquary_interdiction_torch", InterdictionCeilingTorchBlock::new);
-	private Map<ResourceLocation,Block> placeEntries;
+	private Map<ResourceLocation, Block> placeEntries;
 
 	@Override
-	public Map<ResourceLocation,Block> getPlaceEntries()
-	{
-		if(placeEntries == null)
+	public Map<ResourceLocation, Block> getPlaceEntries() {
+		if (placeEntries == null)
 			placeEntries = ImmutableMap.of(getRegistryName(ModBlocks.INTERDICTION_TORCH.get()), INTERDICTION_CEILING_TORCH.get());
 
 		return placeEntries;

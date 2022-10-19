@@ -21,8 +21,8 @@ import net.xalcon.torchmaster.common.ModBlocks;
 import net.xalcon.torchmaster.common.blocks.EntityBlockingLightBlock;
 import net.xalcon.torchmaster.common.logic.entityblocking.megatorch.MegatorchEntityBlockingLight;
 
-public class TorchmasterCompat implements ICeilingTorchCompat
-{
+public class TorchmasterCompat implements ICeilingTorchCompat {
+	//@formatter:off
 	public static final RegistryObject<EntityBlockingLightBlock> MEGA_CEILING_TORCH = CeilingTorch.BLOCKS.register("torchmaster_megatorch", () -> new EntityBlockingLightBlock(Block.Properties.of(Material.WOOD)
 			.lootFrom(ModBlocks.blockMegaTorch)
 			.strength(1.0F, 1.0F)
@@ -30,18 +30,17 @@ public class TorchmasterCompat implements ICeilingTorchCompat
 			.sound(SoundType.WOOD),
 			pos -> CeilingTorch.MODID + ":MCT_" + pos.getX() + "_" + pos.getY() + "_" + pos.getZ(),
 			MegaCeilingTorchEntityBlockingLight::new, -0.025F, MegatorchEntityBlockingLight.SHAPE) {
+	//@formatter:on
 		@Override
-		public ItemStack getCloneItemStack(BlockState state, HitResult target, BlockGetter level, BlockPos pos, Player player)
-		{
+		public ItemStack getCloneItemStack(BlockState state, HitResult target, BlockGetter level, BlockPos pos, Player player) {
 			return new ItemStack(ModBlocks.blockMegaTorch.get());
 		}
 	});
-	private Map<ResourceLocation,Block> placeEntries;
+	private Map<ResourceLocation, Block> placeEntries;
 
 	@Override
-	public Map<ResourceLocation,Block> getPlaceEntries()
-	{
-		if(placeEntries == null)
+	public Map<ResourceLocation, Block> getPlaceEntries() {
+		if (placeEntries == null)
 			placeEntries = ImmutableMap.of(getRegistryName(ModBlocks.itemMegaTorch.get()), MEGA_CEILING_TORCH.get());
 
 		return placeEntries;

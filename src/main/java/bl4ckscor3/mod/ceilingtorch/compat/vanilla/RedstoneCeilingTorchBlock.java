@@ -21,59 +21,49 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
-public class RedstoneCeilingTorchBlock extends RedstoneTorchBlock
-{
+public class RedstoneCeilingTorchBlock extends RedstoneTorchBlock {
 	private final Supplier<Block> originalBlock;
 
-	public RedstoneCeilingTorchBlock(Properties properties, Supplier<Block> originalBlock)
-	{
+	public RedstoneCeilingTorchBlock(Properties properties, Supplier<Block> originalBlock) {
 		super(properties.lootFrom(originalBlock));
 
 		this.originalBlock = originalBlock;
 	}
 
 	@Override
-	public VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context)
-	{
+	public VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
 		return CeilingTorchBlock.CEILING_SHAPE;
 	}
 
 	@Override
-	public BlockState updateShape(BlockState state, Direction facing, BlockState facingState, LevelAccessor world, BlockPos currentPos, BlockPos facingPos)
-	{
+	public BlockState updateShape(BlockState state, Direction facing, BlockState facingState, LevelAccessor world, BlockPos currentPos, BlockPos facingPos) {
 		return facing == Direction.UP && !canSurvive(state, world, currentPos) ? Blocks.AIR.defaultBlockState() : super.updateShape(state, facing, facingState, world, currentPos, facingPos);
 	}
 
 	@Override
-	public boolean canSurvive(BlockState state, LevelReader world, BlockPos pos)
-	{
+	public boolean canSurvive(BlockState state, LevelReader world, BlockPos pos) {
 		return canSupportCenter(world, pos.above(), Direction.DOWN);
 	}
 
 	@Override
-	public int getSignal(BlockState state, BlockGetter access, BlockPos pos, Direction side)
-	{
+	public int getSignal(BlockState state, BlockGetter access, BlockPos pos, Direction side) {
 		return state.getValue(LIT) && Direction.DOWN != side ? 15 : 0;
 	}
 
 	@Override
-	public int getDirectSignal(BlockState state, BlockGetter access, BlockPos pos, Direction side)
-	{
+	public int getDirectSignal(BlockState state, BlockGetter access, BlockPos pos, Direction side) {
 		return side == Direction.UP ? state.getSignal(access, pos, side) : 0;
 	}
 
 	@Override
-	protected boolean hasNeighborSignal(Level world, BlockPos pos, BlockState state)
-	{
+	protected boolean hasNeighborSignal(Level world, BlockPos pos, BlockState state) {
 		return world.hasSignal(pos.above(), Direction.UP);
 	}
 
 	@Override
 	@OnlyIn(Dist.CLIENT)
-	public void animateTick(BlockState state, Level world, BlockPos pos, RandomSource rand)
-	{
-		if(state.getValue(LIT))
-		{
+	public void animateTick(BlockState state, Level world, BlockPos pos, RandomSource rand) {
+		if (state.getValue(LIT)) {
 			double x = pos.getX() + 0.5D + (rand.nextDouble() - 0.5D) * 0.2D;
 			double y = pos.getY() + 0.7D + (rand.nextDouble() - 0.5D) * 0.2D;
 			double z = pos.getZ() + 0.5D + (rand.nextDouble() - 0.5D) * 0.2D;
@@ -83,8 +73,7 @@ public class RedstoneCeilingTorchBlock extends RedstoneTorchBlock
 	}
 
 	@Override
-	public ItemStack getCloneItemStack(BlockState state, HitResult target, BlockGetter world, BlockPos pos, Player player)
-	{
+	public ItemStack getCloneItemStack(BlockState state, HitResult target, BlockGetter world, BlockPos pos, Player player) {
 		return new ItemStack(originalBlock.get());
 	}
 }

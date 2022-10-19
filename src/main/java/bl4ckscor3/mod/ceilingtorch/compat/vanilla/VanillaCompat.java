@@ -16,8 +16,8 @@ import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.material.Material;
 import net.minecraftforge.registries.RegistryObject;
 
-public class VanillaCompat implements ICeilingTorchCompat
-{
+public class VanillaCompat implements ICeilingTorchCompat {
+	//@formatter:off
 	public static final RegistryObject<Block> CEILING_TORCH = CeilingTorch.BLOCKS.register("torch", () -> new CeilingTorchBlock(Block.Properties.of(Material.DECORATION)
 			.noCollission()
 			.strength(0.0F)
@@ -35,16 +35,17 @@ public class VanillaCompat implements ICeilingTorchCompat
 			.lightLevel(state -> 10)
 			.sound(SoundType.WOOD),
 			ParticleTypes.SOUL_FIRE_FLAME, () -> Blocks.SOUL_TORCH));
-	private Map<ResourceLocation,Block> placeEntries;
+	//@formatter:on
+	private Map<ResourceLocation, Block> placeEntries;
 
 	@Override
-	public Map<ResourceLocation,Block> getPlaceEntries()
-	{
-		if(placeEntries == null)
-		{
+	public Map<ResourceLocation, Block> getPlaceEntries() {
+		if (placeEntries == null) {
+			//@formatter:off
 			placeEntries = ImmutableMap.of(getRegistryName(Items.TORCH), CEILING_TORCH.get(),
 					getRegistryName(Items.REDSTONE_TORCH), CEILING_REDSTONE_TORCH.get(),
 					getRegistryName(Items.SOUL_TORCH), CEILING_SOUL_TORCH.get());
+			//@formatter:on
 		}
 
 		return placeEntries;
