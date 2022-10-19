@@ -18,16 +18,15 @@ import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.registries.ObjectHolder;
 
 @ObjectHolder(CeilingTorch.MODID)
-public class VanillaCompat implements ICeilingTorchCompat
-{
+public class VanillaCompat implements ICeilingTorchCompat {
 	public static final Block TORCH = null;
 	public static final Block REDSTONE_TORCH = null;
 	public static final Block SOUL_TORCH = null;
-	private Map<ResourceLocation,Block> placeEntries;
+	private Map<ResourceLocation, Block> placeEntries;
 
 	@Override
-	public void registerBlocks(RegistryEvent.Register<Block> event)
-	{
+	public void registerBlocks(RegistryEvent.Register<Block> event) {
+		//@formatter:off
 		event.getRegistry().register(new CeilingTorchBlock(Block.Properties.of(Material.DECORATION)
 				.noCollission()
 				.strength(0.0F)
@@ -45,16 +44,17 @@ public class VanillaCompat implements ICeilingTorchCompat
 				.lightLevel(state -> 10)
 				.sound(SoundType.WOOD),
 				ParticleTypes.SOUL_FIRE_FLAME, () -> Blocks.SOUL_TORCH).setRegistryName(new ResourceLocation(CeilingTorch.MODID, "soul_torch")));
+		//@formatter:on
 	}
 
 	@Override
-	public Map<ResourceLocation,Block> getPlaceEntries()
-	{
-		if(placeEntries == null)
-		{
+	public Map<ResourceLocation, Block> getPlaceEntries() {
+		if (placeEntries == null) {
+			//@formatter:off
 			placeEntries = ImmutableMap.of(Items.TORCH.getRegistryName(), TORCH,
 					Items.REDSTONE_TORCH.getRegistryName(), REDSTONE_TORCH,
 					Items.SOUL_TORCH.getRegistryName(), SOUL_TORCH);
+			//@formatter:on
 		}
 
 		return placeEntries;

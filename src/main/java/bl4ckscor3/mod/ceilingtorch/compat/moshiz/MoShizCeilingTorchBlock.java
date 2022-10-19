@@ -19,24 +19,19 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
 
-public class MoShizCeilingTorchBlock extends CeilingTorchBlock
-{
-	public MoShizCeilingTorchBlock(Properties properties, Supplier<Block> originalBlock)
-	{
+public class MoShizCeilingTorchBlock extends CeilingTorchBlock {
+	public MoShizCeilingTorchBlock(Properties properties, Supplier<Block> originalBlock) {
 		super(properties, null, originalBlock);
 	}
 
 	@Override
-	public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult rayTraceResult)
-	{
+	public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult rayTraceResult) {
 		ItemStack heldItem = player.getItemInHand(hand);
 
-		if(heldItem.getItem() instanceof DyeItem dye)
-		{
+		if (heldItem.getItem() instanceof DyeItem dye) {
 			Block torchForDye = MoShizCompat.coloredCeilingTorches.get(dye);
 
-			if(state.getBlock() != torchForDye)
-			{
+			if (state.getBlock() != torchForDye) {
 				MoShizTorch.dyeBlock(player, heldItem, level, pos, torchForDye);
 				return InteractionResult.SUCCESS;
 			}
@@ -46,8 +41,7 @@ public class MoShizCeilingTorchBlock extends CeilingTorchBlock
 	}
 
 	@Override
-	public void animateTick(BlockState state, Level level, BlockPos pos, Random rand)
-	{
+	public void animateTick(BlockState state, Level level, BlockPos pos, Random rand) {
 		double x = pos.getX() + 0.5D;
 		double y = pos.getY() + 0.45D;
 		double z = pos.getZ() + 0.5D;

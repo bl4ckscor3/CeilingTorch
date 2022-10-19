@@ -13,26 +13,25 @@ import net.minecraft.world.level.material.Material;
 import net.minecraftforge.event.RegistryEvent;
 import pokecube.legends.init.BlockInit;
 
-public class PokecubeAIOCompat implements ICeilingTorchCompat
-{
+public class PokecubeAIOCompat implements ICeilingTorchCompat {
 	public static Block infectedCeilingTorch;
-	private Map<ResourceLocation,Block> placeEntries;
+	private Map<ResourceLocation, Block> placeEntries;
 
 	@Override
-	public void registerBlocks(RegistryEvent.Register<Block> event)
-	{
+	public void registerBlocks(RegistryEvent.Register<Block> event) {
+		//@formatter:off
 		event.getRegistry().register(infectedCeilingTorch = new InfectedCeilingTorchBlock(Block.Properties.of(Material.DECORATION)
 				.noCollission()
 				.instabreak()
 				.lightLevel(state -> 10)
 				.sound(SoundType.WOOD))
 				.setRegistryName(new ResourceLocation(CeilingTorch.MODID, "pokecube_legends_infected_torch")));
+		//@formatter:on
 	}
 
 	@Override
-	public Map<ResourceLocation,Block> getPlaceEntries()
-	{
-		if(placeEntries == null)
+	public Map<ResourceLocation, Block> getPlaceEntries() {
+		if (placeEntries == null)
 			placeEntries = ImmutableMap.of(BlockInit.INFECTED_TORCH.get().getRegistryName(), infectedCeilingTorch);
 
 		return placeEntries;

@@ -20,10 +20,8 @@ import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
 
-public class CeilingEtherTorchBlock extends CeilingTorchBlock implements SimpleWaterloggedBlock, EntityBlock
-{
-	public CeilingEtherTorchBlock(Properties properties, Supplier<Block> originalBlock)
-	{
+public class CeilingEtherTorchBlock extends CeilingTorchBlock implements SimpleWaterloggedBlock, EntityBlock {
+	public CeilingEtherTorchBlock(Properties properties, Supplier<Block> originalBlock) {
 		super(properties, null, originalBlock);
 
 		registerDefaultState(defaultBlockState().setValue(BlockStateProperties.WATERLOGGED, false));
@@ -33,35 +31,30 @@ public class CeilingEtherTorchBlock extends CeilingTorchBlock implements SimpleW
 	public void animateTick(BlockState state, Level level, BlockPos pos, Random rand) {}
 
 	@Override
-	public BlockState updateShape(BlockState state, Direction facing, BlockState facingState, LevelAccessor level, BlockPos currentPos, BlockPos facingPos)
-	{
-		if(state.getValue(BlockStateProperties.WATERLOGGED))
+	public BlockState updateShape(BlockState state, Direction facing, BlockState facingState, LevelAccessor level, BlockPos currentPos, BlockPos facingPos) {
+		if (state.getValue(BlockStateProperties.WATERLOGGED))
 			level.scheduleTick(currentPos, Fluids.WATER, Fluids.WATER.getTickDelay(level));
 
 		return super.updateShape(state, facing, facingState, level, currentPos, facingPos);
 	}
 
 	@Override
-	public FluidState getFluidState(BlockState state)
-	{
+	public FluidState getFluidState(BlockState state) {
 		return state.getValue(BlockStateProperties.WATERLOGGED) ? Fluids.WATER.getSource(false) : super.getFluidState(state);
 	}
 
 	@Override
-	public void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder)
-	{
+	public void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
 		builder.add(BlockStateProperties.WATERLOGGED);
 	}
 
 	@Override
-	public BlockEntity newBlockEntity(BlockPos pos, BlockState state)
-	{
+	public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
 		return new CeilingEtherTorchBlockEntity(pos, state);
 	}
 
 	@Override
-	public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState state, BlockEntityType<T> type)
-	{
-		return level.isClientSide ? (l, p, s, be) -> ((CeilingEtherTorchBlockEntity)be).tick() : null;
+	public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState state, BlockEntityType<T> type) {
+		return level.isClientSide ? (l, p, s, be) -> ((CeilingEtherTorchBlockEntity) be).tick() : null;
 	}
 }

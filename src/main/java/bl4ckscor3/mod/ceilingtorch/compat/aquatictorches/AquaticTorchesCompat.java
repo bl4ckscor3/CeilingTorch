@@ -20,34 +20,32 @@ import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent.RightClickBlock;
 import realmayus.aquatictorches.AquaticTorches;
 
-public class AquaticTorchesCompat implements ICeilingTorchCompat
-{
+public class AquaticTorchesCompat implements ICeilingTorchCompat {
 	public static Block aquaticCeilingTorch;
-	private Map<ResourceLocation,Block> placeEntries;
+	private Map<ResourceLocation, Block> placeEntries;
 
 	@Override
-	public void registerBlocks(RegistryEvent.Register<Block> event)
-	{
+	public void registerBlocks(RegistryEvent.Register<Block> event) {
+		//@formatter:off
 		event.getRegistry().register(aquaticCeilingTorch = new AquaticCeilingTorchBlock(Block.Properties.of(Material.DECORATION)
 				.noCollission()
 				.instabreak()
 				.lightLevel(state -> 15)
 				.sound(SoundType.WOOD),
 				ParticleTypes.GLOW_SQUID_INK, () -> AquaticTorches.AQUATIC_TORCH).setRegistryName("aquatictorches_aquatic_torch"));
+		//@formatter:on
 	}
 
 	@Override
-	public Map<ResourceLocation,Block> getPlaceEntries()
-	{
-		if(placeEntries == null)
+	public Map<ResourceLocation, Block> getPlaceEntries() {
+		if (placeEntries == null)
 			placeEntries = ImmutableMap.of(AquaticTorches.AQUATIC_TORCH.getRegistryName(), aquaticCeilingTorch);
 
 		return placeEntries;
 	}
 
 	@Override
-	public BlockState getStateToPlace(RightClickBlock event, Level level, BlockPos pos, BlockState state, ItemStack stack)
-	{
+	public BlockState getStateToPlace(RightClickBlock event, Level level, BlockPos pos, BlockState state, ItemStack stack) {
 		FluidState fluidState = level.getFluidState(pos);
 		boolean isFlowing = fluidState.getType() == Fluids.FLOWING_WATER;
 		boolean isWater = fluidState.getType() == Fluids.WATER || isFlowing;

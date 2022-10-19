@@ -16,14 +16,12 @@ import yamahari.ilikewood.registry.objecttype.WoodenBlockType;
 import yamahari.ilikewood.registry.woodtype.IWoodType;
 import yamahari.ilikewood.util.Util;
 
-public class ILikeWoodCompat implements ICeilingTorchCompat
-{
+public class ILikeWoodCompat implements ICeilingTorchCompat {
 	public static List<WoodenCeilingTorchBlock> ceilingTorchList = new ArrayList<>();
-	private Map<ResourceLocation,Block> placeEntries;
+	private Map<ResourceLocation, Block> placeEntries;
 
 	@Override
-	public void registerBlocks(RegistryEvent.Register<Block> event)
-	{
+	public void registerBlocks(RegistryEvent.Register<Block> event) {
 		ceilingTorchList.add(new WoodenCeilingTorchBlock(VanillaWoodTypes.OAK, WoodenBlockType.TORCH));
 		ceilingTorchList.add(new WoodenCeilingTorchBlock(VanillaWoodTypes.SPRUCE, WoodenBlockType.TORCH));
 		ceilingTorchList.add(new WoodenCeilingTorchBlock(VanillaWoodTypes.BIRCH, WoodenBlockType.TORCH));
@@ -44,11 +42,9 @@ public class ILikeWoodCompat implements ICeilingTorchCompat
 	}
 
 	@Override
-	public Map<ResourceLocation,Block> getPlaceEntries()
-	{
-		if(placeEntries == null)
-		{
-			Builder<ResourceLocation, Block> builder = ImmutableMap.<ResourceLocation,Block>builder();
+	public Map<ResourceLocation, Block> getPlaceEntries() {
+		if (placeEntries == null) {
+			Builder<ResourceLocation, Block> builder = ImmutableMap.<ResourceLocation, Block> builder();
 
 			ceilingTorchList.forEach(torch -> builder.put(registryNameOf(torch.woodType, torch.blockType), torch));
 			placeEntries = builder.build();
@@ -57,8 +53,7 @@ public class ILikeWoodCompat implements ICeilingTorchCompat
 		return placeEntries;
 	}
 
-	private ResourceLocation registryNameOf(IWoodType woodType, WoodenBlockType blockType)
-	{
+	private ResourceLocation registryNameOf(IWoodType woodType, WoodenBlockType blockType) {
 		return new ResourceLocation("ilikewood", Util.toRegistryName(woodType.getName(), blockType.getName()));
 	}
 }

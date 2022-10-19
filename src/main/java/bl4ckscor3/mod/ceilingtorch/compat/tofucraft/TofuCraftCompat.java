@@ -15,17 +15,16 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraftforge.event.RegistryEvent.Register;
 
-public class TofuCraftCompat implements ICeilingTorchCompat
-{
+public class TofuCraftCompat implements ICeilingTorchCompat {
 	public static Block tofuCeilingTorchMomen;
 	public static Block tofuCeilingTorchIshi;
 	public static Block tofuCeilingTorchMetal;
 	public static Block tofuCeilingTorchKinu;
-	private Map<ResourceLocation,Block> placeEntries;
+	private Map<ResourceLocation, Block> placeEntries;
 
 	@Override
-	public void registerBlocks(Register<Block> event)
-	{
+	public void registerBlocks(Register<Block> event) {
+		//@formatter:off
 		event.getRegistry().register(tofuCeilingTorchMomen = new CeilingTorchBlock(Block.Properties.of(TofuMaterial.TOFU)
 				.strength(0.0F, 0.5F)
 				.lightLevel(state -> 14)
@@ -54,17 +53,18 @@ public class TofuCraftCompat implements ICeilingTorchCompat
 				.noOcclusion()
 				.sound(SoundType.SNOW),
 				ParticleTypes.FLAME, TofuBlocks.TOFUTORCH_KINU).setRegistryName(new ResourceLocation(CeilingTorch.MODID, "tofucraft_tofutorch_kinu")));
+		//@formatter:on
 	}
 
 	@Override
-	public Map<ResourceLocation,Block> getPlaceEntries()
-	{
-		if(placeEntries == null)
-		{
+	public Map<ResourceLocation, Block> getPlaceEntries() {
+		if (placeEntries == null) {
+			//@formatter:off
 			placeEntries = ImmutableMap.of(TofuBlocks.TOFUTORCH_MOMEN.get().getRegistryName(), tofuCeilingTorchMomen,
 					TofuBlocks.TOFUTORCH_ISHI.get().getRegistryName(), tofuCeilingTorchIshi,
 					TofuBlocks.TOFUTORCH_METAL.get().getRegistryName(), tofuCeilingTorchMetal,
 					TofuBlocks.TOFUTORCH_KINU.get().getRegistryName(), tofuCeilingTorchKinu);
+			//@formatter:on
 		}
 
 		return placeEntries;

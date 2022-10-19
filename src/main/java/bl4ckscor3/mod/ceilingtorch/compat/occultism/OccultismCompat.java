@@ -19,14 +19,13 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.Material;
 import net.minecraftforge.event.RegistryEvent.Register;
 
-public class OccultismCompat implements ICeilingTorchCompat
-{
+public class OccultismCompat implements ICeilingTorchCompat {
 	private static Block ceilingSpiritTorch;
-	private Map<ResourceLocation,Block> placeEntries;
+	private Map<ResourceLocation, Block> placeEntries;
 
 	@Override
-	public void registerBlocks(Register<Block> event)
-	{
+	public void registerBlocks(Register<Block> event) {
+		//@formatter:off
 		event.getRegistry().register(ceilingSpiritTorch = new CeilingTorchBlock(Block.Properties.of(Material.DECORATION)
 				.noCollission()
 				.instabreak()
@@ -44,12 +43,12 @@ public class OccultismCompat implements ICeilingTorchCompat
 				level.addParticle(OccultismParticles.SPIRIT_FIRE_FLAME.get(), x, y, z, 0.0D, 0.0D, 0.0D);
 			}
 		}.setRegistryName("occultism_spirit_torch"));
+		//@formatter:on
 	}
 
 	@Override
-	public Map<ResourceLocation,Block> getPlaceEntries()
-	{
-		if(placeEntries == null)
+	public Map<ResourceLocation, Block> getPlaceEntries() {
+		if (placeEntries == null)
 			placeEntries = ImmutableMap.of(OccultismBlocks.SPIRIT_TORCH.get().getRegistryName(), ceilingSpiritTorch);
 
 		return placeEntries;

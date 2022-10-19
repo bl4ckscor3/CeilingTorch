@@ -28,19 +28,18 @@ import net.minecraft.world.level.material.Material;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent.RightClickBlock;
 
-public class MagicalTorchesCompat implements ICeilingTorchCompat
-{
+public class MagicalTorchesCompat implements ICeilingTorchCompat {
 	public static Block smallCeilingTorch;
 	public static Block mediumCeilingTorch;
 	public static Block grandCeilingTorch;
 	public static Block megaCeilingTorch;
 	public static Block soundMufflingCeilingTorch;
 	public static Block chickenEggCeilingTorch;
-	private Map<ResourceLocation,Block> placeEntries;
+	private Map<ResourceLocation, Block> placeEntries;
 
 	@Override
-	public void registerBlocks(RegistryEvent.Register<Block> event)
-	{
+	public void registerBlocks(RegistryEvent.Register<Block> event) {
+		//@formatter:off
 		event.getRegistry().register(smallCeilingTorch = new SpawnBlockingCeilingTorchBlock(getProperties(), SmallTorch.registry_name, SmallTorchSpawnBlocker::new, () -> ModBlocks.SMALL_TORCH)
 				.setRegistryName(new ResourceLocation(CeilingTorch.MODID, "magical_torches_small_torch")));
 		event.getRegistry().register(mediumCeilingTorch = new SpawnBlockingCeilingTorchBlock(getProperties(), MediumTorch.registry_name, MediumTorchSpawnBlocker::new, () -> ModBlocks.MEDIUM_TORCH)
@@ -56,13 +55,13 @@ public class MagicalTorchesCompat implements ICeilingTorchCompat
 				.setRegistryName(new ResourceLocation(CeilingTorch.MODID, "magical_torches_sound_muffling_torch")));
 		event.getRegistry().register(chickenEggCeilingTorch = new ChickenEggCeilingTorchBlock(getProperties())
 				.setRegistryName(new ResourceLocation(CeilingTorch.MODID, "magical_torches_chicken_egg_torch")));
+		//@formatter:on
 	}
 
 	@Override
-	public Map<ResourceLocation,Block> getPlaceEntries()
-	{
-		if(placeEntries == null)
-		{
+	public Map<ResourceLocation, Block> getPlaceEntries() {
+		if (placeEntries == null) {
+			//@formatter:off
 			placeEntries = ImmutableMap.<ResourceLocation,Block>builder()
 					.put(ModBlocks.SMALL_TORCH.getRegistryName(), smallCeilingTorch)
 					.put(ModBlocks.MEDIUM_TORCH.getRegistryName(), mediumCeilingTorch)
@@ -70,22 +69,21 @@ public class MagicalTorchesCompat implements ICeilingTorchCompat
 					.put(ModBlocks.MEGA_TORCH.getRegistryName(), megaCeilingTorch)
 					.put(ModBlocks.SOUND_MUFFLING_TORCH.getRegistryName(), soundMufflingCeilingTorch)
 					.put(ModBlocks.CHICKEN_EGG_TORCH.getRegistryName(), chickenEggCeilingTorch).build();
+			//@formatter:on
 		}
 
 		return placeEntries;
 	}
 
 	@Override
-	public BlockState getStateToPlace(RightClickBlock event, Level level, BlockPos pos, BlockState state, ItemStack stack)
-	{
-		if(state.getBlock() instanceof SpawnBlockingCeilingTorchBlock)
+	public BlockState getStateToPlace(RightClickBlock event, Level level, BlockPos pos, BlockState state, ItemStack stack) {
+		if (state.getBlock() instanceof SpawnBlockingCeilingTorchBlock)
 			return state.setValue(BlockStateProperties.WATERLOGGED, level.getFluidState(pos).getType() == Fluids.WATER);
 
 		return state;
 	}
 
-	private Block.Properties getProperties()
-	{
+	private Block.Properties getProperties() {
 		return Block.Properties.of(Material.WOOD).strength(3.0F).sound(SoundType.WOOD).noCollission().lightLevel(state -> 15);
 	}
 }

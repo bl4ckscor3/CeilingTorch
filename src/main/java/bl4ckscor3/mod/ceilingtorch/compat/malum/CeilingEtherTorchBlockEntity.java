@@ -15,17 +15,14 @@ import team.lodestar.lodestone.systems.easing.Easing;
 import team.lodestar.lodestone.systems.rendering.particle.ParticleBuilders;
 import team.lodestar.lodestone.systems.rendering.particle.SimpleParticleOptions.SpecialRemovalProtocol;
 
-public class CeilingEtherTorchBlockEntity extends EtherBlockEntity
-{
-	public CeilingEtherTorchBlockEntity(BlockPos pos, BlockState state)
-	{
+public class CeilingEtherTorchBlockEntity extends EtherBlockEntity {
+	public CeilingEtherTorchBlockEntity(BlockPos pos, BlockState state) {
 		super(pos, state);
 	}
 
 	@Override
-	public void tick()
-	{
-		if(firstColor == null)
+	public void tick() {
+		if (firstColor == null)
 			return;
 
 		Color firstColor = ColorHelper.darker(this.firstColor, 1);
@@ -37,6 +34,7 @@ public class CeilingEtherTorchBlockEntity extends EtherBlockEntity
 		float scale = 0.17F + level.random.nextFloat() * 0.03F;
 		float velocity = 0.04F + level.random.nextFloat() * 0.02F;
 
+		//@formatter:off
 		ParticleBuilders.create(LodestoneParticleRegistry.WISP_PARTICLE)
 		.setScale(scale, 0.0F)
 		.setAlpha(0.75F, 0.25F)
@@ -61,13 +59,13 @@ public class CeilingEtherTorchBlockEntity extends EtherBlockEntity
 		.setSpinEasing(Easing.QUARTIC_IN)
 		.enableNoClip()
 		.spawn(level, x, y, z);
+		//@formatter:on
 
-		if(level.getGameTime() % 2L == 0L)
-		{
+		if (level.getGameTime() % 2L == 0L) {
 			y += 0.15000000596046448;
 
-			if(level.random.nextFloat() < 0.5F)
-			{
+			if (level.random.nextFloat() < 0.5F) {
+				//@formatter:off
 				ParticleBuilders.create(ParticleRegistry.SPIRIT_FLAME_PARTICLE)
 				.setScale(0.5F, 0.75F, 0.0F)
 				.setColor(firstColor, secondColor)
@@ -86,8 +84,8 @@ public class CeilingEtherTorchBlockEntity extends EtherBlockEntity
 				//@formatter:on
 			}
 
-			if(level.random.nextFloat() < 0.25F)
-			{
+			if (level.random.nextFloat() < 0.25F) {
+				//@formatter:off
 				ParticleBuilders.create(ParticleRegistry.SPIRIT_FLAME_PARTICLE)
 				.setScale(0.3F, 0.5F, 0.0F)
 				.setColor(firstColor, secondColor)
@@ -109,11 +107,9 @@ public class CeilingEtherTorchBlockEntity extends EtherBlockEntity
 	}
 
 	@Override
-	public void load(CompoundTag tag)
-	{
-		if(getBlockState().getBlock() == MalumCompat.iridescentEtherCeilingTorch)
-		{
-			if(tag.contains("secondColor"))
+	public void load(CompoundTag tag) {
+		if (getBlockState().getBlock() == MalumCompat.iridescentEtherCeilingTorch) {
+			if (tag.contains("secondColor"))
 				setSecondColor(tag.getInt("secondColor"));
 			else
 				setSecondColor(4607909);
@@ -123,17 +119,15 @@ public class CeilingEtherTorchBlockEntity extends EtherBlockEntity
 	}
 
 	@Override
-	protected void saveAdditional(CompoundTag tag)
-	{
-		if(getBlockState().getBlock() == MalumCompat.iridescentEtherCeilingTorch && secondColor != null && secondColorRGB != 4607909)
+	protected void saveAdditional(CompoundTag tag) {
+		if (getBlockState().getBlock() == MalumCompat.iridescentEtherCeilingTorch && secondColor != null && secondColorRGB != 4607909)
 			tag.putInt("secondColor", secondColorRGB);
 
 		super.saveAdditional(tag);
 	}
 
 	@Override
-	public BlockEntityType<?> getType()
-	{
+	public BlockEntityType<?> getType() {
 		return MalumCompat.ETHER_CEILING_TORCH.get();
 	}
 }

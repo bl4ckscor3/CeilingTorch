@@ -28,23 +28,21 @@ import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 
-public class MoShizCompat implements ICeilingTorchCompat
-{
+public class MoShizCompat implements ICeilingTorchCompat {
 	public static Block fouliteCeilingTorch;
-	//dye,torch
-	public static Map<Item,Block> coloredCeilingTorches = new HashMap<>();
-	public static Map<Block,Integer> ceilingTorchParticleColors = new HashMap<>();
-	private Map<ResourceLocation,Block> placeEntries;
+	//dye, torch
+	public static Map<Item, Block> coloredCeilingTorches = new HashMap<>();
+	public static Map<Block, Integer> ceilingTorchParticleColors = new HashMap<>();
+	private Map<ResourceLocation, Block> placeEntries;
 
-	public MoShizCompat()
-	{
+	public MoShizCompat() {
 		FMLJavaModLoadingContext.get().getModEventBus().addGenericListener(ParticleType.class, CeilingParticleTypes::onRegisterParticleTypes);
 		DistExecutor.safeRunWhenOn(Dist.CLIENT, () -> MoShizCompatClient::addListeners);
 	}
 
 	@Override
-	public void registerBlocks(RegistryEvent.Register<Block> event)
-	{
+	public void registerBlocks(RegistryEvent.Register<Block> event) {
+		//@formatter:off
 		event.getRegistry().register(fouliteCeilingTorch = new CeilingTorchBlock(Block.Properties.copy(Blocks.TORCH), null, DeferredBlocks.FOULITE_TORCH) {
 			@Override
 			@OnlyIn(Dist.CLIENT)
@@ -58,6 +56,7 @@ public class MoShizCompat implements ICeilingTorchCompat
 				level.addParticle(MoShizParticles.GREEN_FLAME.get(), x, y, z, 0.0D, 0.0D, 0.0D);
 			}
 		}.setRegistryName("moshiz_foulite_torch"));
+		//@formatter:on
 		addColoredCeilingTorch(0x1D1D21, Items.BLACK_DYE, new MoShizCeilingTorchBlock(Block.Properties.copy(Blocks.TORCH), DeferredBlocks.BLACK_TORCH).setRegistryName("moshiz_black_torch"));
 		addColoredCeilingTorch(ColorDye.red, Items.RED_DYE, new MoShizCeilingTorchBlock(Block.Properties.copy(Blocks.TORCH), DeferredBlocks.RED_TORCH).setRegistryName("moshiz_red_torch"));
 		addColoredCeilingTorch(ColorDye.green, Items.GREEN_DYE, new MoShizCeilingTorchBlock(Block.Properties.copy(Blocks.TORCH), DeferredBlocks.GREEN_TORCH).setRegistryName("moshiz_green_torch"));
@@ -78,22 +77,19 @@ public class MoShizCompat implements ICeilingTorchCompat
 	}
 
 	@Override
-	public Map<ResourceLocation,Block> getPlaceEntries()
-	{
-		if(placeEntries == null)
-		{
-			Builder<ResourceLocation, Block> builder = ImmutableMap.<ResourceLocation,Block>builder();
+	public Map<ResourceLocation, Block> getPlaceEntries() {
+		if (placeEntries == null) {
+			Builder<ResourceLocation, Block> builder = ImmutableMap.<ResourceLocation, Block> builder();
 
 			builder.put(DeferredBlocks.FOULITE_TORCH.get().getRegistryName(), fouliteCeilingTorch);
-			coloredCeilingTorches.forEach((dye, torch) -> builder.put(((CeilingTorchBlock)torch).getOriginalBlock().getRegistryName(), torch));
+			coloredCeilingTorches.forEach((dye, torch) -> builder.put(((CeilingTorchBlock) torch).getOriginalBlock().getRegistryName(), torch));
 			placeEntries = builder.build();
 		}
 
 		return placeEntries;
 	}
 
-	private void addColoredCeilingTorch(int particleColor, Item dye, Block torch)
-	{
+	private void addColoredCeilingTorch(int particleColor, Item dye, Block torch) {
 		coloredCeilingTorches.put(dye, torch);
 		ceilingTorchParticleColors.put(torch, particleColor);
 	}

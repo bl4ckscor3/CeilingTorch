@@ -21,29 +21,24 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import reliquary.blocks.InterdictionTorchBlock;
 import reliquary.init.ModBlocks;
 
-public class InterdictionCeilingTorchBlock extends InterdictionTorchBlock
-{
+public class InterdictionCeilingTorchBlock extends InterdictionTorchBlock {
 	@Override
-	public VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context)
-	{
+	public VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
 		return CeilingTorchBlock.CEILING_SHAPE;
 	}
 
 	@Override
-	public BlockState updateShape(BlockState state, Direction facing, BlockState facingState, LevelAccessor level, BlockPos currentPos, BlockPos facingPos)
-	{
+	public BlockState updateShape(BlockState state, Direction facing, BlockState facingState, LevelAccessor level, BlockPos currentPos, BlockPos facingPos) {
 		return facing == Direction.UP && !canSurvive(state, level, currentPos) ? Blocks.AIR.defaultBlockState() : super.updateShape(state, facing, facingState, level, currentPos, facingPos);
 	}
 
 	@Override
-	public boolean canSurvive(BlockState state, LevelReader level, BlockPos pos)
-	{
+	public boolean canSurvive(BlockState state, LevelReader level, BlockPos pos) {
 		return canSupportCenter(level, pos.above(), Direction.DOWN);
 	}
 
 	@Override
-	public void animateTick(BlockState state, Level level, BlockPos pos, Random random)
-	{
+	public void animateTick(BlockState state, Level level, BlockPos pos, Random random) {
 		double x = pos.getX() + 0.5D;
 		double y = pos.getY() + 0.45D;
 		double z = pos.getZ() + 0.5D;
@@ -53,14 +48,12 @@ public class InterdictionCeilingTorchBlock extends InterdictionTorchBlock
 	}
 
 	@Override
-	public ItemStack getCloneItemStack(BlockState state, HitResult target, BlockGetter level, BlockPos pos, Player player)
-	{
+	public ItemStack getCloneItemStack(BlockState state, HitResult target, BlockGetter level, BlockPos pos, Player player) {
 		return new ItemStack(ModBlocks.INTERDICTION_TORCH.get());
 	}
 
 	@Override
-	public ResourceLocation getLootTable()
-	{
+	public ResourceLocation getLootTable() {
 		return ModBlocks.INTERDICTION_TORCH.get().getLootTable();
 	}
 }

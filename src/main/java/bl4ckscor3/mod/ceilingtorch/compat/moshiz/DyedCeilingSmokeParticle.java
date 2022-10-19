@@ -9,8 +9,7 @@ import net.minecraft.client.particle.TextureSheetParticle;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.SimpleParticleType;
 
-public class DyedCeilingSmokeParticle extends TextureSheetParticle
-{
+public class DyedCeilingSmokeParticle extends TextureSheetParticle {
 	private SpriteSet animatedSprite;
 
 	public DyedCeilingSmokeParticle(ClientLevel level, double xCoord, double yCoord, double zCoord, double xSpeed, double ySpeed, double zSpeed, float size, SpriteSet sprite) {
@@ -26,8 +25,8 @@ public class DyedCeilingSmokeParticle extends TextureSheetParticle
 		yd += ySpeed;
 		zd += zSpeed;
 		quadSize *= 0.75F * size;
-		lifetime = (int)(8.0D / (Math.random() * 0.8D + 0.2D));
-		lifetime *= (int)size;
+		lifetime = (int) (8.0D / (Math.random() * 0.8D + 0.2D));
+		lifetime *= (int) size;
 		lifetime = Math.max(lifetime, 1);
 		setSpriteFromAge(sprite);
 		rCol = ((color & 0xFF0000) >> 16) / 255.0F;
@@ -36,8 +35,7 @@ public class DyedCeilingSmokeParticle extends TextureSheetParticle
 	}
 
 	@Override
-	public ParticleRenderType getRenderType()
-	{
+	public ParticleRenderType getRenderType() {
 		return ParticleRenderType.PARTICLE_SHEET_OPAQUE;
 	}
 
@@ -47,16 +45,14 @@ public class DyedCeilingSmokeParticle extends TextureSheetParticle
 		yo = y;
 		zo = z;
 
-		if(age++ >= lifetime)
+		if (age++ >= lifetime)
 			remove();
-		else
-		{
+		else {
 			setSpriteFromAge(animatedSprite);
 			yd += 0.004D;
 			move(xd, yd, zd);
 
-			if(y == yo)
-			{
+			if (y == yo) {
 				xd *= 1.1D;
 				zd *= 1.1D;
 			}
@@ -65,26 +61,22 @@ public class DyedCeilingSmokeParticle extends TextureSheetParticle
 			yd *= 0.9599999785423279D;
 			zd *= 0.9599999785423279D;
 
-			if(onGround)
-			{
+			if (onGround) {
 				xd *= 0.699999988079071D;
 				zd *= 0.699999988079071D;
 			}
 		}
 	}
 
-	public static class Factory implements ParticleProvider<SimpleParticleType>
-	{
+	public static class Factory implements ParticleProvider<SimpleParticleType> {
 		private SpriteSet spriteSet;
 
-		public Factory(SpriteSet sprite)
-		{
+		public Factory(SpriteSet sprite) {
 			this.spriteSet = sprite;
 		}
 
 		@Override
-		public Particle createParticle(SimpleParticleType type, ClientLevel level, double x, double y, double z, double xSpeed, double ySpeed, double zSpeed)
-		{
+		public Particle createParticle(SimpleParticleType type, ClientLevel level, double x, double y, double z, double xSpeed, double ySpeed, double zSpeed) {
 			return new DyedCeilingSmokeParticle(level, x, y, z, xSpeed, ySpeed, zSpeed, 1.0F, this.spriteSet);
 		}
 	}

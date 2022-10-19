@@ -10,16 +10,13 @@ import net.minecraft.world.level.block.state.BlockState;
 import pokecube.legends.init.BlockInit;
 import pokecube.legends.init.ParticleInit;
 
-public class InfectedCeilingTorchBlock extends CeilingTorchBlock
-{
-	public InfectedCeilingTorchBlock(Properties properties)
-	{
+public class InfectedCeilingTorchBlock extends CeilingTorchBlock {
+	public InfectedCeilingTorchBlock(Properties properties) {
 		super(properties, ParticleTypes.DRAGON_BREATH, BlockInit.INFECTED_TORCH);
 	}
 
 	@Override
-	public void animateTick(BlockState state, Level level, BlockPos pos, Random rand)
-	{
+	public void animateTick(BlockState state, Level level, BlockPos pos, Random rand) {
 		double x = pos.getX() + 0.5D;
 		double y = pos.getY() + 0.3D;
 		double z = pos.getZ() + 0.5D;

@@ -20,14 +20,13 @@ import net.xalcon.torchmaster.common.ModBlocks;
 import net.xalcon.torchmaster.common.blocks.EntityBlockingLightBlock;
 import net.xalcon.torchmaster.common.logic.entityblocking.megatorch.MegatorchEntityBlockingLight;
 
-public class TorchmasterCompat implements ICeilingTorchCompat
-{
+public class TorchmasterCompat implements ICeilingTorchCompat {
 	public static Block megaCeilingTorch;
-	private Map<ResourceLocation,Block> placeEntries;
+	private Map<ResourceLocation, Block> placeEntries;
 
 	@Override
-	public void registerBlocks(RegistryEvent.Register<Block> event)
-	{
+	public void registerBlocks(RegistryEvent.Register<Block> event) {
+		//@formatter:off
 		event.getRegistry().register(megaCeilingTorch = new EntityBlockingLightBlock(Block.Properties.of(Material.WOOD)
 				.lootFrom(() -> ModBlocks.blockMegaTorch)
 				.strength(1.0F, 1.0F)
@@ -40,13 +39,12 @@ public class TorchmasterCompat implements ICeilingTorchCompat
 				return new ItemStack(ModBlocks.blockMegaTorch);
 			}
 		}.setRegistryName(new ResourceLocation(CeilingTorch.MODID, "torchmaster_megatorch")));
+		//@formatter:on
 	}
 
-
 	@Override
-	public Map<ResourceLocation,Block> getPlaceEntries()
-	{
-		if(placeEntries == null)
+	public Map<ResourceLocation, Block> getPlaceEntries() {
+		if (placeEntries == null)
 			placeEntries = ImmutableMap.of(ModBlocks.itemMegaTorch.getRegistryName(), megaCeilingTorch);
 
 		return placeEntries;
