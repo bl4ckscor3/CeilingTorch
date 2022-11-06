@@ -34,6 +34,7 @@ public class ILikeWoodCompat implements ICeilingTorchCompat {
 		toRegister.add(Pair.of(VanillaWoodTypes.DARK_OAK, WoodenBlockType.TORCH));
 		toRegister.add(Pair.of(VanillaWoodTypes.WARPED, WoodenBlockType.TORCH));
 		toRegister.add(Pair.of(VanillaWoodTypes.CRIMSON, WoodenBlockType.TORCH));
+		toRegister.add(Pair.of(VanillaWoodTypes.MANGROVE, WoodenBlockType.TORCH));
 		toRegister.add(Pair.of(VanillaWoodTypes.OAK, WoodenBlockType.SOUL_TORCH));
 		toRegister.add(Pair.of(VanillaWoodTypes.SPRUCE, WoodenBlockType.SOUL_TORCH));
 		toRegister.add(Pair.of(VanillaWoodTypes.BIRCH, WoodenBlockType.SOUL_TORCH));
@@ -42,6 +43,7 @@ public class ILikeWoodCompat implements ICeilingTorchCompat {
 		toRegister.add(Pair.of(VanillaWoodTypes.DARK_OAK, WoodenBlockType.SOUL_TORCH));
 		toRegister.add(Pair.of(VanillaWoodTypes.WARPED, WoodenBlockType.SOUL_TORCH));
 		toRegister.add(Pair.of(VanillaWoodTypes.CRIMSON, WoodenBlockType.SOUL_TORCH));
+		toRegister.add(Pair.of(VanillaWoodTypes.MANGROVE, WoodenBlockType.SOUL_TORCH));
 		//@formatter:off
 		toRegister.stream()
 		.map(pair -> CeilingTorch.BLOCKS.register("ilikewood_" + pair.getLeft().getName() + "_" + pair.getRight().getName(), () -> new WoodenCeilingTorchBlock(pair.getLeft(), pair.getRight())))

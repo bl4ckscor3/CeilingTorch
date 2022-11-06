@@ -82,7 +82,7 @@ dependencies {
     implementation fg.deobf("curse.maven:farmers-delight-398521:3916069") //nether's delight dependency
     implementation fg.deobf("curse.maven:geckolib-388172:3989827") //occultism dependency
     implementation fg.deobf("curse.maven:hardcore-torches-forge-576846:3936359")
-    implementation fg.deobf("curse.maven:i-like-wood-324164:3948090")
+    implementation fg.deobf("curse.maven:i-like-wood-324164:4068507")
     implementation fg.deobf("curse.maven:infernal-expansion-395078:3910069")
     implementation fg.deobf("curse.maven:integrated-dynamics-236307:3957305")
     implementation fg.deobf("curse.maven:kotlin-for-forge-351264:3925887") //adorn dependency
