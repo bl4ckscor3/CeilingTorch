@@ -13,7 +13,7 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.material.Material;
 import net.minecraftforge.registries.RegistryObject;
-import net.silentchaos512.gear.init.ModBlocks;
+import net.silentchaos512.gear.init.SgBlocks;
 
 public class SilentGearCompat implements ICeilingTorchCompat {
 	//@formatter:off
@@ -22,14 +22,14 @@ public class SilentGearCompat implements ICeilingTorchCompat {
 			.strength(0.0F)
 			.lightLevel(state -> 14)
 			.sound(SoundType.STONE),
-			ParticleTypes.FLAME, () -> ModBlocks.STONE_TORCH.asBlock()));
+			ParticleTypes.FLAME, () -> SgBlocks.STONE_TORCH.asBlock()));
 	//@formatter:on
 	private Map<ResourceLocation, Block> placeEntries;
 
 	@Override
 	public Map<ResourceLocation, Block> getPlaceEntries() {
 		if (placeEntries == null)
-			placeEntries = ImmutableMap.of(getRegistryName(ModBlocks.STONE_TORCH.asItem()), STONE_CEILING_TORCH.get());
+			placeEntries = ImmutableMap.of(getRegistryName(SgBlocks.STONE_TORCH.asItem()), STONE_CEILING_TORCH.get());
 
 		return placeEntries;
 	}
