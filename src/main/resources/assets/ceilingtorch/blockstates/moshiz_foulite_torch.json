@@ -1,5 +1,5 @@
 {
     "variants": {
-        "": { "model": "ms:block/nether/foulite_torch", "x": 180 }
+        "": { "model": "ms:block/torch/foulite_torch", "x": 180 }
     }
 }

@@ -5,6 +5,7 @@ import java.util.Map;
 import java.util.Random;
 
 import com.ProfitOrange.MoShiz.init.DeferredBlocks;
+import com.ProfitOrange.MoShiz.init.DeferredItems;
 import com.ProfitOrange.MoShiz.init.MoShizParticles;
 import com.ProfitOrange.MoShiz.util.ColorDye;
 import com.google.common.collect.ImmutableMap;
@@ -79,9 +80,9 @@ public class MoShizCompat implements ICeilingTorchCompat {
 	@Override
 	public Map<ResourceLocation, Block> getPlaceEntries() {
 		if (placeEntries == null) {
-			Builder<ResourceLocation, Block> builder = ImmutableMap.<ResourceLocation, Block> builder();
+			Builder<ResourceLocation, Block> builder = ImmutableMap.<ResourceLocation, Block>builder();
 
-			builder.put(DeferredBlocks.FOULITE_TORCH.get().getRegistryName(), fouliteCeilingTorch);
+			builder.put(DeferredItems.FOULITE_TORCH.get().getRegistryName(), fouliteCeilingTorch);
 			coloredCeilingTorches.forEach((dye, torch) -> builder.put(((CeilingTorchBlock) torch).getOriginalBlock().getRegistryName(), torch));
 			placeEntries = builder.build();
 		}

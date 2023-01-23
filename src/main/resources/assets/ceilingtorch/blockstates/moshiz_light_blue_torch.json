@@ -1,7 +1,7 @@
 {
   "variants": {
     "": {
-      "model": "ms:block/torch/generic", "x": 180
+      "model": "ms:block/dyed_torch", "x": 180
     }
   }
 }

@@ -3,8 +3,8 @@ package bl4ckscor3.mod.ceilingtorch.compat.moshiz;
 import java.util.Random;
 import java.util.function.Supplier;
 
-import com.ProfitOrange.MoShiz.blocks.torch.MoShizTorch;
-import com.ProfitOrange.MoShiz.config.ServerConfig;
+import com.ProfitOrange.MoShiz.blocks.lighting.MoShizTorch;
+import com.ProfitOrange.MoShiz.config.client.ClientConfig;
 
 import bl4ckscor3.mod.ceilingtorch.compat.vanilla.CeilingTorchBlock;
 import net.minecraft.core.BlockPos;
@@ -46,7 +46,7 @@ public class MoShizCeilingTorchBlock extends CeilingTorchBlock {
 		double y = pos.getY() + 0.45D;
 		double z = pos.getZ() + 0.5D;
 
-		if (ServerConfig.dyedSmoke.get())
+		if (ClientConfig.DYED_SMOKE.get())
 			level.addParticle(CeilingParticleTypes.DYED_CEILING_SMOKE, x, y, z, 0.0D, 0.0D, 0.0D);
 		else
 			level.addParticle(ParticleTypes.SMOKE, x, y, z, 0.0D, 0.0D, 0.0D);
