@@ -14,6 +14,7 @@ import bl4ckscor3.mod.ceilingtorch.compat.chipped.ChippedCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.hardcoretorches.HardcoreTorchesCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.ilikewood.ILikeWoodCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.infernalexpansion.InfernalExpansionCompat;
+import bl4ckscor3.mod.ceilingtorch.compat.inspirations.InspirationsCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.integrateddynamics.IntegratedDynamicsCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.magicaltorches.MagicalTorchesCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.malum.MalumCompat;
@@ -81,6 +82,9 @@ public class CeilingTorch {
 
 		if (ModList.get().isLoaded("infernalexp"))
 			preliminaryCompatList.put("infernalexp", InfernalExpansionCompat::new);
+
+		if (ModList.get().isLoaded("inspirations"))
+			preliminaryCompatList.put("inspirations", InspirationsCompat::new);
 
 		if (ModList.get().isLoaded("integrateddynamics"))
 			preliminaryCompatList.put("integrateddynamics", IntegratedDynamicsCompat::new);
