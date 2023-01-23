@@ -21,6 +21,7 @@ import bl4ckscor3.mod.ceilingtorch.compat.occultism.OccultismCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.pokecubeaio.PokecubeAIOCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.projecte.ProjectECompat;
 import bl4ckscor3.mod.ceilingtorch.compat.reliquary.ReliquaryCompat;
+import bl4ckscor3.mod.ceilingtorch.compat.secretrooms.SecretRoomsCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.silentgear.SilentGearCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.tofucraft.TofuCraftCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.torchbandolier.TorchBandolierCompat;
@@ -111,6 +112,9 @@ public class CeilingTorch {
 
 		if (ModList.get().isLoaded("reliquary"))
 			preliminaryCompatList.put("reliquary", ReliquaryCompat::new);
+
+		if (ModList.get().isLoaded("secretroomsmod"))
+			preliminaryCompatList.put("secretroomsmod", SecretRoomsCompat::new);
 
 		if (ModList.get().isLoaded("silentgear"))
 			preliminaryCompatList.put("silentgear", SilentGearCompat::new);
