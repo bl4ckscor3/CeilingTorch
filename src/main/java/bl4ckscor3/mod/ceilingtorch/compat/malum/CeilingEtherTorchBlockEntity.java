@@ -3,7 +3,7 @@ package bl4ckscor3.mod.ceilingtorch.compat.malum;
 import java.awt.Color;
 
 import com.sammy.malum.common.blockentity.EtherBlockEntity;
-import com.sammy.malum.core.setup.client.ParticleRegistry;
+import com.sammy.malum.registry.client.ParticleRegistry;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;

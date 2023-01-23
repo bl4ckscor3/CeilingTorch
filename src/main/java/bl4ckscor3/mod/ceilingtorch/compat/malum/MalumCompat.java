@@ -4,7 +4,7 @@ import java.util.Map;
 
 import com.google.common.collect.ImmutableMap;
 import com.sammy.malum.common.item.ether.AbstractEtherItem;
-import com.sammy.malum.core.setup.content.block.BlockRegistry;
+import com.sammy.malum.registry.common.block.BlockRegistry;
 
 import bl4ckscor3.mod.ceilingtorch.CeilingTorch;
 import bl4ckscor3.mod.ceilingtorch.ICeilingTorchCompat;
