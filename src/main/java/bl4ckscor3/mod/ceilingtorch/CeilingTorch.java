@@ -15,6 +15,7 @@ import bl4ckscor3.mod.ceilingtorch.compat.ilikewood.ILikeWoodCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.infernalexpansion.InfernalExpansionCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.integrateddynamics.IntegratedDynamicsCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.magicaltorches.MagicalTorchesCompat;
+import bl4ckscor3.mod.ceilingtorch.compat.moshiz.MoShizCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.nethersdelight.NethersDelightCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.occultism.OccultismCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.pokecubeaio.PokecubeAIOCompat;
@@ -27,10 +28,12 @@ import bl4ckscor3.mod.ceilingtorch.compat.torchmaster.TorchmasterCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.undergarden.UndergardenCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.vanilla.VanillaCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.xycraftworld.XyCraftWorldCompat;
+import net.minecraft.core.particles.ParticleType;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntityType;
+import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.common.Mod;
@@ -49,11 +52,15 @@ public class CeilingTorch {
 	private static Map<String, Supplier<ICeilingTorchCompat>> preliminaryCompatList = new HashMap<>();
 	public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, MODID);
 	public static final DeferredRegister<BlockEntityType<?>> BLOCK_ENTITIES = DeferredRegister.create(ForgeRegistries.BLOCK_ENTITY_TYPES, MODID);
+	public static final DeferredRegister<ParticleType<?>> PARTICLE_TYPES = DeferredRegister.create(ForgeRegistries.PARTICLE_TYPES, MODID);
 	private static boolean initialized = false;
 
 	public CeilingTorch() {
-		BLOCKS.register(FMLJavaModLoadingContext.get().getModEventBus());
-		BLOCK_ENTITIES.register(FMLJavaModLoadingContext.get().getModEventBus());
+		IEventBus modBus = FMLJavaModLoadingContext.get().getModEventBus();
+
+		BLOCKS.register(modBus);
+		BLOCK_ENTITIES.register(modBus);
+		PARTICLE_TYPES.register(modBus);
 		preliminaryCompatList.put("minecraft", VanillaCompat::new);
 
 		//cannot use addCompat because then the compat class will be classloaded which may crash if the mod is not present
@@ -84,11 +91,14 @@ public class CeilingTorch {
 		if (ModList.get().isLoaded("integrateddynamics"))
 			preliminaryCompatList.put("integrateddynamics", IntegratedDynamicsCompat::new);
 
-		if (ModList.get().isLoaded("nethersdelight"))
-			preliminaryCompatList.put("nethersdelight", NethersDelightCompat::new);
-
 		if (ModList.get().isLoaded("magical_torches"))
 			preliminaryCompatList.put("magical_torches", MagicalTorchesCompat::new);
+
+		if (ModList.get().isLoaded("ms"))
+			preliminaryCompatList.put("ms", MoShizCompat::new);
+
+		if (ModList.get().isLoaded("nethersdelight"))
+			preliminaryCompatList.put("nethersdelight", NethersDelightCompat::new);
 
 		if (ModList.get().isLoaded("occultism"))
 			preliminaryCompatList.put("occultism", OccultismCompat::new);

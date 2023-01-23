@@ -85,7 +85,7 @@ dependencies {
     implementation fg.deobf("curse.maven:kotlin-for-forge-351264:4311661") //adorn dependency
     implementation fg.deobf("curse.maven:magical-torches-389917:4215450")
     //implementation fg.deobf("curse.maven:malum-484064:3768401")
-    //implementation fg.deobf("curse.maven:mo-shiz-mod-62536:3710568")
+    implementation fg.deobf("curse.maven:mo-shiz-mod-62536:4346479")
     implementation fg.deobf("curse.maven:modonomicon-538392:4285239") //occultism dependency
     implementation fg.deobf("curse.maven:nethers-delight-496394:3971576")
     //implementation fg.deobf("curse.maven:ortuslib-616457:3768197") //malum dependency
