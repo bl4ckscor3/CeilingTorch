@@ -24,7 +24,6 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
@@ -43,12 +42,9 @@ public class MoShizCompat implements ICeilingTorchCompat {
 
 	@Override
 	public void registerBlocks(RegistryEvent.Register<Block> event) {
-		//@formatter:off
 		event.getRegistry().register(fouliteCeilingTorch = new CeilingTorchBlock(Block.Properties.copy(Blocks.TORCH), null, DeferredBlocks.FOULITE_TORCH) {
 			@Override
-			@OnlyIn(Dist.CLIENT)
-			public void animateTick(BlockState state, Level level, BlockPos pos, Random rand)
-			{
+			public void animateTick(BlockState state, Level level, BlockPos pos, Random rand) {
 				double x = pos.getX() + 0.5D;
 				double y = pos.getY() + 0.45D;
 				double z = pos.getZ() + 0.5D;
@@ -57,7 +53,6 @@ public class MoShizCompat implements ICeilingTorchCompat {
 				level.addParticle(MoShizParticles.GREEN_FLAME.get(), x, y, z, 0.0D, 0.0D, 0.0D);
 			}
 		}.setRegistryName("moshiz_foulite_torch"));
-		//@formatter:on
 		addColoredCeilingTorch(0x1D1D21, Items.BLACK_DYE, new MoShizCeilingTorchBlock(Block.Properties.copy(Blocks.TORCH), DeferredBlocks.BLACK_TORCH).setRegistryName("moshiz_black_torch"));
 		addColoredCeilingTorch(ColorDye.red, Items.RED_DYE, new MoShizCeilingTorchBlock(Block.Properties.copy(Blocks.TORCH), DeferredBlocks.RED_TORCH).setRegistryName("moshiz_red_torch"));
 		addColoredCeilingTorch(ColorDye.green, Items.GREEN_DYE, new MoShizCeilingTorchBlock(Block.Properties.copy(Blocks.TORCH), DeferredBlocks.GREEN_TORCH).setRegistryName("moshiz_green_torch"));

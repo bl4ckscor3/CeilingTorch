@@ -107,14 +107,14 @@ public class CeilingTorch {
 		if (ModList.get().isLoaded("occultism"))
 			preliminaryCompatList.put("occultism", OccultismCompat::new);
 
-		if (ModList.get().isLoaded("secretroomsmod"))
-			preliminaryCompatList.put("secretroomsmod", SecretRoomsCompat::new);
-
 		if (ModList.get().isLoaded("projecte"))
 			preliminaryCompatList.put("projecte", ProjectECompat::new);
 
 		if (ModList.get().isLoaded("reliquary"))
 			preliminaryCompatList.put("reliquary", ReliquaryCompat::new);
+
+		if (ModList.get().isLoaded("secretroomsmod"))
+			preliminaryCompatList.put("secretroomsmod", SecretRoomsCompat::new);
 
 		if (ModList.get().isLoaded("silentgear"))
 			preliminaryCompatList.put("silentgear", SilentGearCompat::new);
