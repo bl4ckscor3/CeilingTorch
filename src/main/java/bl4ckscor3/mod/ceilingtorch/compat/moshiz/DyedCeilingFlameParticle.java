@@ -13,7 +13,7 @@ public class DyedCeilingFlameParticle extends TextureSheetParticle {
 	private DyedCeilingFlameParticle(ClientLevel level, double xCoord, double yCoord, double zCoord, double xSpeed, double ySpeed, double zSpeed) {
 		super(level, xCoord, yCoord, zCoord, xSpeed, ySpeed, zSpeed);
 
-		int color = MoShizCompat.ceilingTorchParticleColors.get(level.getBlockState(new BlockPos(xCoord, yCoord, zCoord)).getBlock());
+		int color = MoShizCompat.ceilingTorchParticleColors.get(level.getBlockState(BlockPos.containing(xCoord, yCoord, zCoord)).getBlock());
 
 		xd = xd * 0.009999999776482582D + xSpeed;
 		yd = yd * 0.009999999776482582D + ySpeed;

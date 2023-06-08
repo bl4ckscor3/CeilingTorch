@@ -20,15 +20,16 @@ apply plugin: 'eclipse'
 
 version = '1.26'
 group = 'bl4ckscor3.mod.ceilingtorch'
+
 archivesBaseName = 'ceilingtorch-1.20'
 
 java.toolchain.languageVersion = JavaLanguageVersion.of(17)
 println('Java: ' + System.getProperty('java.version') + ' JVM: ' + System.getProperty('java.vm.version') + '(' + System.getProperty('java.vendor') + ') Arch: ' + System.getProperty('os.arch'))
 
 minecraft {
-	mappings channel: 'official', version: '1.20'
-    	accessTransformer = file('src/main/resources/META-INF/accesstransformer.cfg')
-
+    mappings channel: 'official', version: '1.20'
+    accessTransformer = file('src/main/resources/META-INF/accesstransformer.cfg')
+    
     runs {
         client {
             workingDirectory project.file('run/client')
