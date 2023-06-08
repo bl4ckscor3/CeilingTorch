@@ -18,18 +18,18 @@ import net.minecraftforge.registries.RegistryObject;
 
 public class VanillaCompat implements ICeilingTorchCompat {
 	//@formatter:off
-	public static final RegistryObject<Block> CEILING_TORCH = CeilingTorch.BLOCKS.register("torch", () -> new CeilingTorchBlock(Block.Properties.of(Material.DECORATION)
+	public static final RegistryObject<Block> CEILING_TORCH = CeilingTorch.BLOCKS.register("torch", () -> new CeilingTorchBlock(Block.Properties.of()
 			.noCollission()
 			.strength(0.0F)
 			.lightLevel(state -> 14)
 			.sound(SoundType.WOOD),
 			ParticleTypes.FLAME, () -> Blocks.TORCH));
-	public static final RegistryObject<Block> CEILING_REDSTONE_TORCH = CeilingTorch.BLOCKS.register("redstone_torch", () -> new RedstoneCeilingTorchBlock(Block.Properties.of(Material.DECORATION)
+	public static final RegistryObject<Block> CEILING_REDSTONE_TORCH = CeilingTorch.BLOCKS.register("redstone_torch", () -> new RedstoneCeilingTorchBlock(Block.Properties.of()
 			.noCollission()
 			.strength(0.0F)
 			.lightLevel(state -> state.getValue(RedstoneTorchBlock.LIT) ? 7 : 0)
 			.sound(SoundType.WOOD), () -> Blocks.REDSTONE_TORCH));
-	public static final RegistryObject<Block> CEILING_SOUL_TORCH = CeilingTorch.BLOCKS.register("soul_torch", () -> new CeilingTorchBlock(Block.Properties.of(Material.DECORATION)
+	public static final RegistryObject<Block> CEILING_SOUL_TORCH = CeilingTorch.BLOCKS.register("soul_torch", () -> new CeilingTorchBlock(Block.Properties.of()
 			.noCollission()
 			.strength(0.0F)
 			.lightLevel(state -> 10)
