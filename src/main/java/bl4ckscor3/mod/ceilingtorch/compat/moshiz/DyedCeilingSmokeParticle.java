@@ -15,7 +15,7 @@ public class DyedCeilingSmokeParticle extends TextureSheetParticle {
 	public DyedCeilingSmokeParticle(ClientLevel level, double xCoord, double yCoord, double zCoord, double xSpeed, double ySpeed, double zSpeed, float size, SpriteSet sprite) {
 		super(level, xCoord, yCoord, zCoord, xSpeed, ySpeed, zSpeed);
 
-		int color = MoShizCompat.ceilingTorchParticleColors.get(level.getBlockState(new BlockPos(xCoord, yCoord, zCoord)).getBlock());
+		int color = MoShizCompat.ceilingTorchParticleColors.get(level.getBlockState(BlockPos.containing(xCoord, yCoord, zCoord)).getBlock());
 
 		animatedSprite = sprite;
 		xd *= 0.10000000149011612D;

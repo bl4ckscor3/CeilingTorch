@@ -20,13 +20,13 @@ apply plugin: 'eclipse'
 
 version = '1.25'
 group = 'bl4ckscor3.mod.ceilingtorch'
-archivesBaseName = 'ceilingtorch-1.19.3'
+archivesBaseName = 'ceilingtorch-1.19.4'
 
 java.toolchain.languageVersion = JavaLanguageVersion.of(17)
 println('Java: ' + System.getProperty('java.version') + ' JVM: ' + System.getProperty('java.vm.version') + '(' + System.getProperty('java.vendor') + ') Arch: ' + System.getProperty('os.arch'))
 
 minecraft {
-    mappings channel: 'parchment', version: '2022.12.18-1.19.3'
+    mappings channel: 'parchment', version: '1.19.3-2023.03.12-1.19.4'
     accessTransformer = file('src/main/resources/META-INF/accesstransformer.cfg')
 	
     runs {
@@ -65,7 +65,7 @@ repositories {
 }
 
 dependencies {
-    minecraft 'net.minecraftforge:forge:1.19.3-44.1.5'
+    minecraft 'net.minecraftforge:forge:1.19.4-45.0.6'
 	runtimeOnly fg.deobf("curse.maven:jei-238222:4360330")
 
     implementation fg.deobf("curse.maven:additional-lights-384991:3910778")
