@@ -1,5 +1,5 @@
 modLoader="javafml"
-loaderVersion="[44,)"
+loaderVersion="[46,)"
 license="MIT https://github.com/bl4ckscor3/CeilingTorch/blob/1.19/LICENSE"
 issueTrackerURL="https://github.com/bl4ckscor3/CeilingTorch/issues"
 authors="bl4ckscor3"
@@ -14,13 +14,13 @@ authors="bl4ckscor3"
 [[dependencies.ceilingtorch]]
     modId="forge"
     mandatory=true
-    versionRange="[44,)"
+    versionRange="[46,)"
     ordering="NONE"
     side="BOTH"
 
 [[dependencies.ceilingtorch]]
     modId="minecraft"
     mandatory=true
-    versionRange="[1.19.3,1.20)"
+    versionRange="[1.20,1.21)"
     ordering="NONE"
     side="BOTH"
