@@ -11,19 +11,11 @@ import bl4ckscor3.mod.ceilingtorch.compat.vanilla.CeilingTorchBlock;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.SoundType;
-import net.minecraft.world.level.material.Material;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.registries.RegistryObject;
 
 public class BoneTorchCompat implements ICeilingTorchCompat {
-	//@formatter:off
-	public static final RegistryObject<CeilingTorchBlock> CEILING_BONE_TORCH = CeilingTorch.BLOCKS.register("bonetorch_bonetorch", () -> new CeilingTorchBlock(Block.Properties.of(Material.DECORATION)
-			.noCollission()
-			.strength(0.0F)
-			.lightLevel(state -> 14)
-			.sound(SoundType.WOOD),
-			ParticleTypes.FLAME, BoneTorchMod.BONETORCH));
-	//@formatter:on
+	public static final RegistryObject<CeilingTorchBlock> CEILING_BONE_TORCH = CeilingTorch.BLOCKS.register("bonetorch_bonetorch", () -> new CeilingTorchBlock(Block.Properties.copy(Blocks.TORCH), ParticleTypes.FLAME, BoneTorchMod.BONETORCH));
 	private Map<ResourceLocation, Block> placeEntries;
 
 	@Override

@@ -11,31 +11,12 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.RedstoneTorchBlock;
-import net.minecraft.world.level.block.SoundType;
-import net.minecraft.world.level.material.Material;
 import net.minecraftforge.registries.RegistryObject;
 
 public class VanillaCompat implements ICeilingTorchCompat {
-	//@formatter:off
-	public static final RegistryObject<Block> CEILING_TORCH = CeilingTorch.BLOCKS.register("torch", () -> new CeilingTorchBlock(Block.Properties.of(Material.DECORATION)
-			.noCollission()
-			.strength(0.0F)
-			.lightLevel(state -> 14)
-			.sound(SoundType.WOOD),
-			ParticleTypes.FLAME, () -> Blocks.TORCH));
-	public static final RegistryObject<Block> CEILING_REDSTONE_TORCH = CeilingTorch.BLOCKS.register("redstone_torch", () -> new RedstoneCeilingTorchBlock(Block.Properties.of(Material.DECORATION)
-			.noCollission()
-			.strength(0.0F)
-			.lightLevel(state -> state.getValue(RedstoneTorchBlock.LIT) ? 7 : 0)
-			.sound(SoundType.WOOD), () -> Blocks.REDSTONE_TORCH));
-	public static final RegistryObject<Block> CEILING_SOUL_TORCH = CeilingTorch.BLOCKS.register("soul_torch", () -> new CeilingTorchBlock(Block.Properties.of(Material.DECORATION)
-			.noCollission()
-			.strength(0.0F)
-			.lightLevel(state -> 10)
-			.sound(SoundType.WOOD),
-			ParticleTypes.SOUL_FIRE_FLAME, () -> Blocks.SOUL_TORCH));
-	//@formatter:on
+	public static final RegistryObject<Block> CEILING_TORCH = CeilingTorch.BLOCKS.register("torch", () -> new CeilingTorchBlock(Block.Properties.copy(Blocks.TORCH), ParticleTypes.FLAME, () -> Blocks.TORCH));
+	public static final RegistryObject<Block> CEILING_REDSTONE_TORCH = CeilingTorch.BLOCKS.register("redstone_torch", () -> new RedstoneCeilingTorchBlock(Block.Properties.copy(Blocks.REDSTONE_TORCH), () -> Blocks.REDSTONE_TORCH));
+	public static final RegistryObject<Block> CEILING_SOUL_TORCH = CeilingTorch.BLOCKS.register("soul_torch", () -> new CeilingTorchBlock(Block.Properties.copy(Blocks.SOUL_TORCH), ParticleTypes.SOUL_FIRE_FLAME, () -> Blocks.SOUL_TORCH));
 	private Map<ResourceLocation, Block> placeEntries;
 
 	@Override
