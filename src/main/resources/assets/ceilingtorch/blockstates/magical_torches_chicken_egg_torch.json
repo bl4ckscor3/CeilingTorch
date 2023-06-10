@@ -1,5 +1,0 @@
-{
-    "variants": {
-        "": { "model": "magical_torches:block/torches/chicken_egg_spawning/chicken_egg_torch", "x": 180 }
-    }
-}

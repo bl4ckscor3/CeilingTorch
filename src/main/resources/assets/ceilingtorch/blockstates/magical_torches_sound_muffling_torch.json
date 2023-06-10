@@ -1,5 +1,0 @@
-{
-    "variants": {
-        "": { "model": "magical_torches:block/torches/sound_muffling/sound_muffling_torch", "x": 180 }
-    }
-}

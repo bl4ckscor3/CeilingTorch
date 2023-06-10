@@ -1,5 +1,0 @@
-{
-    "variants": {
-        "": { "model": "magical_torches:block/torches/spawn_blocking/small_torch", "x": 180 }
-    }
-}
