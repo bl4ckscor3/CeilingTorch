@@ -31,6 +31,7 @@ import bl4ckscor3.mod.ceilingtorch.compat.tofucraft.TofuCraftCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.torchbandolier.TorchBandolierCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.torchmaster.TorchmasterCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.undergarden.UndergardenCompat;
+import bl4ckscor3.mod.ceilingtorch.compat.upgradeaquatic.UpgradeAquaticCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.vanilla.VanillaCompat;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntityType;
@@ -134,6 +135,9 @@ public class CeilingTorch {
 
 		if (ModList.get().isLoaded("undergarden"))
 			preliminaryCompatList.put("undergarden", UndergardenCompat::new);
+
+		if (ModList.get().isLoaded("upgrade_aquatic"))
+			preliminaryCompatList.put("upgrade_aquatic", UpgradeAquaticCompat::new);
 	}
 
 	@SubscribeEvent
