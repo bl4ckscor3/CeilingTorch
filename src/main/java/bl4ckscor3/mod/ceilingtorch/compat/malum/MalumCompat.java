@@ -5,12 +5,11 @@ import java.util.Map;
 import com.google.common.collect.ImmutableMap;
 import com.sammy.malum.common.item.ether.AbstractEtherItem;
 import com.sammy.malum.registry.common.block.BlockRegistry;
+import com.sammy.malum.registry.common.block.MalumBlockProperties;
 
 import bl4ckscor3.mod.ceilingtorch.CeilingTorch;
 import bl4ckscor3.mod.ceilingtorch.ICeilingTorchCompat;
-import bl4ckscor3.mod.ceilingtorch.compat.vanilla.CeilingTorchBlock;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
@@ -44,7 +43,6 @@ public class MalumCompat implements ICeilingTorchCompat {
 	public void registerBlocks(RegistryEvent.Register<Block> event) {
 		event.getRegistry().register(etherCeilingTorch = new CeilingEtherTorchBlock(getProperties(), BlockRegistry.ETHER_TORCH).setRegistryName("malum_ether_torch"));
 		event.getRegistry().register(iridescentEtherCeilingTorch = new CeilingEtherTorchBlock(getProperties(), BlockRegistry.IRIDESCENT_ETHER_TORCH).setRegistryName("malum_iridescent_ether_torch"));
-		event.getRegistry().register(blazingCeilingTorch = new CeilingTorchBlock(getProperties(), ParticleTypes.FLAME, BlockRegistry.BLAZING_TORCH).setRegistryName("malum_blazing_torch"));
 	}
 
 	@Override
@@ -52,8 +50,7 @@ public class MalumCompat implements ICeilingTorchCompat {
 		if (placeEntries == null) {
 			//@formatter:off
 			placeEntries = ImmutableMap.of(BlockRegistry.ETHER_TORCH.get().getRegistryName(), etherCeilingTorch,
-					BlockRegistry.IRIDESCENT_ETHER_TORCH.get().getRegistryName(), iridescentEtherCeilingTorch,
-					BlockRegistry.BLAZING_TORCH.get().getRegistryName(), blazingCeilingTorch);
+					BlockRegistry.IRIDESCENT_ETHER_TORCH.get().getRegistryName(), iridescentEtherCeilingTorch);
 			//@formatter:on
 		}
 
@@ -80,6 +77,6 @@ public class MalumCompat implements ICeilingTorchCompat {
 	}
 
 	private Block.Properties getProperties() {
-		return BlockRegistry.RUNEWOOD_PROPERTIES().noCollission().instabreak().lightLevel(state -> 14);
+		return MalumBlockProperties.RUNEWOOD().noCollission().instabreak().lightLevel(state -> 14);
 	}
 }
