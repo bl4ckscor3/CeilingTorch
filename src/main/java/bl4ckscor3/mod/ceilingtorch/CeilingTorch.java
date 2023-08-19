@@ -12,6 +12,7 @@ import bl4ckscor3.mod.ceilingtorch.compat.bambooeverything.BambooEverythingCompa
 import bl4ckscor3.mod.ceilingtorch.compat.bonetorch.BoneTorchCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.chipped.ChippedCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.hardcoretorches.HardcoreTorchesCompat;
+import bl4ckscor3.mod.ceilingtorch.compat.iceandfire.IceAndFireCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.ilikewood.ILikeWoodCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.infernalexpansion.InfernalExpansionCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.inspirations.InspirationsCompat;
@@ -76,6 +77,9 @@ public class CeilingTorch {
 
 		if (ModList.get().isLoaded("hardcore_torches"))
 			preliminaryCompatList.put("hardcore_torches", HardcoreTorchesCompat::new);
+
+		if (ModList.get().isLoaded("iceandfire"))
+			preliminaryCompatList.put("iceandfire", IceAndFireCompat::new);
 
 		if (ModList.get().isLoaded("ilikewood"))
 			preliminaryCompatList.put("ilikewood", ILikeWoodCompat::new);
