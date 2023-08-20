@@ -74,10 +74,10 @@ dependencies {
     implementation fg.deobf("curse.maven:architectury-api-419699:4040977") //bamboo everything dependency
     implementation fg.deobf("curse.maven:bamboo-everything-331723:4022327")
     implementation fg.deobf("curse.maven:common-capabilities-247007:3929863") //integrated dynamics dependency
-    implementation fg.deobf("curse.maven:curios-309927:3924518") //occultism dependency
+    implementation fg.deobf("curse.maven:curios-309927:4523009") //occultism dependency
     implementation fg.deobf("curse.maven:cyclops-core-232758:3929867") //integrated dynamics dependency
     implementation fg.deobf("curse.maven:farmers-delight-398521:3999157") //nether's delight dependency
-    implementation fg.deobf("curse.maven:geckolib-388172:4064451") //occultism dependency
+    implementation fg.deobf("curse.maven:geckolib-388172:4407241") //occultism dependency
     implementation fg.deobf("curse.maven:hardcore-torches-forge-576846:3936359")
     implementation fg.deobf("curse.maven:i-like-wood-324164:4068507")
     implementation fg.deobf("curse.maven:infernal-expansion-395078:4002091")
@@ -86,10 +86,10 @@ dependencies {
     implementation fg.deobf("curse.maven:magical-torches-389917:3932573")
     //implementation fg.deobf("curse.maven:malum-484064:3768401")
     //implementation fg.deobf("curse.maven:mo-shiz-mod-62536:3710568")
-    implementation fg.deobf("curse.maven:modonomicon-538392:4066224") //occultism dependency
+    implementation fg.deobf("curse.maven:modonomicon-538392:4675974") //occultism dependency
     implementation fg.deobf("curse.maven:nethers-delight-496394:3971576")
     //implementation fg.deobf("curse.maven:ortuslib-616457:3768197") //malum dependency
-    implementation fg.deobf("curse.maven:occultism-361026:4061171")
+    implementation fg.deobf("curse.maven:occultism-361026:4708883")
     implementation fg.deobf("curse.maven:patchouli-306770:4031402") //occultism dependency
     implementation fg.deobf("curse.maven:pokecube-aoi-285121:4069448")
     implementation fg.deobf("curse.maven:projecte-226410:3955047")

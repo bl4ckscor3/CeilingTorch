@@ -2,9 +2,9 @@ package bl4ckscor3.mod.ceilingtorch.compat.occultism;
 
 import java.util.Map;
 
-import com.github.klikli_dev.occultism.registry.OccultismBlocks;
-import com.github.klikli_dev.occultism.registry.OccultismParticles;
 import com.google.common.collect.ImmutableMap;
+import com.klikli_dev.occultism.registry.OccultismBlocks;
+import com.klikli_dev.occultism.registry.OccultismParticles;
 
 import bl4ckscor3.mod.ceilingtorch.CeilingTorch;
 import bl4ckscor3.mod.ceilingtorch.ICeilingTorchCompat;
