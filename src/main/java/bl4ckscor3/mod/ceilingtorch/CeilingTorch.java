@@ -15,6 +15,7 @@ import bl4ckscor3.mod.ceilingtorch.compat.ilikewood.ILikeWoodCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.infernalexpansion.InfernalExpansionCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.integrateddynamics.IntegratedDynamicsCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.magicaltorches.MagicalTorchesCompat;
+import bl4ckscor3.mod.ceilingtorch.compat.malum.MalumCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.nethersdelight.NethersDelightCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.occultism.OccultismCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.pokecubeaio.PokecubeAIOCompat;
@@ -89,6 +90,9 @@ public class CeilingTorch {
 
 		if (ModList.get().isLoaded("magical_torches"))
 			preliminaryCompatList.put("magical_torches", MagicalTorchesCompat::new);
+
+		if (ModList.get().isLoaded("malum"))
+			preliminaryCompatList.put("malum", MalumCompat::new);
 
 		if (ModList.get().isLoaded("occultism"))
 			preliminaryCompatList.put("occultism", OccultismCompat::new);
