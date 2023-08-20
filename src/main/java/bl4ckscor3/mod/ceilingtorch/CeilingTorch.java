@@ -5,38 +5,16 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.function.Supplier;
 
-import bl4ckscor3.mod.ceilingtorch.compat.additionallights.AdditionalLightsCompat;
-import bl4ckscor3.mod.ceilingtorch.compat.adorn.AdornCompat;
-import bl4ckscor3.mod.ceilingtorch.compat.aquatictorches.AquaticTorchesCompat;
-import bl4ckscor3.mod.ceilingtorch.compat.bambooeverything.BambooEverythingCompat;
-import bl4ckscor3.mod.ceilingtorch.compat.bonetorch.BoneTorchCompat;
-import bl4ckscor3.mod.ceilingtorch.compat.hardcoretorches.HardcoreTorchesCompat;
-import bl4ckscor3.mod.ceilingtorch.compat.ilikewood.ILikeWoodCompat;
-import bl4ckscor3.mod.ceilingtorch.compat.infernalexpansion.InfernalExpansionCompat;
-import bl4ckscor3.mod.ceilingtorch.compat.integrateddynamics.IntegratedDynamicsCompat;
-import bl4ckscor3.mod.ceilingtorch.compat.magicaltorches.MagicalTorchesCompat;
-import bl4ckscor3.mod.ceilingtorch.compat.malum.MalumCompat;
-import bl4ckscor3.mod.ceilingtorch.compat.moshiz.MoShizCompat;
-import bl4ckscor3.mod.ceilingtorch.compat.nethersdelight.NethersDelightCompat;
-import bl4ckscor3.mod.ceilingtorch.compat.occultism.OccultismCompat;
-import bl4ckscor3.mod.ceilingtorch.compat.pokecubeaio.PokecubeAIOCompat;
-import bl4ckscor3.mod.ceilingtorch.compat.projecte.ProjectECompat;
-import bl4ckscor3.mod.ceilingtorch.compat.reliquary.ReliquaryCompat;
-import bl4ckscor3.mod.ceilingtorch.compat.secretrooms.SecretRoomsCompat;
-import bl4ckscor3.mod.ceilingtorch.compat.silentgear.SilentGearCompat;
-import bl4ckscor3.mod.ceilingtorch.compat.tofucraft.TofuCraftCompat;
-import bl4ckscor3.mod.ceilingtorch.compat.torchbandolier.TorchBandolierCompat;
-import bl4ckscor3.mod.ceilingtorch.compat.torchmaster.TorchmasterCompat;
-import bl4ckscor3.mod.ceilingtorch.compat.undergarden.UndergardenCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.vanilla.VanillaCompat;
-import bl4ckscor3.mod.ceilingtorch.compat.xycraftworld.XyCraftWorldCompat;
 import net.minecraft.core.particles.ParticleType;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntityType;
+import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.ModList;
+import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber.Bus;
@@ -57,83 +35,19 @@ public class CeilingTorch {
 	private static boolean initialized = false;
 
 	public CeilingTorch() {
-		BLOCKS.register(FMLJavaModLoadingContext.get().getModEventBus());
-		BLOCK_ENTITIES.register(FMLJavaModLoadingContext.get().getModEventBus());
-		PARTICLE_TYPES.register(FMLJavaModLoadingContext.get().getModEventBus());
+		IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
+
+		CompatConfig.init(ModLoadingContext.get());
+		BLOCKS.register(modEventBus);
+		BLOCK_ENTITIES.register(modEventBus);
+		PARTICLE_TYPES.register(modEventBus);
 		preliminaryCompatList.put("minecraft", VanillaCompat::new);
+		CompatConfig.getConfig().getBuiltInCompatList().forEach((configValue, compatInfo) -> {
+			String modid = compatInfo.modid();
 
-		//cannot use addCompat because then the compat class will be classloaded which may crash if the mod is not present
-		if (ModList.get().isLoaded("additional_lights"))
-			preliminaryCompatList.put("additional_lights", AdditionalLightsCompat::new);
-
-		if (ModList.get().isLoaded("adorn"))
-			preliminaryCompatList.put("adorn", AdornCompat::new);
-
-		if (ModList.get().isLoaded("aquatictorches"))
-			preliminaryCompatList.put("aquatictorches", AquaticTorchesCompat::new);
-
-		if (ModList.get().isLoaded("bambooeverything"))
-			preliminaryCompatList.put("bambooeverything", BambooEverythingCompat::new);
-
-		if (ModList.get().isLoaded("bonetorch"))
-			preliminaryCompatList.put("bonetorch", BoneTorchCompat::new);
-
-		if (ModList.get().isLoaded("hardcore_torches"))
-			preliminaryCompatList.put("hardcore_torches", HardcoreTorchesCompat::new);
-
-		if (ModList.get().isLoaded("ilikewood"))
-			preliminaryCompatList.put("ilikewood", ILikeWoodCompat::new);
-
-		if (ModList.get().isLoaded("infernalexp"))
-			preliminaryCompatList.put("infernalexp", InfernalExpansionCompat::new);
-
-		if (ModList.get().isLoaded("integrateddynamics"))
-			preliminaryCompatList.put("integrateddynamics", IntegratedDynamicsCompat::new);
-
-		if (ModList.get().isLoaded("nethersdelight"))
-			preliminaryCompatList.put("nethersdelight", NethersDelightCompat::new);
-
-		if (ModList.get().isLoaded("magical_torches"))
-			preliminaryCompatList.put("magical_torches", MagicalTorchesCompat::new);
-
-		if (ModList.get().isLoaded("malum"))
-			preliminaryCompatList.put("malum", MalumCompat::new);
-
-		if (ModList.get().isLoaded("ms"))
-			preliminaryCompatList.put("ms", MoShizCompat::new);
-
-		if (ModList.get().isLoaded("occultism"))
-			preliminaryCompatList.put("occultism", OccultismCompat::new);
-
-		if (ModList.get().isLoaded("pokecube_legends"))
-			preliminaryCompatList.put("pokecube_legends", PokecubeAIOCompat::new);
-
-		if (ModList.get().isLoaded("projecte"))
-			preliminaryCompatList.put("projecte", ProjectECompat::new);
-
-		if (ModList.get().isLoaded("reliquary"))
-			preliminaryCompatList.put("reliquary", ReliquaryCompat::new);
-
-		if (ModList.get().isLoaded("secretroomsmod"))
-			preliminaryCompatList.put("secretroomsmod", SecretRoomsCompat::new);
-
-		if (ModList.get().isLoaded("silentgear"))
-			preliminaryCompatList.put("silentgear", SilentGearCompat::new);
-
-		if (ModList.get().isLoaded("tofucraft"))
-			preliminaryCompatList.put("tofucraft", TofuCraftCompat::new);
-
-		if (ModList.get().isLoaded("torchbandolier"))
-			preliminaryCompatList.put("torchbandolier", TorchBandolierCompat::new);
-
-		if (ModList.get().isLoaded("torchmaster"))
-			preliminaryCompatList.put("torchmaster", TorchmasterCompat::new);
-
-		if (ModList.get().isLoaded("undergarden"))
-			preliminaryCompatList.put("undergarden", UndergardenCompat::new);
-
-		if (ModList.get().isLoaded("xycraft_world"))
-			preliminaryCompatList.put("xycraft_world", XyCraftWorldCompat::new);
+			if (configValue.get() && ModList.get().isLoaded(modid))
+				preliminaryCompatList.put(modid, compatInfo.ceilingTorchCompat());
+		});
 	}
 
 	@SubscribeEvent
