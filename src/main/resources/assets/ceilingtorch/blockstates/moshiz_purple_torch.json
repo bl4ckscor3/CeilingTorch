@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "ms:block/torch/dyed_torch", "x": 180
+    }
+  }
+}
