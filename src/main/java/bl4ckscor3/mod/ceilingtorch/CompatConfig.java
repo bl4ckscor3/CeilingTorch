@@ -11,6 +11,7 @@ import bl4ckscor3.mod.ceilingtorch.compat.adorn.AdornCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.aquatictorches.AquaticTorchesCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.bambooeverything.BambooEverythingCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.bonetorch.BoneTorchCompat;
+import bl4ckscor3.mod.ceilingtorch.compat.chipped.ChippedCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.hardcoretorches.HardcoreTorchesCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.ilikewood.ILikeWoodCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.infernalexpansion.InfernalExpansionCompat;
@@ -74,6 +75,7 @@ public class CompatConfig {
 				makeEntry(builder, "aquatictorches", AquaticTorchesCompat::new),
 				makeEntry(builder, "bambooeverything", BambooEverythingCompat::new),
 				makeEntry(builder, "bonetorch", BoneTorchCompat::new),
+				makeEntry(builder, "chipped", ChippedCompat::new),
 				makeEntry(builder, "hardcore_torches", HardcoreTorchesCompat::new),
 				makeEntry(builder, "ilikewood", ILikeWoodCompat::new),
 				makeEntry(builder, "infernalexp", InfernalExpansionCompat::new),

@@ -76,4 +76,8 @@ public class RedstoneCeilingTorchBlock extends RedstoneTorchBlock {
 	public ItemStack getCloneItemStack(BlockState state, HitResult target, BlockGetter world, BlockPos pos, Player player) {
 		return new ItemStack(originalBlock.get());
 	}
+
+	public Block getOriginalBlock() {
+		return originalBlock.get();
+	}
 }
