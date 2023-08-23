@@ -73,6 +73,7 @@ dependencies {
     implementation fg.deobf("curse.maven:aquatic-torches-563637:3908516")
     implementation fg.deobf("curse.maven:architectury-api-419699:4040977") //bamboo everything dependency
     implementation fg.deobf("curse.maven:bamboo-everything-331723:4022327")
+    implementation fg.deobf("curse.maven:blueprint-382216:4442628") //upgrade aquatic dependency
     implementation fg.deobf("curse.maven:chipped-456956:4558849")
     implementation fg.deobf("curse.maven:common-capabilities-247007:4391413") //integrated dynamics dependency
     implementation fg.deobf("curse.maven:ctm-267602:4393695") //chipped dependency
@@ -106,6 +107,7 @@ dependencies {
     implementation fg.deobf("curse.maven:the-undergarden-379849:4057184")
     implementation fg.deobf("curse.maven:torch-bandolier-299337:3968596")
     implementation fg.deobf("curse.maven:torchmaster-254268:4669791")
+    implementation fg.deobf("curse.maven:upgrade-aquatic-326895:4415517")
     implementation fg.deobf("curse.maven:xycraft-653786:4054125") //xycraft: world dependency
     implementation fg.deobf("curse.maven:xycraft-world-653789:4054133")
 }
