@@ -11,8 +11,8 @@ public class MoShizCompatClient {
 	}
 
 	public static void onParticleFactoryRegister(RegisterParticleProvidersEvent event) {
-		event.register(MoShizCompat.DYED_CEILING_FLAME.get(), DyedCeilingFlameParticle.Factory::new);
-		event.register(MoShizCompat.DYED_CEILING_SMOKE.get(), DyedCeilingSmokeParticle.Factory::new);
+		event.registerSpriteSet(MoShizCompat.DYED_CEILING_FLAME.get(), DyedCeilingFlameParticle.Factory::new);
+		event.registerSpriteSet(MoShizCompat.DYED_CEILING_SMOKE.get(), DyedCeilingSmokeParticle.Factory::new);
 	}
 
 	public static void onColorHandlerBlock(RegisterColorHandlersEvent.Block event) {
