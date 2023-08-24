@@ -76,6 +76,7 @@ dependencies {
     implementation fg.deobf("curse.maven:common-capabilities-247007:4517677") //integrated dynamics dependency
     implementation fg.deobf("curse.maven:curios-309927:4523020") //occultism dependency
     implementation fg.deobf("curse.maven:cyclops-core-232758:4578164") //integrated dynamics dependency
+    implementation fg.deobf("curse.maven:gaia-dimension-302529:4602609")
     implementation fg.deobf("curse.maven:geckolib-388172:4568326") //occultism dependency
     implementation fg.deobf("curse.maven:integrated-dynamics-236307:4566168")
     implementation fg.deobf("curse.maven:kotlin-for-forge-351264:4630525") //adorn dependency
