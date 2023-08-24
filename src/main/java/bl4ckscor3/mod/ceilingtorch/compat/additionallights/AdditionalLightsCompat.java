@@ -61,7 +61,7 @@ public class AdditionalLightsCompat implements ICeilingTorchCompat {
 		//@formatter:on
 
 		for (ModBlockList block : supportedBlocks) {
-			Supplier<Block> originalBlock = () -> (Block) AdditionalLights.modBlocks.get(block);
+			RegistryObject<Block> originalBlock = AdditionalLights.modBlocks.get(block);
 			RegistryObject<Block> registeredBlock;
 			String registryName = block.name().toLowerCase(Locale.ENGLISH).replace("altorch", "additional_lights_al_torch");
 
