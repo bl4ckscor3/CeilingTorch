@@ -3,8 +3,10 @@ package bl4ckscor3.mod.ceilingtorch.compat.undergarden;
 import bl4ckscor3.mod.ceilingtorch.compat.vanilla.CeilingTorchBlock;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
+import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
@@ -30,7 +32,7 @@ public class ShardCeilingTorchBlock extends CeilingTorchBlock {
 		level.getEntitiesOfClass(LivingEntity.class,
 				new AABB(pos.getX() - 4, pos.getY() - 4, pos.getZ() - 4, pos.getX() + 4, pos.getY() + 4, pos.getZ() + 4),
 				entity -> entity.getType().is(UGTags.Entities.ROTSPAWN))
-		.forEach(entity -> entity.hurt(UGDamageSources.SHARD_TORCH, 4.0F));
+		.forEach(entity -> entity.hurt(new DamageSource(level.registryAccess().registryOrThrow(Registries.DAMAGE_TYPE).getHolderOrThrow(UGDamageSources.SHARD_TORCH)), 4.0F));
 		//@formatter:on
 		level.scheduleTick(pos, this, 20);
 	}

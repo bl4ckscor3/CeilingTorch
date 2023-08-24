@@ -88,7 +88,7 @@ dependencies {
     implementation fg.deobf("curse.maven:silent-lib-242998:3968715") //silent gear and torch bandolier dependency
     implementation fg.deobf("curse.maven:smartbrainlib-661293:4312180") //occultism dependency
     implementation fg.deobf("curse.maven:tofucraftreload-317469:4172060")
-    implementation fg.deobf("curse.maven:the-undergarden-379849:4057184")
+    implementation fg.deobf("curse.maven:the-undergarden-379849:4544001")
     implementation fg.deobf("curse.maven:torch-bandolier-299337:3968596")
     implementation fg.deobf("curse.maven:torchmaster-254268:3965528")
 }
