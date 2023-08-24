@@ -68,7 +68,7 @@ dependencies {
     minecraft 'net.minecraftforge:forge:1.19.3-44.1.5'
 	runtimeOnly fg.deobf("curse.maven:jei-238222:4360330")
 
-    implementation fg.deobf("curse.maven:additional-lights-384991:3910778")
+    implementation fg.deobf("curse.maven:additional-lights-384991:4486636")
     implementation fg.deobf("curse.maven:adorn-for-forge-438784:4264472")
     implementation fg.deobf("curse.maven:aquatic-torches-563637:3908516")
     implementation fg.deobf("curse.maven:architectury-api-419699:4252901") //bamboo everything dependency
