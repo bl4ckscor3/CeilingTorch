@@ -71,40 +71,40 @@ public class CompatConfig {
 				"If you turn off a mod integration using this config, you can continue playing without needing an update of Ceiling Torch; However do note that the ceiling torches from that integration will disappear from your world. Note, that if you do not place a block in a space where a ceiling torch was, and then re-enable the respective integration, the torch will reappear.",
 				"Turning off integration with a mod that you are not using will not have any effect, as Ceiling Torch automatically checks for the presence of mods it integrates with.");
 		builtInCompatList = Map.ofEntries(
-				makeEntry(builder, "additional_lights", AdditionalLightsCompat::new),
-				makeEntry(builder, "adorn", AdornCompat::new),
-				makeEntry(builder, "aquatictorches", AquaticTorchesCompat::new),
-				makeEntry(builder, "bambooeverything", BambooEverythingCompat::new),
-				makeEntry(builder, "bonetorch", BoneTorchCompat::new),
-				makeEntry(builder, "chipped", ChippedCompat::new),
-				makeEntry(builder, "hardcore_torches", HardcoreTorchesCompat::new),
-				makeEntry(builder, "ilikewood", ILikeWoodCompat::new),
-				makeEntry(builder, "infernalexp", InfernalExpansionCompat::new),
-				makeEntry(builder, "integrateddynamics", IntegratedDynamicsCompat::new),
-				makeEntry(builder, "nethersdelight", NethersDelightCompat::new),
-				makeEntry(builder, "magical_torches", MagicalTorchesCompat::new),
-				makeEntry(builder, "malum", MalumCompat::new),
-				makeEntry(builder, "ms", "Mo' Shiz Mod", MoShizCompat::new),
-				makeEntry(builder, "occultism", OccultismCompat::new),
-				makeEntry(builder, "pokecube_legends", PokecubeAIOCompat::new),
-				makeEntry(builder, "projecte", ProjectECompat::new),
-				makeEntry(builder, "reliquary", ReliquaryCompat::new),
-				makeEntry(builder, "secretroomsmod", SecretRoomsCompat::new),
-				makeEntry(builder, "silentgear", SilentGearCompat::new),
-				makeEntry(builder, "tofucraft", TofuCraftCompat::new),
-				makeEntry(builder, "torchbandolier", TorchBandolierCompat::new),
-				makeEntry(builder, "torchmaster", TorchmasterCompat::new),
-				makeEntry(builder, "undergarden", UndergardenCompat::new),
-				makeEntry(builder, "upgrade_aquatic", UpgradeAquaticCompat::new),
-				makeEntry(builder, "xycraft_world", XyCraftWorldCompat::new));
+				makeEntry(builder, "additional_lights", () -> AdditionalLightsCompat::new),
+				makeEntry(builder, "adorn", () -> AdornCompat::new),
+				makeEntry(builder, "aquatictorches", () -> AquaticTorchesCompat::new),
+				makeEntry(builder, "bambooeverything", () -> BambooEverythingCompat::new),
+				makeEntry(builder, "bonetorch", () -> BoneTorchCompat::new),
+				makeEntry(builder, "chipped", () -> ChippedCompat::new),
+				makeEntry(builder, "hardcore_torches", () -> HardcoreTorchesCompat::new),
+				makeEntry(builder, "ilikewood", () -> ILikeWoodCompat::new),
+				makeEntry(builder, "infernalexp", () -> InfernalExpansionCompat::new),
+				makeEntry(builder, "integrateddynamics", () -> IntegratedDynamicsCompat::new),
+				makeEntry(builder, "nethersdelight", () -> NethersDelightCompat::new),
+				makeEntry(builder, "magical_torches", () -> MagicalTorchesCompat::new),
+				makeEntry(builder, "malum", () -> MalumCompat::new),
+				makeEntry(builder, "ms", "Mo' Shiz Mod", () -> MoShizCompat::new),
+				makeEntry(builder, "occultism", () -> OccultismCompat::new),
+				makeEntry(builder, "pokecube_legends", () -> PokecubeAIOCompat::new),
+				makeEntry(builder, "projecte", () -> ProjectECompat::new),
+				makeEntry(builder, "reliquary", () -> ReliquaryCompat::new),
+				makeEntry(builder, "secretroomsmod", () -> SecretRoomsCompat::new),
+				makeEntry(builder, "silentgear", () -> SilentGearCompat::new),
+				makeEntry(builder, "tofucraft", () -> TofuCraftCompat::new),
+				makeEntry(builder, "torchbandolier", () -> TorchBandolierCompat::new),
+				makeEntry(builder, "torchmaster", () -> TorchmasterCompat::new),
+				makeEntry(builder, "undergarden", () -> UndergardenCompat::new),
+				makeEntry(builder, "upgrade_aquatic", () -> UpgradeAquaticCompat::new),
+				makeEntry(builder, "xycraft_world", () -> XyCraftWorldCompat::new));
 		//@formatter:on
 	}
 
-	private Map.Entry<BooleanValue, CompatInfo> makeEntry(ForgeConfigSpec.Builder builder, String modid, Supplier<ICeilingTorchCompat> ceilingTorchCompat) {
+	private Map.Entry<BooleanValue, CompatInfo> makeEntry(ForgeConfigSpec.Builder builder, String modid, Supplier<Supplier<ICeilingTorchCompat>> ceilingTorchCompat) {
 		return Map.entry(builder.define(modid, true), new CompatInfo(modid, ceilingTorchCompat));
 	}
 
-	private Map.Entry<BooleanValue, CompatInfo> makeEntry(ForgeConfigSpec.Builder builder, String modid, String comment, Supplier<ICeilingTorchCompat> ceilingTorchCompat) {
+	private Map.Entry<BooleanValue, CompatInfo> makeEntry(ForgeConfigSpec.Builder builder, String modid, String comment, Supplier<Supplier<ICeilingTorchCompat>> ceilingTorchCompat) {
 		return Map.entry(builder.comment(comment).define(modid, true), new CompatInfo(modid, ceilingTorchCompat));
 	}
 
@@ -116,5 +116,5 @@ public class CompatConfig {
 		return config;
 	}
 
-	public record CompatInfo(String modid, Supplier<ICeilingTorchCompat> ceilingTorchCompat) {}
+	public record CompatInfo(String modid, Supplier<Supplier<ICeilingTorchCompat>> ceilingTorchCompat) {}
 }
