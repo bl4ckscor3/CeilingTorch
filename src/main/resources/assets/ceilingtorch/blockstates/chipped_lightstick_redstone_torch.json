@@ -1,0 +1,5 @@
+{
+    "variants": {
+        "": { "model": "chipped:block/lightstick_redstone_torch", "x": 180 }
+    }
+}
