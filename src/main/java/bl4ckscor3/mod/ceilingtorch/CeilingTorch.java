@@ -5,7 +5,6 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.function.Supplier;
 
-import bl4ckscor3.mod.ceilingtorch.compat.bonetorch.BoneTorchCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.vanilla.VanillaCompat;
 import net.minecraft.core.particles.ParticleType;
 import net.minecraft.resources.ResourceLocation;
@@ -15,6 +14,7 @@ import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.ModList;
+import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber.Bus;
@@ -37,14 +37,17 @@ public class CeilingTorch {
 	public CeilingTorch() {
 		IEventBus modBus = FMLJavaModLoadingContext.get().getModEventBus();
 
+		CompatConfig.init(ModLoadingContext.get());
 		BLOCKS.register(modBus);
 		BLOCK_ENTITIES.register(modBus);
 		PARTICLE_TYPES.register(modBus);
 		preliminaryCompatList.put("minecraft", VanillaCompat::new);
+		CompatConfig.getConfig().getBuiltInCompatList().forEach((configValue, compatInfo) -> {
+			String modid = compatInfo.modid();
 
-		//cannot use addCompat because then the compat class will be classloaded which may crash if the mod is not present
-		if (ModList.get().isLoaded("bonetorch"))
-			preliminaryCompatList.put("bonetorch", BoneTorchCompat::new);
+			if (configValue.get() && ModList.get().isLoaded(modid))
+				preliminaryCompatList.put(modid, compatInfo.ceilingTorchCompat());
+		});
 	}
 
 	@SubscribeEvent
