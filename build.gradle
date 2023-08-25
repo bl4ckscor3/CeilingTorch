@@ -74,6 +74,8 @@ dependencies {
 
 	implementation fg.deobf("curse.maven:additional-lights-384991:4596807")
 	implementation fg.deobf("curse.maven:adorn-for-forge-438784:4596873")
+	implementation fg.deobf("curse.maven:architectury-api-419699:4663010") //bamboo everything dependency
+	implementation fg.deobf("curse.maven:bamboo-everything-331723:4681097")
 	implementation fg.deobf("curse.maven:kotlin-for-forge-351264:4630525") //adorn dependency
     implementation fg.deobf("curse.maven:sbm-bone-torch-238695:4578329")
 }
