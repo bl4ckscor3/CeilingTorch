@@ -1,0 +1,5 @@
+{
+    "variants": {
+        "": { "model": "ms:block/torch/foulite_torch", "x": 180 }
+    }
+}
