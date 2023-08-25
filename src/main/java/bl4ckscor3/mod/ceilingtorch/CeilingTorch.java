@@ -35,7 +35,7 @@ public class CeilingTorch {
 			String modid = compatInfo.modid();
 
 			if (configValue.get() && ModList.get().isLoaded(modid))
-				preliminaryCompatList.put(modid, compatInfo.ceilingTorchCompat());
+				preliminaryCompatList.put(modid, compatInfo.ceilingTorchCompat().get());
 		});
 	}
 
