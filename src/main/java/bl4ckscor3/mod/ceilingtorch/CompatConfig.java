@@ -17,6 +17,7 @@ import bl4ckscor3.mod.ceilingtorch.compat.magicaltorches.MagicalTorchesCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.moshiz.MoShizCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.occultism.OccultismCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.reliquary.ReliquaryCompat;
+import bl4ckscor3.mod.ceilingtorch.compat.silentgear.SilentGearCompat;
 import net.minecraftforge.common.ForgeConfigSpec;
 import net.minecraftforge.common.ForgeConfigSpec.BooleanValue;
 import net.minecraftforge.fml.ModLoadingContext;
@@ -66,7 +67,8 @@ public class CompatConfig {
 				makeEntry(builder, "magical_torches", () -> MagicalTorchesCompat::new),
 				makeEntry(builder, "ms", "Mo' Shiz Mod", () -> MoShizCompat::new),
 				makeEntry(builder, "occultism", () -> OccultismCompat::new),
-				makeEntry(builder, "reliquary", () -> ReliquaryCompat::new));
+				makeEntry(builder, "reliquary", () -> ReliquaryCompat::new),
+				makeEntry(builder, "silentgear", () -> SilentGearCompat::new));
 		//@formatter:on
 	}
 

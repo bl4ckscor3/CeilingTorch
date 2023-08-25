@@ -92,6 +92,8 @@ dependencies {
 	implementation fg.deobf("curse.maven:reliquary-reincarnations-241319:4666082")
 	implementation fg.deobf("curse.maven:resourceful-lib-570073:4717712") //chipped dependency
     implementation fg.deobf("curse.maven:sbm-bone-torch-238695:4578329")
+    implementation fg.deobf("curse.maven:silent-gear-297039:4598002")
+    implementation fg.deobf("curse.maven:silent-lib-242998:4585754") //silent gear and torch bandolier dependency
     implementation fg.deobf("curse.maven:smartbrainlib-661293:4688287") //occultism dependency
 }
 
