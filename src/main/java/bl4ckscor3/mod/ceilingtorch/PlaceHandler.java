@@ -22,8 +22,7 @@ import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 public class PlaceHandler {
 	@SubscribeEvent
 	public static void onRightClickBlock(RightClickBlock event) {
-		if (!event.getEntity().isSpectator()) //because apparently this is a thing
-		{
+		if (!event.getEntity().isSpectator()) { //because apparently this is a thing
 			BlockPos pos = event.getPos();
 			Direction face = event.getFace();
 			BlockPos placeAt = pos.relative(face);
