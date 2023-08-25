@@ -89,6 +89,7 @@ dependencies {
 	implementation fg.deobf("curse.maven:modonomicon-538392:4675992") //occultism dependency
 	implementation fg.deobf("curse.maven:mo-shiz-mod-62536:4712108")
 	implementation fg.deobf("curse.maven:occultism-361026:4715011")
+	implementation fg.deobf("curse.maven:reliquary-reincarnations-241319:4666082")
 	implementation fg.deobf("curse.maven:resourceful-lib-570073:4717712") //chipped dependency
     implementation fg.deobf("curse.maven:sbm-bone-torch-238695:4578329")
     implementation fg.deobf("curse.maven:smartbrainlib-661293:4688287") //occultism dependency
