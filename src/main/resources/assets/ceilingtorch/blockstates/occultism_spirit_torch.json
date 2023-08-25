@@ -1,0 +1,5 @@
+{
+    "variants": {
+        "": { "model": "occultism:block/spirit_torch", "x": 180 }
+    }
+}

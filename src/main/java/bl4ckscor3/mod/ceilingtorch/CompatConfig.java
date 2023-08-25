@@ -15,6 +15,7 @@ import bl4ckscor3.mod.ceilingtorch.compat.gaiadimension.GaiaDimensionCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.integrateddynamics.IntegratedDynamicsCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.magicaltorches.MagicalTorchesCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.moshiz.MoShizCompat;
+import bl4ckscor3.mod.ceilingtorch.compat.occultism.OccultismCompat;
 import net.minecraftforge.common.ForgeConfigSpec;
 import net.minecraftforge.common.ForgeConfigSpec.BooleanValue;
 import net.minecraftforge.fml.ModLoadingContext;
@@ -62,7 +63,8 @@ public class CompatConfig {
 				makeEntry(builder, "gaiadimension", () -> GaiaDimensionCompat::new),
 				makeEntry(builder, "integrateddynamics", () -> IntegratedDynamicsCompat::new),
 				makeEntry(builder, "magical_torches", () -> MagicalTorchesCompat::new),
-				makeEntry(builder, "ms", "Mo' Shiz Mod", () -> MoShizCompat::new));
+				makeEntry(builder, "ms", "Mo' Shiz Mod", () -> MoShizCompat::new),
+				makeEntry(builder, "occultism", () -> OccultismCompat::new));
 		//@formatter:on
 	}
 
