@@ -95,6 +95,7 @@ dependencies {
     implementation fg.deobf("curse.maven:silent-gear-297039:4598002")
     implementation fg.deobf("curse.maven:silent-lib-242998:4585754") //silent gear and torch bandolier dependency
     implementation fg.deobf("curse.maven:smartbrainlib-661293:4688287") //occultism dependency
+    implementation fg.deobf("curse.maven:the-undergarden-379849:4682838")
 }
 
 tasks.named('jar', Jar).configure {
