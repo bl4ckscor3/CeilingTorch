@@ -98,6 +98,7 @@ dependencies {
     implementation fg.deobf("curse.maven:the-undergarden-379849:4682838")
     implementation fg.deobf("curse.maven:tofucraftreload-317469:4716992")
     implementation fg.deobf("curse.maven:torch-bandolier-299337:4587731")
+    implementation fg.deobf("curse.maven:torchmaster-254268:4673248")
 }
 
 tasks.named('jar', Jar).configure {

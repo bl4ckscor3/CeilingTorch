@@ -20,6 +20,7 @@ import bl4ckscor3.mod.ceilingtorch.compat.reliquary.ReliquaryCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.silentgear.SilentGearCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.tofucraft.TofuCraftCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.torchbandolier.TorchBandolierCompat;
+import bl4ckscor3.mod.ceilingtorch.compat.torchmaster.TorchmasterCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.undergarden.UndergardenCompat;
 import net.minecraftforge.common.ForgeConfigSpec;
 import net.minecraftforge.common.ForgeConfigSpec.BooleanValue;
@@ -74,6 +75,7 @@ public class CompatConfig {
 				makeEntry(builder, "silentgear", () -> SilentGearCompat::new),
 				makeEntry(builder, "tofucraft", () -> TofuCraftCompat::new),
 				makeEntry(builder, "torchbandolier", () -> TorchBandolierCompat::new),
+				makeEntry(builder, "torchmaster", () -> TorchmasterCompat::new),
 				makeEntry(builder, "undergarden", () -> UndergardenCompat::new));
 		//@formatter:on
 	}
