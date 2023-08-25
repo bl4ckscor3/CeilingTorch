@@ -73,6 +73,8 @@ dependencies {
 	runtimeOnly fg.deobf("curse.maven:jei-238222:4712868")
 
 	implementation fg.deobf("curse.maven:additional-lights-384991:4596807")
+	implementation fg.deobf("curse.maven:adorn-for-forge-438784:4596873")
+	implementation fg.deobf("curse.maven:kotlin-for-forge-351264:4630525") //adorn dependency
     implementation fg.deobf("curse.maven:sbm-bone-torch-238695:4578329")
 }
 
