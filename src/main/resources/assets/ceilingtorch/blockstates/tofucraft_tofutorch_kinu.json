@@ -1,0 +1,5 @@
+{
+    "variants": {
+        "": { "model": "tofucraft:block/tofutorch_kinu", "x": 180 }
+    }
+}

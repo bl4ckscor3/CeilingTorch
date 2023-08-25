@@ -18,6 +18,7 @@ import bl4ckscor3.mod.ceilingtorch.compat.moshiz.MoShizCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.occultism.OccultismCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.reliquary.ReliquaryCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.silentgear.SilentGearCompat;
+import bl4ckscor3.mod.ceilingtorch.compat.tofucraft.TofuCraftCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.undergarden.UndergardenCompat;
 import net.minecraftforge.common.ForgeConfigSpec;
 import net.minecraftforge.common.ForgeConfigSpec.BooleanValue;
@@ -70,6 +71,7 @@ public class CompatConfig {
 				makeEntry(builder, "occultism", () -> OccultismCompat::new),
 				makeEntry(builder, "reliquary", () -> ReliquaryCompat::new),
 				makeEntry(builder, "silentgear", () -> SilentGearCompat::new),
+				makeEntry(builder, "tofucraft", () -> TofuCraftCompat::new),
 				makeEntry(builder, "undergarden", () -> UndergardenCompat::new));
 		//@formatter:on
 	}
