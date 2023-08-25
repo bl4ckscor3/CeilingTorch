@@ -78,6 +78,7 @@ dependencies {
 	implementation fg.deobf("curse.maven:athena-841890:4718179") //chipped dependency
 	implementation fg.deobf("curse.maven:bamboo-everything-331723:4681097")
 	implementation fg.deobf("curse.maven:chipped-456956:4634856")
+	implementation fg.deobf("curse.maven:gaia-dimension-302529:4705648")
 	implementation fg.deobf("curse.maven:kotlin-for-forge-351264:4630525") //adorn dependency
 	implementation fg.deobf("curse.maven:resourceful-lib-570073:4717712") //chipped dependency
     implementation fg.deobf("curse.maven:sbm-bone-torch-238695:4578329")
