@@ -18,7 +18,7 @@ apply plugin: 'org.spongepowered.mixin'
 apply plugin: 'org.parchmentmc.librarian.forgegradle'
 apply plugin: 'eclipse'
 
-version = '1.25'
+version = '1.26'
 group = 'bl4ckscor3.mod.ceilingtorch'
 archivesBaseName = 'ceilingtorch-1.19.3'
 
