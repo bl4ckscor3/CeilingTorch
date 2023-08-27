@@ -1,9 +1,12 @@
 package bl4ckscor3.mod.ceilingtorch;
 
+import net.minecraft.client.particle.FlameParticle;
+import net.minecraft.client.particle.SmokeParticle;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.world.level.block.Block;
 import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.client.event.RegisterParticleProvidersEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber.Bus;
@@ -19,6 +22,14 @@ public class CeilingTorchClient {
 				if (compat.hasCutoutMippedRenderType(block))
 					ItemBlockRenderTypes.setRenderLayer(block, RenderType.cutoutMipped());
 			}
+		}
+	}
+
+	@SubscribeEvent
+	public static void onRegisterParticleProviders(RegisterParticleProvidersEvent event) {
+		if (!CeilingTorch.isModCompatActive("ms")) {
+			event.registerSpriteSet(CeilingTorch.MO_SHIZ_DYED_CEILING_FLAME.get(), FlameParticle.Provider::new);
+			event.registerSpriteSet(CeilingTorch.MO_SHIZ_DYED_CEILING_SMOKE.get(), SmokeParticle.Provider::new);
 		}
 	}
 }
