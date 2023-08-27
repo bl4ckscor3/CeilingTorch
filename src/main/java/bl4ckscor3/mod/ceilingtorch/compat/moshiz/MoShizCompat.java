@@ -10,12 +10,10 @@ import com.ProfitOrange.MoShiz.util.ColorDye;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableMap.Builder;
 
-import bl4ckscor3.mod.ceilingtorch.CeilingTorch;
 import bl4ckscor3.mod.ceilingtorch.ICeilingTorchCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.vanilla.CeilingTorchBlock;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.item.Item;
@@ -29,11 +27,8 @@ import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.ForgeRegistries.Keys;
 import net.minecraftforge.registries.RegisterEvent;
-import net.minecraftforge.registries.RegistryObject;
 
 public class MoShizCompat implements ICeilingTorchCompat {
-	public static final RegistryObject<SimpleParticleType> DYED_CEILING_FLAME = CeilingTorch.PARTICLE_TYPES.register("dyed_ceiling_flame", () -> new SimpleParticleType(false));
-	public static final RegistryObject<SimpleParticleType> DYED_CEILING_SMOKE = CeilingTorch.PARTICLE_TYPES.register("dyed_ceiling_smoke", () -> new SimpleParticleType(false));
 	public static Block fouliteCeilingTorch;
 	//dye, torch
 	public static Map<Item, MoShizCeilingTorchBlock> coloredCeilingTorches = new HashMap<>();

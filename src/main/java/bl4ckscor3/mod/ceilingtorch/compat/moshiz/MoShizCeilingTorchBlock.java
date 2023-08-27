@@ -4,6 +4,7 @@ import java.util.function.Supplier;
 
 import com.ProfitOrange.MoShiz.config.client.ClientConfig;
 
+import bl4ckscor3.mod.ceilingtorch.CeilingTorch;
 import bl4ckscor3.mod.ceilingtorch.compat.vanilla.CeilingTorchBlock;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
@@ -55,10 +56,10 @@ public class MoShizCeilingTorchBlock extends CeilingTorchBlock {
 		double z = pos.getZ() + 0.5D;
 
 		if (ClientConfig.DYED_SMOKE.get())
-			level.addParticle(MoShizCompat.DYED_CEILING_SMOKE.get(), x, y, z, 0.0D, 0.0D, 0.0D);
+			level.addParticle(CeilingTorch.MO_SHIZ_DYED_CEILING_SMOKE.get(), x, y, z, 0.0D, 0.0D, 0.0D);
 		else
 			level.addParticle(ParticleTypes.SMOKE, x, y, z, 0.0D, 0.0D, 0.0D);
 
-		level.addParticle(MoShizCompat.DYED_CEILING_FLAME.get(), x, y, z, 0.0D, 0.0D, 0.0D);
+		level.addParticle(CeilingTorch.MO_SHIZ_DYED_CEILING_FLAME.get(), x, y, z, 0.0D, 0.0D, 0.0D);
 	}
 }

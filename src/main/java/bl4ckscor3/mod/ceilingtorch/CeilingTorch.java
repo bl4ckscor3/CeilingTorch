@@ -7,6 +7,7 @@ import java.util.function.Supplier;
 
 import bl4ckscor3.mod.ceilingtorch.compat.vanilla.VanillaCompat;
 import net.minecraft.core.particles.ParticleType;
+import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
@@ -22,6 +23,7 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegisterEvent;
+import net.minecraftforge.registries.RegistryObject;
 
 @Mod(CeilingTorch.MODID)
 @EventBusSubscriber(bus = Bus.MOD)
@@ -33,6 +35,8 @@ public class CeilingTorch {
 	public static final DeferredRegister<BlockEntityType<?>> BLOCK_ENTITIES = DeferredRegister.create(ForgeRegistries.BLOCK_ENTITY_TYPES, MODID);
 	public static final DeferredRegister<ParticleType<?>> PARTICLE_TYPES = DeferredRegister.create(ForgeRegistries.PARTICLE_TYPES, MODID);
 	private static boolean initialized = false;
+	public static final RegistryObject<SimpleParticleType> MO_SHIZ_DYED_CEILING_FLAME = PARTICLE_TYPES.register("dyed_ceiling_flame", () -> new SimpleParticleType(false));
+	public static final RegistryObject<SimpleParticleType> MO_SHIZ_DYED_CEILING_SMOKE = PARTICLE_TYPES.register("dyed_ceiling_smoke", () -> new SimpleParticleType(false));
 
 	public CeilingTorch() {
 		IEventBus modBus = FMLJavaModLoadingContext.get().getModEventBus();
