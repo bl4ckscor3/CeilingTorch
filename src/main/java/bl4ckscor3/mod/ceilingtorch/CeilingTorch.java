@@ -42,10 +42,8 @@ public class CeilingTorch {
 		BLOCK_ENTITIES.register(modBus);
 		PARTICLE_TYPES.register(modBus);
 		preliminaryCompatList.put("minecraft", VanillaCompat::new);
-		CompatConfig.getConfig().getBuiltInCompatList().forEach((configValue, compatInfo) -> {
-			String modid = compatInfo.modid();
-
-			if (configValue.get() && ModList.get().isLoaded(modid))
+		CompatConfig.getConfig().getBuiltInCompat().forEach((modid, compatInfo) -> {
+			if (compatInfo.config().get() && ModList.get().isLoaded(modid))
 				preliminaryCompatList.put(modid, compatInfo.ceilingTorchCompat().get());
 		});
 	}
@@ -83,5 +81,9 @@ public class CeilingTorch {
 
 	public static ResourceLocation getRegistryName(Item item) {
 		return ForgeRegistries.ITEMS.getKey(item);
+	}
+
+	public static boolean isModCompatActive(String modid) {
+		return CompatConfig.getConfig().getBuiltInCompat().get(modid).config().get() && ModList.get().isLoaded(modid);
 	}
 }
