@@ -28,6 +28,7 @@ import bl4ckscor3.mod.ceilingtorch.compat.tofucraft.TofuCraftCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.torchbandolier.TorchBandolierCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.torchmaster.TorchmasterCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.undergarden.UndergardenCompat;
+import bl4ckscor3.mod.ceilingtorch.compat.xycraftworld.XyCraftWorldCompat;
 import net.minecraftforge.common.ForgeConfigSpec;
 import net.minecraftforge.common.ForgeConfigSpec.BooleanValue;
 import net.minecraftforge.fml.ModLoadingContext;
@@ -88,7 +89,8 @@ public class CompatConfig {
 				makeEntry(builder, "tofucraft", () -> TofuCraftCompat::new),
 				makeEntry(builder, "torchbandolier", () -> TorchBandolierCompat::new),
 				makeEntry(builder, "torchmaster", () -> TorchmasterCompat::new),
-				makeEntry(builder, "undergarden", () -> UndergardenCompat::new));
+				makeEntry(builder, "undergarden", () -> UndergardenCompat::new),
+				makeEntry(builder, "xycraft_world", () -> XyCraftWorldCompat::new));
 		//@formatter:on
 	}
 

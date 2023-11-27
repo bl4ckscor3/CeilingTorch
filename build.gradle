@@ -110,6 +110,8 @@ dependencies {
     implementation fg.deobf("curse.maven:tofucraftreload-317469:4716992")
     implementation fg.deobf("curse.maven:torch-bandolier-299337:4587731")
     implementation fg.deobf("curse.maven:torchmaster-254268:4673248")
+    implementation fg.deobf("curse.maven:xycraft-653786:4788862") //xycraft world dependency
+	implementation fg.deobf("curse.maven:xycraft-world-653789:4788863")
 }
 
 tasks.named('jar', Jar).configure {
