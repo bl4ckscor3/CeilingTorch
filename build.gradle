@@ -66,6 +66,10 @@ repositories {
             includeGroup "curse.maven"
         }
     }
+
+	maven {
+		url "https://maven.theillusivec4.top/"
+	}
 }
 
 dependencies {
@@ -80,10 +84,11 @@ dependencies {
 	implementation fg.deobf("curse.maven:bamboo-everything-331723:4681097")
 	implementation fg.deobf("curse.maven:chipped-456956:4634856")
 	implementation fg.deobf("curse.maven:common-capabilities-247007:4620480") //integrated dynamics dependency
-	implementation fg.deobf("curse.maven:curios-309927:4583413") //occultism dependency
+	implementation fg.deobf("top.theillusivec4.curios:curios-forge:5.4.3+1.20.1") //hardcore torches and occultism dependency
 	implementation fg.deobf("curse.maven:cyclops-core-232758:4681655") //integrated dynamics dependency
 	implementation fg.deobf("curse.maven:gaia-dimension-302529:4705648")
 	implementation fg.deobf("curse.maven:geckolib-388172:4711657") //occultism dependency
+	implementation fg.deobf("curse.maven:hardcore-torches-forge-576846:4795661")
 	implementation fg.deobf("curse.maven:integrated-dynamics-236307:4683419")
 	implementation fg.deobf("curse.maven:kotlin-for-forge-351264:4630525") //adorn dependency
 	implementation fg.deobf("curse.maven:magical-torches-389917:4700251")

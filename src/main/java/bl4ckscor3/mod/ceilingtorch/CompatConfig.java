@@ -13,6 +13,7 @@ import bl4ckscor3.mod.ceilingtorch.compat.bambooeverything.BambooEverythingCompa
 import bl4ckscor3.mod.ceilingtorch.compat.bonetorch.BoneTorchCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.chipped.ChippedCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.gaiadimension.GaiaDimensionCompat;
+import bl4ckscor3.mod.ceilingtorch.compat.hardcoretorches.HardcoreTorchesCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.integrateddynamics.IntegratedDynamicsCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.magicaltorches.MagicalTorchesCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.moshiz.MoShizCompat;
@@ -69,6 +70,7 @@ public class CompatConfig {
 				makeEntry(builder, "chipped", () -> ChippedCompat::new),
 				makeEntry(builder, "bonetorch", () -> BoneTorchCompat::new),
 				makeEntry(builder, "gaiadimension", () -> GaiaDimensionCompat::new),
+				makeEntry(builder, "hardcore_torches", () -> HardcoreTorchesCompat::new),
 				makeEntry(builder, "integrateddynamics", () -> IntegratedDynamicsCompat::new),
 				makeEntry(builder, "magical_torches", () -> MagicalTorchesCompat::new),
 				makeEntry(builder, "ms", "Mo' Shiz Mod", () -> MoShizCompat::new),
