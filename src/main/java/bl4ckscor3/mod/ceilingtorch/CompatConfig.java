@@ -21,6 +21,7 @@ import bl4ckscor3.mod.ceilingtorch.compat.moshiz.MoShizCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.nethersdelight.NethersDelightCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.occultism.OccultismCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.pokecubeaio.PokecubeAIOCompat;
+import bl4ckscor3.mod.ceilingtorch.compat.projecte.ProjectECompat;
 import bl4ckscor3.mod.ceilingtorch.compat.reliquary.ReliquaryCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.silentgear.SilentGearCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.tofucraft.TofuCraftCompat;
@@ -80,6 +81,7 @@ public class CompatConfig {
 				makeEntry(builder, "ms", "Mo' Shiz Mod", () -> MoShizCompat::new),
 				makeEntry(builder, "nethersdelight", () -> NethersDelightCompat::new),
 				makeEntry(builder, "pokecube_legends", () -> PokecubeAIOCompat::new),
+				makeEntry(builder, "projecte", () -> ProjectECompat::new),
 				makeEntry(builder, "occultism", () -> OccultismCompat::new),
 				makeEntry(builder, "reliquary", () -> ReliquaryCompat::new),
 				makeEntry(builder, "silentgear", () -> SilentGearCompat::new),
