@@ -8,6 +8,7 @@ import com.electronwill.nightconfig.core.io.WritingMode;
 
 import bl4ckscor3.mod.ceilingtorch.compat.additionallights.AdditionalLightsCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.adorn.AdornCompat;
+import bl4ckscor3.mod.ceilingtorch.compat.aquatictorches.AquaticTorchesCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.bambooeverything.BambooEverythingCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.bonetorch.BoneTorchCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.chipped.ChippedCompat;
@@ -63,6 +64,7 @@ public class CompatConfig {
 		builtInCompat = Map.ofEntries(
 				makeEntry(builder, "additional_lights", () -> AdditionalLightsCompat::new),
 				makeEntry(builder, "adorn", () -> AdornCompat::new),
+				makeEntry(builder, "aquatictorches", () -> AquaticTorchesCompat::new),
 				makeEntry(builder, "bambooeverything", () -> BambooEverythingCompat::new),
 				makeEntry(builder, "chipped", () -> ChippedCompat::new),
 				makeEntry(builder, "bonetorch", () -> BoneTorchCompat::new),
