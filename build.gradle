@@ -89,6 +89,7 @@ dependencies {
 	implementation fg.deobf("curse.maven:gaia-dimension-302529:4705648")
 	implementation fg.deobf("curse.maven:geckolib-388172:4711657") //occultism dependency
 	implementation fg.deobf("curse.maven:hardcore-torches-forge-576846:4795661")
+	implementation fg.deobf("curse.maven:i-like-wood-324164:4810688")
 	implementation fg.deobf("curse.maven:integrated-dynamics-236307:4683419")
 	implementation fg.deobf("curse.maven:kotlin-for-forge-351264:4630525") //adorn dependency
 	implementation fg.deobf("curse.maven:magical-torches-389917:4700251")
