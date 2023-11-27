@@ -13,11 +13,11 @@ import net.minecraftforge.event.entity.player.PlayerInteractEvent.RightClickBloc
 
 public interface ICeilingTorchCompat {
 	/**
-	 * Used to find out which block to place when an item from the mod of this compat is rightclicked on the bottom of a
-	 * block. Ideally, you would not return a new map every time this is called.
+	 * Used to find out which block to place when an item from the mod of this compat is rightclicked on the bottom of a block.
+	 * Ideally, you would not return a new map every time this is called.
 	 *
-	 * @return A map with the key being the ResourceLocation of the item that the player rightclicked with, and the ceiling
-	 *         torch block to place for that item
+	 * @return A map with the key being the ResourceLocation of the item that the player rightclicked with, and the ceiling torch
+	 *         block to place for that item
 	 */
 	public Map<ResourceLocation, Block> getPlaceEntries();
 

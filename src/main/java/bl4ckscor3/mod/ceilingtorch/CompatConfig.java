@@ -18,6 +18,7 @@ import bl4ckscor3.mod.ceilingtorch.compat.ilikewood.ILikeWoodCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.integrateddynamics.IntegratedDynamicsCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.magicaltorches.MagicalTorchesCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.moshiz.MoShizCompat;
+import bl4ckscor3.mod.ceilingtorch.compat.nethersdelight.NethersDelightCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.occultism.OccultismCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.reliquary.ReliquaryCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.silentgear.SilentGearCompat;
@@ -76,6 +77,7 @@ public class CompatConfig {
 				makeEntry(builder, "integrateddynamics", () -> IntegratedDynamicsCompat::new),
 				makeEntry(builder, "magical_torches", () -> MagicalTorchesCompat::new),
 				makeEntry(builder, "ms", "Mo' Shiz Mod", () -> MoShizCompat::new),
+				makeEntry(builder, "nethersdelight", () -> NethersDelightCompat::new),
 				makeEntry(builder, "occultism", () -> OccultismCompat::new),
 				makeEntry(builder, "reliquary", () -> ReliquaryCompat::new),
 				makeEntry(builder, "silentgear", () -> SilentGearCompat::new),
