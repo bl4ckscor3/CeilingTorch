@@ -6,8 +6,8 @@ import java.util.Map.Entry;
 import java.util.function.Supplier;
 
 import bl4ckscor3.mod.ceilingtorch.compat.vanilla.VanillaCompat;
-import net.minecraft.core.particles.ParticleType;
-import net.minecraft.core.particles.SimpleParticleType;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
@@ -21,9 +21,7 @@ import net.neoforged.fml.common.Mod.EventBusSubscriber;
 import net.neoforged.fml.common.Mod.EventBusSubscriber.Bus;
 import net.neoforged.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.neoforged.neoforge.registries.DeferredRegister;
-import net.neoforged.neoforge.registries.ForgeRegistries;
 import net.neoforged.neoforge.registries.RegisterEvent;
-import net.neoforged.neoforge.registries.RegistryObject;
 
 @Mod(CeilingTorch.MODID)
 @EventBusSubscriber(bus = Bus.MOD)
@@ -31,12 +29,9 @@ public class CeilingTorch {
 	public static final String MODID = "ceilingtorch";
 	private static final Map<String, ICeilingTorchCompat> COMPAT_LIST = new HashMap<>();
 	private static Map<String, Supplier<ICeilingTorchCompat>> preliminaryCompatList = new HashMap<>();
-	public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, MODID);
-	public static final DeferredRegister<BlockEntityType<?>> BLOCK_ENTITIES = DeferredRegister.create(ForgeRegistries.BLOCK_ENTITY_TYPES, MODID);
-	public static final DeferredRegister<ParticleType<?>> PARTICLE_TYPES = DeferredRegister.create(ForgeRegistries.PARTICLE_TYPES, MODID);
+	public static final DeferredRegister.Blocks BLOCKS = DeferredRegister.createBlocks(MODID);
+	public static final DeferredRegister<BlockEntityType<?>> BLOCK_ENTITIES = DeferredRegister.create(Registries.BLOCK_ENTITY_TYPE, MODID);
 	private static boolean initialized = false;
-	public static final RegistryObject<SimpleParticleType> MO_SHIZ_DYED_CEILING_FLAME = PARTICLE_TYPES.register("dyed_ceiling_flame", () -> new SimpleParticleType(false));
-	public static final RegistryObject<SimpleParticleType> MO_SHIZ_DYED_CEILING_SMOKE = PARTICLE_TYPES.register("dyed_ceiling_smoke", () -> new SimpleParticleType(false));
 
 	public CeilingTorch() {
 		IEventBus modBus = FMLJavaModLoadingContext.get().getModEventBus();
@@ -44,7 +39,6 @@ public class CeilingTorch {
 		CompatConfig.init(ModLoadingContext.get());
 		BLOCKS.register(modBus);
 		BLOCK_ENTITIES.register(modBus);
-		PARTICLE_TYPES.register(modBus);
 		preliminaryCompatList.put("minecraft", VanillaCompat::new);
 		CompatConfig.getConfig().getBuiltInCompat().forEach((modid, compatInfo) -> {
 			if (compatInfo.config().get() && ModList.get().isLoaded(modid))
@@ -80,11 +74,11 @@ public class CeilingTorch {
 	}
 
 	public static ResourceLocation getRegistryName(Block block) {
-		return ForgeRegistries.BLOCKS.getKey(block);
+		return BuiltInRegistries.BLOCK.getKey(block);
 	}
 
 	public static ResourceLocation getRegistryName(Item item) {
-		return ForgeRegistries.ITEMS.getKey(item);
+		return BuiltInRegistries.ITEM.getKey(item);
 	}
 
 	public static boolean isModCompatActive(String modid) {

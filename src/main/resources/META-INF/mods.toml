@@ -12,8 +12,7 @@ authors="bl4ckscor3"
 	displayURL="https://www.curseforge.com/minecraft/mc-mods/ceiling-torch"
 
 [[dependencies.ceilingtorch]]
-    modId="neo
-    forge"
+    modId="neoforge"
     mandatory=true
     versionRange="[20.2.64-beta,)"
     ordering="NONE"
