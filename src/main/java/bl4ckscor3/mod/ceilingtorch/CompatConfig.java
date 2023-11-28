@@ -6,29 +6,8 @@ import java.util.function.Supplier;
 import com.electronwill.nightconfig.core.file.CommentedFileConfig;
 import com.electronwill.nightconfig.core.io.WritingMode;
 
-import bl4ckscor3.mod.ceilingtorch.compat.additionallights.AdditionalLightsCompat;
-import bl4ckscor3.mod.ceilingtorch.compat.adorn.AdornCompat;
-import bl4ckscor3.mod.ceilingtorch.compat.aquatictorches.AquaticTorchesCompat;
-import bl4ckscor3.mod.ceilingtorch.compat.bambooeverything.BambooEverythingCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.bonetorch.BoneTorchCompat;
-import bl4ckscor3.mod.ceilingtorch.compat.chipped.ChippedCompat;
-import bl4ckscor3.mod.ceilingtorch.compat.gaiadimension.GaiaDimensionCompat;
-import bl4ckscor3.mod.ceilingtorch.compat.hardcoretorches.HardcoreTorchesCompat;
-import bl4ckscor3.mod.ceilingtorch.compat.ilikewood.ILikeWoodCompat;
-import bl4ckscor3.mod.ceilingtorch.compat.integrateddynamics.IntegratedDynamicsCompat;
-import bl4ckscor3.mod.ceilingtorch.compat.magicaltorches.MagicalTorchesCompat;
-import bl4ckscor3.mod.ceilingtorch.compat.moshiz.MoShizCompat;
-import bl4ckscor3.mod.ceilingtorch.compat.nethersdelight.NethersDelightCompat;
-import bl4ckscor3.mod.ceilingtorch.compat.occultism.OccultismCompat;
-import bl4ckscor3.mod.ceilingtorch.compat.pokecubeaio.PokecubeAIOCompat;
-import bl4ckscor3.mod.ceilingtorch.compat.projecte.ProjectECompat;
-import bl4ckscor3.mod.ceilingtorch.compat.reliquary.ReliquaryCompat;
-import bl4ckscor3.mod.ceilingtorch.compat.silentgear.SilentGearCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.tofucraft.TofuCraftCompat;
-import bl4ckscor3.mod.ceilingtorch.compat.torchbandolier.TorchBandolierCompat;
-import bl4ckscor3.mod.ceilingtorch.compat.torchmaster.TorchmasterCompat;
-import bl4ckscor3.mod.ceilingtorch.compat.undergarden.UndergardenCompat;
-import bl4ckscor3.mod.ceilingtorch.compat.xycraftworld.XyCraftWorldCompat;
 import net.neoforged.fml.ModLoadingContext;
 import net.neoforged.fml.config.ModConfig;
 import net.neoforged.fml.loading.FMLPaths;
@@ -68,29 +47,8 @@ public class CompatConfig {
 				"If you turn off a mod integration using this config, you can continue playing without needing an update of Ceiling Torch; However do note that the ceiling torches from that integration will disappear from your world. Note, that if you do not place a block in a space where a ceiling torch was, and then re-enable the respective integration, the torch will reappear.",
 				"Turning off integration with a mod that you are not using will not have any effect, as Ceiling Torch automatically checks for the presence of mods it integrates with.");
 		builtInCompat = Map.ofEntries(
-				makeEntry(builder, "additional_lights", () -> AdditionalLightsCompat::new),
-				makeEntry(builder, "adorn", () -> AdornCompat::new),
-				makeEntry(builder, "aquatictorches", () -> AquaticTorchesCompat::new),
-				makeEntry(builder, "bambooeverything", () -> BambooEverythingCompat::new),
-				makeEntry(builder, "chipped", () -> ChippedCompat::new),
 				makeEntry(builder, "bonetorch", () -> BoneTorchCompat::new),
-				makeEntry(builder, "gaiadimension", () -> GaiaDimensionCompat::new),
-				makeEntry(builder, "hardcore_torches", () -> HardcoreTorchesCompat::new),
-				makeEntry(builder, "ilikewood", () -> ILikeWoodCompat::new),
-				makeEntry(builder, "integrateddynamics", () -> IntegratedDynamicsCompat::new),
-				makeEntry(builder, "magical_torches", () -> MagicalTorchesCompat::new),
-				makeEntry(builder, "ms", "Mo' Shiz Mod", () -> MoShizCompat::new),
-				makeEntry(builder, "nethersdelight", () -> NethersDelightCompat::new),
-				makeEntry(builder, "pokecube_legends", () -> PokecubeAIOCompat::new),
-				makeEntry(builder, "projecte", () -> ProjectECompat::new),
-				makeEntry(builder, "occultism", () -> OccultismCompat::new),
-				makeEntry(builder, "reliquary", () -> ReliquaryCompat::new),
-				makeEntry(builder, "silentgear", () -> SilentGearCompat::new),
-				makeEntry(builder, "tofucraft", () -> TofuCraftCompat::new),
-				makeEntry(builder, "torchbandolier", () -> TorchBandolierCompat::new),
-				makeEntry(builder, "torchmaster", () -> TorchmasterCompat::new),
-				makeEntry(builder, "undergarden", () -> UndergardenCompat::new),
-				makeEntry(builder, "xycraft_world", () -> XyCraftWorldCompat::new));
+				makeEntry(builder, "tofucraft", () -> TofuCraftCompat::new));
 		//@formatter:on
 	}
 

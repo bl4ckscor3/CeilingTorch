@@ -49,44 +49,9 @@ repositories {
 
 dependencies {
 	implementation 'net.neoforged:neoforge:20.2.65-beta'
-//	runtimeOnly "curse.maven:jei-238222:4712868"
 
-//	implementation "curse.maven:additional-lights-384991:4596807"
-//	implementation "curse.maven:adorn-for-forge-438784:4596873"
-//	implementation "curse.maven:aquatic-torches-563637:4825253"
-//	implementation "curse.maven:architectury-api-419699:4663010" //bamboo everything dependency
-//	implementation "curse.maven:athena-841890:4718179" //chipped dependency
-//	implementation "curse.maven:bamboo-everything-331723:4681097"
-//	implementation "curse.maven:chipped-456956:4634856"
-//	implementation "curse.maven:common-capabilities-247007:4620480" //integrated dynamics dependency
-//	implementation "top.theillusivec4.curios:curios-forge:5.4.3+1.20.1" //hardcore torches and occultism dependency
-//	implementation "curse.maven:cyclops-core-232758:4905983" //integrated dynamics dependency
-//	implementation "curse.maven:farmers-delight-398521:4679319" //nether's delight dependency
-//	implementation "curse.maven:gaia-dimension-302529:4794552"
-//	implementation "curse.maven:geckolib-388172:4711657" //occultism dependency
-//	implementation "curse.maven:hardcore-torches-forge-576846:4795661"
-//	implementation "curse.maven:i-like-wood-324164:4810688"
-//	implementation "curse.maven:integrated-dynamics-236307:4906020"
-//	implementation "curse.maven:kotlin-for-forge-351264:4630525" //adorn dependency
-//	implementation "curse.maven:magical-torches-389917:4700251"
-//	implementation "curse.maven:modonomicon-538392:4675992" //occultism dependency
-//	implementation "curse.maven:mo-shiz-mod-62536:4838746"
-//	implementation "curse.maven:nethers-delight-496394:4736227"
-//	implementation "curse.maven:occultism-361026:4908153"
-//	implementation "curse.maven:pokecube-aoi-285121:4878609"
-//	implementation "curse.maven:projecte-226410:4901949"
-//	implementation "curse.maven:reliquary-reincarnations-241319:4666082"
-//	implementation "curse.maven:resourceful-lib-570073:4717712" //chipped dependency
-//	implementation "curse.maven:sbm-bone-torch-238695:4578329"
-//	implementation "curse.maven:silent-gear-297039:4868212"
-//	implementation "curse.maven:silent-lib-242998:4585754" //silent gear and torch bandolier dependency
-//	implementation "curse.maven:smartbrainlib-661293:4688287" //occultism dependency
-//	implementation "curse.maven:the-undergarden-379849:4836821"
-//	implementation "curse.maven:tofucraftreload-317469:4829418"
-//	implementation "curse.maven:torch-bandolier-299337:4587731"
-//	implementation "curse.maven:torchmaster-254268:4817795"
-//	implementation "curse.maven:xycraft-653786:4788862" //xycraft world dependency
-//	implementation "curse.maven:xycraft-world-653789:4788863"
+	implementation "curse.maven:sbm-bone-torch-238695:4883926"
+	implementation "curse.maven:tofucraftreload-317469:4883747"
 }
 
 tasks.named('jar', Jar).configure {
