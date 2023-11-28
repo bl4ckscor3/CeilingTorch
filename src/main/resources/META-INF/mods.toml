@@ -1,6 +1,6 @@
 modLoader="javafml"
-loaderVersion="[46,)"
-license="MIT https://github.com/bl4ckscor3/CeilingTorch/blob/1.20/LICENSE"
+loaderVersion="[1,)"
+license="MIT https://github.com/bl4ckscor3/CeilingTorch/blob/1.20.2/LICENSE"
 issueTrackerURL="https://github.com/bl4ckscor3/CeilingTorch/issues"
 authors="bl4ckscor3"
 
@@ -12,15 +12,16 @@ authors="bl4ckscor3"
 	displayURL="https://www.curseforge.com/minecraft/mc-mods/ceiling-torch"
 
 [[dependencies.ceilingtorch]]
-    modId="forge"
+    modId="neo
+    forge"
     mandatory=true
-    versionRange="[46,)"
+    versionRange="[20.2.64-beta,)"
     ordering="NONE"
     side="BOTH"
 
 [[dependencies.ceilingtorch]]
     modId="minecraft"
     mandatory=true
-    versionRange="[1.20,1.21)"
+    versionRange="[1.20.2,1.21)"
     ordering="NONE"
     side="BOTH"

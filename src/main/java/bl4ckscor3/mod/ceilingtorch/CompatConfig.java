@@ -29,20 +29,20 @@ import bl4ckscor3.mod.ceilingtorch.compat.torchbandolier.TorchBandolierCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.torchmaster.TorchmasterCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.undergarden.UndergardenCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.xycraftworld.XyCraftWorldCompat;
-import net.minecraftforge.common.ForgeConfigSpec;
-import net.minecraftforge.common.ForgeConfigSpec.BooleanValue;
-import net.minecraftforge.fml.ModLoadingContext;
-import net.minecraftforge.fml.config.ModConfig;
-import net.minecraftforge.fml.loading.FMLPaths;
+import net.neoforged.fml.ModLoadingContext;
+import net.neoforged.fml.config.ModConfig;
+import net.neoforged.fml.loading.FMLPaths;
+import net.neoforged.neoforge.common.ModConfigSpec;
+import net.neoforged.neoforge.common.ModConfigSpec.BooleanValue;
 
 public class CompatConfig {
 	public static final String FILE_NAME = "ceiling-torch-integrations.toml";
-	private static ForgeConfigSpec configSpec;
+	private static ModConfigSpec configSpec;
 	private static CompatConfig config;
 	private Map<String, CompatInfo> builtInCompat;
 
 	public static void init(ModLoadingContext ctx) {
-		ForgeConfigSpec.Builder builder = new ForgeConfigSpec.Builder();
+		ModConfigSpec.Builder builder = new ModConfigSpec.Builder();
 		CommentedFileConfig fileConfig;
 
 		config = new CompatConfig(builder);
@@ -60,7 +60,7 @@ public class CompatConfig {
 		ctx.registerConfig(ModConfig.Type.COMMON, configSpec, FILE_NAME);
 	}
 
-	CompatConfig(ForgeConfigSpec.Builder builder) {
+	CompatConfig(ModConfigSpec.Builder builder) {
 		//@formatter:off
 		builder.comment(
 				"This configuration is meant to allow turning off mod integration that has stopped working. All integrations are enabled by default. To disable a specific integration, set the relevant config value to \"false\".",
@@ -94,11 +94,11 @@ public class CompatConfig {
 		//@formatter:on
 	}
 
-	private Map.Entry<String, CompatInfo> makeEntry(ForgeConfigSpec.Builder builder, String modid, Supplier<Supplier<ICeilingTorchCompat>> ceilingTorchCompat) {
+	private Map.Entry<String, CompatInfo> makeEntry(ModConfigSpec.Builder builder, String modid, Supplier<Supplier<ICeilingTorchCompat>> ceilingTorchCompat) {
 		return Map.entry(modid, new CompatInfo(builder.define(modid, true), ceilingTorchCompat));
 	}
 
-	private Map.Entry<String, CompatInfo> makeEntry(ForgeConfigSpec.Builder builder, String modid, String comment, Supplier<Supplier<ICeilingTorchCompat>> ceilingTorchCompat) {
+	private Map.Entry<String, CompatInfo> makeEntry(ModConfigSpec.Builder builder, String modid, String comment, Supplier<Supplier<ICeilingTorchCompat>> ceilingTorchCompat) {
 		return Map.entry(modid, new CompatInfo(builder.comment(comment).define(modid, true), ceilingTorchCompat));
 	}
 

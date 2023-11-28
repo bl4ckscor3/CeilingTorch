@@ -14,14 +14,14 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.AirBlock;
 import net.minecraft.world.level.block.Block;
-import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.event.entity.player.PlayerInteractEvent.RightClickBlock;
+import net.neoforged.neoforge.common.NeoForge;
+import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent.RightClickBlock;
 import net.silentchaos512.torchbandolier.init.ModItems;
 import net.silentchaos512.torchbandolier.item.TorchBandolierItem;
 
 public class TorchBandolierCompat implements ICeilingTorchCompat {
 	public TorchBandolierCompat() {
-		MinecraftForge.EVENT_BUS.addListener(this::onRightClickBlock);
+		NeoForge.EVENT_BUS.addListener(this::onRightClickBlock);
 	}
 
 	public void onRightClickBlock(RightClickBlock event) {

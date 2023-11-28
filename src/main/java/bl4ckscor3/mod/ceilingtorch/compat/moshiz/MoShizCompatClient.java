@@ -1,9 +1,9 @@
 package bl4ckscor3.mod.ceilingtorch.compat.moshiz;
 
 import bl4ckscor3.mod.ceilingtorch.CeilingTorch;
-import net.minecraftforge.client.event.RegisterColorHandlersEvent;
-import net.minecraftforge.client.event.RegisterParticleProvidersEvent;
-import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.neoforged.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.neoforged.neoforge.client.event.RegisterColorHandlersEvent;
+import net.neoforged.neoforge.client.event.RegisterParticleProvidersEvent;
 
 public class MoShizCompatClient {
 	public static void addListeners() {

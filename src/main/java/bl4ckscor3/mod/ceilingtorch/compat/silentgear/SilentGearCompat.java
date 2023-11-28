@@ -11,7 +11,7 @@ import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SoundType;
-import net.minecraftforge.registries.RegistryObject;
+import net.neoforged.neoforge.registries.RegistryObject;
 import net.silentchaos512.gear.setup.SgBlocks;
 
 public class SilentGearCompat implements ICeilingTorchCompat {

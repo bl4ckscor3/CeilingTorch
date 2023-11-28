@@ -16,7 +16,7 @@ import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraftforge.registries.RegistryObject;
+import net.neoforged.neoforge.registries.RegistryObject;
 
 public class GaiaDimensionCompat implements ICeilingTorchCompat {
 	public static final RegistryObject<Block> PYRITE_CEILING_TORCH = CeilingTorch.BLOCKS.register("gaiadimension_pyrite_torch", () -> new CeilingTorchBlock(Block.Properties.of().strength(0.0F).lightLevel(state -> 14).noCollission(), null, ModBlocks.pyrite_torch) {

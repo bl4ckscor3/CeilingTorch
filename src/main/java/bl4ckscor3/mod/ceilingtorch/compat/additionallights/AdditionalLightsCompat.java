@@ -20,8 +20,8 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraftforge.event.entity.player.PlayerInteractEvent.RightClickBlock;
-import net.minecraftforge.registries.RegistryObject;
+import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent.RightClickBlock;
+import net.neoforged.neoforge.registries.RegistryObject;
 
 public class AdditionalLightsCompat implements ICeilingTorchCompat {
 	private static final HashMap<Supplier<Block>, Supplier<Block>> CEILING_TO_NORMAL = new HashMap<>();

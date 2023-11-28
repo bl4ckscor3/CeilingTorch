@@ -9,7 +9,7 @@ import bl4ckscor3.mod.ceilingtorch.ICeilingTorchCompat;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraftforge.registries.RegistryObject;
+import net.neoforged.neoforge.registries.RegistryObject;
 import quek.undergarden.registry.UGBlocks;
 
 public class UndergardenCompat implements ICeilingTorchCompat {

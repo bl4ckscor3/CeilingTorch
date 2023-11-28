@@ -24,8 +24,8 @@ import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.material.Fluids;
-import net.minecraftforge.event.entity.player.PlayerInteractEvent.RightClickBlock;
-import net.minecraftforge.registries.RegistryObject;
+import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent.RightClickBlock;
+import net.neoforged.neoforge.registries.RegistryObject;
 
 public class MagicalTorchesCompat implements ICeilingTorchCompat {
 	public static final RegistryObject<Block> SMALL_CEILING_TORCH = CeilingTorch.BLOCKS.register("magical_torches_small_torch", () -> new SpawnBlockingCeilingTorchBlock(getProperties(), SmallTorch.registry_name, SmallTorchSpawnBlocker::new, () -> ModBlocksRegisterFactory.SMALL_TORCH));
