@@ -14,6 +14,7 @@ import bl4ckscor3.mod.ceilingtorch.compat.bonetorch.BoneTorchCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.chipped.ChippedCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.gaiadimension.GaiaDimensionCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.hardcoretorches.HardcoreTorchesCompat;
+import bl4ckscor3.mod.ceilingtorch.compat.iceandfire.IceAndFireCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.ilikewood.ILikeWoodCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.integrateddynamics.IntegratedDynamicsCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.magicaltorches.MagicalTorchesCompat;
@@ -76,6 +77,7 @@ public class CompatConfig {
 				makeEntry(builder, "bonetorch", () -> BoneTorchCompat::new),
 				makeEntry(builder, "gaiadimension", () -> GaiaDimensionCompat::new),
 				makeEntry(builder, "hardcore_torches", () -> HardcoreTorchesCompat::new),
+				makeEntry(builder, "iceandfire", () -> IceAndFireCompat::new),
 				makeEntry(builder, "ilikewood", () -> ILikeWoodCompat::new),
 				makeEntry(builder, "integrateddynamics", () -> IntegratedDynamicsCompat::new),
 				makeEntry(builder, "magical_torches", () -> MagicalTorchesCompat::new),

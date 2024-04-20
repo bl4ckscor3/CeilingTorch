@@ -6,7 +6,7 @@ plugins {
 	id 'org.parchmentmc.librarian.forgegradle' version '1.+'
 }
 
-version = '1.27'
+version = '1.28'
 group = 'bl4ckscor3.mod.ceilingtorch'
 
 base {
@@ -66,6 +66,7 @@ dependencies {
 	implementation fg.deobf("curse.maven:architectury-api-419699:4663010") //bamboo everything dependency
 	implementation fg.deobf("curse.maven:athena-841890:5176879") //chipped dependency
 	implementation fg.deobf("curse.maven:bamboo-everything-331723:4681097")
+	implementation fg.deobf("curse.maven:citadel-331936:5143956") //ice and fire dependency
 	implementation fg.deobf("curse.maven:chipped-456956:5270039")
 	implementation fg.deobf("curse.maven:common-capabilities-247007:4987207") //integrated dynamics dependency
 	implementation fg.deobf("curse.maven:curios-309927:5266541") //hardcore torches and occultism dependency
@@ -75,6 +76,7 @@ dependencies {
 	implementation fg.deobf("curse.maven:geckolib-388172:5188427") //occultism dependency
 	implementation fg.deobf("curse.maven:hardcore-torches-forge-576846:4795661")
 	implementation fg.deobf("curse.maven:i-like-wood-324164:4810688")
+	implementation fg.deobf("curse.maven:ice-and-fire-dragons-264231:5122408")
 	implementation fg.deobf("curse.maven:integrated-dynamics-236307:5262098")
 	implementation fg.deobf("curse.maven:kotlin-for-forge-351264:4630525") //adorn dependency
 	implementation fg.deobf("curse.maven:magical-torches-389917:4700251")
