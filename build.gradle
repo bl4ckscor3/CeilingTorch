@@ -17,7 +17,7 @@ java.toolchain.languageVersion = JavaLanguageVersion.of(17)
 println('Java: ' + System.getProperty('java.version') + ' JVM: ' + System.getProperty('java.vm.version') + '(' + System.getProperty('java.vendor') + ') Arch: ' + System.getProperty('os.arch'))
 
 minecraft {
-	mappings channel: 'parchment', version: '2023.08.06-1.20.1'
+	mappings channel: 'parchment', version: '2023.09.03-1.20.1'
     accessTransformer = file('src/main/resources/META-INF/accesstransformer.cfg')
 	copyIdeResources = true
 	
@@ -54,50 +54,46 @@ repositories {
             includeGroup "curse.maven"
         }
     }
-
-	maven {
-		url "https://maven.theillusivec4.top/"
-	}
 }
 
 dependencies {
-	minecraft 'net.minecraftforge:forge:1.20.1-47.1.3'
+	minecraft 'net.minecraftforge:forge:1.20.1-47.1.28'
 	runtimeOnly fg.deobf("curse.maven:jei-238222:4712868")
 
 	implementation fg.deobf("curse.maven:additional-lights-384991:4596807")
-	implementation fg.deobf("curse.maven:adorn-for-forge-438784:4596873")
+	implementation fg.deobf("curse.maven:adorn-for-forge-438784:4957843")
 	implementation fg.deobf("curse.maven:aquatic-torches-563637:4825253")
 	implementation fg.deobf("curse.maven:architectury-api-419699:4663010") //bamboo everything dependency
-	implementation fg.deobf("curse.maven:athena-841890:4718179") //chipped dependency
+	implementation fg.deobf("curse.maven:athena-841890:5176879") //chipped dependency
 	implementation fg.deobf("curse.maven:bamboo-everything-331723:4681097")
-	implementation fg.deobf("curse.maven:chipped-456956:4634856")
-	implementation fg.deobf("curse.maven:common-capabilities-247007:4620480") //integrated dynamics dependency
-	implementation fg.deobf("top.theillusivec4.curios:curios-forge:5.4.3+1.20.1") //hardcore torches and occultism dependency
-	implementation fg.deobf("curse.maven:cyclops-core-232758:4905983") //integrated dynamics dependency
+	implementation fg.deobf("curse.maven:chipped-456956:5270039")
+	implementation fg.deobf("curse.maven:common-capabilities-247007:4987207") //integrated dynamics dependency
+	implementation fg.deobf("curse.maven:curios-309927:5266541") //hardcore torches and occultism dependency
+	implementation fg.deobf("curse.maven:cyclops-core-232758:5262063") //integrated dynamics dependency
 	implementation fg.deobf("curse.maven:farmers-delight-398521:4679319") //nether's delight dependency
 	implementation fg.deobf("curse.maven:gaia-dimension-302529:4794552")
-	implementation fg.deobf("curse.maven:geckolib-388172:4711657") //occultism dependency
+	implementation fg.deobf("curse.maven:geckolib-388172:5188427") //occultism dependency
 	implementation fg.deobf("curse.maven:hardcore-torches-forge-576846:4795661")
 	implementation fg.deobf("curse.maven:i-like-wood-324164:4810688")
-	implementation fg.deobf("curse.maven:integrated-dynamics-236307:4906020")
+	implementation fg.deobf("curse.maven:integrated-dynamics-236307:5262098")
 	implementation fg.deobf("curse.maven:kotlin-for-forge-351264:4630525") //adorn dependency
 	implementation fg.deobf("curse.maven:magical-torches-389917:4700251")
-	implementation fg.deobf("curse.maven:modonomicon-538392:4675992") //occultism dependency
+	implementation fg.deobf("curse.maven:modonomicon-538392:5267177") //occultism dependency
 	implementation fg.deobf("curse.maven:mo-shiz-mod-62536:4838746")
 	implementation fg.deobf("curse.maven:nethers-delight-496394:4736227")
-	implementation fg.deobf("curse.maven:occultism-361026:4908153")
-	implementation fg.deobf("curse.maven:pokecube-aoi-285121:4878609")
+	implementation fg.deobf("curse.maven:occultism-361026:5253923")
+	implementation fg.deobf("curse.maven:pokecube-aoi-285121:5133485")
 	implementation fg.deobf("curse.maven:projecte-226410:4901949")
-	implementation fg.deobf("curse.maven:reliquary-reincarnations-241319:4666082")
-	implementation fg.deobf("curse.maven:resourceful-lib-570073:4717712") //chipped dependency
+	implementation fg.deobf("curse.maven:reliquary-reincarnations-241319:5253707")
+	implementation fg.deobf("curse.maven:resourceful-lib-570073:5210240") //chipped dependency
     implementation fg.deobf("curse.maven:sbm-bone-torch-238695:4578329")
-    implementation fg.deobf("curse.maven:silent-gear-297039:4868212")
+    implementation fg.deobf("curse.maven:silent-gear-297039:5199286")
     implementation fg.deobf("curse.maven:silent-lib-242998:4585754") //silent gear and torch bandolier dependency
-    implementation fg.deobf("curse.maven:smartbrainlib-661293:4688287") //occultism dependency
-    implementation fg.deobf("curse.maven:the-undergarden-379849:4836821")
-    implementation fg.deobf("curse.maven:tofucraftreload-317469:4829418")
+    implementation fg.deobf("curse.maven:smartbrainlib-661293:5272975") //occultism dependency
+    implementation fg.deobf("curse.maven:the-undergarden-379849:5182632")
+    implementation fg.deobf("curse.maven:tofucraftreload-317469:5272780")
     implementation fg.deobf("curse.maven:torch-bandolier-299337:4587731")
-    implementation fg.deobf("curse.maven:torchmaster-254268:4817795")
+    implementation fg.deobf("curse.maven:torchmaster-254268:5264637")
     implementation fg.deobf("curse.maven:xycraft-653786:4788862") //xycraft world dependency
 	implementation fg.deobf("curse.maven:xycraft-world-653789:4788863")
 }
