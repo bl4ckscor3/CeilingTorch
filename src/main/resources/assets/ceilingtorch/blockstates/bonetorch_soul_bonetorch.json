@@ -1,0 +1,5 @@
+{
+    "variants": {
+        "": { "model": "bonetorch:block/soul_bonetorch", "x": 180 }
+    }
+}

@@ -6,7 +6,7 @@ plugins {
 	id 'org.parchmentmc.librarian.forgegradle' version '1.+'
 }
 
-version = '1.26'
+version = '1.29'
 group = 'bl4ckscor3.mod.ceilingtorch'
 archivesBaseName = 'ceilingtorch-1.19.4'
 
@@ -72,7 +72,7 @@ dependencies {
     implementation fg.deobf("curse.maven:mo-shiz-mod-62536:4520207")
     implementation fg.deobf("curse.maven:modonomicon-538392:4641902") //occultism dependency
     implementation fg.deobf("curse.maven:occultism-361026:4641928")
-    implementation fg.deobf("curse.maven:sbm-bone-torch-238695:4162647")
+    implementation fg.deobf("curse.maven:sbm-bone-torch-238695:5313148")
     implementation fg.deobf("curse.maven:silent-gear-297039:4576936")
     implementation fg.deobf("curse.maven:silent-lib-242998:4540305") //silent gear and torch bandolier dependency
     implementation fg.deobf("curse.maven:smartbrainlib-661293:4455931") //occultism dependency
@@ -92,4 +92,9 @@ jar {
                     "Implementation-Vendor" :"bl4ckscor3",
                     "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")],)
     }
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+    options.release = 17
 }
