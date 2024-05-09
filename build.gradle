@@ -6,7 +6,7 @@ plugins {
 	id 'org.parchmentmc.librarian.forgegradle' version '1.+'
 }
 
-version = '1.28'
+version = '1.29'
 group = 'bl4ckscor3.mod.ceilingtorch'
 
 base {
@@ -88,7 +88,7 @@ dependencies {
 	implementation fg.deobf("curse.maven:projecte-226410:4901949")
 	implementation fg.deobf("curse.maven:reliquary-reincarnations-241319:5253707")
 	implementation fg.deobf("curse.maven:resourceful-lib-570073:5210240") //chipped dependency
-    implementation fg.deobf("curse.maven:sbm-bone-torch-238695:4578329")
+    implementation fg.deobf("curse.maven:sbm-bone-torch-238695:5313149")
     implementation fg.deobf("curse.maven:silent-gear-297039:5199286")
     implementation fg.deobf("curse.maven:silent-lib-242998:4585754") //silent gear and torch bandolier dependency
     implementation fg.deobf("curse.maven:smartbrainlib-661293:5272975") //occultism dependency
@@ -113,4 +113,5 @@ tasks.named('jar', Jar).configure {
 
 tasks.withType(JavaCompile).configureEach {
     options.encoding = 'UTF-8'
+    options.release = 17
 }
