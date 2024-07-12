@@ -19,6 +19,7 @@ import net.neoforged.fml.ModList;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.common.EventBusSubscriber.Bus;
 import net.neoforged.fml.common.Mod;
+import net.neoforged.fml.config.ModConfig;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.neoforged.neoforge.registries.RegisterEvent;
 
@@ -33,11 +34,11 @@ public class CeilingTorch {
 	private static boolean initialized = false;
 
 	public CeilingTorch(IEventBus modBus, ModContainer modContainer) {
-		CompatConfig.init(modContainer);
+		modContainer.registerConfig(ModConfig.Type.STARTUP, CompatConfig.CONFIG_SPEC, CompatConfig.FILE_NAME);
 		BLOCKS.register(modBus);
 		BLOCK_ENTITIES.register(modBus);
 		preliminaryCompatList.put("minecraft", VanillaCompat::new);
-		CompatConfig.getConfig().getBuiltInCompat().forEach((modid, compatInfo) -> {
+		CompatConfig.CONFIG.getBuiltInCompat().forEach((modid, compatInfo) -> {
 			if (compatInfo.config().get() && ModList.get().isLoaded(modid))
 				preliminaryCompatList.put(modid, compatInfo.ceilingTorchCompat().get());
 		});
@@ -79,6 +80,6 @@ public class CeilingTorch {
 	}
 
 	public static boolean isModCompatActive(String modid) {
-		return CompatConfig.getConfig().getBuiltInCompat().get(modid).config().get() && ModList.get().isLoaded(modid);
+		return CompatConfig.CONFIG.getBuiltInCompat().get(modid).config().get() && ModList.get().isLoaded(modid);
 	}
 }

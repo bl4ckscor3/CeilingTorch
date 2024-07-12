@@ -43,12 +43,12 @@ repositories {
 }
 
 dependencies {
-	implementation 'net.neoforged:neoforge:21.0.4-beta'
+	implementation 'net.neoforged:neoforge:21.0.86-beta'
 //	implementation 'curse.maven:jei-238222:5101381'
 
-	implementation "curse.maven:bagus-lib-866533:5424808" //tofucraftreload dependency
+	implementation "curse.maven:bagus-lib-866533:5511022" //tofucraftreload dependency
 	implementation "curse.maven:sbm-bone-torch-238695:5427882"
-	implementation "curse.maven:tofucraftreload-317469:5424864"
+	implementation "curse.maven:tofucraftreload-317469:5524840"
 }
 
 tasks.named('jar', Jar).configure {

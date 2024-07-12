@@ -3,40 +3,24 @@ package bl4ckscor3.mod.ceilingtorch;
 import java.util.Map;
 import java.util.function.Supplier;
 
-import com.electronwill.nightconfig.core.file.CommentedFileConfig;
-import com.electronwill.nightconfig.core.io.WritingMode;
+import org.apache.commons.lang3.tuple.Pair;
 
 import bl4ckscor3.mod.ceilingtorch.compat.bonetorch.BoneTorchCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.tofucraft.TofuCraftCompat;
-import net.neoforged.fml.ModContainer;
-import net.neoforged.fml.config.ModConfig;
-import net.neoforged.fml.loading.FMLPaths;
 import net.neoforged.neoforge.common.ModConfigSpec;
 import net.neoforged.neoforge.common.ModConfigSpec.BooleanValue;
 
 public class CompatConfig {
 	public static final String FILE_NAME = "ceiling-torch-integrations.toml";
-	private static ModConfigSpec configSpec;
-	private static CompatConfig config;
+	public static final ModConfigSpec CONFIG_SPEC;
+	public static final CompatConfig CONFIG;
 	private Map<String, CompatInfo> builtInCompat;
 
-	public static void init(ModContainer modContainer) {
-		ModConfigSpec.Builder builder = new ModConfigSpec.Builder();
-		CommentedFileConfig fileConfig;
+	static {
+		Pair<CompatConfig, ModConfigSpec> specPair = new ModConfigSpec.Builder().configure(CompatConfig::new);
 
-		config = new CompatConfig(builder);
-		configSpec = builder.build();
-		//@formatter:off
-		fileConfig = CommentedFileConfig
-				.builder(FMLPaths.CONFIGDIR.get().resolve(FILE_NAME))
-				.preserveInsertionOrder()
-				.writingMode(WritingMode.REPLACE)
-				.build();
-		//@formatter:on
-		fileConfig.load();
-		fileConfig.save();
-		configSpec.setConfig(fileConfig);
-		modContainer.registerConfig(ModConfig.Type.COMMON, configSpec, FILE_NAME);
+		CONFIG_SPEC = specPair.getRight();
+		CONFIG = specPair.getLeft();
 	}
 
 	CompatConfig(ModConfigSpec.Builder builder) {
@@ -62,10 +46,6 @@ public class CompatConfig {
 
 	public Map<String, CompatInfo> getBuiltInCompat() {
 		return builtInCompat;
-	}
-
-	public static CompatConfig getConfig() {
-		return config;
 	}
 
 	public record CompatInfo(BooleanValue config, Supplier<Supplier<ICeilingTorchCompat>> ceilingTorchCompat) {}
