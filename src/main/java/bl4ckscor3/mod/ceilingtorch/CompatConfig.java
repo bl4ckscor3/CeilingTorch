@@ -8,6 +8,7 @@ import org.apache.commons.lang3.tuple.Pair;
 import bl4ckscor3.mod.ceilingtorch.compat.additionallights.AdditionalLightsCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.bambooeverything.BambooEverythingCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.bonetorch.BoneTorchCompat;
+import bl4ckscor3.mod.ceilingtorch.compat.chipped.ChippedCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.tofucraft.TofuCraftCompat;
 import net.neoforged.neoforge.common.ModConfigSpec;
 import net.neoforged.neoforge.common.ModConfigSpec.BooleanValue;
@@ -36,6 +37,7 @@ public class CompatConfig {
 				makeEntry(builder, "additional_lights", () -> AdditionalLightsCompat::new),
 				makeEntry(builder, "bambooeverything", () -> BambooEverythingCompat::new),
 				makeEntry(builder, "bonetorch", () -> BoneTorchCompat::new),
+				makeEntry(builder, "chipped", () -> ChippedCompat::new),
 				makeEntry(builder, "tofucraft", () -> TofuCraftCompat::new));
 		//@formatter:on
 	}
