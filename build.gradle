@@ -47,7 +47,9 @@ dependencies {
 	implementation 'curse.maven:jei-238222:5525108'
 
 	implementation "curse.maven:additional-lights-384991:5504182"
+	implementation "curse.maven:architectury-api-419699:5521987" //bamboo everything dependency
 	implementation "curse.maven:bagus-lib-866533:5511022" //tofucraftreload dependency
+	implementation "curse.maven:bamboo-everything-331723:5438627"
 	implementation "curse.maven:sbm-bone-torch-238695:5513932"
 	implementation "curse.maven:tofucraftreload-317469:5524840"
 }
