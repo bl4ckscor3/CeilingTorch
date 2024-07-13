@@ -5,7 +5,7 @@ plugins {
 	id 'net.neoforged.gradle.userdev' version '7.0.104'
 }
 
-version = '1.29'
+version = '1.30'
 group = 'bl4ckscor3.mod.ceilingtorch'
 
 base {
@@ -63,9 +63,10 @@ dependencies {
 	implementation "curse.maven:resourceful-lib-570073:5180841" //chipped dependency
 	implementation "curse.maven:sbm-bone-torch-238695:5313150"
 	implementation "curse.maven:silent-gear-297039:5460278"
-	implementation "curse.maven:silent-lib-242998:5436097" //silent gear dependency
+	implementation "curse.maven:silent-lib-242998:5436097" //silent gear and torch bandolier dependency
 	implementation "curse.maven:smartbrainlib-661293:5285698" //occultism dependency
 	implementation "curse.maven:the-undergarden-379849:5188616"
+	implementation "curse.maven:torch-bandolier-299337:5447399"
 	implementation "curse.maven:tofucraftreload-317469:5272782"
 }
 
