@@ -4,6 +4,8 @@ import net.minecraftforge.client.event.RegisterColorHandlersEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 
 public class MalumCompatClient {
+	private MalumCompatClient() {}
+
 	public static void addListeners() {
 		FMLJavaModLoadingContext.get().getModEventBus().addListener(MalumCompatClient::registerColorHandlers);
 	}
