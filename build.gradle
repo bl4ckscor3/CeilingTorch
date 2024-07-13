@@ -5,7 +5,7 @@ plugins {
 	id 'net.neoforged.gradle.userdev' version '7.0.105'
 }
 
-version = '1.29'
+version = '1.30'
 group = 'bl4ckscor3.mod.ceilingtorch'
 
 base {
@@ -43,13 +43,18 @@ repositories {
 }
 
 dependencies {
-	implementation 'net.neoforged:neoforge:20.6.48-beta'
-//	implementation 'curse.maven:jei-238222:5101381'
+	implementation 'net.neoforged:neoforge:20.6.119'
+	implementation 'curse.maven:jei-238222:5466528'
 
 	implementation "curse.maven:bagus-lib-866533:5315256" //tofucraftreload dependency
+	implementation "curse.maven:curios-309927:5443145" //occultism dependency
+	implementation "curse.maven:geckolib-388172:5419281" //occultism dependency
+	implementation "curse.maven:modonomicon-538392:5415005" //occultism dependency
+	implementation "curse.maven:occultism-361026:5418421"
 	implementation "curse.maven:sbm-bone-torch-238695:5313151"
-	implementation "curse.maven:the-undergarden-379849:5322442"
-	implementation "curse.maven:tofucraftreload-317469:5326439"
+	implementation "curse.maven:smartbrainlib-661293:5303000" //occultism dependency
+	implementation "curse.maven:the-undergarden-379849:5381985"
+	implementation "curse.maven:tofucraftreload-317469:5417612"
 }
 
 tasks.named('jar', Jar).configure {

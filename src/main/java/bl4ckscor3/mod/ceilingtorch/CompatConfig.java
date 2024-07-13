@@ -7,6 +7,7 @@ import com.electronwill.nightconfig.core.file.CommentedFileConfig;
 import com.electronwill.nightconfig.core.io.WritingMode;
 
 import bl4ckscor3.mod.ceilingtorch.compat.bonetorch.BoneTorchCompat;
+import bl4ckscor3.mod.ceilingtorch.compat.occultism.OccultismCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.tofucraft.TofuCraftCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.undergarden.UndergardenCompat;
 import net.neoforged.fml.ModContainer;
@@ -49,6 +50,7 @@ public class CompatConfig {
 				"Turning off integration with a mod that you are not using will not have any effect, as Ceiling Torch automatically checks for the presence of mods it integrates with.");
 		builtInCompat = Map.ofEntries(
 				makeEntry(builder, "bonetorch", () -> BoneTorchCompat::new),
+				makeEntry(builder, "occultism", () -> OccultismCompat::new),
 				makeEntry(builder, "tofucraft", () -> TofuCraftCompat::new),
 				makeEntry(builder, "undergarden", () -> UndergardenCompat::new));
 		//@formatter:on
