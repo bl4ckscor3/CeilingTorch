@@ -11,6 +11,7 @@ import bl4ckscor3.mod.ceilingtorch.compat.bonetorch.BoneTorchCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.chipped.ChippedCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.occultism.OccultismCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.tofucraft.TofuCraftCompat;
+import bl4ckscor3.mod.ceilingtorch.compat.xycraftworld.XyCraftWorldCompat;
 import net.neoforged.neoforge.common.ModConfigSpec;
 import net.neoforged.neoforge.common.ModConfigSpec.BooleanValue;
 
@@ -40,7 +41,8 @@ public class CompatConfig {
 				makeEntry(builder, "bonetorch", () -> BoneTorchCompat::new),
 				makeEntry(builder, "chipped", () -> ChippedCompat::new),
 				makeEntry(builder, "occultism", () -> OccultismCompat::new),
-				makeEntry(builder, "tofucraft", () -> TofuCraftCompat::new));
+				makeEntry(builder, "tofucraft", () -> TofuCraftCompat::new),
+				makeEntry(builder, "xycraft_world", () -> XyCraftWorldCompat::new));
 		//@formatter:on
 	}
 
