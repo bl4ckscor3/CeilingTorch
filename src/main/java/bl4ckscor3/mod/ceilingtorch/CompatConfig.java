@@ -10,6 +10,7 @@ import bl4ckscor3.mod.ceilingtorch.compat.adorn.AdornCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.bambooeverything.BambooEverythingCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.bonetorch.BoneTorchCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.chipped.ChippedCompat;
+import bl4ckscor3.mod.ceilingtorch.compat.integrateddynamics.IntegratedDynamicsCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.occultism.OccultismCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.reliquary.ReliquaryCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.tofucraft.TofuCraftCompat;
@@ -57,6 +58,7 @@ public class CompatConfig {
 				makeEntry(builder, "bambooeverything", () -> BambooEverythingCompat::new),
 				makeEntry(builder, "bonetorch", () -> BoneTorchCompat::new),
 				makeEntry(builder, "chipped", () -> ChippedCompat::new),
+				makeEntry(builder, "integrateddynamics", () -> IntegratedDynamicsCompat::new),
 				makeEntry(builder, "occultism", () -> OccultismCompat::new),
 				makeEntry(builder, "reliquary", () -> ReliquaryCompat::new),
 				makeEntry(builder, "tofucraft", () -> TofuCraftCompat::new),
