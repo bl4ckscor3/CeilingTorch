@@ -57,7 +57,8 @@ dependencies {
 	implementation "curse.maven:occultism-361026:5525534"
 	implementation "curse.maven:resourceful-lib-570073:5483169" //bamboo everything dependency
 	implementation "curse.maven:sbm-bone-torch-238695:5513932"
-	implementation "curse.maven:silent-lib-242998:5730272" //torch bandolier dependency
+	implementation "curse.maven:silent-gear-297039:5846318"
+	implementation "curse.maven:silent-lib-242998:5730272" //silent gear and torch bandolier dependency
 	implementation "curse.maven:smartbrainlib-661293:5513418" //occultism dependency
 	implementation "curse.maven:tofucraftreload-317469:5526459"
 	implementation "curse.maven:torch-bandolier-299337:5641604"

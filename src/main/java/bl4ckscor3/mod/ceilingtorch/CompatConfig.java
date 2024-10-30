@@ -10,6 +10,7 @@ import bl4ckscor3.mod.ceilingtorch.compat.bambooeverything.BambooEverythingCompa
 import bl4ckscor3.mod.ceilingtorch.compat.bonetorch.BoneTorchCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.chipped.ChippedCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.occultism.OccultismCompat;
+import bl4ckscor3.mod.ceilingtorch.compat.silentgear.SilentGearCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.tofucraft.TofuCraftCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.torchbandolier.TorchBandolierCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.xycraftworld.XyCraftWorldCompat;
@@ -42,6 +43,7 @@ public class CompatConfig {
 				makeEntry(builder, "bonetorch", () -> BoneTorchCompat::new),
 				makeEntry(builder, "chipped", () -> ChippedCompat::new),
 				makeEntry(builder, "occultism", () -> OccultismCompat::new),
+				makeEntry(builder, "silentgear", () -> SilentGearCompat::new),
 				makeEntry(builder, "tofucraft", () -> TofuCraftCompat::new),
 				makeEntry(builder, "torchbandolier", () -> TorchBandolierCompat::new),
 				makeEntry(builder, "xycraft_world", () -> XyCraftWorldCompat::new));
