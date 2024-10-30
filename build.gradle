@@ -9,13 +9,11 @@ version = '1.31'
 group = 'bl4ckscor3.mod.ceilingtorch'
 
 base {
-	archivesName = 'ceilingtorch-1.21.1'
+	archivesName = 'ceilingtorch-1.21.3'
 }
 
 java.toolchain.languageVersion = JavaLanguageVersion.of(21)
 println('Java: ' + System.getProperty('java.version') + ' JVM: ' + System.getProperty('java.vm.version') + '(' + System.getProperty('java.vendor') + ') Arch: ' + System.getProperty('os.arch'))
-
-minecraft.accessTransformers.file rootProject.file('src/main/resources/META-INF/accesstransformer.cfg')
 
 runs {
 	configureEach {
@@ -43,34 +41,12 @@ repositories {
 }
 
 dependencies {
-	implementation 'net.neoforged:neoforge:21.1.73'
-	implementation 'curse.maven:jei-238222:5846880'
-	
-	implementation "curse.maven:additional-lights-384991:5504182"
-	implementation "curse.maven:adorn-for-forge-438784:5773274"
-	implementation "curse.maven:architectury-api-419699:5521987" //bamboo everything dependency
-	implementation "curse.maven:athena-841890:5629395" //bamboo everything dependency
-	implementation "curse.maven:bagus-lib-866533:5810894" //tofucraftreload dependency
-	implementation "curse.maven:bamboo-everything-331723:5711288"
-	implementation "curse.maven:chipped-456956:5813117"
-	implementation "curse.maven:common-capabilities-247007:5809047" //integrated dynamics dependency
-	implementation "curse.maven:curios-continuation-1037991:5811495" //occultism dependency
-	implementation "curse.maven:cyclops-core-232758:5838033" //integrated dynamics dependency
-	implementation "curse.maven:gaia-dimension-302529:5773438"
-	implementation "curse.maven:geckolib-388172:5763144" //occultism dependency
-	implementation "curse.maven:integrated-dynamics-236307:5857522"
-	implementation "curse.maven:modonomicon-538392:5786073" //occultism dependency
-	implementation "curse.maven:occultism-361026:5859380"
-	implementation "curse.maven:resourceful-lib-570073:5793500" //bamboo everything dependency
-	implementation "curse.maven:sbm-bone-torch-238695:5851041"
-	implementation "curse.maven:silent-gear-297039:5846318"
-	implementation "curse.maven:silent-lib-242998:5730272" //silent gear and torch bandolier dependency
-	implementation "curse.maven:smartbrainlib-661293:5723837" //occultism dependency
-	implementation "curse.maven:the-undergarden-379849:5769852"
-	implementation "curse.maven:tofucraftreload-317469:5840875"
-	implementation "curse.maven:torch-bandolier-299337:5641604"
-	implementation "curse.maven:xycraft-653786:5601037" // xycraft world dependency
-	implementation "curse.maven:xycraft-world-653789:5601038"
+	implementation 'net.neoforged:neoforge:21.3.5-beta'
+//	implementation 'curse.maven:jei-238222:5846880'
+
+	implementation "curse.maven:bagus-lib-866533:5837623" //tofucraftreload dependency
+	implementation "curse.maven:sbm-bone-torch-238695:5851042"
+	implementation "curse.maven:tofucraftreload-317469:5844921"
 }
 
 tasks.named('jar', Jar).configure {

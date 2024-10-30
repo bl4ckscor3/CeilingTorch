@@ -15,8 +15,8 @@ import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.neoforged.neoforge.registries.DeferredBlock;
 
 public class BoneTorchCompat implements ICeilingTorchCompat {
-	public static final DeferredBlock<CeilingTorchBlock> CEILING_BONE_TORCH = CeilingTorch.BLOCKS.register("bonetorch_bonetorch", () -> new CeilingTorchBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.TORCH), ParticleTypes.FLAME, BoneTorchMod.BONETORCH));
-	public static final DeferredBlock<CeilingTorchBlock> CEILING_SOUL_BONE_TORCH = CeilingTorch.BLOCKS.register("bonetorch_soul_bonetorch", () -> new CeilingTorchBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.SOUL_TORCH), ParticleTypes.SOUL_FIRE_FLAME, BoneTorchMod.SOUL_BONETORCH));
+	public static final DeferredBlock<CeilingTorchBlock> CEILING_BONE_TORCH = CeilingTorch.BLOCKS.registerBlock("bonetorch_bonetorch", p -> new CeilingTorchBlock(p, ParticleTypes.FLAME, BoneTorchMod.BONETORCH), BlockBehaviour.Properties.ofFullCopy(Blocks.TORCH));
+	public static final DeferredBlock<CeilingTorchBlock> CEILING_SOUL_BONE_TORCH = CeilingTorch.BLOCKS.registerBlock("bonetorch_soul_bonetorch", p -> new CeilingTorchBlock(p, ParticleTypes.SOUL_FIRE_FLAME, BoneTorchMod.SOUL_BONETORCH), BlockBehaviour.Properties.ofFullCopy(Blocks.SOUL_TORCH));
 	private Map<ResourceLocation, Block> placeEntries;
 
 	@Override

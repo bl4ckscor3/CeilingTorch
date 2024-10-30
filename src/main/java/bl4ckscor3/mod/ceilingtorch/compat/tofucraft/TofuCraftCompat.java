@@ -2,7 +2,7 @@ package bl4ckscor3.mod.ceilingtorch.compat.tofucraft;
 
 import java.util.Map;
 
-import baguchan.tofucraft.registry.TofuBlocks;
+import baguchi.tofucraft.registry.TofuBlocks;
 import bl4ckscor3.mod.ceilingtorch.CeilingTorch;
 import bl4ckscor3.mod.ceilingtorch.ICeilingTorchCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.vanilla.CeilingTorchBlock;
@@ -15,60 +15,60 @@ import net.neoforged.neoforge.registries.DeferredBlock;
 
 public class TofuCraftCompat implements ICeilingTorchCompat {
 	//@formatter:off
-	public static final DeferredBlock<CeilingTorchBlock> TOFU_CEILING_TORCH_MOMEN = CeilingTorch.BLOCKS.register("tofucraft_tofutorch_momen", () -> new CeilingTorchBlock(BlockBehaviour.Properties.of()
+	public static final DeferredBlock<CeilingTorchBlock> TOFU_CEILING_TORCH_MOMEN = CeilingTorch.BLOCKS.registerBlock("tofucraft_tofutorch_momen", p -> new CeilingTorchBlock(p, ParticleTypes.FLAME, TofuBlocks.TOFUTORCH_MOMEN),
+			BlockBehaviour.Properties.of()
 			.strength(0.0F, 0.5F)
 			.lightLevel(state -> 14)
 			.noCollission()
 			.noOcclusion()
-			.sound(SoundType.SNOW),
-			ParticleTypes.FLAME, TofuBlocks.TOFUTORCH_MOMEN));
-	public static final DeferredBlock<CeilingTorchBlock> TOFU_CEILING_TORCH_ISHI = CeilingTorch.BLOCKS.register("tofucraft_tofutorch_ishi", () -> new CeilingTorchBlock(BlockBehaviour.Properties.of()
+			.sound(SoundType.SNOW));
+	public static final DeferredBlock<CeilingTorchBlock> TOFU_CEILING_TORCH_ISHI = CeilingTorch.BLOCKS.registerBlock("tofucraft_tofutorch_ishi", p -> new CeilingTorchBlock(p, ParticleTypes.FLAME, TofuBlocks.TOFUTORCH_ISHI),
+			BlockBehaviour.Properties.of()
 			.strength(0.0F, 6.0F)
 			.lightLevel(state -> 14)
 			.noCollission()
 			.noOcclusion()
-			.sound(SoundType.STONE),
-			ParticleTypes.FLAME, TofuBlocks.TOFUTORCH_ISHI));
-	public static final DeferredBlock<CeilingTorchBlock> TOFU_CEILING_TORCH_METAL = CeilingTorch.BLOCKS.register("tofucraft_tofutorch_metal", () -> new CeilingTorchBlock(BlockBehaviour.Properties.of()
+			.sound(SoundType.STONE));
+	public static final DeferredBlock<CeilingTorchBlock> TOFU_CEILING_TORCH_METAL = CeilingTorch.BLOCKS.registerBlock("tofucraft_tofutorch_metal", p -> new CeilingTorchBlock(p, ParticleTypes.FLAME, TofuBlocks.TOFUTORCH_METAL),
+			BlockBehaviour.Properties.of()
 			.strength(0.0F, 7.5F)
 			.lightLevel(state -> 14)
 			.noCollission()
 			.noOcclusion()
-			.sound(SoundType.METAL),
-			ParticleTypes.FLAME, TofuBlocks.TOFUTORCH_METAL));
-	public static final DeferredBlock<CeilingTorchBlock> TOFU_CEILING_TORCH_KINU = CeilingTorch.BLOCKS.register("tofucraft_tofutorch_kinu", () -> new CeilingTorchBlock(BlockBehaviour.Properties.of()
+			.sound(SoundType.METAL));
+	public static final DeferredBlock<CeilingTorchBlock> TOFU_CEILING_TORCH_KINU = CeilingTorch.BLOCKS.registerBlock("tofucraft_tofutorch_kinu", p -> new CeilingTorchBlock(p, ParticleTypes.FLAME, TofuBlocks.TOFUTORCH_KINU),
+			BlockBehaviour.Properties.of()
 			.strength(0.0F, 0.5F)
 			.lightLevel(state -> 14)
 			.noCollission()
 			.noOcclusion()
-			.sound(SoundType.SNOW),
-			ParticleTypes.FLAME, TofuBlocks.TOFUTORCH_KINU));
-	public static final DeferredBlock<CeilingTorchBlock> TOFU_CEILING_TORCH_GRILLED = CeilingTorch.BLOCKS.register("tofucraft_tofutorch_grilled", () -> new CeilingTorchBlock(BlockBehaviour.Properties.of()
+			.sound(SoundType.SNOW));
+	public static final DeferredBlock<CeilingTorchBlock> TOFU_CEILING_TORCH_GRILLED = CeilingTorch.BLOCKS.registerBlock("tofucraft_tofutorch_grilled", p -> new CeilingTorchBlock(p, ParticleTypes.FLAME, TofuBlocks.TOFUTORCH_GRILLED),
+			BlockBehaviour.Properties.of()
 			.strength(0.0F, 0.5F)
 			.lightLevel(state -> 14)
 			.noCollission()
 			.noOcclusion()
-			.sound(SoundType.SNOW),
-			ParticleTypes.FLAME, TofuBlocks.TOFUTORCH_GRILLED));
-	public static final DeferredBlock<CeilingTorchBlock> TOFU_CEILING_TORCH_ZUNDA = CeilingTorch.BLOCKS.register("tofucraft_tofutorch_zunda", () -> new CeilingTorchBlock(BlockBehaviour.Properties.of()
+			.sound(SoundType.SNOW));
+	public static final DeferredBlock<CeilingTorchBlock> TOFU_CEILING_TORCH_ZUNDA = CeilingTorch.BLOCKS.registerBlock("tofucraft_tofutorch_zunda", p -> new CeilingTorchBlock(p, ParticleTypes.FLAME, TofuBlocks.TOFUTORCH_ZUNDA),
+			BlockBehaviour.Properties.of()
 			.strength(0.0F, 0.5F)
 			.lightLevel(state -> 14)
 			.noCollission()
 			.noOcclusion()
-			.sound(SoundType.SNOW),
-			ParticleTypes.FLAME, TofuBlocks.TOFUTORCH_ZUNDA));
-	public static final DeferredBlock<CeilingTorchBlock> TOFU_CEILING_TORCH_HELL = CeilingTorch.BLOCKS.register("tofucraft_tofutorch_hell", () -> new CeilingTorchBlock(BlockBehaviour.Properties.of()
+			.sound(SoundType.SNOW));
+	public static final DeferredBlock<CeilingTorchBlock> TOFU_CEILING_TORCH_HELL = CeilingTorch.BLOCKS.registerBlock("tofucraft_tofutorch_hell", p -> new CeilingTorchBlock(p, ParticleTypes.FLAME, TofuBlocks.TOFUTORCH_HELL),
+			BlockBehaviour.Properties.of()
 			.strength(0.0F, 0.5F)
 			.lightLevel(state -> 14)
 			.noOcclusion()
-			.sound(SoundType.SNOW),
-			ParticleTypes.FLAME, TofuBlocks.TOFUTORCH_HELL));
-	public static final DeferredBlock<CeilingTorchBlock> TOFU_CEILING_TORCH_SOUL = CeilingTorch.BLOCKS.register("tofucraft_tofutorch_soul", () -> new CeilingTorchBlock(BlockBehaviour.Properties.of()
+			.sound(SoundType.SNOW));
+	public static final DeferredBlock<CeilingTorchBlock> TOFU_CEILING_TORCH_SOUL = CeilingTorch.BLOCKS.registerBlock("tofucraft_tofutorch_soul", p -> new CeilingTorchBlock(p, ParticleTypes.SOUL_FIRE_FLAME, TofuBlocks.TOFUTORCH_SOUL),
+			BlockBehaviour.Properties.of()
 			.strength(0.0F, 0.5F)
 			.lightLevel(state -> 14)
 			.noOcclusion()
-			.sound(SoundType.SNOW),
-			ParticleTypes.SOUL_FIRE_FLAME, TofuBlocks.TOFUTORCH_SOUL));
+			.sound(SoundType.SNOW));
 	//@formatter:on
 	private Map<ResourceLocation, Block> placeEntries;
 

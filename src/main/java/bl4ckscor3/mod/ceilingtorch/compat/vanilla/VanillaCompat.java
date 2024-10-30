@@ -13,9 +13,9 @@ import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.neoforged.neoforge.registries.DeferredBlock;
 
 public class VanillaCompat implements ICeilingTorchCompat {
-	public static final DeferredBlock<CeilingTorchBlock> CEILING_TORCH = CeilingTorch.BLOCKS.register("torch", () -> new CeilingTorchBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.TORCH), ParticleTypes.FLAME, () -> Blocks.TORCH));
-	public static final DeferredBlock<RedstoneCeilingTorchBlock> CEILING_REDSTONE_TORCH = CeilingTorch.BLOCKS.register("redstone_torch", () -> new RedstoneCeilingTorchBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.REDSTONE_TORCH), () -> Blocks.REDSTONE_TORCH));
-	public static final DeferredBlock<CeilingTorchBlock> CEILING_SOUL_TORCH = CeilingTorch.BLOCKS.register("soul_torch", () -> new CeilingTorchBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.SOUL_TORCH), ParticleTypes.SOUL_FIRE_FLAME, () -> Blocks.SOUL_TORCH));
+	public static final DeferredBlock<CeilingTorchBlock> CEILING_TORCH = CeilingTorch.BLOCKS.registerBlock("torch", p -> new CeilingTorchBlock(p, ParticleTypes.FLAME, () -> Blocks.TORCH), BlockBehaviour.Properties.ofFullCopy(Blocks.TORCH));
+	public static final DeferredBlock<RedstoneCeilingTorchBlock> CEILING_REDSTONE_TORCH = CeilingTorch.BLOCKS.registerBlock("redstone_torch", p -> new RedstoneCeilingTorchBlock(p, () -> Blocks.REDSTONE_TORCH), BlockBehaviour.Properties.ofFullCopy(Blocks.REDSTONE_TORCH));
+	public static final DeferredBlock<CeilingTorchBlock> CEILING_SOUL_TORCH = CeilingTorch.BLOCKS.registerBlock("soul_torch", p -> new CeilingTorchBlock(p, ParticleTypes.SOUL_FIRE_FLAME, () -> Blocks.SOUL_TORCH), BlockBehaviour.Properties.ofFullCopy(Blocks.SOUL_TORCH));
 	private Map<ResourceLocation, Block> placeEntries;
 
 	@Override
