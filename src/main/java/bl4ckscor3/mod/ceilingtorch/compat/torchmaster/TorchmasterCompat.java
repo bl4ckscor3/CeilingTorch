@@ -16,6 +16,7 @@ import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.HitResult;
 import net.minecraftforge.registries.RegistryObject;
+import net.xalcon.torchmaster.TorchmasterConfig;
 import net.xalcon.torchmaster.common.ModBlocks;
 import net.xalcon.torchmaster.common.blocks.EntityBlockingLightBlock;
 import net.xalcon.torchmaster.common.logic.entityblocking.megatorch.MegatorchEntityBlockingLight;
@@ -28,7 +29,7 @@ public class TorchmasterCompat implements ICeilingTorchCompat {
 			.lightLevel(state -> 15)
 			.sound(SoundType.WOOD),
 			pos -> CeilingTorch.MODID + ":MCT_" + pos.getX() + "_" + pos.getY() + "_" + pos.getZ(),
-			MegaCeilingTorchEntityBlockingLight::new, -0.025F, MegatorchEntityBlockingLight.SHAPE) {
+			MegaCeilingTorchEntityBlockingLight::new, -0.025F, MegatorchEntityBlockingLight.SHAPE, TorchmasterConfig.GENERAL.megaTorchRadius) {
 	//@formatter:on
 		@Override
 		public ItemStack getCloneItemStack(BlockState state, HitResult target, BlockGetter level, BlockPos pos, Player player) {
