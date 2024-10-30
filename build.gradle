@@ -53,8 +53,11 @@ dependencies {
 	implementation "curse.maven:bagus-lib-866533:5511022" //tofucraftreload dependency
 	implementation "curse.maven:bamboo-everything-331723:5438627"
 	implementation "curse.maven:chipped-456956:5506938"
+	implementation "curse.maven:common-capabilities-247007:5809047" //integrated dynamics dependency
+	implementation "curse.maven:cyclops-core-232758:5838033" //integrated dynamics dependency
 	implementation "curse.maven:gaia-dimension-302529:5773438"
 	implementation "curse.maven:geckolib-388172:5460144" //occultism dependency
+	implementation "curse.maven:integrated-dynamics-236307:5857522"
 	implementation "curse.maven:modonomicon-538392:5519525" //occultism dependency
 	implementation "curse.maven:occultism-361026:5525534"
 	implementation "curse.maven:resourceful-lib-570073:5483169" //bamboo everything dependency
