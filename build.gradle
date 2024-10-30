@@ -52,8 +52,10 @@ dependencies {
 	implementation "curse.maven:modonomicon-538392:5415005" //occultism dependency
 	implementation "curse.maven:occultism-361026:5418421"
 	implementation "curse.maven:sbm-bone-torch-238695:5313151"
+	implementation "curse.maven:silent-lib-242998:5456830" //torch bandolier dependency
 	implementation "curse.maven:smartbrainlib-661293:5303000" //occultism dependency
 	implementation "curse.maven:the-undergarden-379849:5381985"
+	implementation "curse.maven:torch-bandolier-299337:5641069"
 	implementation "curse.maven:tofucraftreload-317469:5417612"
 }
 
