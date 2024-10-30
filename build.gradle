@@ -29,7 +29,7 @@ runs {
 
 	server {
 		workingDirectory project.file('run/server')
-		programArgument '-nogui'
+		argument '-nogui'
 	}
 }
 
@@ -43,7 +43,7 @@ repositories {
 }
 
 dependencies {
-	implementation 'net.neoforged:neoforge:21.0.86-beta'
+	implementation 'net.neoforged:neoforge:21.1.73'
 	implementation 'curse.maven:jei-238222:5525108'
 
 	implementation "curse.maven:additional-lights-384991:5504182"
