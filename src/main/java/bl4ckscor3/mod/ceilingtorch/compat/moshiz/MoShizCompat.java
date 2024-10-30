@@ -79,7 +79,7 @@ public class MoShizCompat implements ICeilingTorchCompat {
 			Builder<ResourceLocation, Block> builder = ImmutableMap.<ResourceLocation, Block>builder();
 
 			builder.put(getRegistryName(DeferredItems.FOULITE_TORCH.get()), fouliteCeilingTorch);
-			coloredCeilingTorches.forEach((dye, torch) -> builder.put(getRegistryName(((CeilingTorchBlock) torch).getOriginalBlock()), torch));
+			coloredCeilingTorches.forEach((dye, torch) -> builder.put(getRegistryName(torch.getOriginalBlock()), torch));
 			placeEntries = builder.build();
 		}
 
