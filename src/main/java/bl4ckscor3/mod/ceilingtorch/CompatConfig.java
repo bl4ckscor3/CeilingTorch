@@ -13,6 +13,7 @@ import bl4ckscor3.mod.ceilingtorch.compat.bambooeverything.BambooEverythingCompa
 import bl4ckscor3.mod.ceilingtorch.compat.bandedtorches.BandedTorchesCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.bonetorch.BoneTorchCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.chipped.ChippedCompat;
+import bl4ckscor3.mod.ceilingtorch.compat.coloredtorches.ColoredTorchesCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.endergetic.EndergeticCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.gaiadimension.GaiaDimensionCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.hardcoretorches.HardcoreTorchesCompat;
@@ -78,6 +79,7 @@ public class CompatConfig {
 				makeEntry(builder, "aquatictorches", () -> AquaticTorchesCompat::new),
 				makeEntry(builder, "bambooeverything", () -> BambooEverythingCompat::new),
 				makeEntry(builder, "chipped", () -> ChippedCompat::new),
+				makeEntry(builder, "colored_torches", () -> ColoredTorchesCompat::new),
 				makeEntry(builder, "bonetorch", () -> BoneTorchCompat::new),
 				makeEntry(builder, "endergetic", () -> EndergeticCompat::new),
 				makeEntry(builder, "gaiadimension", () -> GaiaDimensionCompat::new),

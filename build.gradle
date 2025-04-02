@@ -70,6 +70,7 @@ dependencies {
 	implementation fg.deobf("curse.maven:blueprint-382216:6267669") //upgrade aquatic and endergetic expansion dependency
 	implementation fg.deobf("curse.maven:citadel-331936:5143956") //ice and fire dependency
 	implementation fg.deobf("curse.maven:chipped-456956:5813138")
+	implementation fg.deobf("curse.maven:colored-torches-1161227:6002459")
 	implementation fg.deobf("curse.maven:common-capabilities-247007:5980078") //integrated dynamics dependency
 	implementation fg.deobf("curse.maven:curios-309927:6238756") //hardcore torches and occultism dependency
 	implementation fg.deobf("curse.maven:cyclops-core-232758:6340190") //integrated dynamics dependency
