@@ -5,11 +5,11 @@ plugins {
 	id 'net.neoforged.gradle.userdev' version '7.0.+'
 }
 
-version = '1.31'
+version = '1.32'
 group = 'bl4ckscor3.mod.ceilingtorch'
 
 base {
-	archivesName = 'ceilingtorch-1.21.4'
+	archivesName = 'ceilingtorch-1.21.5'
 }
 
 java.toolchain.languageVersion = JavaLanguageVersion.of(21)
@@ -41,12 +41,12 @@ repositories {
 }
 
 dependencies {
-	implementation 'net.neoforged:neoforge:21.4.12-beta'
+	implementation 'net.neoforged:neoforge:21.5.22-beta'
 //	implementation 'curse.maven:jei-238222:5846880'
 
-	implementation "curse.maven:bagus-lib-866533:5837623" //tofucraftreload dependency
+	implementation "curse.maven:bagus-lib-866533:6351417" //tofucraftreload dependency
 	implementation "curse.maven:sbm-bone-torch-238695:5978261"
-	implementation "curse.maven:tofucraftreload-317469:5844921"
+	implementation "curse.maven:tofucraftreload-317469:6363876"
 }
 
 tasks.named('jar', Jar).configure {
