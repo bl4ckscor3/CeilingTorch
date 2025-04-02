@@ -46,6 +46,7 @@ dependencies {
 
 	implementation "curse.maven:additional-lights-384991:5998264"
 	implementation "curse.maven:bagus-lib-866533:6338404" //tofucraftreload dependency
+    implementation "curse.maven:gaia-dimension-302529:6097705"
 	implementation "curse.maven:sbm-bone-torch-238695:5978261"
 	implementation "curse.maven:tofucraftreload-317469:6327857"
 }

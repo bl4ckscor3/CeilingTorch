@@ -1,0 +1,5 @@
+{
+    "variants": {
+        "": { "model": "gaiadimension:block/pyrite_torch", "x": 180 }
+    }
+}
