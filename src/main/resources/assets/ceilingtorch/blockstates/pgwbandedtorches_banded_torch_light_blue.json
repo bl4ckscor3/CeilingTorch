@@ -1,0 +1,8 @@
+{
+  "variants": {
+    "": {
+      "x": 180, "model": "pgwbandedtorches:block/banded_torch_light_blue"
+    }
+  }
+}
+

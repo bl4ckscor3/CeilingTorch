@@ -89,6 +89,7 @@ dependencies {
 	implementation fg.deobf("curse.maven:mo-shiz-mod-62536:5587177")
 	implementation fg.deobf("curse.maven:nethers-delight-496394:4736227")
 	implementation fg.deobf("curse.maven:occultism-361026:6325698")
+	implementation fg.deobf("curse.maven:pixelgamewizards-banded-torches-398958:4592483")
 	implementation fg.deobf("curse.maven:pokecube-aoi-285121:6007970")
 	implementation fg.deobf("curse.maven:projecte-226410:4901949")
 	implementation fg.deobf("curse.maven:reliquary-reincarnations-241319:5901058")

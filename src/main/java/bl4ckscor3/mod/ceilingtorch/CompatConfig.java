@@ -10,6 +10,7 @@ import bl4ckscor3.mod.ceilingtorch.compat.additionallights.AdditionalLightsCompa
 import bl4ckscor3.mod.ceilingtorch.compat.adorn.AdornCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.aquatictorches.AquaticTorchesCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.bambooeverything.BambooEverythingCompat;
+import bl4ckscor3.mod.ceilingtorch.compat.bandedtorches.BandedTorchesCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.bonetorch.BoneTorchCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.chipped.ChippedCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.endergetic.EndergeticCompat;
@@ -88,6 +89,7 @@ public class CompatConfig {
 				makeEntry(builder, "malum", () -> MalumCompat::new),
 				makeEntry(builder, "ms", "Mo' Shiz Mod", () -> MoShizCompat::new),
 				makeEntry(builder, "nethersdelight", () -> NethersDelightCompat::new),
+				makeEntry(builder, "pgwbandedtorches", () -> BandedTorchesCompat::new),
 				makeEntry(builder, "pokecube_legends", () -> PokecubeAIOCompat::new),
 				makeEntry(builder, "projecte", () -> ProjectECompat::new),
 				makeEntry(builder, "occultism", () -> OccultismCompat::new),
