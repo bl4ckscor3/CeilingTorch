@@ -5,7 +5,7 @@ plugins {
 	id 'net.neoforged.gradle.userdev' version '7.0.+'
 }
 
-version = '1.31'
+version = '1.32'
 group = 'bl4ckscor3.mod.ceilingtorch'
 
 base {
