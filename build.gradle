@@ -62,6 +62,7 @@ dependencies {
 	implementation "curse.maven:modonomicon-538392:6338537" //occultism dependency
 	implementation "curse.maven:occultism-361026:6355135"
 	implementation "curse.maven:projecte-226410:6323142"
+	implementation "curse.maven:reliquary-reincarnations-241319:6356576"
 	implementation "curse.maven:resourceful-lib-570073:5973188" //bamboo everything dependency
 	implementation "curse.maven:sbm-bone-torch-238695:5851041"
 	implementation "curse.maven:silent-gear-297039:6365502"

@@ -14,6 +14,7 @@ import bl4ckscor3.mod.ceilingtorch.compat.gaiadimension.GaiaDimensionCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.integrateddynamics.IntegratedDynamicsCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.occultism.OccultismCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.projecte.ProjectECompat;
+import bl4ckscor3.mod.ceilingtorch.compat.reliquary.ReliquaryCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.silentgear.SilentGearCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.tofucraft.TofuCraftCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.torchbandolier.TorchBandolierCompat;
@@ -52,6 +53,7 @@ public class CompatConfig {
 				makeEntry(builder, "integrateddynamics", () -> IntegratedDynamicsCompat::new),
 				makeEntry(builder, "occultism", () -> OccultismCompat::new),
 				makeEntry(builder, "projecte", () -> ProjectECompat::new),
+				makeEntry(builder, "reliquary", () -> ReliquaryCompat::new),
 				makeEntry(builder, "silentgear", () -> SilentGearCompat::new),
 				makeEntry(builder, "tofucraft", () -> TofuCraftCompat::new),
 				makeEntry(builder, "torchbandolier", () -> TorchBandolierCompat::new),
