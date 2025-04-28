@@ -2,7 +2,7 @@ plugins {
 	id 'java-library'
 	id 'eclipse'
 	id 'idea'
-	id 'net.neoforged.gradle.userdev' version '7.0.+'
+	id 'net.neoforged.moddev' version '2.0.82'
 }
 
 version = '1.32'
@@ -15,19 +15,30 @@ base {
 java.toolchain.languageVersion = JavaLanguageVersion.of(21)
 println('Java: ' + System.getProperty('java.version') + ' JVM: ' + System.getProperty('java.vm.version') + '(' + System.getProperty('java.vendor') + ') Arch: ' + System.getProperty('os.arch'))
 
-runs {
-	configureEach {
-		systemProperty 'forge.logging.console.level', 'debug'
-		modSource project.sourceSets.main
+neoForge {
+	version = "21.5.62-beta"
+
+	runs {
+		configureEach {
+			logLevel = org.slf4j.event.Level.DEBUG
+			gameDirectory = project.file("run/" + name)
+			ideName = "CeilingTorch " + ideName.get()
+		}
+
+		client {
+			client()
+		}
+
+		server {
+			server()
+			programArgument('-nogui')
+		}
 	}
 
-	client {
-		workingDirectory project.file('run/client')
-	}
-
-	server {
-		workingDirectory project.file('run/server')
-		argument '-nogui'
+	mods {
+		ceilingtorch {
+			sourceSet(sourceSets.main)
+		}
 	}
 }
 
@@ -41,7 +52,6 @@ repositories {
 }
 
 dependencies {
-	implementation 'net.neoforged:neoforge:21.5.22-beta'
 //	implementation 'curse.maven:jei-238222:5846880'
 
 	implementation "curse.maven:bagus-lib-866533:6351417" //tofucraftreload dependency
@@ -63,4 +73,11 @@ tasks.named('jar', Jar).configure {
 tasks.withType(JavaCompile).configureEach {
     options.encoding = 'UTF-8'
 	options.release = 21
+}
+
+idea {
+	module {
+		downloadSources = true
+		downloadJavadoc = true
+	}
 }
