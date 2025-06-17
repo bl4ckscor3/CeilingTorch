@@ -1,7 +1,7 @@
 package bl4ckscor3.mod.ceilingtorch;
 
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
-import net.minecraft.client.renderer.RenderType;
+import net.minecraft.client.renderer.chunk.ChunkSectionLayer;
 import net.minecraft.world.level.block.Block;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -18,7 +18,7 @@ public class CeilingTorchClient {
 		for (ICeilingTorchCompat compat : CeilingTorch.getCompatList().values()) {
 			for (Block block : compat.getPlaceEntries().values()) {
 				if (compat.hasCutoutMippedRenderType(block))
-					ItemBlockRenderTypes.setRenderLayer(block, RenderType.cutoutMipped());
+					ItemBlockRenderTypes.setRenderLayer(block, ChunkSectionLayer.CUTOUT_MIPPED);
 			}
 		}
 	}
