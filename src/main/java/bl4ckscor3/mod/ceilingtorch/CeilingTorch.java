@@ -17,14 +17,13 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.ModList;
 import net.neoforged.fml.common.EventBusSubscriber;
-import net.neoforged.fml.common.EventBusSubscriber.Bus;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.config.ModConfig;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.neoforged.neoforge.registries.RegisterEvent;
 
 @Mod(CeilingTorch.MODID)
-@EventBusSubscriber(bus = Bus.MOD)
+@EventBusSubscriber
 public class CeilingTorch {
 	public static final String MODID = "ceilingtorch";
 	private static final Map<String, ICeilingTorchCompat> COMPAT_LIST = new HashMap<>();
