@@ -78,7 +78,7 @@ dependencies {
 	implementation fg.deobf("curse.maven:farmers-delight-398521:4679319") //nether's delight dependency
 	implementation fg.deobf("curse.maven:gaia-dimension-302529:4794552")
 	implementation fg.deobf("curse.maven:geckolib-388172:6333474") //occultism dependency
-	implementation fg.deobf("curse.maven:hardcore-torches-forge-576846:5721003")
+	implementation fg.deobf("curse.maven:hardcore-torches-forge-576846:6786279")
 	implementation fg.deobf("curse.maven:i-like-wood-324164:4810688")
 	implementation fg.deobf("curse.maven:ice-and-fire-dragons-264231:5633453")
 	implementation fg.deobf("curse.maven:integrated-dynamics-236307:6331503")

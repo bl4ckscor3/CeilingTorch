@@ -20,36 +20,51 @@ import net.minecraft.world.level.material.PushReaction;
 import net.minecraftforge.registries.RegistryObject;
 
 public class HardcoreTorchesCompat implements ICeilingTorchCompat {
-	public static CeilingTorchGroup ceilingTorches = new CeilingTorchGroup();
+	public static CeilingTorchGroup ceilingTorches = new CeilingTorchGroup("ceiling", true);
+	public static CeilingTorchGroup ceilingSoulTorches = new CeilingTorchGroup("ceiling_soul", false);
 	//@formatter:off
 	public static final RegistryObject<HardcoreCeilingTorchBlock> LIT_CEILING_TORCH = CeilingTorch.BLOCKS.register("hardcore_torches_lit_torch", () -> new HardcoreCeilingTorchBlock(
 			properties(14),
-			ParticleTypes.FLAME,
+			ParticleTypes.FLAME, ParticleTypes.SMOKE,
 			ETorchState.LIT,
 			ceilingTorches,
 			() -> Config.defaultTorchFuel.get(),
 			BlockInit.LIT_TORCH));
 	public static final RegistryObject<HardcoreCeilingTorchBlock> UNLIT_CEILING_TORCH = CeilingTorch.BLOCKS.register("hardcore_torches_unlit_torch", () -> new HardcoreCeilingTorchBlock(
 			properties(0),
-			null,
+			null, null,
 			ETorchState.UNLIT,
 			ceilingTorches,
 			() -> Config.defaultTorchFuel.get(),
 			BlockInit.UNLIT_TORCH));
 	public static final RegistryObject<HardcoreCeilingTorchBlock> SMOLDERING_CEILING_TORCH = CeilingTorch.BLOCKS.register("hardcore_torches_smoldering_torch", () -> new HardcoreCeilingTorchBlock(
 			properties(3),
-			ParticleTypes.SMOKE,
+			ParticleTypes.SMOKE, null,
 			ETorchState.SMOLDERING,
 			ceilingTorches,
 			() -> Config.defaultTorchFuel.get(),
 			BlockInit.SMOLDERING_TORCH));
 	public static final RegistryObject<HardcoreCeilingTorchBlock> BURNT_CEILING_TORCH = CeilingTorch.BLOCKS.register("hardcore_torches_burnt_torch", () -> new HardcoreCeilingTorchBlock(
 			properties(0),
-			null,
+			null, null,
 			ETorchState.BURNT,
 			ceilingTorches,
 			() -> Config.defaultTorchFuel.get(),
 			BlockInit.BURNT_TORCH));
+	public static final RegistryObject<HardcoreCeilingTorchBlock> LIT_SOUL_CEILING_TORCH = CeilingTorch.BLOCKS.register("hardcore_torches_lit_soul_torch", () -> new HardcoreCeilingTorchBlock(
+		properties(10),
+		ParticleTypes.SOUL_FIRE_FLAME, ParticleTypes.SMOKE,
+		ETorchState.LIT,
+		ceilingSoulTorches,
+		() -> Config.defaultSoulTorchFuel.get(),
+		BlockInit.LIT_SOUL_TORCH));
+	public static final RegistryObject<HardcoreCeilingTorchBlock> UNLIT_SOUL_CEILING_TORCH = CeilingTorch.BLOCKS.register("hardcore_torches_unlit_soul_torch", () -> new HardcoreCeilingTorchBlock(
+		properties(0),
+		null, null,
+		ETorchState.UNLIT,
+		ceilingSoulTorches,
+		() -> Config.defaultSoulTorchFuel.get(),
+		BlockInit.UNLIT_SOUL_TORCH));
 	public static final RegistryObject<BlockEntityType<HardcoreCeilingTorchBlockEntity>> CEILING_TORCH_BLOCK_ENTITY	= CeilingTorch.BLOCK_ENTITIES.register("hardcore_torches_ceiling_torch",
 			() -> BlockEntityType.Builder.of(HardcoreCeilingTorchBlockEntity::new, LIT_CEILING_TORCH.get(), UNLIT_CEILING_TORCH.get(), SMOLDERING_CEILING_TORCH.get(), BURNT_CEILING_TORCH.get()).build(null));
 	//@formatter:on
@@ -58,6 +73,8 @@ public class HardcoreTorchesCompat implements ICeilingTorchCompat {
 	public HardcoreTorchesCompat() {
 		ceilingTorches.add(ETorchState.LIT, LIT_CEILING_TORCH);
 		ceilingTorches.add(ETorchState.UNLIT, UNLIT_CEILING_TORCH);
+		ceilingSoulTorches.add(ETorchState.LIT, LIT_SOUL_CEILING_TORCH);
+		ceilingSoulTorches.add(ETorchState.UNLIT, UNLIT_SOUL_CEILING_TORCH);
 		ceilingTorches.add(ETorchState.SMOLDERING, SMOLDERING_CEILING_TORCH);
 		ceilingTorches.add(ETorchState.BURNT, BURNT_CEILING_TORCH);
 	}
@@ -68,6 +85,8 @@ public class HardcoreTorchesCompat implements ICeilingTorchCompat {
 			//@formatter:off
 			placeEntries = ImmutableMap.of(getRegistryName(BlockInit.LIT_TORCH.get()), LIT_CEILING_TORCH.get(),
 					getRegistryName(BlockInit.UNLIT_TORCH.get()), UNLIT_CEILING_TORCH.get(),
+					getRegistryName(BlockInit.LIT_SOUL_TORCH.get()), LIT_SOUL_CEILING_TORCH.get(),
+					getRegistryName(BlockInit.UNLIT_SOUL_TORCH.get()), UNLIT_SOUL_CEILING_TORCH.get(),
 					getRegistryName(BlockInit.SMOLDERING_TORCH.get()), SMOLDERING_CEILING_TORCH.get(),
 					getRegistryName(BlockInit.BURNT_TORCH.get()), BURNT_CEILING_TORCH.get());
 			//@formatter:on

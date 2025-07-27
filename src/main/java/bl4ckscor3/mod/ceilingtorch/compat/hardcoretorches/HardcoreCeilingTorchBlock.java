@@ -37,8 +37,8 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 public class HardcoreCeilingTorchBlock extends HardcoreFloorTorchBlock {
 	private final Supplier<? extends Block> originalBlock;
 
-	public HardcoreCeilingTorchBlock(Properties properties, SimpleParticleType particle, ETorchState burnState, TorchGroup group, IntSupplier maxFuel, Supplier<? extends Block> originalBlock) {
-		super(properties.lootFrom(originalBlock), particle, burnState, group, maxFuel);
+	public HardcoreCeilingTorchBlock(Properties properties, SimpleParticleType fireParticle, SimpleParticleType smokeParticle, ETorchState burnState, TorchGroup group, IntSupplier maxFuel, Supplier<? extends Block> originalBlock) {
+		super(properties.lootFrom(originalBlock), fireParticle, smokeParticle, burnState, group, maxFuel);
 
 		this.originalBlock = originalBlock;
 	}
@@ -69,13 +69,15 @@ public class HardcoreCeilingTorchBlock extends HardcoreFloorTorchBlock {
 
 	@Override
 	public void animateTick(BlockState state, Level level, BlockPos pos, RandomSource rand) {
-		if (particle != null) {
-			double x = pos.getX() + 0.5D;
-			double y = pos.getY() + 0.45D;
-			double z = pos.getZ() + 0.5D;
+		double x = pos.getX() + 0.5D;
+		double y = pos.getY() + 0.45D;
+		double z = pos.getZ() + 0.5D;
 
-			level.addParticle(particle, x, y, z, 0.0D, 0.0D, 0.0D);
-		}
+		if (fireParticle != null)
+			level.addParticle(fireParticle, x, y, z, 0.0D, 0.0D, 0.0D);
+
+		if (smokeParticle != null)
+			level.addParticle(smokeParticle, x, y, z, 0.0D, 0.0D, 0.0D);
 	}
 
 	@Override

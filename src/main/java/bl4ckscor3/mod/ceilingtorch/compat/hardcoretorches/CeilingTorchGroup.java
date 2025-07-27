@@ -13,8 +13,8 @@ import net.minecraft.world.level.block.Block;
 public class CeilingTorchGroup extends TorchGroup {
 	private HashMap<ETorchState, Supplier<HardcoreCeilingTorchBlock>> ceilingTorches = new HashMap<>();
 
-	public CeilingTorchGroup() {
-		super("ceiling");
+	public CeilingTorchGroup(String name, boolean canSmolder) {
+		super(name, canSmolder);
 	}
 
 	public void add(ETorchState burnState, Supplier<HardcoreCeilingTorchBlock> block) {
