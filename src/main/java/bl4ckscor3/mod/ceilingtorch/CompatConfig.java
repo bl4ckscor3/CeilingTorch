@@ -13,6 +13,7 @@ import bl4ckscor3.mod.ceilingtorch.compat.chipped.ChippedCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.gaiadimension.GaiaDimensionCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.hardcoretorches.HardcoreTorchesCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.integrateddynamics.IntegratedDynamicsCompat;
+import bl4ckscor3.mod.ceilingtorch.compat.malum.MalumCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.occultism.OccultismCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.projecte.ProjectECompat;
 import bl4ckscor3.mod.ceilingtorch.compat.reliquary.ReliquaryCompat;
@@ -53,6 +54,7 @@ public class CompatConfig {
 				makeEntry(builder, "gaiadimension", () -> GaiaDimensionCompat::new),
 				makeEntry(builder, "hardcore_torches", () -> HardcoreTorchesCompat::new),
 				makeEntry(builder, "integrateddynamics", () -> IntegratedDynamicsCompat::new),
+				makeEntry(builder, "malum", () -> MalumCompat::new),
 				makeEntry(builder, "occultism", () -> OccultismCompat::new),
 				makeEntry(builder, "projecte", () -> ProjectECompat::new),
 				makeEntry(builder, "reliquary", () -> ReliquaryCompat::new),
