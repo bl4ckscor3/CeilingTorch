@@ -25,8 +25,6 @@ import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import net.neoforged.api.distmarker.Dist;
-import net.neoforged.api.distmarker.OnlyIn;
 
 public class RedstoneCeilingTorchBlock extends RedstoneTorchBlock {
 	private final Supplier<Block> originalBlock;
@@ -68,7 +66,6 @@ public class RedstoneCeilingTorchBlock extends RedstoneTorchBlock {
 	}
 
 	@Override
-	@OnlyIn(Dist.CLIENT)
 	public void animateTick(BlockState state, Level world, BlockPos pos, RandomSource rand) {
 		if (state.getValue(LIT)) {
 			double x = pos.getX() + 0.5D + (rand.nextDouble() - 0.5D) * 0.2D;
