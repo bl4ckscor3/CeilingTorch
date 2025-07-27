@@ -66,6 +66,7 @@ dependencies {
 	implementation "curse.maven:cyclops-core-232758:6340387" //integrated dynamics dependency
 	implementation "curse.maven:gaia-dimension-302529:5773438"
 	implementation "curse.maven:geckolib-388172:6304958" //occultism dependency
+	implementation "curse.maven:hardcore-torches-forge-576846:6789778"
 	implementation "curse.maven:integrated-dynamics-236307:6331508"
 	implementation "curse.maven:modonomicon-538392:6338537" //occultism dependency
 	implementation "curse.maven:occultism-361026:6355135"
