@@ -93,7 +93,7 @@ dependencies {
 	implementation fg.deobf("curse.maven:pixelgamewizards-banded-torches-398958:4592483")
 	implementation fg.deobf("curse.maven:pokecube-aoi-285121:6007970")
 	implementation fg.deobf("curse.maven:projecte-226410:4901949")
-	implementation fg.deobf("curse.maven:reliquary-reincarnations-241319:5901058")
+	implementation fg.deobf("curse.maven:reliquary-reincarnations-241319:6814687")
 	implementation fg.deobf("curse.maven:resourceful-lib-570073:5659871") //chipped dependency
 	implementation fg.deobf("curse.maven:sbm-bone-torch-238695:5313149")
 	implementation fg.deobf("curse.maven:silent-gear-297039:5640724")

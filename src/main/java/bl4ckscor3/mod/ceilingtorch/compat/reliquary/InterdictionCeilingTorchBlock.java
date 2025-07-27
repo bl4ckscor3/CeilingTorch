@@ -17,7 +17,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import reliquary.blocks.InterdictionTorchBlock;
+import reliquary.block.InterdictionTorchBlock;
 import reliquary.init.ModBlocks;
 
 public class InterdictionCeilingTorchBlock extends InterdictionTorchBlock {
