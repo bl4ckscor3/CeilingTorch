@@ -5,7 +5,7 @@ plugins {
 	id 'net.neoforged.moddev' version '2.0.105'
 }
 
-version = '1.32.1'
+version = '1.33'
 group = 'bl4ckscor3.mod.ceilingtorch'
 
 base {
@@ -54,6 +54,7 @@ repositories {
 dependencies {
 	implementation 'curse.maven:jei-238222:6756169'
 
+	implementation "curse.maven:additional-lights-384991:6743127"
 	implementation "curse.maven:bagus-lib-866533:6782667" //tofucraftreload dependency
 	implementation "curse.maven:sbm-bone-torch-238695:6675364"
 	implementation "curse.maven:tofucraftreload-317469:6793033"
