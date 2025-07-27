@@ -52,8 +52,9 @@ repositories {
 }
 
 dependencies {
-//	implementation 'curse.maven:jei-238222:5846880'
+	implementation 'curse.maven:jei-238222:6767951'
 
+	implementation "curse.maven:additional-lights-384991:6379854"
 	implementation "curse.maven:bagus-lib-866533:6351417" //tofucraftreload dependency
 	implementation "curse.maven:sbm-bone-torch-238695:5978261"
 	implementation "curse.maven:tofucraftreload-317469:6363876"
