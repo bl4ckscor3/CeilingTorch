@@ -52,31 +52,31 @@ public class HardcoreTorchesCompat implements ICeilingTorchCompat {
 			() -> Config.defaultTorchFuel.get(),
 			BlockInit.BURNT_TORCH));
 	public static final RegistryObject<HardcoreCeilingTorchBlock> LIT_SOUL_CEILING_TORCH = CeilingTorch.BLOCKS.register("hardcore_torches_lit_soul_torch", () -> new HardcoreCeilingTorchBlock(
-		properties(10),
-		ParticleTypes.SOUL_FIRE_FLAME, ParticleTypes.SMOKE,
-		ETorchState.LIT,
-		ceilingSoulTorches,
-		() -> Config.defaultSoulTorchFuel.get(),
-		BlockInit.LIT_SOUL_TORCH));
+			properties(10),
+			ParticleTypes.SOUL_FIRE_FLAME, ParticleTypes.SMOKE,
+			ETorchState.LIT,
+			ceilingSoulTorches,
+			() -> Config.defaultSoulTorchFuel.get(),
+			BlockInit.LIT_SOUL_TORCH));
 	public static final RegistryObject<HardcoreCeilingTorchBlock> UNLIT_SOUL_CEILING_TORCH = CeilingTorch.BLOCKS.register("hardcore_torches_unlit_soul_torch", () -> new HardcoreCeilingTorchBlock(
-		properties(0),
-		null, null,
-		ETorchState.UNLIT,
-		ceilingSoulTorches,
-		() -> Config.defaultSoulTorchFuel.get(),
-		BlockInit.UNLIT_SOUL_TORCH));
+			properties(0),
+			null, null,
+			ETorchState.UNLIT,
+			ceilingSoulTorches,
+			() -> Config.defaultSoulTorchFuel.get(),
+			BlockInit.UNLIT_SOUL_TORCH));
 	public static final RegistryObject<BlockEntityType<HardcoreCeilingTorchBlockEntity>> CEILING_TORCH_BLOCK_ENTITY	= CeilingTorch.BLOCK_ENTITIES.register("hardcore_torches_ceiling_torch",
-			() -> BlockEntityType.Builder.of(HardcoreCeilingTorchBlockEntity::new, LIT_CEILING_TORCH.get(), UNLIT_CEILING_TORCH.get(), SMOLDERING_CEILING_TORCH.get(), BURNT_CEILING_TORCH.get()).build(null));
+			() -> BlockEntityType.Builder.of(HardcoreCeilingTorchBlockEntity::new, LIT_CEILING_TORCH.get(), UNLIT_CEILING_TORCH.get(), SMOLDERING_CEILING_TORCH.get(), BURNT_CEILING_TORCH.get(), LIT_SOUL_CEILING_TORCH.get(), UNLIT_SOUL_CEILING_TORCH.get()).build(null));
 	//@formatter:on
 	private Map<ResourceLocation, Block> placeEntries;
 
 	public HardcoreTorchesCompat() {
 		ceilingTorches.add(ETorchState.LIT, LIT_CEILING_TORCH);
 		ceilingTorches.add(ETorchState.UNLIT, UNLIT_CEILING_TORCH);
-		ceilingSoulTorches.add(ETorchState.LIT, LIT_SOUL_CEILING_TORCH);
-		ceilingSoulTorches.add(ETorchState.UNLIT, UNLIT_SOUL_CEILING_TORCH);
 		ceilingTorches.add(ETorchState.SMOLDERING, SMOLDERING_CEILING_TORCH);
 		ceilingTorches.add(ETorchState.BURNT, BURNT_CEILING_TORCH);
+		ceilingSoulTorches.add(ETorchState.LIT, LIT_SOUL_CEILING_TORCH);
+		ceilingSoulTorches.add(ETorchState.UNLIT, UNLIT_SOUL_CEILING_TORCH);
 	}
 
 	@Override
@@ -85,10 +85,10 @@ public class HardcoreTorchesCompat implements ICeilingTorchCompat {
 			//@formatter:off
 			placeEntries = ImmutableMap.of(getRegistryName(BlockInit.LIT_TORCH.get()), LIT_CEILING_TORCH.get(),
 					getRegistryName(BlockInit.UNLIT_TORCH.get()), UNLIT_CEILING_TORCH.get(),
-					getRegistryName(BlockInit.LIT_SOUL_TORCH.get()), LIT_SOUL_CEILING_TORCH.get(),
-					getRegistryName(BlockInit.UNLIT_SOUL_TORCH.get()), UNLIT_SOUL_CEILING_TORCH.get(),
 					getRegistryName(BlockInit.SMOLDERING_TORCH.get()), SMOLDERING_CEILING_TORCH.get(),
-					getRegistryName(BlockInit.BURNT_TORCH.get()), BURNT_CEILING_TORCH.get());
+					getRegistryName(BlockInit.BURNT_TORCH.get()), BURNT_CEILING_TORCH.get(),
+					getRegistryName(BlockInit.LIT_SOUL_TORCH.get()), LIT_SOUL_CEILING_TORCH.get(),
+					getRegistryName(BlockInit.UNLIT_SOUL_TORCH.get()), UNLIT_SOUL_CEILING_TORCH.get());
 			//@formatter:on
 		}
 
