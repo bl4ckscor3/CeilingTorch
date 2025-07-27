@@ -14,7 +14,7 @@ authors="bl4ckscor3"
 [[dependencies.ceilingtorch]]
     modId="neoforge"
     type="required"
-    versionRange="[21,)"
+    versionRange="[21.1.181,)"
     ordering="NONE"
     side="BOTH"
 
