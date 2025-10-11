@@ -1,0 +1,5 @@
+{
+    "variants": {
+        "": { "model": "bonetorch:block/copper_bonetorch", "x": 180 }
+    }
+}
