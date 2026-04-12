@@ -43,17 +43,6 @@ public interface ICeilingTorchCompat {
 	public default void onPlace(RightClickBlock event, BlockPos placeAt, BlockState state) {}
 
 	/**
-	 * If this returns true, CeilingTorch will handle setting the render type. If this returns false, the mod adding
-	 * compatibility needs to handle setting the render type themselves.
-	 *
-	 * @param The block to check
-	 * @return true if the given block has the default cutout mipped render type, false otherwise
-	 */
-	public default boolean hasCutoutRenderType(Block b) {
-		return true;
-	}
-
-	/**
 	 * Helper method to get the registry name of a block
 	 *
 	 * @param block The block to get the registry name of

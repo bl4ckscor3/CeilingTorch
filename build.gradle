@@ -2,21 +2,21 @@ plugins {
 	id 'java-library'
 	id 'eclipse'
 	id 'idea'
-    id 'net.neoforged.moddev' version '2.0.115'
+    id 'net.neoforged.moddev' version '2.0.141'
 }
 
 version = '1.33'
 group = 'bl4ckscor3.mod.ceilingtorch'
 
 base {
-	archivesName = 'ceilingtorch-1.21.11'
+	archivesName = 'ceilingtorch-26.1.2'
 }
 
-java.toolchain.languageVersion = JavaLanguageVersion.of(21)
+java.toolchain.languageVersion = JavaLanguageVersion.of(25)
 println('Java: ' + System.getProperty('java.version') + ' JVM: ' + System.getProperty('java.vm.version') + '(' + System.getProperty('java.vendor') + ') Arch: ' + System.getProperty('os.arch'))
 
 neoForge {
-    version = "21.11.42"
+    version = "26.1.2.7-beta"
 
 	runs {
 		configureEach {
@@ -52,11 +52,11 @@ repositories {
 }
 
 dependencies {
-	implementation 'curse.maven:jei-238222:7090453'
+	implementation 'curse.maven:jei-238222:7904641'
 
-	implementation "curse.maven:bagus-lib-866533:7562761" //tofucraftreload dependency
-	implementation "curse.maven:sbm-bone-torch-238695:7318200"
-	implementation "curse.maven:tofucraftreload-317469:7873236"
+	implementation "curse.maven:bagus-lib-866533:7906552" //tofucraftreload dependency
+	implementation "curse.maven:sbm-bone-torch-238695:7878430"
+	implementation "curse.maven:tofucraftreload-317469:7906622"
 }
 
 tasks.named('jar', Jar).configure {
@@ -72,7 +72,7 @@ tasks.named('jar', Jar).configure {
 
 tasks.withType(JavaCompile).configureEach {
     options.encoding = 'UTF-8'
-	options.release = 21
+	options.release = 25
 }
 
 idea {
