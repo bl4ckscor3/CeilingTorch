@@ -9,14 +9,14 @@ version = '1.33'
 group = 'bl4ckscor3.mod.ceilingtorch'
 
 base {
-	archivesName = 'ceilingtorch-1.21.10'
+	archivesName = 'ceilingtorch-1.21.11'
 }
 
 java.toolchain.languageVersion = JavaLanguageVersion.of(21)
 println('Java: ' + System.getProperty('java.version') + ' JVM: ' + System.getProperty('java.vm.version') + '(' + System.getProperty('java.vendor') + ') Arch: ' + System.getProperty('os.arch'))
 
 neoForge {
-    version = "21.10.11-beta"
+    version = "21.11.42"
 
 	runs {
 		configureEach {
@@ -54,9 +54,9 @@ repositories {
 dependencies {
 	implementation 'curse.maven:jei-238222:7090453'
 
-	implementation "curse.maven:bagus-lib-866533:7091990" //tofucraftreload dependency
-	implementation "curse.maven:sbm-bone-torch-238695:7058629"
-	implementation "curse.maven:tofucraftreload-317469:7093158"
+	implementation "curse.maven:bagus-lib-866533:7562761" //tofucraftreload dependency
+	implementation "curse.maven:sbm-bone-torch-238695:7318200"
+	implementation "curse.maven:tofucraftreload-317469:7873236"
 }
 
 tasks.named('jar', Jar).configure {

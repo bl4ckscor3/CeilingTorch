@@ -16,8 +16,8 @@ public class CeilingTorchClient {
 	public static void onInterModProcess(InterModProcessEvent event) {
 		for (ICeilingTorchCompat compat : CeilingTorch.getCompatList().values()) {
 			for (Block block : compat.getPlaceEntries().values()) {
-				if (compat.hasCutoutMippedRenderType(block))
-					ItemBlockRenderTypes.setRenderLayer(block, ChunkSectionLayer.CUTOUT_MIPPED);
+				if (compat.hasCutoutRenderType(block))
+					ItemBlockRenderTypes.setRenderLayer(block, ChunkSectionLayer.CUTOUT);
 			}
 		}
 	}

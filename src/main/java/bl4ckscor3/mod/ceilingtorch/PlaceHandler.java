@@ -4,7 +4,7 @@ import java.util.Map;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
@@ -32,13 +32,13 @@ public class PlaceHandler {
 
 			if (face == Direction.DOWN && (level.isEmptyBlock(placeAt) || !level.getFluidState(placeAt).isEmpty())) {
 				ItemStack held = event.getItemStack();
-				ResourceLocation rl = CeilingTorch.getRegistryName(held.getItem());
+				Identifier rl = CeilingTorch.getRegistryName(held.getItem());
 				Map<String, ICeilingTorchCompat> compatList = CeilingTorch.getCompatList();
 				String modid = rl.getNamespace();
 
 				if (compatList.containsKey(modid)) {
 					ICeilingTorchCompat compat = compatList.get(modid);
-					Map<ResourceLocation, Block> placeEntries = compat.getPlaceEntries();
+					Map<Identifier, Block> placeEntries = compat.getPlaceEntries();
 
 					if (placeEntries.containsKey(rl))
 						placeTorch(compat, event, held, placeAt, level, placeEntries.get(rl).defaultBlockState());

@@ -8,7 +8,7 @@ import java.util.function.Supplier;
 import bl4ckscor3.mod.ceilingtorch.compat.vanilla.VanillaCompat;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntityType;
@@ -70,11 +70,11 @@ public class CeilingTorch {
 		return COMPAT_LIST;
 	}
 
-	public static ResourceLocation getRegistryName(Block block) {
+	public static Identifier getRegistryName(Block block) {
 		return BuiltInRegistries.BLOCK.getKey(block);
 	}
 
-	public static ResourceLocation getRegistryName(Item item) {
+	public static Identifier getRegistryName(Item item) {
 		return BuiltInRegistries.ITEM.getKey(item);
 	}
 
