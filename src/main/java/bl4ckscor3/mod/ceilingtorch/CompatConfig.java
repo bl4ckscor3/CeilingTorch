@@ -20,6 +20,7 @@ import bl4ckscor3.mod.ceilingtorch.compat.hardcoretorches.HardcoreTorchesCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.iceandfire.IceAndFireCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.ilikewood.ILikeWoodCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.integrateddynamics.IntegratedDynamicsCompat;
+import bl4ckscor3.mod.ceilingtorch.compat.invisibletorches.InvisibleTorchesCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.magicaltorches.MagicalTorchesCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.malum.MalumCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.moshiz.MoShizCompat;
@@ -87,6 +88,7 @@ public class CompatConfig {
 				makeEntry(builder, "iceandfire", () -> IceAndFireCompat::new),
 				makeEntry(builder, "ilikewood", () -> ILikeWoodCompat::new),
 				makeEntry(builder, "integrateddynamics", () -> IntegratedDynamicsCompat::new),
+				makeEntry(builder, "it", "Invisible Torches", () -> InvisibleTorchesCompat::new),
 				makeEntry(builder, "magical_torches", () -> MagicalTorchesCompat::new),
 				makeEntry(builder, "malum", () -> MalumCompat::new),
 				makeEntry(builder, "ms", "Mo' Shiz Mod", () -> MoShizCompat::new),
