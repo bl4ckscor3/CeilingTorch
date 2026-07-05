@@ -85,11 +85,13 @@ dependencies {
 	implementation fg.deobf("curse.maven:hardcore-torches-forge-576846:8012466")
 	implementation fg.deobf("curse.maven:i-like-wood-324164:4810688")
 	implementation fg.deobf("curse.maven:ice-and-fire-dragons-264231:5633453")
+	implementation fg.deobf("curse.maven:inspirations-284007:6635388")
 	implementation fg.deobf("curse.maven:integrated-dynamics-236307:8168402")
 	implementation fg.deobf("curse.maven:kotlin-for-forge-351264:4630525") //adorn dependency
 	implementation fg.deobf("curse.maven:lodestone-616457:6213794") //malum dependency
 	implementation fg.deobf("curse.maven:magical-torches-389917:4700251")
 	implementation fg.deobf("curse.maven:malum-484064:6646111")
+	implementation fg.deobf("curse.maven:mantle-74924:7563777") //integrations dependency
 	implementation fg.deobf("curse.maven:modonomicon-538392:7068896") //occultism dependency
 	implementation fg.deobf("curse.maven:mo-shiz-mod-62536:5587177")
 	implementation fg.deobf("curse.maven:nethers-delight-496394:4736227")
