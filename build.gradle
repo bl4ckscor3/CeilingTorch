@@ -89,6 +89,7 @@ dependencies {
 	implementation fg.deobf("curse.maven:integrated-dynamics-236307:8168402")
 	implementation fg.deobf("curse.maven:kotlin-for-forge-351264:4630525") //adorn dependency
 	implementation fg.deobf("curse.maven:lodestone-616457:6213794") //malum dependency
+	implementation fg.deobf("curse.maven:lucent-493280:4951434") //the midnight dependency
 	implementation fg.deobf("curse.maven:magical-torches-389917:4700251")
 	implementation fg.deobf("curse.maven:malum-484064:6646111")
 	implementation fg.deobf("curse.maven:mantle-74924:7563777") //integrations dependency
@@ -104,7 +105,7 @@ dependencies {
 	implementation fg.deobf("curse.maven:sbm-bone-torch-238695:5313149")
 	implementation fg.deobf("curse.maven:silent-gear-297039:5640724")
 	implementation fg.deobf("curse.maven:silent-lib-242998:4585754") //silent gear and torch bandolier dependency
-	implementation fg.deobf("curse.maven:smartbrainlib-661293:5654964") //occultism dependency
+	implementation fg.deobf("curse.maven:smartbrainlib-661293:5654964") //occultism and the midnight dependency
 	implementation fg.deobf("curse.maven:the-undergarden-379849:5182632")
 	implementation fg.deobf("curse.maven:tofucraftreload-317469:7788417")
 	implementation fg.deobf("curse.maven:torch-bandolier-299337:4587731")
@@ -114,6 +115,8 @@ dependencies {
 	implementation fg.deobf("curse.maven:xycraft-world-653789:4788863")
 
 	implementation fg.deobf("blank:invisible-torches:1.0beta3")
+	implementation fg.deobf("blank:the-midnight:0.6.7")
+	compileOnly fg.deobf("blank:registry:2.0.0-beta.11") //the midnight jarjar'd dependency
 }
 
 tasks.named('jar', Jar).configure {
