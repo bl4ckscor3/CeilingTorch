@@ -1,0 +1,8 @@
+{
+	"variants": {
+		"": {
+			"model": "extlights:block/bulb_lamp_iron",
+			"x": 180
+		}
+	}
+}

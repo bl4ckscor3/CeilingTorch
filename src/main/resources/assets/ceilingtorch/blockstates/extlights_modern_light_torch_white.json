@@ -1,0 +1,6 @@
+{
+	"variants": {
+		"lit=true": { "model": "extlights:block/modern_light_torch_white_on", "x": 180 },
+		"lit=false": { "model": "extlights:block/modern_light_torch_white_off", "x": 180 }
+	}
+}
