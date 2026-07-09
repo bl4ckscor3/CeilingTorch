@@ -17,7 +17,7 @@ import net.minecraft.world.item.component.DyedItemColor;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
-import team.lodestar.lodestone.handlers.RenderHandler;
+import team.lodestar.lodestone.handlers.LodestoneRenderHandler;
 import team.lodestar.lodestone.helpers.RandomHelper;
 import team.lodestar.lodestone.systems.easing.Easing;
 import team.lodestar.lodestone.systems.particle.ParticleEffectSpawner;
@@ -51,7 +51,7 @@ public class CeilingEtherTorchBlockEntity extends EtherBlockEntity {
 			ParticleEffectSpawner lightSpecs = SpiritLightSpecs.spiritLightSpecs(level, sparkPos, color);
 
 			lightSpecs.getBuilder()
-				.setRenderTarget(RenderHandler.LATE_DELAYED_RENDER)
+				.setRenderTarget(LodestoneRenderHandler.LATE_DEFERRED_RENDER)
 				.setLifetime(lifeTime)
 				.setScaleData(GenericParticleData.create(scale, 0).setEasing(Easing.SINE_IN_OUT).build())
 				.setTransparencyData(GenericParticleData.create(0.05f, 0.2f, 0).setEasing(Easing.EXPO_OUT, Easing.SINE_IN_OUT).build())
@@ -67,7 +67,7 @@ public class CeilingEtherTorchBlockEntity extends EtherBlockEntity {
 			ParticleEffectSpawner lightSpecs = SparkParticleEffects.spiritMotionSparks(level, sparkPos, color);
 
 			lightSpecs.getBuilder()
-				.setRenderTarget(RenderHandler.LATE_DELAYED_RENDER)
+				.setRenderTarget(LodestoneRenderHandler.LATE_DEFERRED_RENDER)
 				.setLifetime(lifeTime)
 				.setScaleData(GenericParticleData.create(scale, 0).setEasing(Easing.SINE_IN_OUT).build())
 				.setTransparencyData(GenericParticleData.create(0.1f, 0.6f, 0).setEasing(Easing.EXPO_OUT, Easing.SINE_IN_OUT).build())
@@ -84,7 +84,7 @@ public class CeilingEtherTorchBlockEntity extends EtherBlockEntity {
 			WorldParticleBuilder.create(MalumParticles.GIANT_GLOWING_STAR)
 				.setTransparencyData(GenericParticleData.create(0F, 0.2F, 0F).setEasing(Easing.SINE_IN_OUT, Easing.SINE_IN_OUT).build())
 				.setScaleData(GenericParticleData.create(scale, 0).setEasing(Easing.SINE_IN).build())
-				.setRenderTarget(RenderHandler.LATE_DELAYED_RENDER)
+				.setRenderTarget(LodestoneRenderHandler.LATE_DEFERRED_RENDER)
 				.setLifetime(lifeTime)
 				.setColorData(color)
 				.enableNoClip()
@@ -99,7 +99,7 @@ public class CeilingEtherTorchBlockEntity extends EtherBlockEntity {
 			WorldParticleBuilder.create(MalumParticles.STAR)
 				.setTransparencyData(GenericParticleData.create(0F, 0.6f, 0F).setEasing(Easing.SINE_IN_OUT, Easing.SINE_IN_OUT).build())
 				.setScaleData(GenericParticleData.create(scale, 0).setEasing(Easing.SINE_IN).build())
-				.setRenderTarget(RenderHandler.LATE_DELAYED_RENDER)
+				.setRenderTarget(LodestoneRenderHandler.LATE_DEFERRED_RENDER)
 				.setLifetime(lifeTime)
 				.setColorData(color)
 				.enableNoClip()

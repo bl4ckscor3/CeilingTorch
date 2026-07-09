@@ -68,8 +68,8 @@ dependencies {
 	implementation "curse.maven:geckolib-388172:6304958" //occultism dependency
 	implementation "curse.maven:hardcore-torches-forge-576846:6789778"
 	implementation "curse.maven:integrated-dynamics-236307:6784675"
-	implementation "curse.maven:lodestone-616457:6630047" //malum dependency
-	implementation "curse.maven:malum-484064:6655805"
+	implementation "curse.maven:lodestone-616457:7264731" //malum dependency
+	implementation "curse.maven:malum-484064:7307339"
 	implementation "curse.maven:modonomicon-538392:6338537" //occultism dependency
 	implementation "curse.maven:occultism-361026:6809856"
 	implementation "curse.maven:pokecube-aoi-285121:6788324"
