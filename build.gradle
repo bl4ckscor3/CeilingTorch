@@ -16,7 +16,7 @@ java.toolchain.languageVersion = JavaLanguageVersion.of(21)
 println('Java: ' + System.getProperty('java.version') + ' JVM: ' + System.getProperty('java.vm.version') + '(' + System.getProperty('java.vendor') + ') Arch: ' + System.getProperty('os.arch'))
 
 neoForge {
-	version = "21.1.194"
+	version = "21.1.235"
 
 	runs {
 		configureEach {
@@ -52,39 +52,41 @@ repositories {
 }
 
 dependencies {
-	implementation 'curse.maven:jei-238222:6756166'
+	implementation 'curse.maven:jei-238222:8376022'
 
-	implementation "curse.maven:additional-lights-384991:5504182"
-	implementation "curse.maven:adorn-for-forge-438784:6568602"
+	implementation "curse.maven:additional-lights-384991:6841545"
+	implementation "curse.maven:adorn-for-forge-438784:8313608"
 	implementation "curse.maven:architectury-api-419699:5786327" //bamboo everything dependency
 	implementation "curse.maven:athena-841890:5629395" //bamboo everything dependency
-	implementation "curse.maven:bagus-lib-866533:6762031" //tofucraftreload dependency
-	implementation "curse.maven:bamboo-everything-331723:6320314"
+	implementation "curse.maven:bagus-lib-866533:7612281" //tofucraftreload dependency
+	implementation "curse.maven:bamboo-everything-331723:7170711"
 	implementation "curse.maven:chipped-456956:5813117"
+	implementation "curse.maven:colored-torches-1161227:6893908"
 	implementation "curse.maven:common-capabilities-247007:6783311" //integrated dynamics dependency
-	implementation "curse.maven:curios-309927:6342656" //occultism dependency
+	implementation "curse.maven:curios-309927:6529130" //occultism dependency
 	implementation "curse.maven:cyclops-core-232758:6783344" //integrated dynamics dependency
-	implementation "curse.maven:gaia-dimension-302529:5773438"
+	implementation "curse.maven:gaia-dimension-302529:7021516"
 	implementation "curse.maven:geckolib-388172:6304958" //occultism dependency
-	implementation "curse.maven:hardcore-torches-forge-576846:6789778"
-	implementation "curse.maven:integrated-dynamics-236307:6784675"
+	implementation "curse.maven:hardcore-torches-forge-576846:8295497"
+	implementation "curse.maven:integrated-dynamics-236307:8258353"
 	implementation "curse.maven:lodestone-616457:7264731" //malum dependency
 	implementation "curse.maven:malum-484064:7307339"
-	implementation "curse.maven:modonomicon-538392:6338537" //occultism dependency
-	implementation "curse.maven:occultism-361026:6809856"
-	implementation "curse.maven:pokecube-aoi-285121:6788324"
+	implementation "curse.maven:modonomicon-538392:7771524" //occultism dependency
+	implementation "curse.maven:occultism-361026:8380679"
+	implementation "curse.maven:pokecube-aoi-285121:7374140"
 	implementation "curse.maven:projecte-226410:6611984"
-	implementation "curse.maven:reliquary-reincarnations-241319:6816862"
+	implementation "curse.maven:refined-storage-243076:8211701" //??? The game does not start without this
+	implementation "curse.maven:reliquary-reincarnations-241319:8354796"
 	implementation "curse.maven:resourceful-lib-570073:5973188" //bamboo everything dependency
 	implementation "curse.maven:sbm-bone-torch-238695:5851041"
-	implementation "curse.maven:silent-gear-297039:6761558"
-	implementation "curse.maven:silent-lib-242998:6285150" //silent gear and torch bandolier dependency
+	implementation "curse.maven:silent-gear-297039:8095210"
+	implementation "curse.maven:silent-lib-242998:7935618" //silent gear and torch bandolier dependency
 	implementation "curse.maven:smartbrainlib-661293:6101242" //occultism dependency
-	implementation "curse.maven:the-undergarden-379849:6687578"
-	implementation "curse.maven:tofucraftreload-317469:6754940"
+	implementation "curse.maven:the-undergarden-379849:7862546"
+	implementation "curse.maven:tofucraftreload-317469:8262708"
 	implementation "curse.maven:torch-bandolier-299337:5641604"
-	implementation "curse.maven:xycraft-653786:5601037" // xycraft world dependency
-	implementation "curse.maven:xycraft-world-653789:5601038"
+	implementation "curse.maven:xycraft-653786:6872525" // xycraft world dependency
+	implementation "curse.maven:xycraft-world-653789:6872532"
 }
 
 tasks.named('jar', Jar).configure {
