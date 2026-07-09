@@ -10,6 +10,7 @@ import bl4ckscor3.mod.ceilingtorch.compat.adorn.AdornCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.bambooeverything.BambooEverythingCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.bonetorch.BoneTorchCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.chipped.ChippedCompat;
+import bl4ckscor3.mod.ceilingtorch.compat.coloredtorches.ColoredTorchesCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.gaiadimension.GaiaDimensionCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.hardcoretorches.HardcoreTorchesCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.integrateddynamics.IntegratedDynamicsCompat;
@@ -40,32 +41,31 @@ public class CompatConfig {
 	}
 
 	CompatConfig(ModConfigSpec.Builder builder) {
-		//@formatter:off
 		builder.comment(
-				"This configuration is meant to allow turning off mod integration that has stopped working. All integrations are enabled by default. To disable a specific integration, set the relevant config value to \"false\".",
-				"Should you encounter any crashes when using Ceiling Torch, please report them to https://github.com/bl4ckscor3/CeilingTorch/issues",
-				"If you turn off a mod integration using this config, you can continue playing without needing an update of Ceiling Torch; However do note that the ceiling torches from that integration will disappear from your world. Note, that if you do not place a block in a space where a ceiling torch was, and then re-enable the respective integration, the torch will reappear.",
-				"Turning off integration with a mod that you are not using will not have any effect, as Ceiling Torch automatically checks for the presence of mods it integrates with.");
+			"This configuration is meant to allow turning off mod integration that has stopped working. All integrations are enabled by default. To disable a specific integration, set the relevant config value to \"false\".",
+			"Should you encounter any crashes when using Ceiling Torch, please report them to https://github.com/bl4ckscor3/CeilingTorch/issues",
+			"If you turn off a mod integration using this config, you can continue playing without needing an update of Ceiling Torch; However do note that the ceiling torches from that integration will disappear from your world. Note, that if you do not place a block in a space where a ceiling torch was, and then re-enable the respective integration, the torch will reappear.",
+			"Turning off integration with a mod that you are not using will not have any effect, as Ceiling Torch automatically checks for the presence of mods it integrates with.");
 		builtInCompat = Map.ofEntries(
-				makeEntry(builder, "additional_lights", () -> AdditionalLightsCompat::new),
-				makeEntry(builder, "adorn", () -> AdornCompat::new),
-				makeEntry(builder, "bambooeverything", () -> BambooEverythingCompat::new),
-				makeEntry(builder, "bonetorch", () -> BoneTorchCompat::new),
-				makeEntry(builder, "chipped", () -> ChippedCompat::new),
-				makeEntry(builder, "gaiadimension", () -> GaiaDimensionCompat::new),
-				makeEntry(builder, "hardcore_torches", () -> HardcoreTorchesCompat::new),
-				makeEntry(builder, "integrateddynamics", () -> IntegratedDynamicsCompat::new),
-				makeEntry(builder, "malum", () -> MalumCompat::new),
-				makeEntry(builder, "occultism", () -> OccultismCompat::new),
-				makeEntry(builder, "pokecube_legends", () -> PokecubeAIOCompat::new),
-				makeEntry(builder, "projecte", () -> ProjectECompat::new),
-				makeEntry(builder, "reliquary", () -> ReliquaryCompat::new),
-				makeEntry(builder, "silentgear", () -> SilentGearCompat::new),
-				makeEntry(builder, "tofucraft", () -> TofuCraftCompat::new),
-				makeEntry(builder, "torchbandolier", () -> TorchBandolierCompat::new),
-				makeEntry(builder, "undergarden", () -> UndergardenCompat::new),
-				makeEntry(builder, "xycraft_world", () -> XyCraftWorldCompat::new));
-		//@formatter:on
+			makeEntry(builder, "additional_lights", () -> AdditionalLightsCompat::new),
+			makeEntry(builder, "adorn", () -> AdornCompat::new),
+			makeEntry(builder, "bambooeverything", () -> BambooEverythingCompat::new),
+			makeEntry(builder, "bonetorch", () -> BoneTorchCompat::new),
+			makeEntry(builder, "chipped", () -> ChippedCompat::new),
+			makeEntry(builder, "colored_torches", () -> ColoredTorchesCompat::new),
+			makeEntry(builder, "gaiadimension", () -> GaiaDimensionCompat::new),
+			makeEntry(builder, "hardcore_torches", () -> HardcoreTorchesCompat::new),
+			makeEntry(builder, "integrateddynamics", () -> IntegratedDynamicsCompat::new),
+			makeEntry(builder, "malum", () -> MalumCompat::new),
+			makeEntry(builder, "occultism", () -> OccultismCompat::new),
+			makeEntry(builder, "pokecube_legends", () -> PokecubeAIOCompat::new),
+			makeEntry(builder, "projecte", () -> ProjectECompat::new),
+			makeEntry(builder, "reliquary", () -> ReliquaryCompat::new),
+			makeEntry(builder, "silentgear", () -> SilentGearCompat::new),
+			makeEntry(builder, "tofucraft", () -> TofuCraftCompat::new),
+			makeEntry(builder, "torchbandolier", () -> TorchBandolierCompat::new),
+			makeEntry(builder, "undergarden", () -> UndergardenCompat::new),
+			makeEntry(builder, "xycraft_world", () -> XyCraftWorldCompat::new));
 	}
 
 	private Map.Entry<String, CompatInfo> makeEntry(ModConfigSpec.Builder builder, String modid, Supplier<Supplier<ICeilingTorchCompat>> ceilingTorchCompat) {
