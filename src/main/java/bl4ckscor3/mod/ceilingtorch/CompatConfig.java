@@ -26,6 +26,7 @@ import bl4ckscor3.mod.ceilingtorch.compat.silentgear.SilentGearCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.tofucraft.TofuCraftCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.torchbandolier.TorchBandolierCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.undergarden.UndergardenCompat;
+import bl4ckscor3.mod.ceilingtorch.compat.upgradeaquatic.UpgradeAquaticCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.xycraftworld.XyCraftWorldCompat;
 import net.neoforged.neoforge.common.ModConfigSpec;
 import net.neoforged.neoforge.common.ModConfigSpec.BooleanValue;
@@ -34,7 +35,7 @@ public class CompatConfig {
 	public static final String FILE_NAME = "ceiling-torch-integrations.toml";
 	public static final ModConfigSpec CONFIG_SPEC;
 	public static final CompatConfig CONFIG;
-	private Map<String, CompatInfo> builtInCompat;
+	private final Map<String, CompatInfo> builtInCompat;
 
 	static {
 		Pair<CompatConfig, ModConfigSpec> specPair = new ModConfigSpec.Builder().configure(CompatConfig::new);
@@ -71,6 +72,7 @@ public class CompatConfig {
 			makeEntry(builder, "tofucraft", () -> TofuCraftCompat::new),
 			makeEntry(builder, "torchbandolier", () -> TorchBandolierCompat::new),
 			makeEntry(builder, "undergarden", () -> UndergardenCompat::new),
+			makeEntry(builder, "upgrade_aquatic", () -> UpgradeAquaticCompat::new),
 			makeEntry(builder, "xycraft_world", () -> XyCraftWorldCompat::new));
 	}
 

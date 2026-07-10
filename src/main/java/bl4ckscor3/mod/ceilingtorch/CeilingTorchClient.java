@@ -16,8 +16,10 @@ public class CeilingTorchClient {
 	public static void onInterModProcess(InterModProcessEvent event) {
 		for (ICeilingTorchCompat compat : CeilingTorch.getCompatList().values()) {
 			for (Block block : compat.getPlaceEntries().values()) {
-				if (compat.hasCutoutMippedRenderType(block))
-					ItemBlockRenderTypes.setRenderLayer(block, RenderType.cutoutMipped());
+				switch (compat.renderType(block)) {
+					case CUTOUT_MIPPED -> ItemBlockRenderTypes.setRenderLayer(block, RenderType.cutoutMipped());
+					case TRANSLUCENT -> ItemBlockRenderTypes.setRenderLayer(block, RenderType.translucent());
+				}
 			}
 		}
 	}

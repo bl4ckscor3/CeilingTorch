@@ -63,6 +63,7 @@ dependencies {
 	implementation "curse.maven:athena-841890:5629395" //bamboo everything dependency
 	implementation "curse.maven:bagus-lib-866533:7612281" //tofucraftreload dependency
 	implementation "curse.maven:bamboo-everything-331723:7170711"
+	implementation "curse.maven:blueprint-382216:8397829" //upgrade aquatic dependency
 	implementation "curse.maven:chipped-456956:5813117"
 	implementation "curse.maven:colored-torches-1161227:6893908"
 	implementation "curse.maven:common-capabilities-247007:6783311" //integrated dynamics dependency
@@ -90,6 +91,7 @@ dependencies {
 	implementation "curse.maven:the-undergarden-379849:7862546"
 	implementation "curse.maven:tofucraftreload-317469:8262708"
 	implementation "curse.maven:torch-bandolier-299337:5641604"
+	implementation "curse.maven:upgrade-aquatic-326895:7115763"
 	implementation "curse.maven:xycraft-653786:6872525" // xycraft world dependency
 	implementation "curse.maven:xycraft-world-653789:6872532"
 

@@ -49,8 +49,12 @@ public interface ICeilingTorchCompat {
 	 * @param The block to check
 	 * @return true if the given block has the default cutout mipped render type, false otherwise
 	 */
-	public default boolean hasCutoutMippedRenderType(Block b) {
-		return true;
+	public default TorchRenderType renderType(Block b) {
+		return TorchRenderType.CUTOUT_MIPPED;
+	}
+
+	enum TorchRenderType {
+		CUTOUT_MIPPED, TRANSLUCENT
 	}
 
 	/**
