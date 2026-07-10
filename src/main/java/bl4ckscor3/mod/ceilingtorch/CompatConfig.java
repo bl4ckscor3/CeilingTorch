@@ -15,6 +15,7 @@ import bl4ckscor3.mod.ceilingtorch.compat.gaiadimension.GaiaDimensionCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.hardcoretorches.HardcoreTorchesCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.integrateddynamics.IntegratedDynamicsCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.invisibletorches.InvisibleTorchesCompat;
+import bl4ckscor3.mod.ceilingtorch.compat.magicaltorches.MagicalTorchesCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.malum.MalumCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.occultism.OccultismCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.pokecubeaio.PokecubeAIOCompat;
@@ -58,6 +59,7 @@ public class CompatConfig {
 			makeEntry(builder, "hardcore_torches", () -> HardcoreTorchesCompat::new),
 			makeEntry(builder, "integrateddynamics", () -> IntegratedDynamicsCompat::new),
 			makeEntry(builder, "it", "Invisible Torches", () -> InvisibleTorchesCompat::new),
+			makeEntry(builder, "magical_torches", () -> MagicalTorchesCompat::new),
 			makeEntry(builder, "malum", () -> MalumCompat::new),
 			makeEntry(builder, "occultism", () -> OccultismCompat::new),
 			makeEntry(builder, "pokecube_legends", () -> PokecubeAIOCompat::new),

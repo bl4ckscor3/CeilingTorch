@@ -73,6 +73,7 @@ dependencies {
 	implementation "curse.maven:hardcore-torches-forge-576846:8295497"
 	implementation "curse.maven:integrated-dynamics-236307:8258353"
 	implementation "curse.maven:lodestone-616457:7264731" //malum dependency
+	implementation "curse.maven:magical-torches-389917:8028896"
 	implementation "curse.maven:malum-484064:7307339"
 	implementation "curse.maven:modonomicon-538392:7771524" //occultism dependency
 	implementation "curse.maven:occultism-361026:8380679"
