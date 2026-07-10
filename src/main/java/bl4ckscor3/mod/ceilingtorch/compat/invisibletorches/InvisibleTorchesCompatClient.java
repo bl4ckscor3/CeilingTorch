@@ -12,5 +12,4 @@ public class InvisibleTorchesCompatClient {
 		if (ModList.get().isLoaded("it"))
 			modEventBus.addListener(InvisibleTorchesCompatRendererRegistration::onRegisterRenderers);
 	}
-
 }

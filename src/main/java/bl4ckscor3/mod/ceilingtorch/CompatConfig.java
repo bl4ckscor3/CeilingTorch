@@ -17,6 +17,7 @@ import bl4ckscor3.mod.ceilingtorch.compat.integrateddynamics.IntegratedDynamicsC
 import bl4ckscor3.mod.ceilingtorch.compat.invisibletorches.InvisibleTorchesCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.magicaltorches.MagicalTorchesCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.malum.MalumCompat;
+import bl4ckscor3.mod.ceilingtorch.compat.moshiz.MoShizCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.occultism.OccultismCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.pokecubeaio.PokecubeAIOCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.projecte.ProjectECompat;
@@ -61,6 +62,7 @@ public class CompatConfig {
 			makeEntry(builder, "it", "Invisible Torches", () -> InvisibleTorchesCompat::new),
 			makeEntry(builder, "magical_torches", () -> MagicalTorchesCompat::new),
 			makeEntry(builder, "malum", () -> MalumCompat::new),
+			makeEntry(builder, "ms", "Mo' Shiz Mod", () -> MoShizCompat::new),
 			makeEntry(builder, "occultism", () -> OccultismCompat::new),
 			makeEntry(builder, "pokecube_legends", () -> PokecubeAIOCompat::new),
 			makeEntry(builder, "projecte", () -> ProjectECompat::new),

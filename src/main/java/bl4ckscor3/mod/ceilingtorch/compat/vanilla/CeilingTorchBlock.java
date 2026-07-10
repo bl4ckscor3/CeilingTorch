@@ -25,11 +25,16 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 public class CeilingTorchBlock extends TorchBlock {
 	public static final VoxelShape CEILING_SHAPE = Block.box(6.0D, 6.0D, 6.0D, 10.0D, 16.0D, 10.0D);
 	private final Supplier<? extends Block> originalBlock;
+	private final Supplier<? extends SimpleParticleType> particle;
 
 	public CeilingTorchBlock(BlockBehaviour.Properties properties, SimpleParticleType particle, Supplier<? extends Block> originalBlock) {
-		super(particle, properties.lootFrom(originalBlock));
+		this(properties.lootFrom(originalBlock), originalBlock, () -> particle);
+	}
 
+	public CeilingTorchBlock(BlockBehaviour.Properties properties, Supplier<? extends Block> originalBlock, Supplier<? extends SimpleParticleType> particle) {
+		super(ParticleTypes.FLAME, properties.lootFrom(originalBlock));
 		this.originalBlock = originalBlock;
+		this.particle = particle;
 	}
 
 	@Override
@@ -54,7 +59,7 @@ public class CeilingTorchBlock extends TorchBlock {
 		double z = pos.getZ() + 0.5D;
 
 		level.addParticle(ParticleTypes.SMOKE, x, y, z, 0.0D, 0.0D, 0.0D);
-		level.addParticle(flameParticle, x, y, z, 0.0D, 0.0D, 0.0D);
+		level.addParticle(particle.get(), x, y, z, 0.0D, 0.0D, 0.0D);
 	}
 
 	@Override

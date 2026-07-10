@@ -6,6 +6,7 @@ import java.util.Map.Entry;
 import java.util.function.Supplier;
 
 import bl4ckscor3.mod.ceilingtorch.compat.vanilla.VanillaCompat;
+import net.minecraft.core.particles.ParticleType;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
@@ -30,12 +31,14 @@ public class CeilingTorch {
 	private static Map<String, Supplier<ICeilingTorchCompat>> preliminaryCompatList = new HashMap<>();
 	public static final DeferredRegister.Blocks BLOCKS = DeferredRegister.createBlocks(MODID);
 	public static final DeferredRegister<BlockEntityType<?>> BLOCK_ENTITIES = DeferredRegister.create(Registries.BLOCK_ENTITY_TYPE, MODID);
+	public static final DeferredRegister<ParticleType<?>> PARTICLE_TYPES = DeferredRegister.create(Registries.PARTICLE_TYPE, MODID);
 	private static boolean initialized = false;
 
 	public CeilingTorch(IEventBus modBus, ModContainer modContainer) {
 		modContainer.registerConfig(ModConfig.Type.STARTUP, CompatConfig.CONFIG_SPEC, CompatConfig.FILE_NAME);
 		BLOCKS.register(modBus);
 		BLOCK_ENTITIES.register(modBus);
+		PARTICLE_TYPES.register(modBus);
 		preliminaryCompatList.put("minecraft", VanillaCompat::new);
 		CompatConfig.CONFIG.getBuiltInCompat().forEach((modid, compatInfo) -> {
 			if (compatInfo.config().get() && ModList.get().isLoaded(modid))
