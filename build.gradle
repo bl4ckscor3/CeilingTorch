@@ -49,6 +49,9 @@ repositories {
             includeGroup "curse.maven"
         }
     }
+	flatDir {
+		dirs("libs")
+	}
 }
 
 dependencies {
@@ -87,6 +90,8 @@ dependencies {
 	implementation "curse.maven:torch-bandolier-299337:5641604"
 	implementation "curse.maven:xycraft-653786:6872525" // xycraft world dependency
 	implementation "curse.maven:xycraft-world-653789:6872532"
+
+	implementation "blank:invisible-torches:1.0"
 }
 
 tasks.named('jar', Jar).configure {
