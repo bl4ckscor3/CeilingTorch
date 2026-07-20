@@ -14,6 +14,7 @@ import bl4ckscor3.mod.ceilingtorch.compat.reliquary.ReliquaryCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.silentgear.SilentGearCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.tofucraft.TofuCraftCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.undergarden.UndergardenCompat;
+import bl4ckscor3.mod.ceilingtorch.compat.xycraftworld.XyCraftWorldCompat;
 import net.neoforged.neoforge.common.ModConfigSpec;
 import net.neoforged.neoforge.common.ModConfigSpec.BooleanValue;
 
@@ -45,7 +46,8 @@ public class CompatConfig {
 			makeEntry(builder, "reliquary", () -> ReliquaryCompat::new),
 			makeEntry(builder, "silentgear", () -> SilentGearCompat::new),
 			makeEntry(builder, "tofucraft", () -> TofuCraftCompat::new),
-			makeEntry(builder, "undergarden", () -> UndergardenCompat::new));
+			makeEntry(builder, "undergarden", () -> UndergardenCompat::new),
+			makeEntry(builder, "xycraft_world", () -> XyCraftWorldCompat::new));
 	}
 
 	private Map.Entry<String, CompatInfo> makeEntry(ModConfigSpec.Builder builder, String modid, Supplier<Supplier<ICeilingTorchCompat>> ceilingTorchCompat) {
