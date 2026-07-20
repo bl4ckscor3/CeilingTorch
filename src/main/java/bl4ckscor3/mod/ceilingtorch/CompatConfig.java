@@ -6,6 +6,7 @@ import java.util.function.Supplier;
 import org.apache.commons.lang3.tuple.Pair;
 
 import bl4ckscor3.mod.ceilingtorch.compat.additionallights.AdditionalLightsCompat;
+import bl4ckscor3.mod.ceilingtorch.compat.adorn.AdornCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.bonetorch.BoneTorchCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.tofucraft.TofuCraftCompat;
 import net.neoforged.neoforge.common.ModConfigSpec;
@@ -32,6 +33,7 @@ public class CompatConfig {
 			"Turning off integration with a mod that you are not using will not have any effect, as Ceiling Torch automatically checks for the presence of mods it integrates with.");
 		builtInCompat = Map.ofEntries(
 			makeEntry(builder, "additional_lights", () -> AdditionalLightsCompat::new),
+			makeEntry(builder, "adorn", () -> AdornCompat::new),
 			makeEntry(builder, "bonetorch", () -> BoneTorchCompat::new),
 			makeEntry(builder, "tofucraft", () -> TofuCraftCompat::new));
 	}
