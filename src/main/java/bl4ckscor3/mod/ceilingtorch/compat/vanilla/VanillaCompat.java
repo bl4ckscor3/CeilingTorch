@@ -13,10 +13,10 @@ import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.neoforged.neoforge.registries.DeferredBlock;
 
 public class VanillaCompat implements ICeilingTorchCompat {
-	public static final DeferredBlock<CeilingTorchBlock> CEILING_TORCH = CeilingTorch.BLOCKS.registerBlock("torch", p -> new CeilingTorchBlock(p, ParticleTypes.FLAME, () -> Blocks.TORCH), BlockBehaviour.Properties.ofFullCopy(Blocks.TORCH));
-	public static final DeferredBlock<RedstoneCeilingTorchBlock> CEILING_REDSTONE_TORCH = CeilingTorch.BLOCKS.registerBlock("redstone_torch", p -> new RedstoneCeilingTorchBlock(p, () -> Blocks.REDSTONE_TORCH), BlockBehaviour.Properties.ofFullCopy(Blocks.REDSTONE_TORCH));
-	public static final DeferredBlock<CeilingTorchBlock> CEILING_SOUL_TORCH = CeilingTorch.BLOCKS.registerBlock("soul_torch", p -> new CeilingTorchBlock(p, ParticleTypes.SOUL_FIRE_FLAME, () -> Blocks.SOUL_TORCH), BlockBehaviour.Properties.ofFullCopy(Blocks.SOUL_TORCH));
-	public static final DeferredBlock<CeilingTorchBlock> CEILING_COPPER_TORCH = CeilingTorch.BLOCKS.registerBlock("copper_torch", p -> new CeilingTorchBlock(p, ParticleTypes.COPPER_FIRE_FLAME, () -> Blocks.COPPER_TORCH), BlockBehaviour.Properties.ofFullCopy(Blocks.COPPER_TORCH));
+	public static final DeferredBlock<CeilingTorchBlock> CEILING_TORCH = CeilingTorch.BLOCKS.registerBlock("torch", p -> new CeilingTorchBlock(p, ParticleTypes.FLAME, () -> Blocks.TORCH), () -> BlockBehaviour.Properties.ofFullCopy(Blocks.TORCH));
+	public static final DeferredBlock<RedstoneCeilingTorchBlock> CEILING_REDSTONE_TORCH = CeilingTorch.BLOCKS.registerBlock("redstone_torch", p -> new RedstoneCeilingTorchBlock(p, () -> Blocks.REDSTONE_TORCH), () -> BlockBehaviour.Properties.ofFullCopy(Blocks.REDSTONE_TORCH));
+	public static final DeferredBlock<CeilingTorchBlock> CEILING_SOUL_TORCH = CeilingTorch.BLOCKS.registerBlock("soul_torch", p -> new CeilingTorchBlock(p, ParticleTypes.SOUL_FIRE_FLAME, () -> Blocks.SOUL_TORCH), () -> BlockBehaviour.Properties.ofFullCopy(Blocks.SOUL_TORCH));
+	public static final DeferredBlock<CeilingTorchBlock> CEILING_COPPER_TORCH = CeilingTorch.BLOCKS.registerBlock("copper_torch", p -> new CeilingTorchBlock(p, ParticleTypes.COPPER_FIRE_FLAME, () -> Blocks.COPPER_TORCH), () -> BlockBehaviour.Properties.ofFullCopy(Blocks.COPPER_TORCH));
 	private Map<ResourceLocation, Block> placeEntries;
 
 	@Override
