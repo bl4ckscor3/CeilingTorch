@@ -54,9 +54,9 @@ repositories {
 dependencies {
 	implementation 'curse.maven:jei-238222:8419117'
 
-	implementation "curse.maven:bagus-lib-866533:7906552" //tofucraftreload dependency
+	implementation "curse.maven:bagus-lib-866533:7959019" //tofucraftreload dependency
 	implementation "curse.maven:sbm-bone-torch-238695:7878430"
-	implementation "curse.maven:tofucraftreload-317469:7906622"
+	implementation "curse.maven:tofucraftreload-317469:8460775"
 }
 
 tasks.named('jar', Jar).configure {
