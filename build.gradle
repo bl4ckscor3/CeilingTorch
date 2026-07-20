@@ -64,6 +64,8 @@ dependencies {
 	implementation "curse.maven:integrated-dynamics-236307:7828158"
 	implementation "curse.maven:reliquary-reincarnations-241319:8398730"
 	implementation "curse.maven:sbm-bone-torch-238695:7318200"
+	implementation "curse.maven:silent-gear-297039:7777539"
+	implementation "curse.maven:silent-lib-242998:7696645" //silent gear dependency
 	implementation "curse.maven:tofucraftreload-317469:7873236"
 }
 
