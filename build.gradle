@@ -16,7 +16,7 @@ java.toolchain.languageVersion = JavaLanguageVersion.of(25)
 println('Java: ' + System.getProperty('java.version') + ' JVM: ' + System.getProperty('java.vm.version') + '(' + System.getProperty('java.vendor') + ') Arch: ' + System.getProperty('os.arch'))
 
 neoForge {
-    version = "26.2.0.6-beta"
+    version = "26.2.0.25-beta"
 
 	runs {
 		configureEach {
@@ -52,7 +52,7 @@ repositories {
 }
 
 dependencies {
-	implementation 'curse.maven:jei-238222:8292647'
+	implementation 'curse.maven:jei-238222:8472474'
 
 	implementation "curse.maven:bagus-lib-866533:8261867" //tofucraftreload dependency
 	implementation "curse.maven:sbm-bone-torch-238695:8280071"
