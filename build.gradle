@@ -58,8 +58,12 @@ dependencies {
 	implementation "curse.maven:bagus-lib-866533:7959019" //tofucraftreload dependency
 	implementation "curse.maven:colored-torches-1161227:7875650"
 	implementation "curse.maven:common-capabilities-247007:8469491" //integrated dynamics dependency
+	implementation "curse.maven:curios-309927:8463519" //occultism dependency
 	implementation "curse.maven:cyclops-core-232758:8469538" //integrated dynamics dependency
+	implementation "curse.maven:geckolib-388172:8327201" //occultism dependency
 	implementation "curse.maven:integrated-dynamics-236307:8469202"
+	implementation "curse.maven:modonomicon-538392:8464521" //occultism dependency
+	implementation "curse.maven:occultism-361026:8464578"
 	implementation "curse.maven:sbm-bone-torch-238695:7878430"
 	implementation "curse.maven:tofucraftreload-317469:8460775"
 }
