@@ -64,6 +64,7 @@ dependencies {
 	implementation "curse.maven:integrated-dynamics-236307:8469202"
 	implementation "curse.maven:modonomicon-538392:8464521" //occultism dependency
 	implementation "curse.maven:occultism-361026:8464578"
+	implementation "curse.maven:reliquary-reincarnations-241319:8398737"
 	implementation "curse.maven:sbm-bone-torch-238695:7878430"
 	implementation "curse.maven:tofucraftreload-317469:8460775"
 }
