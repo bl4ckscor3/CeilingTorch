@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "x": 180, "model": "colored_torches:block/magenta_torch"
+    }
+  }
+}
