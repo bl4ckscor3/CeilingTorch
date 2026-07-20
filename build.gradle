@@ -60,6 +60,7 @@ dependencies {
 	implementation "curse.maven:common-capabilities-247007:7350820" //integrated dynamics dependency
 	implementation "curse.maven:cyclops-core-232758:7350846" //integrated dynamics dependency
 	implementation "curse.maven:integrated-dynamics-236307:7350822"
+	implementation "curse.maven:reliquary-reincarnations-241319:8398728"
 	implementation "curse.maven:sbm-bone-torch-238695:7058629"
 	implementation "curse.maven:tofucraftreload-317469:7248455"
 }
