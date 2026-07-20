@@ -11,6 +11,7 @@ import bl4ckscor3.mod.ceilingtorch.compat.coloredtorches.ColoredTorchesCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.integrateddynamics.IntegratedDynamicsCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.occultism.OccultismCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.reliquary.ReliquaryCompat;
+import bl4ckscor3.mod.ceilingtorch.compat.silentgear.SilentGearCompat;
 import bl4ckscor3.mod.ceilingtorch.compat.tofucraft.TofuCraftCompat;
 import net.neoforged.neoforge.common.ModConfigSpec;
 import net.neoforged.neoforge.common.ModConfigSpec.BooleanValue;
@@ -41,6 +42,7 @@ public class CompatConfig {
 			makeEntry(builder, "integrateddynamics", () -> IntegratedDynamicsCompat::new),
 			makeEntry(builder, "occultism", () -> OccultismCompat::new),
 			makeEntry(builder, "reliquary", () -> ReliquaryCompat::new),
+			makeEntry(builder, "silentgear", () -> SilentGearCompat::new),
 			makeEntry(builder, "tofucraft", () -> TofuCraftCompat::new));
 	}
 
