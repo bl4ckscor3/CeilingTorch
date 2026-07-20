@@ -62,6 +62,7 @@ dependencies {
 	implementation "curse.maven:cyclops-core-232758:7248797" //integrated dynamics dependency
 	implementation "curse.maven:gaia-dimension-302529:7021519"
 	implementation "curse.maven:integrated-dynamics-236307:7271142"
+	implementation "curse.maven:reliquary-reincarnations-241319:8398744"
 	implementation "curse.maven:sbm-bone-torch-238695:6675364"
 	implementation "curse.maven:tofucraftreload-317469:7005134"
 }
