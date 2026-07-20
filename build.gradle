@@ -58,7 +58,10 @@ dependencies {
 	implementation "curse.maven:adorn-for-forge-438784:8401240"
 	implementation "curse.maven:bagus-lib-866533:7562761" //tofucraftreload dependency
 	implementation "curse.maven:colored-torches-1161227:7577399"
+	implementation "curse.maven:common-capabilities-247007:7828151" //integrated dynamics dependency
+	implementation "curse.maven:cyclops-core-232758:7828192" //integrated dynamics dependency
 	implementation "curse.maven:gaia-dimension-302529:7679862"
+	implementation "curse.maven:integrated-dynamics-236307:7828158"
 	implementation "curse.maven:sbm-bone-torch-238695:7318200"
 	implementation "curse.maven:tofucraftreload-317469:7873236"
 }
