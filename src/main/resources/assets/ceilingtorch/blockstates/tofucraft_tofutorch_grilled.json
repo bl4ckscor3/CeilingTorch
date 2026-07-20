@@ -1,5 +1,5 @@
 {
     "variants": {
-        "": { "model": "tofucraft:block/tofutorch_grilled", "x": 180 }
+        "": { "model": "tofucraft:block/tofu_torch_grilled", "x": 180 }
     }
 }
