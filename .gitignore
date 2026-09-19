@@ -6,6 +6,7 @@
 /libs
 /run
 /runs
+/src/generated/resources/.cache/*
 /.settings
 *.launch
 /logs

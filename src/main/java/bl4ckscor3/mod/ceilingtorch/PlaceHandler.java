@@ -57,7 +57,7 @@ public class PlaceHandler {
 			compat.onPlace(event, placeAt, state);
 			soundType = state.getBlock().getSoundType(state, level, placeAt, event.getEntity());
 			level.playSound(null, placeAt.getX(), placeAt.getY(), placeAt.getZ(), soundType.getPlaceSound(), SoundSource.BLOCKS, soundType.getVolume(), soundType.getPitch() - 0.2F);
-			event.getEntity().swing(event.getHand());
+			event.getEntity().swing(event.getHand(), held.getInteractAnimation(), false);
 
 			if (!event.getEntity().isCreative())
 				held.shrink(1);

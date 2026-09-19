@@ -2,21 +2,25 @@ plugins {
 	id 'java-library'
 	id 'eclipse'
 	id 'idea'
-    id 'net.neoforged.moddev' version '2.0.141'
+    id 'net.neoforged.moddev' version '2.0.147'
 }
 
 version = '1.34'
 group = 'bl4ckscor3.mod.ceilingtorch'
 
 base {
-	archivesName = 'ceilingtorch-26.2'
+	archivesName = 'ceilingtorch-26.3'
 }
 
 java.toolchain.languageVersion = JavaLanguageVersion.of(25)
 println('Java: ' + System.getProperty('java.version') + ' JVM: ' + System.getProperty('java.vm.version') + '(' + System.getProperty('java.vendor') + ') Arch: ' + System.getProperty('os.arch'))
 
+sourceSets.main.resources {
+	srcDir 'src/generated/resources' //include generated files
+}
+
 neoForge {
-    version = "26.2.0.25-beta"
+    version = "26.3.0.7-beta"
 
 	runs {
 		configureEach {
@@ -32,6 +36,11 @@ neoForge {
 		server {
 			server()
 			programArgument('-nogui')
+		}
+
+		data {
+			clientData()
+			programArguments.addAll('--mod', "ceilingtorch", '--all', '--output', file('src/generated/resources/').getAbsolutePath())
 		}
 	}
 
@@ -52,19 +61,16 @@ repositories {
 }
 
 dependencies {
-	implementation 'curse.maven:jei-238222:8472474'
+	implementation 'curse.maven:jei-238222:8918192'
 
-	implementation "curse.maven:additional-lights-384991:8298008"
-	implementation "curse.maven:bagus-lib-866533:8309370" //tofucraftreload dependency
-	implementation "curse.maven:common-capabilities-247007:8469570" //integrated dynamics dependency
-	implementation "curse.maven:cyclops-core-232758:8469541" //integrated dynamics dependency
-	implementation "curse.maven:integrated-dynamics-236307:8469208"
-	implementation "curse.maven:reliquary-reincarnations-241319:8398733"
-	implementation "curse.maven:sbm-bone-torch-238695:8280071"
-	implementation "curse.maven:tofucraftreload-317469:8460776"
+	implementation "curse.maven:additional-lights-384991:8920210"
+	implementation "curse.maven:bagus-lib-866533:8893104" //tofucraftreload dependency
+	implementation "curse.maven:sbm-bone-torch-238695:8925431"
+	implementation "curse.maven:tofucraftreload-317469:8908376"
 }
 
 tasks.named('jar', Jar).configure {
+	exclude("net/geforcemods/ceilingtorch/datagen/**") //exclude files from the built jar that are only used to generate the assets & data
     manifest {
         attributes(["Specification-Title": "Ceiling Torch",
                     "Specification-Vendor": "bl4ckscor3",
