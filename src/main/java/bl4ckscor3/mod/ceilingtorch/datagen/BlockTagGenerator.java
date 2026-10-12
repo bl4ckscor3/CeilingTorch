@@ -16,6 +16,6 @@ public class BlockTagGenerator extends VanillaBlockTagsProvider {
 
 	@Override
 	protected void addTags(HolderLookup.Provider provider) {
-		tag(BlockTags.WASHED_AWAY_BY_FLUIDS).addAll(CeilingTorch.BLOCKS.getEntries().stream().map(DeferredHolder::getKey));
+		tag(BlockTags.WASHED_AWAY_BY_FLUIDS).addAll(CeilingTorch.BLOCKS.getEntries().stream().map(DeferredHolder::key));
 	}
 }
